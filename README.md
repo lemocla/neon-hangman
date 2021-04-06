@@ -82,15 +82,86 @@ Using the principles of UX design and concepts learnt during the Interactive fro
         - I want to select a different level so that I can challenge myself/ play according to my ability
         - I want to contact the company so that I can offer suggestions on how to improve the website
 
-
 - ## **Scope**
+
   - ### **Functional requirements**
+
+    Requirement	| Importance | Difficulty | Release
+    ------------ | ------------- | ------------ | ------------- 
+    Responsive interface | 5 | 2 | 1
+    Collapsible menu | 5 | 2 | 1
+    To display instructions and settings | 5 | 2 | 1
+    To give users ability to select from different levels of difficulty for the game | 4 | 3 | 1
+    To be able to turn sounds on and off | 5 | 4 | 1
+    To get random words according the selected level via WordsAPI | 5 | 4 | 1
+    To get a backup word array stored locally should the API call fails | 5 | 3 | 1
+    To display a functional interactive keyboard | 4 | 3 | 1
+    To generate and display letter placeholders for the hidden word | 5	| 3	 | 1
+    The reveal letter from hidden word when correct key is clicked | 5	| 3	 | 1
+    To show relevant hangman part when incorrect letter is clicked | 5 |  5 | 1
+    To update scores according to scoring policy | 5 | 3 | 1
+    To inform user when new high score is reached | 4 | 3 | 1
+    To run a countdown timer that reset when a new game starts | 4 | 4 | 1
+    To identify when a game is finished & inform player of the outcome - win or lose | 5 | 3 | 1
+    Give the player the ability to continue playing if the game was won or play again if the game was lost. | 5 | 3 | 1
+    To be able to contact the site owner via mailjs | 4 | 3 | 1
+    Error messages if Email API fails | 3 | 2 | 1
+    Error messages is all backups fail for generating random word | 3 | 2 | 1
+    Web storage API to store game information for when players return to website | 4 | 5 | 1
+    Allow users to challenge a friend | 4 | 4 | 2
+    Reward users by allowing them to unlock categories of words to choose from | 4 | 5 | 2
+    To allow multiple player mode | 3 | 5 | 3
+    Allow users to leave ratings | 3 | 5 | 3
+
+    This game will be developed as a minimal viable product with room for future improvement and releases incorporating additional features.
+
   - ### **Content requirements**
 
+    - Clear and concise instruction on how to play the game
+    - Background images to provide visually appealing and engaging interface 
+    - Sounds to provide instant feedback when:
+        - Correct / incorrect attempt is made
+        - Points are scored 
+        - Hangman being drawn 
+    - Dynamically / animated hangman image
+    - Icons for settings and interactive elements 
+    - Headings  for interactive elements that cannot be represented by icons
+    - Letters for keyboard
+
+  - ### **Constraints**
+
+    - Technical skills: The site owner is new to Javascript, Jquery and to API calls. 
+    - Game design skills: The is owner has never designed an online game before.
+    - Time: Implementing features using new technical skills will most certainly require a lot of time.
+
 - ## **Structure**
+
   - ### **Information architecture**
+
+    This game is built on a single webpage with dynamic content displayed according to user interaction and a modal page for the contact form. 
+
+  - ### **Organisation of functionality and content**
+
+    - Header: Logo and collapsible menu
+    - Collapsible menu: instructions, settings and leaderboard 
+    - Settings: sounds on/off and difficulty levels 
+	- Footer: Contact form and links to social media 
+	- Game information container: Scores, sounds and timer
+	- Game area container: 
+		- Play button, congratulation & game over message
+        - Hidden word, interactive keyboard and Hangman
+
   - ### **Interaction design** 
-    (ex collapsible menu, buttons with hovering effects, spyscrolls…)
+
+    - Modal form for contact us page 
+    - Buttons & social media icons with hovering effects 
+    - Interactive keyboard with:
+        - Hovering effect 
+        - Actions on click 
+        - Disabled once clicked
+	- Collapsible menu 
+	- Animated hangman
+
 
 - ## **Skeleton**
 
