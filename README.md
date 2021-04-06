@@ -1,4 +1,4 @@
-# **YOUR PROJECT NAME**
+# **NEON HANGMAN**
 
 [include screenshots of project on responsive devices]
 
@@ -84,37 +84,35 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **Scope**
 
-  - ### **Functional requirements**
+  - ### **Feature trade off**
 
-    Requirement	| Importance | Difficulty | Release
-    ------------ | ------------- | ------------ | ------------- 
-    Responsive interface | 5 | 2 | 1
-    Collapsible menu | 5 | 2 | 1
-    To display instructions and settings | 5 | 2 | 1
-    To give users ability to select from different levels of difficulty for the game | 4 | 3 | 1
-    To be able to turn sounds on and off | 5 | 4 | 1
-    To get random words according the selected level via WordsAPI | 5 | 4 | 1
-    To get a backup word array stored locally should the API call fails | 5 | 3 | 1
-    To display a functional interactive keyboard | 4 | 3 | 1
-    To generate and display letter placeholders for the hidden word | 5	| 3	 | 1
-    The reveal letter from hidden word when correct key is clicked | 5	| 3	 | 1
-    To show relevant hangman part when incorrect letter is clicked | 5 |  5 | 1
-    To update scores according to scoring policy | 5 | 3 | 1
-    To inform user when new high score is reached | 4 | 3 | 1
-    To run a countdown timer that reset when a new game starts | 4 | 4 | 1
-    To identify when a game is finished & inform player of the outcome - win or lose | 5 | 3 | 1
-    Give the player the ability to continue playing if the game was won or play again if the game was lost. | 5 | 3 | 1
-    To be able to contact the site owner via mailjs | 4 | 3 | 1
-    Error messages if Email API fails | 3 | 2 | 1
-    Error messages is all backups fail for generating random word | 3 | 2 | 1
-    Web storage API to store game information for when players return to website | 4 | 5 | 1
-    Allow users to challenge a friend | 4 | 4 | 2
-    Reward users by allowing them to unlock categories of words to choose from | 4 | 5 | 2
-    To allow multiple player mode | 3 | 5 | 3
-    Allow users to leave ratings | 3 | 5 | 3
+    ![feature_trade_off](scope/feature_tradeoff.png)
 
     This game will be developed as a minimal viable product with room for future improvement and releases incorporating additional features.
 
+  - ### **Functional requirements**
+
+    - Responsive interface 
+    - Collapsible menu 
+    - To display instructions and settings
+    - To give users ability to select from different levels of difficulty for the game 
+    - To be able to turn sounds on and off 
+    - To get random words according the selected level via WordsAPI
+    - To get a backup word array stored locally should the API call fails 
+    - To display a functional interactive keyboard 
+    - To generate and display letter placeholders for the hidden word 
+    - The reveal letter from hidden word when correct key is clicked 
+    - To show relevant hangman part when incorrect letter is clicked 
+    - To update scores according to scoring policy 
+    - To inform user when new high score is reached 
+    - To run a countdown timer that reset when a new game starts 
+    - To identify when a game is finished & inform player of the outcome - win or lose 
+    - Give the player the ability to continue playing if the game was won or play again if the game was lost
+    - Contact form with mailjs API
+    - Error messages if Email API fails 
+    - Error messages is all backups fail for generating random word
+    - Web storage API to store game information for when players return to website 
+  
   - ### **Content requirements**
 
     - Clear and concise instruction on how to play the game
@@ -162,36 +160,60 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 	- Collapsible menu 
 	- Animated hangman
 
-
 - ## **Skeleton**
 
-  Include either images / links to Wireframes eg:
-  Homepage 
-  Page x
-  Page y
-  Page z
+    - ### **[Landing page](documentation/wireframes/landing_page.png)** 
+        ![Landing page](documentation/wireframes/landing_page.png)
 
-  Or 
-  Mobile
-  Tablet
-  Desktop 
+    - ### **Additional wireframes:**
+        - [Navigation](documentation/wireframes/navigation.png)
+        - [Playing hangman](documentation/wireframes/playing_hangman.png)
+        - [Game outcomes](documentation/wireframes/game_outcomes.png)
+        - [Contact us](documentation/wireframes/contact_us.png)
+        - [Returning users](documentation/wireframes/returning_user.png)
 
-  - #### **Difference to design** 
-
-  - #### **Limitations** 
+        Wireframes for this project are also available in pdf format and can be found [here](documentation/wireframes/hangman_wireframes.pdf). 
 
 - ### **Design**
 
+  Inspired by nostalgia, the design of the game aims to recreate the spirit of 80s retro arcade era with a modern twist. 
+
   - #### **Imagery**
+
+    - Bricked navy background is designed using css only 
+    - Neon hangman was designed as a svg (scalable vector graphic) with filter for colour and animated using css & javascript.
+
   - #### **Colour scheme**
+
+    The website uses bright colours and neon effect throughout, as well as gradients to add contrast and make elements blend more together.
+    All text on the website is white, except for the logo.
+
+    Background colour | Color palette
+    ------------------ | -----------------
+    ![background_color](documentation/design/background_color.png) | ![color_palette](documentation/design/color_palette.jpeg)
+
   - #### **Typography**
+
+    As part of the arcade theme, the website uses:
+    -  [Pixel-operator](https://www.dafont.com/pixel-operator.font) font from Dafont for text due to its pixel finish
+    -  [Monoton](https://fonts.google.com/specimen/Monoton) from Google Font for the logo as it suits neon effect perfectly
+
   - #### **Icons**
-  - #### **Difference to design** 
+
+    Icons from Font Awesome Library are used to:
+    -  Illustrate interactive elements and game information such as scoring and the timer. 
+    -  Bring attention to social media accounts
+    The icons by their smooth finished also add contrast and complement nicely the pixel font. 
+
+  - #### **Styling**
+
+    - Borders and buttons have a slightly rounded corner to add a softer and modern feeling to the website.
+    - Borders, buttons and hangman are styled with a neon effect as part of the overall theme of the website.
 
 
-## **FEATURES** 
+# **FEATURES** 
 
-- ### **Existing features** 
+- ## **Existing features** 
 
   Ex: responsive website, navigation, footer, page x,y,x, form, call for action, map, carousel ...
 
@@ -203,17 +225,17 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **Features left to implement** 
 
-## **TECHNOLOGY USED**
+# **TECHNOLOGY USED**
 
-- ### **Languages**
+- ## **Languages**
   Eg: HTML, CSS 
 
-- ### **Libraries and frameworks** 
+- ## **Libraries and frameworks** 
   Eg: Bootstrap, jquery
 
   Include links and a short sentence about what the library was used for
 
-## **TESTING** 
+# **TESTING** 
 
 - ### **Intro** 
 
@@ -228,7 +250,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ### **Known bugs**
 
-## **DEPLOYMENT** 
+# **DEPLOYMENT** 
 
 - ### **Intro interface used to develop the website**
 
