@@ -58,11 +58,30 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **User stories** 
 
-  - #### **First time user / visitor**
-  - #### **As a returning user / visitor**
-  - #### **As a frequent user /visitor**
+    - ### **As new player:** 
+        - I want a responsive website so that I can access the game on different devices. 
+        - I want to easily navigate across the site so that I can find the information I need. 
+        - I want the game to upload quickly so that I can start playing as soon as possible. 
+        - I want to read the instructions so that I can understand how to play.
+        - I want to select a difficulity level so that I can play the game according to my abilities. 
+        - I want to be able to turn the sound on and off so that I can enjoy the game according to my preferences.
 
-    As a [user type], i want to [...]so that I [...] (goals)
+    - ### **As a player playing the game:**
+        - I want to see how many letters there is in the hidden word so that I can plan my guesses.
+        - I want to easily click on a letter so that I can find out if is is in the hidden word.
+        - I want to see the letters guessed correctly displayed on the screen so that I can find the hidden word.
+        - I want to see the letters I’ve already clicked so that I don’t make incorrect guesses again.
+        - I want to see the hangman parts so that I know how many attempts I’ve got left. 
+        - I want to see the timer so that I know how much time I’ve got left to win the game. 
+        - I want to see my score so that I feel rewarded when I am playing.
+        - I want the option to exit the game so that I can leave without losing. 
+        - I want the option to play again once I finish a game so that I can keep having fun and challenge myself.
+
+    - ### **As a frequent / returning player:**
+        - I want to see my leaderboard/statistics so that I can check my progress and achievements 
+        - I want to select a different level so that I can challenge myself/ play according to my ability
+        - I want to contact the company so that I can offer suggestions on how to improve the website
+
 
 - ## **Scope**
   - ### **Functional requirements**
