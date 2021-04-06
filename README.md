@@ -1,45 +1,162 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# **YOUR PROJECT NAME**
 
-Welcome lemocla,
+[include screenshots of project on responsive devices]
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use.
+View live project here [link to deployed link]
 
-## Gitpod Reminders
+This website - an online version of the classic pen and paper game Hangman - was created for educational purposes only as part of the Code Institute’s full stack development course. 
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Using the principles of UX design and concepts learnt during the Interactive frontend module, this fully responsive and interactive website was developed using HTML, CSS and javascript. 
+ 
 
-`python3 -m http.server`
+## **TABLE OF CONTENT** 
 
-A blue button should appear to click: *Make Public*,
+  - [UX Design](#UX_DESIGN)
+    - [Strategy](#Strategy)
+    - [User stories](#User_stories)
+    - [Scope](#Scope)
+    - [Structure](#Structure)
+    - [Skeleton](#Skeleton)
+    - [Design](#Design)
+  - [Features](#FEATURES)
+    - [Existing features](#Existing_features)
+    - [Features left to implement](#Features_left_to_implement)
+  - [Technologies Used](#TECHNOLOGY_USED)
+    - [Languages](#Languages)
+    - [Libraries and frameworks](#Libraries_and_frameworks)
+  - [Testing](#TESTING)
+  - [Deployment](#DEPLOYMENT)
+    - [Deployment of the page](#Deployment_of_the_page)
+    - [How to run the code locally](#How_to_run_the_code_locally)
+   - [Credits](#CREDITS)
+     - [Code](#Code)
+     - [Content](#Content)
+     - [Media](#Media)
+     - [Acknowledgment](#Acknowlegment)
+    
+# **UX DESIGN**
 
-Another blue button should appear to click: *Open Browser*.
+- ## **Strategy**
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+    This website is an online version of the classic word game Hangman, where the player needs to guess a word from the dictionary before time runs out, with the principal aim of providing entertainment to all ages, with the added bonus of offering some educational value to younger players. 
 
-A blue button should appear to click: *Make Public*,
+	- ### **For the site owner:**
+        - To explore the different features of a game 
+        - To create a simple, yet well designed and intuitive website 
+        - To put into practice and expand on javascript, jquery libraries and API 
+        - To provide an enjoyable and stimulating experience for the user of the website 
+        - To encourage players to play again and new users to visit the website
 
-Another blue button should appear to click: *Open Browser*.
+    - ### **For the players:** 
+        - To access the game across different devices 
+        - To have a clear understanding of the rules
+        - To have a fun and engaging game experience
+        - To feel rewarded for and whilst playing the game 
+        - To have a visually pleasing and intuitive interface 
+        - To be able to play the games multiple times 
+        - To contact the website owner
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+- ## **User stories** 
 
-## Updates Since The Instructional Video
+  - #### **First time user / visitor**
+  - #### **As a returning user / visitor**
+  - #### **As a frequent user /visitor**
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+    As a [user type], i want to [...]so that I [...] (goals)
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+- ## **Scope**
+  - ### **Functional requirements**
+  - ### **Content requirements**
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+- ## **Structure**
+  - ### **Information architecture**
+  - ### **Interaction design** 
+    (ex collapsible menu, buttons with hovering effects, spyscrolls…)
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+- ## **Skeleton**
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+  Include either images / links to Wireframes eg:
+  Homepage 
+  Page x
+  Page y
+  Page z
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+  Or 
+  Mobile
+  Tablet
+  Desktop 
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+  - #### **Difference to design** 
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+  - #### **Limitations** 
 
---------
+- ### **Design**
 
-Happy coding!
+  - #### **Imagery**
+  - #### **Colour scheme**
+  - #### **Typography**
+  - #### **Icons**
+  - #### **Difference to design** 
+
+
+## **FEATURES** 
+
+- ### **Existing features** 
+
+  Ex: responsive website, navigation, footer, page x,y,x, form, call for action, map, carousel ...
+
+    - **Feature 1 (ex format)**
+       > Allows user x to achieve y by having to fill out y
+       > Link feature to relevant user story 
+
+      [you can add screenshots to this section]
+
+- ## **Features left to implement** 
+
+## **TECHNOLOGY USED**
+
+- ### **Languages**
+  Eg: HTML, CSS 
+
+- ### **Libraries and frameworks** 
+  Eg: Bootstrap, jquery
+
+  Include links and a short sentence about what the library was used for
+
+## **TESTING** 
+
+- ### **Intro** 
+
+  - Bugs and solution 
+  - User stories 
+  - Responsiveness and compatibility 
+  - Testing performance - eg google lighthouse report
+  - Testing accessibility - wave report
+  - W3C HTML Code Validator
+  - W3C CSS Jigsaw Validator
+  - Jslint or other javascript validators
+
+- ### **Known bugs**
+
+## **DEPLOYMENT** 
+
+- ### **Intro interface used to develop the website**
+
+- ### **Deployment of the page**
+  (Write step & take screenshot of steps undertaken to deploy the page)
+
+- ### **How to run the code locally** 
+  - #### **Forking local repository**
+  - #### **Cloning local repository**
+
+## **CREDITS** 
+
+- ### **Code**
+- ### **Content**
+- ### **Media**
+- ### **Acknowledgment** 
+
+  [Include specific links to the source]
+
+
+
