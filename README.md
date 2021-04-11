@@ -86,7 +86,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
   - ### **Feature trade off**
 
-    ![feature_trade_off](scope/feature_tradeoff.png)
+    ![feature_trade_off](documentation/scope/feature_tradeoff.png)
 
     This game will be developed as a minimal viable product with room for future improvement and releases incorporating additional features.
 
@@ -200,7 +200,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
   - #### **Icons**
 
-    Icons from Font Awesome Library are used to:
+    SVG icons from [iconmonstr](https://iconmonstr.com/) and [IcMoon](https://icomoon.io) are used to:
     -  Illustrate interactive elements and game information such as scoring and the timer. 
     -  Bring attention to social media accounts
     The icons by their smooth finished also add contrast and complement nicely the pixel font. 
