@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
  /*toggle menu*/
-
  $('#toggle-nav').on("click", function(){
  $('.menu-container').toggle();
  navDisplay = $('.menu-container').css('display');
@@ -13,7 +12,6 @@ $(document).ready(function() {
  })
 
 /* display menu items content */ 
-
 $('.btn-menu').on("click", function(){
     let contentId=$(this).attr("data-content");
     $("#"+ contentId).toggle();
@@ -26,7 +24,6 @@ $('.btn-menu').on("click", function(){
 });
 
 /* select levels items */
-
 $('.btn-level').on("click", function(){
     $(this).addClass('active');    
     let activeBtn = $('.btn-level.active').not(this);
@@ -36,5 +33,14 @@ $('.btn-level').on("click", function(){
     }
 });
 
+/* select levels items */
+$('.btn-volume').on("click", function(){
+    $(this).addClass('active');    
+    let activeBtn = $('.btn-volume.active').not(this);
+    if(activeBtn.length > 0)
+    {
+        activeBtn.removeClass('active');
+    }
+});
 
 });
