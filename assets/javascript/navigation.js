@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
- /*cog*/
+ /*toggle menu*/
+
  $('#toggle-nav').on("click", function(){
  $('.menu-container').toggle();
  navDisplay = $('.menu-container').css('display');
@@ -10,4 +11,18 @@ $(document).ready(function() {
  }
  else $(this).attr('src', '/assets/images/cog.svg');
  })
+
+/* display menu items content */ 
+
+$('.btn-menu').on("click", function(){
+    let contentId=$(this).attr("data-content");
+    $("#"+ contentId).toggle();
+    //https://stackoverflow.com/questions/1616006/jquery-select-all-br-with-displaynone/15373670
+    let menuItems = $(`div[id!=${contentId}][data-type="menu-content"][style='display: block;']`);
+    if (menuItems.length > 0)
+    {
+        menuItems.css( "display", "none" );
+    }
+});
+
 });
