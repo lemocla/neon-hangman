@@ -1,13 +1,21 @@
+/*-------- fonts ---------------*/
+@import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
+
 *{
     padding: 0;
     margin:0;
     box-sizing: border-box;
 }
 
-
 body{
     color: white;
     background-color: #000000;
+}
+/*---------- headings --------*/
+h1{
+    font-family: Monoton;
+    text-transform: capitalize;
+    font-size: 40px;
 }
 
 /*---------- borders ---------*/
@@ -28,7 +36,13 @@ margin: 0 auto;
 }
 
 header, footer {
-height: 10vh;
+    height: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    
 }
 
 .game-info{
@@ -61,3 +75,12 @@ height: 10vh;
     width: calc(40% - 20px);
 }
 
+/* ---------- navigation -------------*/
+#nav-menu{
+width: 30px;
+height: 30px;
+}
+
+#toggle-nav{
+width: 100%;
+}
