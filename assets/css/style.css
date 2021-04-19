@@ -1,164 +1,176 @@
 /*-------- fonts ---------------*/
+
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
 /*https://stackoverflow.com/questions/38086083/to-use-local-font-in-html-using-font-face*/
 @font-face {
     font-family: pixel;
-    src:url("/assets/fonts/PixelOperator8.ttf");
+    src: url("/assets/fonts/PixelOperator8.ttf");
 }
 
 /*-------- general --------------*/
-*{
+
+* {
     padding: 0;
-    margin:0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: pixel;
     font-size: 14px;
     color: white;
     background-color: #000000;
 }
 
-.hide{
+.hide {
     display: none;
 }
-.active{
+
+.active {
     background: green;
     color: white;
 }
+
 /*---------- headings --------*/
-h1{
+
+h1 {
     font-family: Monoton;
     text-transform: capitalize;
     font-size: 40px;
 }
 
 /*---------- borders ---------*/
-.bord-white{
-border: 1px solid white;
+
+.bord-white {
+    border: 1px solid white;
 }
+
 /*--------- margins ----------*/
 
-.mg-bottom{
+.mg-bottom {
     margin-bottom: 25px;
 }
 
 /*--------- containers -------*/
-.wrapper{
-width: 95vw;
-max-width: 950px;
-margin: 0 auto;
+
+.wrapper {
+    width: 95vw;
+    max-width: 950px;
+    margin: 0 auto;
 }
 
-header, footer {
+header,
+footer {
     height: 10vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-    
+
 }
 
-.game-info{
+.game-info {
     height: 9vh;
 }
 
-.game-container{
+.game-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.flex-container{
+.flex-container {
     width: 60%;
     display: flex;
     flex-wrap: wrap;
     margin-right: 20px;
 }
 
-.word-container{
+.word-container {
     width: 100%;
-    height: 21.5vh; 
+    height: 21.5vh;
 }
 
-.keyboard-container{
+.keyboard-container {
     width: 100%;
-    height: 30vh; 
+    height: 30vh;
 }
 
-.hangman-container{
+.hangman-container {
     width: calc(40% - 20px);
 }
 
 /* ---------- navigation -------------*/
-#nav-menu{
-width: 30px;
-height: 30px;
-position: relative
+
+#nav-menu {
+    width: 30px;
+    height: 30px;
+    position: relative
 }
 
-#toggle-nav{
-width: 100%;
+#toggle-nav {
+    width: 100%;
 }
 
-.menu-container{
-position: absolute;
-margin: 0 auto;
-top: 45px;
-right: -10px;
-width: 375px;
-border: 1px solid white;
-background-color: black;
-z-index: 1;
-padding: 20px 0px 15px;
+.menu-container {
+    position: absolute;
+    margin: 0 auto;
+    top: 45px;
+    right: -10px;
+    width: 375px;
+    border: 1px solid white;
+    background-color: black;
+    z-index: 1;
+    padding: 20px 0px 15px;
 }
 
-.btn-menu{
-display: block;
-width: 75%;
-margin: 0 auto;
-margin-bottom: 12px;
-padding: 13px 15px 10px;
-font-family: inherit;
-font-size: inherit;
-text-transform: uppercase;
+.btn-menu {
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    padding: 13px 15px 10px;
+    font-family: inherit;
+    font-size: inherit;
+    text-transform: uppercase;
 }
 
-.menu-content{
-width: 87.5%;
-margin: 0 auto;
-margin-bottom: 12px;
-font-size: 90%;
+.menu-content {
+    width: 87.5%;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    font-size: 90%;
 }
 
-.menu-content ul{
-margin-inline-start: 15px;
-padding-inline-start: 15px;
+.menu-content ul {
+    margin-inline-start: 15px;
+    padding-inline-start: 15px;
 }
 
-.menu-content li{
-line-height: 1.5;
+.menu-content li {
+    line-height: 1.5;
 }
 
-.menu-content h4{
-font-size: initial;
-text-align: center;
-padding-bottom: 8px;
-}
-.btn-settings-menu{
-text-align: center;
-padding-bottom: 15px;
+.menu-content h4 {
+    font-size: initial;
+    text-align: center;
+    padding-bottom: 8px;
 }
 
-.btn-level, .btn-volume{
-margin: 0 5px;
-min-width: 25%;
-padding: 9px 12px;
-font-family: inherit;
+.btn-settings-menu {
+    text-align: center;
+    padding-bottom: 15px;
 }
 
-.btn-volume img{
-max-height: 14px;
+.btn-level,
+.btn-volume {
+    margin: 0 5px;
+    min-width: 25%;
+    padding: 9px 12px;
+    font-family: inherit;
+}
+
+.btn-volume img {
+    max-height: 14px;
 }
