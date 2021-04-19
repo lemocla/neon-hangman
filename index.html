@@ -14,29 +14,36 @@
 
 <body>
     <div class="wrapper">
-    <header class="mg-bottom">
-        <h1>hangman</h1>
-        <div id="nav-menu">
-            <img id="toggle-nav" src="assets/images/cog.svg" alt="cog-menu-open">
-        </div>
-    </header>
-    <div class="game-info bord-white mg-bottom">game scoring here</div>
-    <div class="game-container mg-bottom">
-        <div class="flex-container">
-            <div class="word-container bord-white mg-bottom">
-                word here
+        <header class="mg-bottom">
+            <h1>hangman</h1>
+            <div id="nav-menu">
+                <img id="toggle-nav" src="assets/images/cog.svg" alt="cog-menu-open">
+                <!-- menu content-->
+                <div class="menu-container hide">
+                    <button class="btn-menu" id="instructions">How to play</button>
+                    <button class="btn-menu" id="settings">Settings</button>
+                    <button class="btn-menu" id="leaderboard">Leaderboard</button>
+                </div>
+                <!-- end menu content-->
             </div>
-            <div class="keyboard-container bord-white">
-                keyboard here
+        </header>
+        <div class="game-info bord-white mg-bottom">game scoring here</div>
+        <div class="game-container mg-bottom">
+            <div class="flex-container">
+                <div class="word-container bord-white mg-bottom">
+                    word here
+                </div>
+                <div class="keyboard-container bord-white">
+                    keyboard here
+                </div>
+            </div>
+            <div class="hangman-container bord-white">
+                Hangamn svg here
             </div>
         </div>
-        <div class="hangman-container bord-white">
-        Hangamn svg here
-        </div>
-    </div>
-    <footer>
-    Footer info & social media account here
-    </footer>
+        <footer>
+            Footer info & social media account here
+        </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/javascript/navigation.js"></script>
