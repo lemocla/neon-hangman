@@ -25,4 +25,16 @@ $('.btn-menu').on("click", function(){
     }
 });
 
+/* select levels items */
+
+$('.btn-level').on("click", function(){
+    $(this).addClass('active');    
+    let activeBtn = $('.btn-level.active').not(this);
+    if(activeBtn.length > 0)
+    {
+        activeBtn.removeClass('active');
+    }
+});
+
+
 });

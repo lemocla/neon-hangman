@@ -24,7 +24,10 @@ body{
 .hide{
     display: none;
 }
-
+.active{
+    background: green;
+    color: white;
+}
 /*---------- headings --------*/
 h1{
     font-family: Monoton;
@@ -144,21 +147,18 @@ font-size: initial;
 text-align: center;
 padding-bottom: 8px;
 }
-.btn-levels-menu{
+.btn-settings-menu{
 text-align: center;
 padding-bottom: 15px;
 }
 
-.btn-settings{
+.btn-level, .btn-volume{
 margin: 0 5px;
+min-width: 25%;
 padding: 9px 12px;
 font-family: inherit;
 }
 
-.volume{
-min-width: 25%;
-}
-
-.btn-settings img{
+.btn-volume img{
 max-height: 14px;
 }
