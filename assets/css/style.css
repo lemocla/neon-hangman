@@ -122,3 +122,43 @@ font-family: inherit;
 font-size: inherit;
 text-transform: uppercase;
 }
+
+.menu-content{
+width: 87.5%;
+margin: 0 auto;
+margin-bottom: 12px;
+font-size: 90%;
+}
+
+.menu-content ul{
+margin-inline-start: 15px;
+padding-inline-start: 15px;
+}
+
+.menu-content li{
+line-height: 1.5;
+}
+
+.menu-content h4{
+font-size: initial;
+text-align: center;
+padding-bottom: 8px;
+}
+.btn-levels-menu{
+text-align: center;
+padding-bottom: 15px;
+}
+
+.btn-settings{
+margin: 0 5px;
+padding: 9px 12px;
+font-family: inherit;
+}
+
+.volume{
+min-width: 25%;
+}
+
+.btn-settings img{
+max-height: 14px;
+}
