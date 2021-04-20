@@ -40,6 +40,16 @@ h1 {
     font-size: 40px;
 }
 
+/*---------- buttons ---------*/
+
+.btn{
+    display: block;
+    padding: 12px 0;
+    font-family: inherit;
+    text-transform: uppercase;
+    font-size: inherit;
+}
+
 /*---------- borders ---------*/
 
 .bord-white {
@@ -137,14 +147,9 @@ footer {
 }
 
 .btn-menu {
-    display: block;
     width: 75%;
     margin: 0 auto;
     margin-bottom: 12px;
-    padding: 13px 15px 10px;
-    font-family: inherit;
-    font-size: inherit;
-    text-transform: uppercase;
 }
 
 .menu-content {
@@ -176,10 +181,10 @@ footer {
 
 .btn-level,
 .btn-volume {
+    display: inline-block;
     margin: 0 5px;
     min-width: 25%;
     padding: 9px 12px;
-    font-family: inherit;
 }
 
 .btn-volume img {
@@ -219,12 +224,7 @@ footer {
 }
 
 #play {
-    display: block;
     width: 45%;
-    padding: 12px 0;
-    font-family: inherit;
-    text-transform: uppercase;
-    font-size: inherit;
 }
 
 /* --------- states ---------- */
@@ -236,3 +236,9 @@ footer {
     background: green;
     color: white;
 }
+
+
+
+
+
+
