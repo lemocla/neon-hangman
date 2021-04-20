@@ -218,4 +218,21 @@ footer {
     border: 1px solid white;
 }
 
+#play {
+    display: block;
+    width: 45%;
+    padding: 12px 0;
+    font-family: inherit;
+    text-transform: uppercase;
+    font-size: inherit;
+}
 
+/* --------- states ---------- */
+.hide {
+    display: none;
+}
+
+.active {
+    background: green;
+    color: white;
+}
