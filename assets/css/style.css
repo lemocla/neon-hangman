@@ -73,6 +73,11 @@ footer {
 
 .game-info {
     height: 9vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: center;
+    padding: 0 5px;
 }
 
 .game-container {
@@ -173,4 +178,12 @@ footer {
 
 .btn-volume img {
     max-height: 14px;
+}
+
+/*---------- navigation -----------*/
+
+.scoring img{
+    height: 20px;
+    padding-right: 20px;
+    vertical-align: bottom;
 }
