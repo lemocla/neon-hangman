@@ -95,6 +95,12 @@ footer {
 .word-container {
     width: 100%;
     height: 21.5vh;
+    padding: 0 5px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
 }
 
 .keyboard-container {
@@ -180,10 +186,36 @@ footer {
     max-height: 14px;
 }
 
-/*---------- navigation -----------*/
+/*---------- scoring -----------*/
 
-.scoring img{
+.scoring img {
     height: 20px;
     padding-right: 20px;
     vertical-align: bottom;
 }
+
+/*---------- word --------------*/
+
+#hint {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.word {
+    display: flex;
+    width: 95%;
+    justify-content: center;
+}
+
+.letter-box {
+    width: 40px;
+    height: 40px;
+    margin: 0 4px;
+    padding-top: 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+
