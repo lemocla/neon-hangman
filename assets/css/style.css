@@ -50,6 +50,11 @@ h1 {
     font-size: inherit;
 }
 
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
+#play:hover, .key:hover{
+    background-color: rgb(202, 199, 199);
+}
+
 /*---------- borders ---------*/
 
 .bord-white {
@@ -241,6 +246,7 @@ footer {
     text-align: center;
     font-weight: bold;
     text-transform: capitalize;
+    transition: 0.3s;
 }
 
 /* --------- states ---------- */
