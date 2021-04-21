@@ -86,8 +86,8 @@
                 <div class="word-container bord-white mg-bottom">
                     <img id="hint" class="" src="assets/images/hint.svg" alt="open-hint">
                     <div class="word-intro pd-bottom">Can you guess the hidden word?</div>
-                    <button id="start" class="btn hide">play</button>
-                    <div class="word">
+                    <button id="start" class="btn">play</button>
+                    <div class="word hide">
                         <div class="letter-box" id="0">S</div>
                         <div class="letter-box" id="1">P</div>
                         <div class="letter-box" id="2">E</div>
@@ -139,6 +139,7 @@
             </div>
             <!-- hangman -->
             <div class="hangman-container bord-white">
+                <div  class="scoring volume-mobile"><img src="assets/images/soundon.svg" alt="turn sound on"></div>
                 <svg id="hangman" width="100%" height="100%" viewBox="0 0 380 430" x="0" y="0">
                     <g>
                         <!--frame-->
@@ -186,10 +187,11 @@
                 </a>
             </div>
         </footer>
+        <button id="test-win">show win</button><button id="test-over">show over</button><button id="backtostart">back to start</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/javascript/navigation.js"></script>
-    <script scr="assets/javascript/game.js"></script>
+    <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>

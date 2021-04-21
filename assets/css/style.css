@@ -126,6 +126,7 @@ footer {
 .hangman-container {
     width: calc(40% - 20px);
     text-align: center;
+    position: relative;
 }
 
 .game-over-container {
@@ -314,6 +315,13 @@ h3 {
     stroke-linejoin: round;
 }
 
+.volume-mobile {
+    position: absolute;
+    right: 25px;
+    bottom: 12px;
+    display: none;
+}
+
 /* ---------- footer ----------*/
 footer {
     margin-top: 15px;
@@ -458,6 +466,10 @@ a img:hover,
 
     .sm-hide {
         display: none;
+    }
+
+    .volume-mobile {
+        display: block;
     }
 
     .flex-container {
