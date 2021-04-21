@@ -432,3 +432,76 @@ a img:hover,
         margin-right: 0;
     }
 }
+
+@media screen and (max-width: 576px) {
+
+    .wrapper {
+        width: 92%;
+    }
+
+    header,
+    footer {
+        height: 10vh;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .game-info {
+        height: 7.25vh;
+    }
+
+    .scoring img {
+        padding-right: 10px;
+    }
+
+    .sm-hide {
+        display: none;
+    }
+
+    .flex-container {
+        width: 100%;
+    }
+
+    .word-intro {
+        display: none;
+    }
+
+    .word-container {
+        height: 10.75vh;
+    }
+
+    .word {
+        width: 96%;
+        padding-top: 0;
+    }
+
+    .hangman-container {
+        height: auto;
+    }
+
+    #hangman {
+        width: 45%;
+    }
+
+    .path {
+        stroke-width: 9px;
+    }
+
+    .keyboard-container {
+        padding: 0px 5px;
+        height: 27.5vh;
+    }
+
+    .key,
+    .letter-box {
+        padding-top: 10px;
+        max-width: 39px;
+        max-height: 39px;
+    }
+
+    .letter-box {
+        margin: 0 3px;
+    }
+}
