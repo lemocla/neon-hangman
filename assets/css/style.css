@@ -53,7 +53,10 @@ h1 {
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
 #play:hover,
 .key:hover,
-#contact-us:hover{
+#contact-us:hover,
+.continue:hover,
+.leave:hover,
+#play-again:hover {
     background-color: rgb(202, 199, 199);
 }
 
@@ -101,7 +104,8 @@ footer {
     flex-wrap: wrap;
 }
 
-.flex-container {
+.flex-container,
+.game-over-container {
     width: 60%;
     display: flex;
     flex-wrap: wrap;
@@ -109,7 +113,8 @@ footer {
 }
 
 .word-container,
-.keyboard-container, .win-container {
+.keyboard-container,
+.win-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -123,7 +128,8 @@ footer {
     position: relative;
 }
 
-.keyboard-container, .win-container {
+.keyboard-container,
+.win-container {
     width: 100%;
     height: 30vh;
 }
@@ -131,6 +137,17 @@ footer {
 .hangman-container {
     width: calc(40% - 20px);
     text-align: center;
+}
+
+.game-over-container {
+    width: 60%;
+    height: calc(51.5vh + 25px);
+    margin-right: 20px;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 25px;
 }
 
 /* ---------- navigation -------------*/
@@ -253,19 +270,42 @@ footer {
 
 /*---------- win message ----------*/
 
-h3{
-text-align: center;
-width: 100%;
+h3 {
+    text-align: center;
+    width: 100%;
 }
 
-#continue, #leave{
-width: 30%;
-margin: 0 15px;
+.continue,
+.leave, #play-again {
+    width: 30%;
+    margin: 0 15px;
+}
+
+/* -----------game-over -------------*/
+
+.pd-bottom{
+    padding-bottom: 20px;
+}
+
+.content-group{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#correct-answer, #count-words, #final-score, #best-new-score{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 110%;
+}
+.game-over-container input{
+width: 50%;
+height: 35px;
 }
 
 /*----------- hangman ---------------*/
 
-#hangman{
+#hangman {
     max-width: 86.5%;
 }
 
@@ -280,22 +320,22 @@ margin: 0 15px;
 
 /* ---------- footer ----------*/
 
-#contact-us{
+#contact-us {
     padding: 12px 15px;
     font-size: 85%;
 }
 
-a{
-padding-left: 5px;
+a {
+    padding-left: 5px;
 }
 
-a img{
+a img {
     height: 30px;
     transition: 0.3s;
 }
 
 /*https://css-tricks.com/change-color-of-svg-on-hover/*/
-a img:hover{
+a img:hover {
     transform: scale(1.1);
     filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
 }
@@ -310,4 +350,3 @@ a img:hover{
     background: green;
     color: white;
 }
-

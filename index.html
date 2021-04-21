@@ -62,6 +62,22 @@
             <div class="scoring"><img src="assets/images/timer.svg" alt="sound-on"><span id="timer">2:00</span></div>
         </div>
         <div class="game-container mg-bottom">
+            <div id="game-over" class="game-over-container bord-white hide">
+                <h2 class="pd-bottom">Game Over</h2>
+                <div class="pd-bottom">The hidden word was: <span id="correct-answer">quack</span></div>
+                <div class="content-group pd-bottom">
+                    <div>Words: <span id="count-words">7</span></div>
+                    <div>Score: <span id="final-score">1350</span></div>
+                </div>
+                <div id="best-new-score">best new score</div>
+                <div>Enter your name to save your score</div>
+                <input type="text" id="scorename" name="scorename"><br>
+                <div class="content-group">
+                    <button id="play-again" class="btn">play again</button>
+                    <button class="leave btn">leave</button>
+                </div>
+            </div>
+
             <div class="flex-container">
                 <div class="word-container bord-white mg-bottom">
                     <img id="hint" class="hide" src="assets/images/hint.svg" alt="open-hint">
@@ -81,8 +97,8 @@
                 </div>
                 <div id="game-win" class="win-container bord-white hide">
                     <h3 class="mg-bottom">congratulations!</h3>
-                    <button id="continue" class="btn">continue</button>
-                    <button id="leave" class="btn">leave</button>
+                    <button class="continue btn">continue</button>
+                    <button class="leave btn">leave</button>
                 </div>
                 <div class="keyboard-container bord-white">
                     <div class="key bord-white" id="q">a</div>
