@@ -109,7 +109,7 @@ footer {
 }
 
 .word-container,
-.keyboard-container {
+.keyboard-container, .win-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -118,7 +118,7 @@ footer {
     padding: 0px 5px;
 }
 
-.word-container {
+.word-container, .win-container {
     height: 21.5vh;
     position: relative;
 }
@@ -238,6 +238,18 @@ footer {
     width: 45%;
 }
 
+/*---------- win message ----------*/
+
+
+h3{
+text-align: center;
+width: 100%;
+}
+
+#continue, #leave{
+width: 30%;
+margin: 0 15px;
+}
 /*---------- keyboard--------------*/
 
 .key {
