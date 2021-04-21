@@ -23,15 +23,6 @@ body {
     background-color: #000000;
 }
 
-.hide {
-    display: none;
-}
-
-.active {
-    background: green;
-    color: white;
-}
-
 /*---------- headings --------*/
 
 h1 {
@@ -48,6 +39,8 @@ h1 {
     font-family: inherit;
     text-transform: uppercase;
     font-size: inherit;
+    border: 1px solid rgb(216, 216, 216);
+    background-color: rgb(216, 216, 216);
 }
 
 /*---------- borders ---------*/
@@ -60,6 +53,10 @@ h1 {
 
 .mg-bottom {
     margin-bottom: 25px;
+}
+
+.pd-bottom {
+    padding-bottom: 20px;
 }
 
 /*--------- containers -------*/
@@ -116,6 +113,8 @@ footer {
 .word-container {
     height: max(134px, min(21.5vh, 170px));
     position: relative;
+    flex-direction: column;
+    align-items: center;
 }
 
 .keyboard-container,
@@ -147,7 +146,7 @@ footer {
 #nav-menu {
     width: 30px;
     height: 30px;
-    position: relative
+    position: relative;
 }
 
 #toggle-nav {
@@ -213,6 +212,10 @@ footer {
 
 /*---------- scoring -----------*/
 
+.scoring {
+    margin: auto;
+}
+
 .scoring img {
     height: 20px;
     padding-right: 20px;
@@ -276,10 +279,6 @@ h3 {
 
 /* -----------game-over -------------*/
 
-.pd-bottom {
-    padding-bottom: 20px;
-}
-
 .content-group {
     width: 100%;
     display: flex;
@@ -316,7 +315,7 @@ h3 {
 }
 
 /* ---------- footer ----------*/
-footer{
+footer {
     margin-top: 15px;
 }
 
@@ -362,4 +361,74 @@ a img:hover,
 #toggle-nav:hover {
     transform: scale(1.1);
     filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
+}
+
+/*----------- media queries -----------*/
+
+/*TABLET*/
+
+@media screen and (max-width: 769px) {
+
+    .wrapper {
+        width: 85%;
+    }
+
+    .mg-bottom {
+        margin-bottom: 15px;
+    }
+
+    header,
+    footer {
+        height: 11vh;
+    }
+
+    .game-info {
+        height: 7vh;
+    }
+
+    .flex-container {
+        width: 100%;
+        margin-right: 0;
+        order: 3;
+    }
+
+    .word-container {
+        width: 100%;
+        height: 17vh;
+    }
+
+    .hangman-container {
+        width: 100%;
+        height: 25vh;
+        order: 2;
+        margin-bottom: 15px;
+    }
+
+    #hangman {
+        width: 30%;
+    }
+
+    .path {
+        stroke-width: 9px;
+    }
+
+    .keyboard-container,
+    .win-container {
+        padding: 30px;
+        height: 22.5vh;
+        align-content: center;
+    }
+
+    .key {
+        width: 45px;
+        height: 45px;
+        padding-top: 14px;
+    }
+
+    .game-over-container {
+        width: 100%;
+        height: calc(39.5vh + 15px);
+        order: 3;
+        margin-right: 0;
+    }
 }
