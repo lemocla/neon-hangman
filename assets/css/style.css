@@ -72,7 +72,7 @@ h1 {
 
 header,
 footer {
-    height: 10vh;
+    height: max(85px, min(15.5vh, 145px));
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -81,7 +81,7 @@ footer {
 }
 
 .game-info {
-    height: 9vh;
+    height: max(50px, min(9vh, 72px));
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -114,14 +114,14 @@ footer {
 }
 
 .word-container {
-    height: 21.5vh;
+    height: max(134px, min(21.5vh, 170px));
     position: relative;
 }
 
 .keyboard-container,
 .win-container {
     width: 100%;
-    height: 30vh;
+    height: max(210px, min(30vh, 236px));
 }
 
 .hangman-container {
@@ -132,6 +132,8 @@ footer {
 .game-over-container {
     width: 60%;
     height: calc(51.5vh + 25px);
+    max-height: 431px;
+    min-height: 369px;
     margin-right: 20px;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -314,6 +316,9 @@ h3 {
 }
 
 /* ---------- footer ----------*/
+footer{
+    margin-top: 15px;
+}
 
 #contact-us {
     padding: 12px 15px;
