@@ -489,6 +489,12 @@ a img:hover,
         padding-top: 0;
     }
 
+    #hint{
+        left: 25px;
+        top: -52px;
+        z-index: 1;
+    }
+
     .hangman-container {
         height: auto;
     }
