@@ -4,18 +4,21 @@ $(document).ready(function () {
     $('#start').on("click", function () {
         $('#start').addClass("hide");
         $('.word').removeClass("hide");
+        $('#hint').removeClass("hide");
     });
 
     /* test show game win message */
     $('#test-win').on("click", function () {
         $('.keyboard-container').addClass("hide");
         $('#game-win').removeClass("hide");
+        $('#hint').addClass("hide");
     });
 
     /* test show game over message */
     $('#test-over').on("click", function () {
         $('.flex-container').addClass("hide");
         $('#game-over').removeClass("hide");
+        
     });
 
     /* test back to start */
@@ -28,5 +31,6 @@ $(document).ready(function () {
 
         $('#start').removeClass("hide");
         $('.word').addClass("hide");
+        $('#hint').addClass("hide");
     });
 })

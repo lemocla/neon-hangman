@@ -111,9 +111,10 @@ footer {
     padding: 0px 5px;
 }
 
-.win-container{
-align-content: space-evenly;
+.win-container {
+    align-content: space-evenly;
 }
+
 .word-container {
     height: max(134px, min(21.5vh, 170px));
     position: relative;
@@ -389,6 +390,7 @@ a img:hover,
         margin-bottom: 15px;
     }
 
+    /*------------ containers -----------*/
     header,
     footer {
         height: 11vh;
@@ -396,6 +398,13 @@ a img:hover,
 
     .game-info {
         height: 7vh;
+    }
+
+    .hangman-container {
+        width: 100%;
+        height: 25vh;
+        order: 2;
+        margin-bottom: 15px;
     }
 
     .flex-container {
@@ -409,12 +418,21 @@ a img:hover,
         height: 17vh;
     }
 
-    .hangman-container {
-        width: 100%;
-        height: 25vh;
-        order: 2;
-        margin-bottom: 15px;
+    .keyboard-container,
+    .win-container {
+        padding: 30px;
+        height: 22.5vh;
+        align-content: center;
     }
+
+    .game-over-container {
+        width: 100%;
+        height: calc(39.5vh + 15px);
+        order: 3;
+        margin-right: 0;
+    }
+
+    /*------------ hangman -----------*/
 
     #hangman {
         width: 30%;
@@ -424,12 +442,7 @@ a img:hover,
         stroke-width: 9px;
     }
 
-    .keyboard-container,
-    .win-container {
-        padding: 30px;
-        height: 22.5vh;
-        align-content: center;
-    }
+    /*------------ keyboard -----------*/
 
     .key {
         width: 45px;
@@ -437,12 +450,6 @@ a img:hover,
         padding-top: 14px;
     }
 
-    .game-over-container {
-        width: 100%;
-        height: calc(39.5vh + 15px);
-        order: 3;
-        margin-right: 0;
-    }
 }
 
 @media screen and (max-width: 576px) {
@@ -450,27 +457,56 @@ a img:hover,
     .wrapper {
         width: 92%;
     }
-    
-    .pd-bottom{
-        padding-bottom: 20px;
+
+    /*------------ buttons -----------*/
+
+    .continue,
+    .leave,
+    #play-again {
+        width: 40%;
     }
 
-    .continue, .leave, #play-again {
-    width: 45%;
+    /*------------ headers -----------*/
+
+    h1 {
+        font-size: 30px;
     }
+
+    /*------------ containers -----------*/
 
     header,
     footer {
         height: 10vh;
     }
 
-    h1 {
-        font-size: 30px;
-    }
-
     .game-info {
         height: 7.25vh;
     }
+
+    .hangman-container {
+        height: auto;
+    }
+
+    .flex-container {
+        width: 100%;
+    }
+
+    .word-container {
+        height: 10.75vh;
+    }
+
+    .keyboard-container,
+    .win-container {
+        padding: 0px 5px;
+        height: 27.5vh;
+    }
+
+    .game-over-container {
+        padding: 10px;
+        height: calc(38.25vh + 15px);
+    }
+
+    /*------------ scoring -----------*/
 
     .scoring img {
         padding-right: 10px;
@@ -484,16 +520,9 @@ a img:hover,
         display: block;
     }
 
-    .flex-container {
-        width: 100%;
-    }
-
+    /*------------ word -----------*/
     .word-intro {
         display: none;
-    }
-
-    .word-container {
-        height: 10.75vh;
     }
 
     .word {
@@ -501,15 +530,13 @@ a img:hover,
         padding-top: 0;
     }
 
-    #hint{
+    #hint {
         left: 25px;
         top: -52px;
         z-index: 1;
     }
 
-    .hangman-container {
-        height: auto;
-    }
+    /*------------ hangman -----------*/
 
     #hangman {
         width: 45%;
@@ -519,14 +546,7 @@ a img:hover,
         stroke-width: 9px;
     }
 
-    .keyboard-container, .win-container {
-        padding: 0px 5px;
-        height: 27.5vh;
-    }
-
-    .win-container{
-        align-content: space-evenly;
-    }
+    /*------------ key/letter box -----------*/
 
     .key,
     .letter-box {
@@ -539,10 +559,6 @@ a img:hover,
         margin: 0 3px;
     }
 
-    .game-over-container{
-        padding: 10px;
-        height: calc(38.25vh + 15px);
-    }
 
     /*Note - ajust further layout for win & game-over content later on*/
 }
