@@ -50,16 +50,6 @@ h1 {
     font-size: inherit;
 }
 
-/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
-#play:hover,
-.key:hover,
-#contact-us:hover,
-.continue:hover,
-.leave:hover,
-#play-again:hover {
-    background-color: rgb(202, 199, 199);
-}
-
 /*---------- borders ---------*/
 
 .bord-white {
@@ -251,7 +241,7 @@ footer {
     border: 1px solid white;
 }
 
-#play {
+#start {
     width: 45%;
 }
 
@@ -276,31 +266,36 @@ h3 {
 }
 
 .continue,
-.leave, #play-again {
+.leave,
+#play-again {
     width: 30%;
     margin: 0 15px;
 }
 
 /* -----------game-over -------------*/
 
-.pd-bottom{
+.pd-bottom {
     padding-bottom: 20px;
 }
 
-.content-group{
+.content-group {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
 }
 
-#correct-answer, #count-words, #final-score, #best-new-score{
+#correct-answer,
+#count-words,
+#final-score,
+#best-new-score {
     font-weight: bold;
     text-transform: uppercase;
     font-size: 110%;
 }
-.game-over-container input{
-width: 50%;
-height: 35px;
+
+.game-over-container input {
+    width: 50%;
+    height: 35px;
 }
 
 /*----------- hangman ---------------*/
@@ -334,12 +329,6 @@ a img {
     transition: 0.3s;
 }
 
-/*https://css-tricks.com/change-color-of-svg-on-hover/*/
-a img:hover {
-    transform: scale(1.1);
-    filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
-}
-
 /* --------- states ---------- */
 
 .hide {
@@ -349,4 +338,23 @@ a img:hover {
 .active {
     background: green;
     color: white;
+}
+
+/*-------- hovering effect ----------*/
+
+/*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
+#start:hover,
+.key:hover,
+#contact-us:hover,
+.continue:hover,
+.leave:hover,
+#play-again:hover {
+    background-color: rgb(202, 199, 199);
+}
+
+/*https://css-tricks.com/change-color-of-svg-on-hover/*/
+a img:hover,
+#toggle-nav:hover {
+    transform: scale(1.1);
+    filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
 }
