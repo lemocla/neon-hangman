@@ -51,7 +51,8 @@ h1 {
 }
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
-#play:hover, .key:hover{
+#play:hover,
+.key:hover {
     background-color: rgb(202, 199, 199);
 }
 
@@ -83,7 +84,6 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-
 }
 
 .game-info {
@@ -129,6 +129,7 @@ footer {
 
 .hangman-container {
     width: calc(40% - 20px);
+    text-align: center;
 }
 
 /* ---------- navigation -------------*/
@@ -238,7 +239,7 @@ footer {
 
 /*---------- keyboard--------------*/
 
-.key{
+.key {
     width: 40px;
     height: 40px;
     margin: 4px 4px;
@@ -247,6 +248,21 @@ footer {
     font-weight: bold;
     text-transform: capitalize;
     transition: 0.3s;
+}
+
+/*----------- hangman ---------------*/
+
+#hangman{
+    max-width: 86.5%;
+}
+
+.path {
+    stroke: white;
+    -webkit-stroke: white;
+    fill: transparent;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 /* --------- states ---------- */
