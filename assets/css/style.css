@@ -52,7 +52,8 @@ h1 {
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
 #play:hover,
-.key:hover {
+.key:hover,
+#contact-us:hover{
     background-color: rgb(202, 199, 199);
 }
 
@@ -265,6 +266,28 @@ footer {
     stroke-linejoin: round;
 }
 
+/* ---------- footer ----------*/
+
+#contact-us{
+    padding: 12px 15px;
+    font-size: 85%;
+}
+
+a{
+padding-left: 5px;
+}
+
+a img{
+    height: 30px;
+    transition: 0.3s;
+}
+
+/*https://css-tricks.com/change-color-of-svg-on-hover/*/
+a img:hover{
+    transform: scale(1.1);
+    filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
+}
+
 /* --------- states ---------- */
 
 .hide {
@@ -275,3 +298,4 @@ footer {
     background: green;
     color: white;
 }
+
