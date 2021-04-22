@@ -56,7 +56,8 @@
         <!-- game info -->
         <div class="game-info bord-white mg-bottom">
             <div class="scoring sm-hide"><img src="assets/images/soundon.svg" alt="turn sound on"></div>
-            <div class="scoring sm-hide"><img src="assets/images/levels.svg" alt="difficulty level"><span class="level">medium</span>
+            <div class="scoring sm-hide"><img src="assets/images/levels.svg" alt="difficulty level"><span
+                    class="level">medium</span>
             </div>
             <div class="scoring"><img src="assets/images/trophy.svg" alt="best score"><span id="best-score">6500</span>
             </div>
@@ -75,7 +76,7 @@
                 </div>
                 <h3 class="pd-bottom  pd-top" id="best-new-score">best new score</h3>
                 <p class="pd-bottom">Enter your name to save your score</p>
-                <input id="scorename" type="text"  name="scorename">
+                <input id="scorename" type="text" name="scorename">
                 <div class="content-group pd-top">
                     <button id="play-again" class="btn">play again</button>
                     <button class="leave btn">leave</button>
@@ -139,7 +140,7 @@
             </div>
             <!-- hangman -->
             <div class="hangman-container bord-white">
-                <div  class="scoring volume-mobile"><img src="assets/images/soundon.svg" alt="turn sound on"></div>
+                <div class="scoring volume-mobile"><img src="assets/images/soundon.svg" alt="turn sound on"></div>
                 <svg id="hangman" width="100%" height="100%" viewBox="0 0 380 430" x="0" y="0">
                     <g>
                         <!--frame-->
@@ -170,25 +171,49 @@
                 <button id="contact-us" class="btn">Contact us</button>
             </div>
             <div class="footer-content">
-                <a href="https://github.com/lemocla" target="_blank" rel="noopener noreferrer" aria-label="open github in a new tab">
+                <a href="https://github.com/lemocla" target="_blank" rel="noopener noreferrer"
+                    aria-label="open github in a new tab">
                     <img src="assets/images/github.svg" alt="github logo">
                 </a>
                 <i id="lose" class="fab fa-github"></i>
             </div>
             <div class="footer-content">
-                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="open facebook in a new tab">
+                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"
+                    aria-label="open facebook in a new tab">
                     <img src="assets/images/facebook.svg" alt="facebook logo">
                 </a>
-                <a href="https://twitter.com/?lang=en-gb" target="_blank" rel="noopener noreferrer" aria-label="open twitter in a new tab">
+                <a href="https://twitter.com/?lang=en-gb" target="_blank" rel="noopener noreferrer"
+                    aria-label="open twitter in a new tab">
                     <img src="assets/images/twitter.svg" alt="twitter logo">
                 </a>
-                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="open instagram in a new tab">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
+                    aria-label="open instagram in a new tab">
                     <img src="assets/images/instagram.svg" alt="instagram logo">
                 </a>
             </div>
         </footer>
-        <button id="test-win">show win</button><button id="test-over">show over</button><button id="backtostart">back to start</button>
+        <!-- test buttons for dynamic content-->
+        <button id="test-win">show win</button><button id="test-over">show over</button><button id="backtostart">back to
+            start</button>
     </div>
+    <!--Modal form-->
+    <div id="modal-form" class="modal-window hide">
+        <div class="form-container">
+            <h2>Contact us</h2>
+            <form id="form" class="contact-content">
+                <label for="fname">First name</label><br>
+                <input type="text" id="fname" name="fname" required><br>
+                <label for="lname">Last name</label><br>
+                <input type="text" id="lname" name="lname" required><br>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="message">Message:</label><br>
+                <textarea id="message" name="message" required>Text here</textarea><br>
+                <input id="submit-email" type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <!-- end modal form-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/javascript/navigation.js"></script>
     <script src="assets/javascript/game.js"></script>

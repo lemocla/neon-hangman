@@ -38,5 +38,11 @@ $(document).ready(function () {
             activeBtn.removeClass('active');
         }
     });
+
+    /* open modal contact form */
+
+    $('#contact-us').on('click', function(){
+        $('#modal-form').toggleClass('hide');
+    });
     
 });

@@ -294,7 +294,8 @@ footer {
 .continue,
 .leave,
 #play-again {
-    width: 145px;;
+    width: 145px;
+    ;
     margin: 0 10px;
 }
 
@@ -362,17 +363,6 @@ a img {
     transition: 0.3s;
 }
 
-/* --------- states ---------- */
-
-.hide {
-    display: none;
-}
-
-.active {
-    background: green;
-    color: white;
-}
-
 /*-------- hovering effect ----------*/
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
@@ -390,6 +380,42 @@ a img:hover,
 #toggle-nav:hover {
     transform: scale(1.1);
     filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
+}
+
+/*----------- modals ------------------*/
+
+/*https://www.w3schools.com/howto/howto_css_modals.asp*/
+.modal-window {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 87.5%;
+    overflow: auto;
+    background-color: #00000098;
+}
+
+.form-container {
+    margin: 0 auto;
+    max-width: 750px;
+    width: 75%;
+    height: 90%;
+    background-color: black;
+    border: 1px solid white;
+}
+
+/* --------- additional classes ---------- */
+
+.hide {
+    display: none;
+}
+
+.active {
+    background: green;
+    color: white;
 }
 
 /*----------- media queries -----------*/
