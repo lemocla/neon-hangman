@@ -39,10 +39,13 @@ $(document).ready(function () {
         }
     });
 
-    /* open modal contact form */
+    /* open / close modal contact form */
 
     $('#contact-us').on('click', function(){
         $('#modal-form').toggleClass('hide');
     });
     
+    $('#close-modal').on('click', function(){
+        $('#modal-form').addClass('hide');
+    });
 });

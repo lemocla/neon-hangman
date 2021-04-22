@@ -399,7 +399,6 @@ a img:hover,
     padding: 25px 0;
     overflow: auto;
     background-color: #00000098;
-    border: 1px solid red;
 }
 
 .form-container {
@@ -410,6 +409,14 @@ a img:hover,
     height: fit-content;
     background-color: black;
     border: 1px solid white;
+    position: relative;
+}
+
+#close-modal {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background-color: black;
 }
 
 /* --------- contact form -----------------*/
