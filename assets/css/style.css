@@ -36,6 +36,7 @@ h2 {
     font-size: 1.2em;
     padding-bottom: 35px;
     text-transform: uppercase;
+    text-align: center;
 }
 
 
@@ -393,18 +394,51 @@ a img:hover,
     left: 0;
     top: 0;
     width: 100%;
-    height: 87.5%;
+    height: 90vh;
+    min-height: fit-content;
+    padding: 25px 0;
     overflow: auto;
     background-color: #00000098;
+    border: 1px solid red;
 }
 
 .form-container {
     margin: 0 auto;
+    padding: 25px 0;
     max-width: 750px;
     width: 75%;
-    height: 90%;
+    height: fit-content;
     background-color: black;
     border: 1px solid white;
+}
+
+/* --------- contact form -----------------*/
+
+.form-content {
+    margin: 0 auto;
+    width: 65%;
+}
+
+input {
+    /*height: 35px;*/
+    padding: 8px 10px;
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
+
+#message {
+    width: 100%;
+    height: 165px;
+    margin-top: 7px;
+    margin-bottom: 15px;
+}
+
+#submit-email {
+    width: 95px;
+    display: block;
+    margin: auto;
+    margin-top: 25px;
 }
 
 /* --------- additional classes ---------- */
