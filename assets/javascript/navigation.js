@@ -1,16 +1,18 @@
 $(document).ready(function () {
 
-    /*toggle menu*/
+    // Toggle menu
+    
     $('#toggle-nav').on("click", function () {
         $('.menu-container').toggle();
         navDisplay = $('.menu-container').css('display');
 
         if (navDisplay == 'block') {
-            $(this).attr('src', '/assets/images/close.svg');
-        } else $(this).attr('src', '/assets/images/cog.svg');
+            $(this).attr('src', 'assets/images/close.svg');
+        } else $(this).attr('src', 'assets/images/cog.svg');
     })
 
-    /* display menu items content */
+    // Display menu items content 
+
     $('.btn-menu').on("click", function () {
         let contentId = $(this).attr("data-content");
         $("#" + contentId).toggle();
@@ -21,25 +23,34 @@ $(document).ready(function () {
         }
     });
 
-    /* select levels items */
+    // Select level items 
+
     $('.btn-level').on("click", function () {
         $(this).addClass('active');
         let activeBtn = $('.btn-level.active').not(this);
         if (activeBtn.length > 0) {
             activeBtn.removeClass('active');
         }
+        // Update game info section
+        $('.level').text($(this).text());
+        //console.log($(this).text());
     });
 
-    /* select levels items */
+    // Select volume items
+
     $('.btn-volume').on("click", function () {
         $(this).addClass('active');
         let activeBtn = $('.btn-volume.active').not(this);
         if (activeBtn.length > 0) {
             activeBtn.removeClass('active');
         }
+        // Update game info section
+        let src = (($(this).attr('data-sound') == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg") 
+        $('img[data-attr=sound]').attr('src', src);
+        //console.log(src);
     });
 
-    /* open / close modal contact form */
+    // Open/close modal forms
 
     $('#contact-us').on('click', function(){
         $('#modal-form').toggleClass('hide');
