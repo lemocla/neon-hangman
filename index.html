@@ -67,16 +67,16 @@
         <div class="game-container mg-bottom">
             <!-- game over -->
             <div id="game-over" class="game-over-container bord-white hide">
-                <h2 class="pd-bottom">Game Over</h2>
-                <div class="pd-bottom">The hidden word was: <span id="correct-answer">quack</span></div>
-                <div class="content-group pd-bottom">
+                <h2>Game Over</h2>
+                <p class="pd-bottom">The hidden word was: <span id="correct-answer">quack</span></p>
+                <div class="content-group">
                     <div>Words: <span id="count-words">7</span></div>
                     <div>Score: <span id="final-score">1350</span></div>
                 </div>
-                <div id="best-new-score">best new score</div>
-                <div>Enter your name to save your score</div>
-                <input type="text" id="scorename" name="scorename"><br>
-                <div class="content-group">
+                <h3 class="pd-bottom  pd-top" id="best-new-score">best new score</h3>
+                <p class="pd-bottom">Enter your name to save your score</p>
+                <input id="scorename" type="text"  name="scorename">
+                <div class="content-group pd-top">
                     <button id="play-again" class="btn">play again</button>
                     <button class="leave btn">leave</button>
                 </div>
@@ -85,7 +85,7 @@
             <div class="flex-container">
                 <div class="word-container bord-white mg-bottom">
                     <img id="hint" class="hide" src="assets/images/hint.svg" alt="open-hint">
-                    <div class="word-intro pd-bottom">Can you guess the hidden word?</div>
+                    <div class="word-intro">Can you guess the hidden word?</div>
                     <button id="start" class="btn">play</button>
                     <div class="word hide">
                         <div class="letter-box" id="0">S</div>
@@ -101,7 +101,7 @@
                 </div>
                 <!-- message win -->
                 <div id="game-win" class="win-container bord-white hide">
-                    <h3 class="pd-bottom">congratulations!</h3>
+                    <h2>congratulations!</h2>
                     <button class="continue btn">continue</button>
                     <button class="leave btn">leave</button>
                 </div>

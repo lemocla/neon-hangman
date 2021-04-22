@@ -31,6 +31,19 @@ h1 {
     font-size: 40px;
 }
 
+h2 {
+    width: 100%;
+    font-size: 1.2em;
+    padding-bottom: 35px;
+    text-transform: uppercase;
+}
+
+
+h3 {
+    text-align: center;
+    width: 100%;
+}
+
 /*---------- buttons ---------*/
 
 .btn {
@@ -56,8 +69,13 @@ h1 {
 }
 
 .pd-bottom {
-    padding-bottom: 20px;
+    padding-bottom: 15px;
 }
+
+.pd-top {
+    padding-top: 35px;
+}
+
 
 /*--------- containers -------*/
 
@@ -111,10 +129,6 @@ footer {
     padding: 0px 5px;
 }
 
-.win-container {
-    align-content: space-evenly;
-}
-
 .word-container {
     height: max(134px, min(21.5vh, 170px));
     position: relative;
@@ -136,15 +150,16 @@ footer {
 
 .game-over-container {
     width: 60%;
-    height: calc(51.5vh + 25px);
+    height: max(369px, min(calc(51.5vh + 25px), 431px));
+    /*height: calc(51.5vh + 25px);
     max-height: 431px;
-    min-height: 369px;
+    min-height: 369px;*/
     margin-right: 20px;
     flex-wrap: nowrap;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
-    padding: 25px;
+    padding: 0 25px;
 }
 
 /* ---------- navigation -------------*/
@@ -165,6 +180,7 @@ footer {
     top: 45px;
     right: -10px;
     width: 375px;
+    max-width: 92vw;
     border: 1px solid white;
     background-color: black;
     z-index: 1;
@@ -230,6 +246,10 @@ footer {
 
 /*---------- word --------------*/
 
+.word-intro {
+    padding-bottom: 35px;
+}
+
 #hint {
     position: absolute;
     top: 20px;
@@ -253,7 +273,7 @@ footer {
 }
 
 #start {
-    width: 45%;
+    width: 40%;
 }
 
 /*---------- keyboard--------------*/
@@ -271,16 +291,11 @@ footer {
 
 /*---------- win message ----------*/
 
-h3 {
-    text-align: center;
-    width: 100%;
-}
-
 .continue,
 .leave,
 #play-again {
-    width: 30%;
-    margin: 0 15px;
+    width: 145px;;
+    margin: 0 10px;
 }
 
 /* -----------game-over -------------*/
@@ -301,6 +316,7 @@ h3 {
 }
 
 .game-over-container input {
+    display: block;
     width: 235px;
     height: 35px;
 }
@@ -458,18 +474,24 @@ a img:hover,
         width: 92%;
     }
 
-    /*------------ buttons -----------*/
+    /*-------------Margin & spacing ----*/
 
-    .continue,
-    .leave,
-    #play-again {
-        width: 40%;
+    .pd-bottom {
+        padding-bottom: 10px
+    }
+
+    .pd-top {
+        padding-top: 25px;
     }
 
     /*------------ headers -----------*/
 
     h1 {
         font-size: 30px;
+    }
+
+    h2 {
+        padding-bottom: 25px;
     }
 
     /*------------ containers -----------*/
