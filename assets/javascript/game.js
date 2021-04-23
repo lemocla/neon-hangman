@@ -6,15 +6,12 @@ $(document).ready(function () {
         $('#start').addClass("hide");
         $('.word').removeClass("hide");
         $('#hint').removeClass("hide");
+         generateRandomWord();
     });
-
-
-    let word = "test";
-
+    
+    //Split word into an array to display in HTML
     function displayWord(word) {
-        //Split word into an array
         splitWord = word.split("");
-        //Display word
         $.each(splitWord, function (index, value) {
             $(".word").append(
                 `<div class="letter-box" id="${index}"></div>`
@@ -22,8 +19,8 @@ $(document).ready(function () {
         });
     }
 
-
-    //*//Generate random word - wordsAPI
+    // Generate random word - wordsAPI
+    function generateRandomWord (){
     const settings = {
         "async": true,
         "crossDomain": true,
@@ -33,22 +30,27 @@ $(document).ready(function () {
             "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
             "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
         },
+        //https://api.jquery.com/jquery.ajax/
         "dataType": "json",
     };
 
     $.ajax(settings).done(function (dataType) {
             console.log("word " + dataType.word);
             displayWord(dataType.word);
-
-            console.log(dataType);
         })
-        .fail(
-            function (xhr) {
+        .fail(function (xhr) {
                 var errorMessage = xhr.status + ': ' + xhr.statusText
                 console.log('Error - ' + errorMessage);
+                let word = "test";
+                displayWord(word);
             }
-
         );
+    }
+
+
+
+
+
 
 
 
