@@ -257,6 +257,16 @@ footer {
     left: 20px;
 }
 
+#hint-content{
+    position: absolute;
+    top: -45px;
+    left: 55px;
+    z-index: 1;
+    max-width: 80%;
+    padding: 15px;
+    background-color: #000000;
+    border: 1px solid white;
+}
 .word {
     display: flex;
     width: 95%;

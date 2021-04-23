@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     // Toggle menu
-    
+
     $('#toggle-nav').on("click", function () {
         $('.menu-container').toggle();
         navDisplay = $('.menu-container').css('display');
@@ -45,18 +45,22 @@ $(document).ready(function () {
             activeBtn.removeClass('active');
         }
         // Update game info section
-        let src = (($(this).attr('data-sound') == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg") 
+        let src = (($(this).attr('data-sound') == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg")
         $('img[data-attr=sound]').attr('src', src);
         //console.log(src);
     });
 
+    // Display hint 
+    $('#hint').on('click', function () {
+        $('#hint-content').toggleClass('hide');
+    });
     // Open/close modal forms
 
-    $('#contact-us').on('click', function(){
+    $('#contact-us').on('click', function () {
         $('#modal-form').toggleClass('hide');
     });
-    
-    $('#close-modal').on('click', function(){
+
+    $('#close-modal').on('click', function () {
         $('#modal-form').addClass('hide');
     });
 });
