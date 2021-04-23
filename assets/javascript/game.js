@@ -1,17 +1,22 @@
 $(document).ready(function () {
 
-    // Start the game
+    /*-----------------[ Variables ]------------------*/
+    let hintCollection;
+    let firstLetter = "";
+
+    /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
 
         $('#start').addClass("hide");
         $('.word').removeClass("hide");
         $('#hint').removeClass("hide");
-         generateRandomWord();
+        generateRandomWord();
     });
-    
-    //Split word into an array to display in HTML
+
+    /*---------------[ Split Word & display in HTML ]----------------*/
     function displayWord(word) {
         splitWord = word.split("");
+        firstLetter = splitWord[0];
         $.each(splitWord, function (index, value) {
             $(".word").append(
                 `<div class="letter-box" id="${index}"></div>`
@@ -19,43 +24,44 @@ $(document).ready(function () {
         });
     }
 
-    // Generate random word - wordsAPI
-    function generateRandomWord (){
-    const settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMin=3&lettersMax=6&limit=5&page=1&frequencyMin=6",
-        "method": "GET",
-        "headers": {
-            "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
-            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
-        },
-        //https://api.jquery.com/jquery.ajax/
-        "dataType": "json",
-    };
+    /*-----------------[ Random Word API ]------------------*/
+    function generateRandomWord() {
+        /*from RapidAPI documentation documentation - */
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMin=3&lettersMax=6&limit=5&page=1&frequencyMin=6",
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
+                "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
+            },
+            //https://api.jquery.com/jquery.ajax/
+            "dataType": "json",
+        };
 
-    $.ajax(settings).done(function (dataType) {
-            console.log("word " + dataType.word);
-            displayWord(dataType.word);
-        })
-        .fail(function (xhr) {
+        $.ajax(settings).done(function (dataType) {
+                displayWord(dataType.word);
+                //Hint --> definition selected at random from the list of definitions for this word
+                let definitions = dataType.results;
+                //https://api.jquery.com/jquery.map/
+                hintCollection = $.map(definitions, function (value, key) {
+                    return value.definition;
+                });
+            })
+            .fail(function (xhr) {
                 var errorMessage = xhr.status + ': ' + xhr.statusText
                 console.log('Error - ' + errorMessage);
                 let word = "test";
                 displayWord(word);
-            }
-        );
+            });
     }
-
-
-
-
-
-
-
-
-
-
+    /*-----------------[ Display hint ]------------------*/
+    $('#hint').on('click', function () {
+        let hint = ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`);
+        $('#hint-content').text(hint);
+        $('#hint-content').toggleClass('hide');
+    });
 
 
     /* test show game win message */

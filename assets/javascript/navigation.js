@@ -50,10 +50,7 @@ $(document).ready(function () {
         //console.log(src);
     });
 
-    // Display hint 
-    $('#hint').on('click', function () {
-        $('#hint-content').toggleClass('hide');
-    });
+
     // Open/close modal forms
 
     $('#contact-us').on('click', function () {
