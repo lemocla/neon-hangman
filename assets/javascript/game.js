@@ -5,16 +5,18 @@ $(document).ready(function () {
     let firstLetter = "";
     let word;
     let hint;
-    let localWords;
+    
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
-
+        $('.word').empty();
         $('#start').addClass("hide");
-        $('.word').removeClass("hide");
+        $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
-        generateRandomWord();
-    });
 
+        let level = $('.btn-level.active').text();
+        generateRandomWord(level);
+
+    });
 
     /*---------------[ Split Word & display in HTML ]----------------*/
     function displayWord(word) {
@@ -26,27 +28,35 @@ $(document).ready(function () {
             )
         });
     }
-    /*-------------------------------- [ Local words ] --------------------------------*/
+    /* --------------[ Generate Random Word according to category selected ] ---------------*/
 
-    function generateLocalWord() {
-        $.get("assets/words/words.txt*", 'json').done(function (data) {
-                console.log("working")
+    function generateRandomWord(level) {
+        const apiTrue = ['easy', 'medium', 'hard'];
+        getWordMethod = ((apiTrue.includes(level)) ? wordApi(level) : localWord(level));
+    };
+
+    /*-------------------------------- [ Local words ] --------------------------------*/
+    function generateLocalWord(obj, level) {
+        let localWords = obj.filter(function (el) {
+            return el.category == level;
+        });
+        let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
+        word = wordArray.word;
+        hint = wordArray.hint;
+        console.log("local word = " + word);
+        console.log("local hint = " + hint);
+        displayWord(word);
+    }
+
+    function localWord(level) {
+        $.get("assets/words/words.txt", 'json').done(function (data) {
+                console.log("local file working")
                 var obj = JSON.parse(data);
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
-                localWords = obj.filter(function (el) {
-                    return el.level == 'easy';
-                });
-                console.log(localWords);
-                let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
-                console.log(wordArray);
-                word = wordArray.word;
-                hint = wordArray.hint;
-                console.log("local word = " + word);
-                console.log("local hint = " + hint);
-                displayWord(word);
+                generateLocalWord(obj, level);
             })
             .fail(function () {
-                console.log('Error not working');
+                console.log('local file not working --> inline array');
                 let obj = [{
                         word: "cat",
                         hint: "A furry friend",
@@ -72,41 +82,54 @@ $(document).ready(function () {
                         category: "animals"
                     },
                 ];
-                localWords = obj.filter(function (el) {
-                    return el.level == 'easy';
-                });
-                let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
-                word = wordArray.word;
-                hint = wordArray.hint;
-                console.log(typeof obj);
-                console.log(localWords)
-                console.log(wordArray);
-                console.log("local word = " + word);
-                console.log("local hint = " + hint);
-                displayWord(word);
+                generateLocalWord(obj, level);
             });
     }
-
+    /*-----------------[  API query parameters ]------------------*/
+    function apiParameters(level) {
+        let min;;
+        let max;;
+        let freqMin;
+        let freqMax;
+        if (level == 'easy') {
+            min = 3;
+            max = 5;
+            freqMin = 5.5;
+            freqMax = 12;
+        } else if (level == 'medium') {
+            min = 4;
+            max = 7;
+            freqMin = 4.3;
+            freqMax = 7.5;
+        } else {
+            min = 4;
+            // max letters set to 9 on mobile viewport
+            max = (($(window).width() >= 576) ? 12 : 9);
+            freqMin = 2;
+            freqMax = 5;
+        }
+        return `lettersMin=${min}&lettersMax=${max}&limit=5&page=1&frequencyMin=${freqMin}&frequencyMax=${freqMax}`;
+    }
     /*-----------------[ Random Word API ]------------------*/
-    function generateRandomWord() {
-        /*from RapidAPI documentation documentation - */
+    function wordApi(level) {
+        //lettersMin=3&lettersMax=6&limit=5&page=1&frequencyMin=6
+        /*from RapidAPI documentation documentation*/
+        let parameters = apiParameters(level);
         const settings = {
             "async": true,
             "crossDomain": true,
-            "url": "https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMin=3&lettersMax=6&limit=5&page=1&frequencyMin=6",
+            "url": `https://wordsapiv1.p.rapidapi.com/words/?random=true&${parameters}`,
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588*",
+                "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
                 "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
             },
             //https://api.jquery.com/jquery.ajax/
             "dataType": "json",
         };
 
-     $.ajax(settings).done(function (dataType) {
+        $.ajax(settings).done(function (dataType) {
                 displayWord(dataType.word);
-                word = dataType.word;
-                console.log(word);
                 //Hint --> definition selected at random from the list of definitions for this word
                 let definitions = dataType.results;
                 //https://api.jquery.com/jquery.map/
@@ -114,10 +137,11 @@ $(document).ready(function () {
                     return value.definition;
                 });
                 hint = ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`);
+                console.log("word API = " + dataType.word);
+                console.log("hinT API = " + hint);
             })
             .fail(function (xhr) {
-                generateLocalWord();
-
+                localWord();
             });
     }
 
