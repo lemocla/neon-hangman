@@ -1,0 +1,7 @@
+[{"word": "cat", "hint":"A furry friend", "level":"easy", "category":"animals"},
+{"word": "dog", "hint":"A faithful friend, pet", "level":"easy", "category":"animals"},
+{"word": "apple", "hint":"A juicy fruit", "level":"medium", "category":"food"},
+{"word": "bus", "hint":"a public transport", "level":"easy", "category":"transport"}
+]
+        
+

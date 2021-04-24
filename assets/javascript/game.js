@@ -3,7 +3,8 @@ $(document).ready(function () {
     /*-----------------[ Variables ]------------------*/
     let hintCollection;
     let firstLetter = "";
-
+    let word;
+    let localWords;
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
 
@@ -12,6 +13,28 @@ $(document).ready(function () {
         $('#hint').removeClass("hide");
         generateRandomWord();
     });
+
+    /*-------------------------------- [ Local words ] --------------------------------*/
+
+    function generateLocalWord() {
+        $.get("assets/words/words.txt", 'json').done(function (data) {
+            var obj = JSON.parse(data);
+            //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
+            localWords = obj.filter(function (el) {
+                return el.level == 'easy';
+            });
+            console.log(localWords);
+            let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
+            console.log(wordArray);
+            word = wordArray.word;
+            hint = wordArray.hint;
+            console.log("local word = " + word);
+            console.log("local hint = " + hint);
+            displayWord(word);
+        }).fail(function () {
+                console.log('Error not working');
+        });
+    }
 
     /*---------------[ Split Word & display in HTML ]----------------*/
     function displayWord(word) {
@@ -33,7 +56,7 @@ $(document).ready(function () {
             "url": "https://wordsapiv1.p.rapidapi.com/words/?random=true&lettersMin=3&lettersMax=6&limit=5&page=1&frequencyMin=6",
             "method": "GET",
             "headers": {
-                "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
+                "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb55058/*8*/",
                 "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
             },
             //https://api.jquery.com/jquery.ajax/
@@ -50,10 +73,8 @@ $(document).ready(function () {
                 });
             })
             .fail(function (xhr) {
-                var errorMessage = xhr.status + ': ' + xhr.statusText
-                console.log('Error - ' + errorMessage);
-                let word = "test";
-                displayWord(word);
+                generateLocalWord(); 
+                
             });
     }
     /*-----------------[ Display hint ]------------------*/
