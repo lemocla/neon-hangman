@@ -10,16 +10,29 @@ $(document).ready(function () {
     let countIncorrect=0;
 
     /*-----------------[ Start Game ]------------------*/
-    $('#start').on("click", function () {
+    $('#start').on("click", function(){
+    startGame()
+    });
+
+    $('.continue').on("click", function(){
+    startGame()
+    });
+
+    function startGame(){
         $('.word').empty();
         $('#start').addClass("hide");
         $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
         $('.key').removeClass("disabled");
+        if($('.keyboard-container').hasClass("hide")){
+            $('.keyboard-container').removeClass("hide");
+            $('#game-win').addClass("hide");
+        }
         let level = $('.btn-level.active').text();
+        countCorrect = 0;
+        countIncorrect = 0;
         generateRandomWord(level);
-
-    });
+    }
 
     /*---------------[ Split Word & display in HTML ]----------------*/
     function displayWord(word) {
