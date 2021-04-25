@@ -1,7 +1,820 @@
-[{"word": "cat", "hint":"A furry friend", "level":"easy", "category":"animals"},
-{"word": "dog", "hint":"A faithful friend, pet", "level":"easy", "category":"animals"},
-{"word": "apple", "hint":"A juicy fruit", "level":"medium", "category":"food"},
-{"word": "bus", "hint":"a public transport", "level":"easy", "category":"transport"}
-]
+[
+        {
+            "word": "ant",
+            "hint": "I am a eusocial insect of the family Formicidae.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "bear",
+            "hint": "I love honey!",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "bird",
+            "hint": "I can fly.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "cat",
+            "hint": "I am a pet.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "cow",
+            "hint": "You can see me in fields, often in a cattle.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "dog",
+            "hint": "I am a pet.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "duck",
+            "hint": "I can be seen in a fam or on a pond.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "fish",
+            "hint": "I live in the sea.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "goat",
+            "hint": "I eat everything and I produce milk.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "hen",
+            "hint": "I am a bird living on a farm.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "horse",
+            "hint": "I am from the Equidae family.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "lion",
+            "hint": "I live in Africa but I am often seen in a zoo.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "pig",
+            "hint": "I live on the farm.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "shark",
+            "hint": "I have got big teeth.",
+            "level": "easy",
+            "category": "animals"
+        },
+        {
+            "word": "butterfly",
+            "hint": "I flutter.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "carterpillar",
+            "hint": "My only job is to eat and I may produce silk.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "cockerel",
+            "hint": "I live on the farm and I am known to wake up early.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "crocodile",
+            "hint": "I have got big teeth.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "dolphin",
+            "hint": "I am a mammal living in the sea.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "elephant",
+            "hint": "I am the largest living land animal.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "kangaroo",
+            "hint": "I am a marsupial.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "meerkats",
+            "hint": "I am mainly found in Southern Africa and on TV.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "penguin",
+            "hint": "I am a cute black and white animal.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "porcupine",
+            "hint": "I have a lot of spikes or quills.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "rhinoceros",
+            "hint": "I can be found in Southern Asia and Africa, but mostly seen in zoos.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "squirrel",
+            "hint": "I am red or grey and live in trees.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "walrus",
+            "hint": "I am also a famous song from the Beatles.",
+            "level": "hard",
+            "category": "animals"
+        },
+        {
+            "word": "donkey",
+            "hint": "I am hard working.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "eagle",
+            "hint": "I am a bird of prey.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "fox",
+            "hint": "I am mammal living in town and cities, although you would expect me to live in the countryside.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "frog",
+            "hint": "I have a smooth skin, varying from green to yellow.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "giraffe",
+            "hint": "I live in Africa but I am often seen in a zoo.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "hamster",
+            "hint": "I am a small pet.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "lamb",
+            "hint": "I am a kid, but that's not my name.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "rabbit",
+            "hint": "I can be a pet but I also live in burrows in the countryside.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "sheep",
+            "hint": "I am also farmed for my milk, but most famously for something else.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "snake",
+            "hint": "I have got no legs and no harms.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "spider",
+            "hint": "People are often scared of me, but I am your friend.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "swan",
+            "hint": "I am very elegant when I am on water.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "tiger",
+            "hint": "I am the biggest species of the cat family.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "turkey",
+            "hint": "I am a bird living on a farm.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "turtle",
+            "hint": "I am notoriously slow.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "wolf",
+            "hint": "I am often the bad guy in children stories.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "zebra",
+            "hint": "I come with stripes.",
+            "level": "medium",
+            "category": "animals"
+        },
+        {
+            "word": "beef",
+            "hint": "I can be used for a roast.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "bread",
+            "hint": "One the world's oldest food.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "cake",
+            "hint": "I am a yummy pudding. ",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "cheese",
+            "hint": "I am made of milk.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "crisps",
+            "hint": "I am crunchy.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "ham",
+            "hint": "I am a type of meat.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "jam",
+            "hint": "You can spread me on toast.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "leak",
+            "hint": "I am a vegetable, long and mostly green.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "milk",
+            "hint": "You can add me to hot drinks.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "pasta",
+            "hint": "I come in different shapes.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "pizza",
+            "hint": "I am a circle served in triangle.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "rice",
+            "hint": "I am  grown in paddy fields.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "salad",
+            "hint": "A cold meal made with other vegetables.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "soup",
+            "hint": "I am hot and you don't need teeth to eat me.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "steak",
+            "hint": "I am a kind of meat.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "tart",
+            "hint": "I am a sweet treat for desert.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "water",
+            "hint": "You need me to survive.",
+            "level": "easy",
+            "category": "food"
+        },
+        {
+            "word": "avocado",
+            "hint": "You find me in guacamole.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "broccoli",
+            "hint": "I am a green vegetable.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "chocolate",
+            "hint": "I am  a favourite sweet treat.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "croissant",
+            "hint": "I have the shape of a crescent moon. ",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "cucumber",
+            "hint": "I am a long and green vegetable.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "kiwi",
+            "hint": "I am a fruit and share the same name with a bird.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "porridge",
+            "hint": "Goldilocks favourite breakfast.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "quiche",
+            "hint": "I am kind of tart for lunch.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "quinoa",
+            "hint": "I am a superfood. ",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "raspberry",
+            "hint": "I am a red fuit.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "sandwich",
+            "hint": "I am very common in a lunch box.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "spaghetti",
+            "hint": "I am a kind of pasta.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "taglatielle",
+            "hint": "I am a kind of pasta.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "watermelon",
+            "hint": "I am a fruit that is probably as big as your head.",
+            "level": "hard",
+            "category": "food"
+        },
+        {
+            "word": "apple",
+            "hint": "I am a juicy fruit.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "banana",
+            "hint": "I am a very common fruit.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "carrot",
+            "hint": "A rabbit favourite dish.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "cereals",
+            "hint": "I am a favourite for breakfast.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "cherry",
+            "hint": "I am associated with blossoms.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "cookies",
+            "hint": "A delicacy, small flat and sweet.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "honey",
+            "hint": "A sweet, viscous food substance.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "juice",
+            "hint": "I am a favourite for breakfast and I come in different taste.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "lime",
+            "hint": "I am  abitter sweet fruit.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "onion",
+            "hint": "I make you cry.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "orange",
+            "hint": "I am highly charged in vitamin C.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "pepper",
+            "hint": "I am a vegetable that comes in different colours.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "potato",
+            "hint": "I am a root vegetable native to the Americas.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "tomato",
+            "hint": "I am round and squashy.",
+            "level": "medium",
+            "category": "food"
+        },
+        {
+            "word": "barge",
+            "hint": "I live on a canal.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "bike",
+            "hint": "I have got two wheels.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "boat",
+            "hint": "I float on water.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "bus",
+            "hint": "I carry people around the city.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "car",
+            "hint": "Most popular form of transport.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "coach",
+            "hint": "I carry people around the country.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "ferry",
+            "hint": "I am used  for crossings.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "plane",
+            "hint": "I carry people between cities and countries.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "road",
+            "hint": "It's where you find motorised vehicles.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "scooter",
+            "hint": "I can have two of three wheels, a motor or a long steering handle.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "taxi",
+            "hint": "I take you where you want to go.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "train",
+            "hint": "I carry people around the country.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "tram",
+            "hint": "I carry people around the city.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "truck",
+            "hint": "I carry goods across the country.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "van",
+            "hint": "I deliver goods and parcels.",
+            "level": "easy",
+            "category": "transport"
+        },
+        {
+            "word": "bulldozer",
+            "hint": "You can find me on building sites.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "campervan",
+            "hint": "I am used for holidays.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "forklift",
+            "hint": "I am a loading vehicle.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "helicopter",
+            "hint": "I fly across cities.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "hovercraft",
+            "hint": "I can be used on land or water.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "kayak",
+            "hint": "I am a tiny water vessel used on rivers for leisure or racing.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "limousine",
+            "hint": "A type of car for special journeys.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "narrowboat",
+            "hint": "I live on the canal.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "unicycle",
+            "hint": "I only have one wheel.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "skateboard",
+            "hint": "I have four wheels and I am popular amongst teenagers.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "snowplough",
+            "hint": "I am a working vehicle used to clear the roads when needed.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "stagecoach",
+            "hint": "I am pulled by horses.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "submarine",
+            "hint": "I am a watercraft used by the military.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "underground",
+            "hint": "I am a London icon.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "yatch",
+            "hint": "I am used on the sea, for pleasure, cruising or racing.",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "frigate",
+            "hint": "I am a type of warship. ",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "pedestrian",
+            "hint": "I only need my shoes and off I go!",
+            "level": "hard",
+            "category": "transport"
+        },
+        {
+            "word": "airship",
+            "hint": "I am also called a blimp.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "airway",
+            "hint": "The method of transport used by planes.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "ambulance",
+            "hint": "I am an emergency vehicle.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "balloon",
+            "hint": "I am full of hot hair.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "bicycle",
+            "hint": "I have got two wheels.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "canal",
+            "hint": "I carry barges.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "freight",
+            "hint": "I am the general term for the transportation of goods.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "motorbike",
+            "hint": "I have got two wheels.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "railway",
+            "hint": "The method of transport used by trains.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "rocket",
+            "hint": "I am out of this world.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "shuttle",
+            "hint": "I am  a transport system operating at frequent intervals between two places.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "subway",
+            "hint": "I transport people in New York.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "tanker",
+            "hint": "I transport liquids.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "tractor",
+            "hint": "I work on the farm.",
+            "level": "medium",
+            "category": "transport"
+        },
+        {
+            "word": "canoe",
+            "hint": "You use me with paddles.",
+            "level": "medium",
+            "category": "transport"
+        }
+    ]
         
 

@@ -5,7 +5,7 @@ $(document).ready(function () {
     let firstLetter = "";
     let word;
     let hint;
-    
+
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
         $('.word').empty();
@@ -59,28 +59,112 @@ $(document).ready(function () {
                 console.log('local file not working --> inline array');
                 let obj = [{
                         word: "cat",
-                        hint: "A furry friend",
+                        hint: "I am a pet.",
                         level: "easy",
                         category: "animals"
                     },
                     {
-                        word: "dog",
-                        hint: "A faithful friend, pet",
+                        word: "cow",
+                        hint: "You can see me in fields, often in a cattle.",
                         level: "easy",
                         category: "animals"
                     },
                     {
-                        word: "pig",
-                        hint: "Lives in a farm",
-                        level: "easy",
+                        word: "butterfly",
+                        hint: "I flutter.",
+                        level: "hard",
                         category: "animals"
                     },
                     {
-                        word: "giraffe",
-                        hint: "Lives in Africa",
+                        word: "carterpillar",
+                        hint: "My only job is to eat and I may produce silk.",
+                        level: "hard",
+                        category: "animals"
+                    },
+                    {
+                        word: "donkey",
+                        hint: "I am hard working.",
                         level: "medium",
                         category: "animals"
                     },
+                    {
+                        word: "eagle",
+                        hint: "I am a bird of prey.",
+                        level: "medium",
+                        category: "animals"
+                    },
+                    {
+                        word: "ham",
+                        hint: "I am a type of meat.",
+                        level: "easy",
+                        category: "food"
+                    },
+                    {
+                        word: "milk",
+                        hint: "You can add me to hot drinks.",
+                        level: "easy",
+                        category: "food"
+                    },
+                    {
+                        word: "avocado",
+                        hint: "You find me in guacamole.",
+                        level: "hard",
+                        category: "food"
+                    },
+                    {
+                        word: "chocolate",
+                        hint: "I am  a favourite sweet treat.",
+                        level: "hard",
+                        category: "food"
+                    },
+                    {
+                        word: "apple",
+                        hint: "I am a juicy fruit.",
+                        level: "medium",
+                        category: "food"
+                    },
+                    {
+                        word: "banana",
+                        hint: "I am a very common fruit.",
+                        level: "medium",
+                        category: "food"
+                    },
+                    {
+                        word: "bus",
+                        hint: "I carry people around the city.",
+                        level: "easy",
+                        category: "transport"
+                    },
+                    {
+                        word: "car",
+                        hint: "Most popular form of transport.",
+                        level: "easy",
+                        category: "transport"
+                    },
+                    {
+                        word: "bulldozer",
+                        hint: "You can find me on building sites.",
+                        level: "hard",
+                        category: "transport"
+                    },
+                    {
+                        word: "helicopter",
+                        hint: "I fly across cities.",
+                        level: "hard",
+                        category: "transport"
+                    },
+                    {
+                        word: "bicycle",
+                        hint: "I have got two wheels.",
+                        level: "medium",
+                        category: "transport"
+                    },
+                    {
+                        word: "tractor",
+                        hint: "I work on the farm.",
+                        level: "medium",
+                        category: "transport"
+                    }
                 ];
                 generateLocalWord(obj, level);
             });
