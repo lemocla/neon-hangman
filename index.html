@@ -139,23 +139,23 @@
                 <svg id="hangman" width="100%" height="100%" viewBox="0 0 380 430" x="0" y="0">
                     <g>
                         <!--frame-->
-                        <path class="path" d="M40,400 H330" />
-                        <path class="path" d="M330,400 V40" />
-                        <path class="path" d="M330,40 H150" />
-                        <path class="path" d="M150,40 V90" />
+                        <path class="path" id="part1" d="M40,400 H330" />
+                        <path class="path" id="part2" d="M330,400 V40" />
+                        <path class="path" id="part3" d="M330,40 H150" />
+                        <path class="path" id="part4" d="M150,40 V90" />
                         <!--head-->
                         <!--https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/-->
-                        <path class="path" d="M 110, 130
+                        <path class="path" id="part5" d="M 110, 130
                         a 40,40 0 1,0 80,0
                         a 40,40 0 1,0 -80,0 " />
                         <!--body-->
-                        <path class="path" d="M150,172 V260" />
+                        <path class="path" id="part6" d="M150,172 V260" />
                         <!--arms-->
-                        <path class="path" d="M150,195 L105,170" />
-                        <path class="path" d="M150,195 L195,170" />
+                        <path class="path" id="part7" d="M150,195 L105,170" />
+                        <path class="path" id="part8" d="M150,195 L195,170" />
                         <!--legs-->
-                        <path class="path" d="M150,260 L110,310" />
-                        <path class="path" d="M150,260 L190,310" />
+                        <path class="path" id="part9" d="M150,260 L110,310" />
+                        <path class="path" id="part10" d="M150,260 L190,310" />
                     </g>
                 </svg>
             </div>
@@ -187,6 +187,7 @@
                 </a>
             </div>
         </footer>
+        <button id="test_hangman">test hangman</button>
     </div>
     <!--Modal form-->
     <div id="modal-form" class="modal-window hide">

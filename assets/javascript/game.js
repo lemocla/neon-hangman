@@ -1,5 +1,25 @@
 $(document).ready(function () {
-
+    /*-----------------[bugs to fix / improvments]--------------------------*/
+    /*
+    - clear hint when game is won / game over
+    - hide hint after 2 or 3 seconds 
+    - start & continue ---> have a common attribute ?
+    - add scoring / further info in menu about the game
+    */
+    /*-----------------[ Test hangman ] ----------------------*/
+    let count=0;
+    let pathCol = $('path');
+    let hangmanParts = [];
+    $.each($('path'), function (key, value) {
+        $(this).addClass('hide');
+        hangmanParts.push(value.id);
+    });
+    console.log(hangmanParts);
+    $('#test_hangman').on("click", function () {
+        count = ++count;
+        console.log('count');
+        $(`#part${count}`).addClass('animate').removeClass('hide');
+    });
     /*-----------------[ Variables ]------------------*/
     let hintCollection;
     let firstLetter = "";
@@ -18,10 +38,10 @@ $(document).ready(function () {
         startGame()
     });
 
-    $('#play-again').on("click", function (){
+    $('#play-again').on("click", function () {
         startGame();
     });
-    
+
     function startGame() {
         $('.word').empty();
         $('#start').addClass("hide");

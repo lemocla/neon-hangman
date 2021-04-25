@@ -257,7 +257,7 @@ footer {
     left: 20px;
 }
 
-#hint-content{
+#hint-content {
     position: absolute;
     top: -45px;
     left: 55px;
@@ -267,6 +267,7 @@ footer {
     background-color: #000000;
     border: 1px solid white;
 }
+
 .word {
     display: flex;
     width: 95%;
@@ -301,9 +302,9 @@ footer {
     transition: 0.3s;
 }
 
-.disabled{
-  pointer-events: none;
-  opacity: 0.4;
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
 }
 
 /*---------- win message ----------*/
@@ -346,12 +347,31 @@ footer {
 }
 
 .path {
-    stroke: white;
+    /*stroke: white;
     -webkit-stroke: white;
-    fill: transparent;
+    fill: transparent;*/
     stroke-width: 6px;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+/*https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation*/
+.animate {
+    stroke: white;
+    -webkit-stroke: white;
+    stroke-dasharray: 870;
+    stroke-dashoffset: 870;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-name: draw;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+        stroke: white;
+    }
 }
 
 .volume-mobile {
