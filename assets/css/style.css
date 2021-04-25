@@ -281,6 +281,7 @@ footer {
     text-align: center;
     font-weight: bold;
     border: 1px solid white;
+    text-transform: uppercase;
 }
 
 #start {
@@ -298,6 +299,11 @@ footer {
     font-weight: bold;
     text-transform: capitalize;
     transition: 0.3s;
+}
+
+.disabled{
+  pointer-events: none;
+  opacity: 0.4;
 }
 
 /*---------- win message ----------*/

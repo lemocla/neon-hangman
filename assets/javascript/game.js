@@ -5,6 +5,9 @@ $(document).ready(function () {
     let firstLetter = "";
     let word;
     let hint;
+    let splitWord;
+    let countCorrect= 0;
+    let countIncorrect=0;
 
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
@@ -233,6 +236,32 @@ $(document).ready(function () {
     $('#hint').on('click', function () {
         $('#hint-content').text(hint);
         $('#hint-content').toggleClass('hide');
+    });
+
+    //-----------------[ PLAY GAME ] --------------------*/ 
+    $(".key").on("click", function () {
+        console.log($(this).text());
+        console.log($(this).attr("id"));
+        //
+        let correctGuess = splitWord.includes($(this).text());
+        let letter = $(this).text();
+        console.log(correctGuess);
+        //
+        if (correctGuess) { //match
+            console.log("correct guess");
+            $.each(splitWord, function (index, value) {
+                if (value === letter) {
+                    console.log("letter is matched");
+                    $("#" + index).append(letter);
+                    countCorrect = ++countCorrect;
+                    console.log(countCorrect);
+                }
+            });
+            
+        } else {
+            console.log("Incorrect guess");
+        }
+        $(this).addClass("disabled");
     });
 
 
