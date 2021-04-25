@@ -15,7 +15,7 @@ $(document).ready(function () {
         $('#start').addClass("hide");
         $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
-
+        $('.key').removeClass("disabled");
         let level = $('.btn-level.active').text();
         generateRandomWord(level);
 
@@ -257,7 +257,13 @@ $(document).ready(function () {
                     console.log(countCorrect);
                 }
             });
-            
+        if (countCorrect == splitWord.length)
+        {
+            console.log("You won!");
+            $('.keyboard-container').addClass("hide");
+            $('#game-win').removeClass("hide");
+            $('#hint').addClass("hide");
+        }
         } else {
             console.log("Incorrect guess");
         }
@@ -265,12 +271,7 @@ $(document).ready(function () {
     });
 
 
-    /* test show game win message */
-    $('#test-win').on("click", function () {
-        $('.keyboard-container').addClass("hide");
-        $('#game-win').removeClass("hide");
-        $('#hint').addClass("hide");
-    });
+    
 
     /* test show game over message */
     $('#test-over').on("click", function () {
