@@ -6,27 +6,35 @@ $(document).ready(function () {
     let word;
     let hint;
     let splitWord;
-    let countCorrect= 0;
-    let countIncorrect=0;
+    let countCorrect = 0;
+    let countIncorrect = 0;
 
     /*-----------------[ Start Game ]------------------*/
-    $('#start').on("click", function(){
-    startGame()
+    $('#start').on("click", function () {
+        startGame()
     });
 
-    $('.continue').on("click", function(){
-    startGame()
+    $('.continue').on("click", function () {
+        startGame()
     });
 
-    function startGame(){
+    $('#play-again').on("click", function (){
+        startGame();
+    });
+    
+    function startGame() {
         $('.word').empty();
         $('#start').addClass("hide");
         $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
         $('.key').removeClass("disabled");
-        if($('.keyboard-container').hasClass("hide")){
+        if ($('.keyboard-container').hasClass("hide")) {
             $('.keyboard-container').removeClass("hide");
             $('#game-win').addClass("hide");
+        }
+        if ($('.flex-container').hasClass("hide")) {
+            $('.flex-container').removeClass("hide");
+            $('#game-over').addClass("hide");
         }
         let level = $('.btn-level.active').text();
         countCorrect = 0;
@@ -270,31 +278,30 @@ $(document).ready(function () {
                     console.log(countCorrect);
                 }
             });
-        if (countCorrect == splitWord.length)
-        {
-            console.log("You won!");
-            $('.keyboard-container').addClass("hide");
-            $('#game-win').removeClass("hide");
-            $('#hint').addClass("hide");
-        }
+            if (countCorrect == splitWord.length) {
+                console.log("You won!");
+                $('.keyboard-container').addClass("hide");
+                $('#game-win').removeClass("hide");
+                $('#hint').addClass("hide");
+            }
         } else {
             console.log("Incorrect guess");
             //
             countIncorrect = ++countIncorrect;
             console.log(countIncorrect);
-            if (countIncorrect == 10){
-            console.log("game over")
-            gameOver();
+            if (countIncorrect == 10) {
+                console.log("game over")
+                gameOver();
             }
         }
         $(this).addClass("disabled");
     });
 
 
-    
+
 
     /* test show game over message */
-   function gameOver () {
+    function gameOver() {
         $('.flex-container').addClass("hide");
         $('#game-over').removeClass("hide");
 
