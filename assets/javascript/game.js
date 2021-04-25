@@ -279,6 +279,13 @@ $(document).ready(function () {
         }
         } else {
             console.log("Incorrect guess");
+            //
+            countIncorrect = ++countIncorrect;
+            console.log(countIncorrect);
+            if (countIncorrect == 10){
+            console.log("game over")
+            gameOver();
+            }
         }
         $(this).addClass("disabled");
     });
@@ -287,11 +294,11 @@ $(document).ready(function () {
     
 
     /* test show game over message */
-    $('#test-over').on("click", function () {
+   function gameOver () {
         $('.flex-container').addClass("hide");
         $('#game-over').removeClass("hide");
 
-    });
+    };
 
     /* test back to start */
     $('#backtostart').on("click", function () {
