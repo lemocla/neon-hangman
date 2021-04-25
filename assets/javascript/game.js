@@ -5,21 +5,12 @@ $(document).ready(function () {
     - hide hint after 2 or 3 seconds 
     - start & continue ---> have a common attribute ?
     - add scoring / further info in menu about the game
+    - clean hide & show different elements on start
+    - see if game over can happen just after last part appeared
+    - see if there's a way to avoid the same word to be generated at random twice in a row
+    - make sure nothing happens when key is pressed before game is started
     */
-    /*-----------------[ Test hangman ] ----------------------*/
-    let count=0;
-    let pathCol = $('path');
-    let hangmanParts = [];
-    $.each($('path'), function (key, value) {
-        $(this).addClass('hide');
-        hangmanParts.push(value.id);
-    });
-    console.log(hangmanParts);
-    $('#test_hangman').on("click", function () {
-        count = ++count;
-        console.log('count');
-        $(`#part${count}`).addClass('animate').removeClass('hide');
-    });
+
     /*-----------------[ Variables ]------------------*/
     let hintCollection;
     let firstLetter = "";
@@ -28,7 +19,10 @@ $(document).ready(function () {
     let splitWord;
     let countCorrect = 0;
     let countIncorrect = 0;
-
+    let hangmanParts = [];
+    $.each($('path'), function (key, value) {
+        hangmanParts.push(value.id);
+    });
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
         startGame()
@@ -56,6 +50,11 @@ $(document).ready(function () {
             $('.flex-container').removeClass("hide");
             $('#game-over').addClass("hide");
         }
+        /*hide hangman parts*/
+    $.each($('path'), function (key, value) {
+        $(this).addClass('hide');
+       
+    });
         let level = $('.btn-level.active').text();
         countCorrect = 0;
         countIncorrect = 0;
@@ -279,6 +278,11 @@ $(document).ready(function () {
         $('#hint-content').toggleClass('hide');
     });
 
+    /*------------------[ Display hangman part]------------*/
+    function displayHangmanPart(nb){
+     $(`#part${nb}`).addClass('animate').removeClass('hide');
+    }
+
     //-----------------[ PLAY GAME ] --------------------*/ 
     $(".key").on("click", function () {
         console.log($(this).text());
@@ -308,11 +312,13 @@ $(document).ready(function () {
             console.log("Incorrect guess");
             //
             countIncorrect = ++countIncorrect;
-            console.log(countIncorrect);
-            if (countIncorrect == 10) {
-                console.log("game over")
-                gameOver();
-            }
+            displayHangmanPart(countIncorrect)
+             
+             if (countIncorrect == 10) {
+            gameOver();
+             }
+            
+            
         }
         $(this).addClass("disabled");
     });

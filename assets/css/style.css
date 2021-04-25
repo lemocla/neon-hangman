@@ -347,9 +347,9 @@ footer {
 }
 
 .path {
-    /*stroke: white;
+    stroke: white;
     -webkit-stroke: white;
-    fill: transparent;*/
+    fill: transparent;
     stroke-width: 6px;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -357,8 +357,8 @@ footer {
 
 /*https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation*/
 .animate {
-    stroke: white;
-    -webkit-stroke: white;
+    /*stroke: white;
+    -webkit-stroke: white;*/
     stroke-dasharray: 870;
     stroke-dashoffset: 870;
     animation-duration: 4s;
