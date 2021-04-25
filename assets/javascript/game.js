@@ -6,7 +6,7 @@ $(document).ready(function () {
     - start & continue ---> have a common attribute ?
     - add scoring / further info in menu about the game
     - clean hide & show different elements on start
-    - see if game over can happen just after last part appeared
+    - see if game over can happen just after last part appeared --> added slight delay
     - see if there's a way to avoid the same word to be generated at random twice in a row
     - make sure nothing happens when key is pressed before game is started
     */
@@ -312,12 +312,17 @@ $(document).ready(function () {
             console.log("Incorrect guess");
             //
             countIncorrect = ++countIncorrect;
-            displayHangmanPart(countIncorrect)
-             
+            displayHangmanPart(countIncorrect);
+            console.log(countIncorrect);
+             /*
              if (countIncorrect == 10) {
             gameOver();
-             }
-            
+             }*/
+              if (countIncorrect == 10) {
+            setTimeout(function(){ 
+                gameOver();
+                }, 575);
+              }
             
         }
         $(this).addClass("disabled");
