@@ -74,6 +74,7 @@ $(document).ready(function () {
             if (timer <= 0) {
                 clearInterval(x);
                 $("#timer").text("0:00");
+                gameOver();
             } else {
                 minutes = Math.floor((timer % (60 * 60)) / (60));
                 let seconds = Math.floor(timer % 60);
