@@ -337,6 +337,8 @@ $(document).ready(function () {
                 }
                 $('#hint').addClass("hide");
                 countWords = ++countWords;
+                 $('.final-score').text(score);
+        $('.count-words').text(countWords);
             }
         } else {
             console.log("Incorrect guess");
@@ -361,8 +363,8 @@ $(document).ready(function () {
         //Update game over message with stats
         $('#correct-answer').text(word);
         console.log("the right answer was: " + word);
-        $('#final-score').text(score);
-        $('#count-words').text(countWords);
+        $('.final-score').text(score);
+        $('.count-words').text(countWords);
 
         //display game over 
         $('.flex-container').addClass("hide");

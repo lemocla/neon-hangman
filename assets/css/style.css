@@ -333,8 +333,8 @@ footer {
 }
 
 #correct-answer,
-#count-words,
-#final-score,
+.count-words,
+.final-score,
 #best-new-score {
     font-weight: bold;
     text-transform: uppercase;
