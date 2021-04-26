@@ -26,10 +26,10 @@ $(document).ready(function () {
         hangmanParts.push(value.id);
     });
     //scoring
-    let score=0;
+    let score = 0;
     let countStreak = 0;
     let point = 10;
-
+    let countWords = 0;
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
         startGame()
@@ -332,7 +332,7 @@ $(document).ready(function () {
                     $('#hint-content').addClass('hide');
                 }
                 $('#hint').addClass("hide");
-
+                countWords = ++countWords;
             }
         } else {
             console.log("Incorrect guess");
@@ -342,9 +342,9 @@ $(document).ready(function () {
             console.log(countIncorrect);
             //reset streak to 0
             countStreak = 0;
-              if (countIncorrect == 10) {
-            setTimeout(function(){ 
-                gameOver();
+            if (countIncorrect == 10) {
+                setTimeout(function () {
+                    gameOver();
                 }, 575);
             }
 
@@ -354,18 +354,26 @@ $(document).ready(function () {
 
     /* test show game over message */
     function gameOver() {
-            $('.flex-container').addClass("hide");
-        $('#game-over').removeClass("hide");
-        //Update best score with scoring info 
-        console.log("score is " + score)
-        if (parseInt($('#best-score').text()) < score){
-             $('#best-score').text(score);
-        }
-        //Reset score to 0 when game over
-        score = 0;
-        $('#score').text(score);
+        //Update game over message with stats
         $('#correct-answer').text(word);
         console.log("the right answer was: " + word);
+        $('#final-score').text(score);
+        $('#count-words').text(countWords);
+
+        //display game over 
+        $('.flex-container').addClass("hide");
+        $('#game-over').removeClass("hide");
+
+        //Update best score with scoring info 
+        console.log("score is " + score)
+        if (parseInt($('#best-score').text()) < score) {
+            $('#best-score').text(score);
+        }
+        //Reset score to 0 when game over
+        countWords = 0;
+        score = 0;
+        $('#score').text(score);
+
     };
 
 })
