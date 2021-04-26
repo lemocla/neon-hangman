@@ -62,6 +62,7 @@ $(document).ready(function () {
         let level = $('.btn-level.active').text();
         countCorrect = 0;
         countIncorrect = 0;
+        countStreak = 0;
         generateRandomWord(level);
     }
 
@@ -326,10 +327,8 @@ $(document).ready(function () {
             countIncorrect = ++countIncorrect;
             displayHangmanPart(countIncorrect);
             console.log(countIncorrect);
-             /*
-             if (countIncorrect == 10) {
-            gameOver();
-             }*/
+            //reset streak to 0
+            countStreak = 0;
               if (countIncorrect == 10) {
             setTimeout(function(){ 
                 gameOver();
