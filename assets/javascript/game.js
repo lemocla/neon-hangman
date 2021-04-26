@@ -305,7 +305,12 @@ $(document).ready(function () {
                     countCorrect = ++countCorrect;
                     console.log(countCorrect);
                     //scoring
-                    score = score + 10;
+                    countStreak = ++countStreak;
+                    console.log("streak" + countStreak);
+                    let addPoints = countStreak * point;
+                    console.log("Add points " + addPoints);
+                    score = score + addPoints;
+                    console.log("Score " + score);
                     $('#score').text(score);
                 }
             });
