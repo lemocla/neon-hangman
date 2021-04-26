@@ -23,6 +23,10 @@ $(document).ready(function () {
     $.each($('path'), function (key, value) {
         hangmanParts.push(value.id);
     });
+    //scoring
+    let score=0;
+    let countStreak = 0;
+    let point = 10;
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
         startGame()
@@ -300,6 +304,9 @@ $(document).ready(function () {
                     $("#" + index).append(letter);
                     countCorrect = ++countCorrect;
                     console.log(countCorrect);
+                    //scoring
+                    score = score + 10;
+                    $('#score').text(score);
                 }
             });
             if (countCorrect == splitWord.length) {
