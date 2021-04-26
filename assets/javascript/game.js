@@ -30,6 +30,9 @@ $(document).ready(function () {
     let countStreak = 0;
     let point = 10;
     let countWords = 0;
+    //timer
+    let timer = 120;
+
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
         startGame()
@@ -57,8 +60,7 @@ $(document).ready(function () {
             $('.flex-container').removeClass("hide");
             $('#game-over').addClass("hide");
         }
-        if (!$('.best-score-container').hasClass('hide'))
-        {
+        if (!$('.best-score-container').hasClass('hide')) {
             $('.best-score-container').addClass('hide')
         }
         /*hide hangman parts*/
@@ -71,6 +73,18 @@ $(document).ready(function () {
         countIncorrect = 0;
         countStreak = 0;
         generateRandomWord(level);
+        // timer
+        //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
+        x = setInterval(function () {
+            if (timer <= 0) {
+                clearInterval(x);
+                $("#timer").text("done");
+            } else {
+                $("#timer").text(timer + " s");
+            }
+            timer -= 1;
+
+        }, 1000);
     }
 
     /*---------------[ Split Word & display in HTML ]----------------*/
@@ -310,6 +324,8 @@ $(document).ready(function () {
         let letter = $(this).text();
         console.log(correctGuess);
         //
+
+        //
         if (correctGuess) { //match
             console.log("correct guess");
             $.each(splitWord, function (index, value) {
@@ -330,15 +346,21 @@ $(document).ready(function () {
             });
             if (countCorrect == splitWord.length) {
                 console.log("You won!");
+                //clear timer interval
+                clearInterval(x);
+                timer = 120;
+                //display win message
                 $('.keyboard-container').addClass("hide");
                 $('#game-win').removeClass("hide");
+                //Hide hint if displayed
                 if (!$('#hint-content').hasClass('hide')) {
                     $('#hint-content').addClass('hide');
                 }
                 $('#hint').addClass("hide");
+                //Update statistics
                 countWords = ++countWords;
-                 $('.final-score').text(score);
-        $('.count-words').text(countWords);
+                $('.final-score').text(score);
+                $('.count-words').text(countWords);
             }
         } else {
             console.log("Incorrect guess");
@@ -360,6 +382,9 @@ $(document).ready(function () {
 
     /* test show game over message */
     function gameOver() {
+        //clear timer interval
+        clearInterval(x);
+        timer = 120;
         //Update game over message with stats
         $('#correct-answer').text(word);
         console.log("the right answer was: " + word);
