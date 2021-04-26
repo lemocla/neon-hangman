@@ -339,26 +339,18 @@ $(document).ready(function () {
         $(this).addClass("disabled");
     });
 
-
-
-
     /* test show game over message */
     function gameOver() {
         $('.flex-container').addClass("hide");
         $('#game-over').removeClass("hide");
-
+        //Update best score with scoring info 
+        console.log("score is " + score)
+        if (parseInt($('#best-score').text()) < score){
+             $('#best-score').text(score);
+        }
+        //Reset score to 0 when game over
+        score = 0;
+        $('#score').text(score);
     };
 
-    /* test back to start */
-    $('#backtostart').on("click", function () {
-        $('.keyboard-container').removeClass("hide");
-        $('#game-win').addClass("hide");
-
-        $('.flex-container').removeClass("hide");
-        $('#game-over').addClass("hide");
-
-        $('#start').removeClass("hide");
-        $('.word').addClass("hide");
-        $('#hint').addClass("hide");
-    });
 })
