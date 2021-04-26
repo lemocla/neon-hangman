@@ -1,15 +1,14 @@
 $(document).ready(function () {
     /*-----------------[bugs to fix / improvments]--------------------------*/
     /*
-    - FIXED clear hint when game is won / game over
-    - FIXED hide hint after 2 or 3 seconds 
+    
     - start & continue ---> have a common attribute ?
     - add scoring / further info in menu about the game
     - clean hide & show different elements on start
-    - FIXED see if game over can happen just after last part appeared --> added slight delay
+    
     - see if there's a way to avoid the same word to be generated at random twice in a row
     - make sure nothing happens when key is pressed before game is started
-    - ADDED - update the correct answer - word - in game over container
+    
     - Move hint up on mobile as not to hide the word too much
     */
 
@@ -31,7 +30,9 @@ $(document).ready(function () {
     let point = 10;
     let countWords = 0;
     //timer
-    let timer = 120;
+    let timer;
+    let minutes;
+    let seconds;
 
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
@@ -51,18 +52,43 @@ $(document).ready(function () {
         $('#start').addClass("hide");
         $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
+        //display keyboard
         $('.key').removeClass("disabled");
         if ($('.keyboard-container').hasClass("hide")) {
             $('.keyboard-container').removeClass("hide");
             $('#game-win').addClass("hide");
         }
+        //hide game over message
         if ($('.flex-container').hasClass("hide")) {
             $('.flex-container').removeClass("hide");
             $('#game-over').addClass("hide");
         }
+        //hide best score container
         if (!$('.best-score-container').hasClass('hide')) {
             $('.best-score-container').addClass('hide')
         }
+        // timer
+        //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
+        timer = 120;
+        x = setInterval(function () {
+            if (timer <= 0) {
+                clearInterval(x);
+                $("#timer").text("0:00");
+            } else {
+                minutes = Math.floor((timer % (60 * 60)) / (60));
+                let seconds = Math.floor(timer % 60);
+
+                function pad(n) {
+                    return n < 10 ? '0' + n : n
+                }
+                seconds = pad(seconds);
+                //let sec = (seconds.toLocaleString(undefined, {minimumDigits: 2, maximumDigits: 2}));
+                console.log("test " + minutes + ":" + seconds);
+                $("#timer").text(minutes + ":" + seconds);
+            }
+            timer -= 1;
+
+        }, 1000);
         /*hide hangman parts*/
         $.each($('path'), function (key, value) {
             $(this).addClass('hide');
@@ -73,18 +99,7 @@ $(document).ready(function () {
         countIncorrect = 0;
         countStreak = 0;
         generateRandomWord(level);
-        // timer
-        //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
-        x = setInterval(function () {
-            if (timer <= 0) {
-                clearInterval(x);
-                $("#timer").text("done");
-            } else {
-                $("#timer").text(timer + " s");
-            }
-            timer -= 1;
 
-        }, 1000);
     }
 
     /*---------------[ Split Word & display in HTML ]----------------*/
@@ -348,7 +363,12 @@ $(document).ready(function () {
                 console.log("You won!");
                 //clear timer interval
                 clearInterval(x);
-                timer = 120;
+                //timer = 120;
+                //minutes = Math.floor((timer % (60 * 60)) / (60));
+                //seconds = Math.floor(timer % 60);
+                //console.log("test " + minutes + ":" + seconds);
+                //$("#timer").text(timer + " s");
+                $("#timer").text("0:00");
                 //display win message
                 $('.keyboard-container').addClass("hide");
                 $('#game-win').removeClass("hide");
@@ -384,7 +404,7 @@ $(document).ready(function () {
     function gameOver() {
         //clear timer interval
         clearInterval(x);
-        timer = 120;
+        $("#timer").text("0:00");
         //Update game over message with stats
         $('#correct-answer').text(word);
         console.log("the right answer was: " + word);
