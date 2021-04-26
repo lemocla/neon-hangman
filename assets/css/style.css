@@ -325,6 +325,13 @@ footer {
     justify-content: space-evenly;
 }
 
+.best-score-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #correct-answer,
 #count-words,
 #final-score,

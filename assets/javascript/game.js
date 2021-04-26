@@ -57,6 +57,10 @@ $(document).ready(function () {
             $('.flex-container').removeClass("hide");
             $('#game-over').addClass("hide");
         }
+        if (!$('.best-score-container').hasClass('hide'))
+        {
+            $('.best-score-container').addClass('hide')
+        }
         /*hide hangman parts*/
         $.each($('path'), function (key, value) {
             $(this).addClass('hide');
@@ -366,8 +370,12 @@ $(document).ready(function () {
 
         //Update best score with scoring info 
         console.log("score is " + score)
+        //let currentBestScore = parseInt($('#best-score').text());
+        //console.log("only then remove hide")
         if (parseInt($('#best-score').text()) < score) {
+            $('.best-score-container').removeClass('hide');
             $('#best-score').text(score);
+            //
         }
         //Reset score to 0 when game over
         countWords = 0;
