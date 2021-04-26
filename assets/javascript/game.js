@@ -1,14 +1,16 @@
 $(document).ready(function () {
     /*-----------------[bugs to fix / improvments]--------------------------*/
     /*
-    - clear hint when game is won / game over
-    - hide hint after 2 or 3 seconds 
+    - FIXED clear hint when game is won / game over
+    - FIXED hide hint after 2 or 3 seconds 
     - start & continue ---> have a common attribute ?
     - add scoring / further info in menu about the game
     - clean hide & show different elements on start
-    - see if game over can happen just after last part appeared --> added slight delay
+    - FIXED see if game over can happen just after last part appeared --> added slight delay
     - see if there's a way to avoid the same word to be generated at random twice in a row
     - make sure nothing happens when key is pressed before game is started
+    - ADDED - update the correct answer - word - in game over container
+    - Move hint up on mobile as not to hide the word too much
     */
 
     /*-----------------[ Variables ]------------------*/
@@ -23,6 +25,7 @@ $(document).ready(function () {
     $.each($('path'), function (key, value) {
         hangmanParts.push(value.id);
     });
+
     /*-----------------[ Start Game ]------------------*/
     $('#start').on("click", function () {
         startGame()
@@ -51,10 +54,10 @@ $(document).ready(function () {
             $('#game-over').addClass("hide");
         }
         /*hide hangman parts*/
-    $.each($('path'), function (key, value) {
-        $(this).addClass('hide');
-       
-    });
+        $.each($('path'), function (key, value) {
+            $(this).addClass('hide');
+
+        });
         let level = $('.btn-level.active').text();
         countCorrect = 0;
         countIncorrect = 0;
@@ -257,6 +260,7 @@ $(document).ready(function () {
 
         $.ajax(settings).done(function (dataType) {
                 displayWord(dataType.word);
+                word = dataType.word;
                 //Hint --> definition selected at random from the list of definitions for this word
                 let definitions = dataType.results;
                 //https://api.jquery.com/jquery.map/
@@ -276,11 +280,16 @@ $(document).ready(function () {
     $('#hint').on('click', function () {
         $('#hint-content').text(hint);
         $('#hint-content').toggleClass('hide');
+        if (!$('#hint-content').hasClass('hide')) {
+            setTimeout(function () {
+                $('#hint-content').addClass('hide');
+            }, 3000);
+        }
     });
 
     /*------------------[ Display hangman part]------------*/
-    function displayHangmanPart(nb){
-     $(`#part${nb}`).addClass('animate').removeClass('hide');
+    function displayHangmanPart(nb) {
+        $(`#part${nb}`).addClass('animate').removeClass('hide');
     }
 
     //-----------------[ PLAY GAME ] --------------------*/ 
@@ -306,7 +315,11 @@ $(document).ready(function () {
                 console.log("You won!");
                 $('.keyboard-container').addClass("hide");
                 $('#game-win').removeClass("hide");
+                if (!$('#hint-content').hasClass('hide')) {
+                    $('#hint-content').addClass('hide');
+                }
                 $('#hint').addClass("hide");
+
             }
         } else {
             console.log("Incorrect guess");
@@ -314,16 +327,16 @@ $(document).ready(function () {
             countIncorrect = ++countIncorrect;
             displayHangmanPart(countIncorrect);
             console.log(countIncorrect);
-             /*
+            /*
              if (countIncorrect == 10) {
             gameOver();
              }*/
-              if (countIncorrect == 10) {
-            setTimeout(function(){ 
-                gameOver();
+            if (countIncorrect == 10) {
+                setTimeout(function () {
+                    gameOver();
                 }, 575);
-              }
-            
+            }
+
         }
         $(this).addClass("disabled");
     });
@@ -335,6 +348,8 @@ $(document).ready(function () {
     function gameOver() {
         $('.flex-container').addClass("hide");
         $('#game-over').removeClass("hide");
+        $('#correct-answer').text(word);
+        console.log("the right answer was: " + word);
 
     };
 
