@@ -9,7 +9,7 @@ $(document).ready(function () {
     let countCorrect = 0;
     let countIncorrect = 0;
     let hangmanParts = [];
-    $.each($('path'), function (key, value) {
+    $.each($('path'), function (value) {
         hangmanParts.push(value.id);
     });
     //scoring
@@ -19,8 +19,6 @@ $(document).ready(function () {
     let countWords = 0;
     //timer
     let timer;
-    let minutes;
-    let seconds;
 
     /*-------------------------------[ Timer ] --------------------------------*/
     //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
@@ -31,7 +29,7 @@ $(document).ready(function () {
                 $("#timer").text("0:00");
                 gameOver();
             } else {
-                minutes = Math.floor((timer % (60 * 60)) / (60));
+                let minutes = Math.floor((timer % (60 * 60)) / (60));
                 let seconds = Math.floor(timer % 60);
                 /* Display seconds as 00 when below 10 */
                 function pad(n) {
@@ -82,7 +80,7 @@ $(document).ready(function () {
         setTimer(timer);
 
         //Hide hangman parts
-        $.each($('path'), function (key, value) {
+        $.each($('path'), function () {
             $(this).addClass('hide');
 
         });
@@ -99,7 +97,7 @@ $(document).ready(function () {
     function displayWord(word) {
         splitWord = word.split("");
         firstLetter = splitWord[0];
-        $.each(splitWord, function (index, value) {
+        $.each(splitWord, function (index) {
             $(".word").append(
                 `<div class="letter-box" id="${index}"></div>`
             )
@@ -294,14 +292,14 @@ $(document).ready(function () {
                 //Hint --> definition selected at random from the list of definitions for this word
                 let definitions = dataType.results;
                 //https://api.jquery.com/jquery.map/
-                hintCollection = $.map(definitions, function (value, key) {
+                hintCollection = $.map(definitions, function (value) {
                     return value.definition;
                 });
                 hint = ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`);
                 console.log("word API = " + dataType.word);
                 console.log("hinT API = " + hint);
             })
-            .fail(function (xhr) {
+            .fail(function () {
                 localWord();
             });
     }
