@@ -1,14 +1,11 @@
 $(document).ready(function () {
     /*-----------------[bugs to fix / improvments]--------------------------*/
     /*
-    
     - start & continue ---> have a common attribute ?
     - add scoring / further info in menu about the game
     - clean hide & show different elements on start
-    
     - see if there's a way to avoid the same word to be generated at random twice in a row
     - make sure nothing happens when key is pressed before game is started
-    
     - Move hint up on mobile as not to hide the word too much
     */
 
@@ -34,7 +31,28 @@ $(document).ready(function () {
     let minutes;
     let seconds;
 
-    /*-----------------[ Start Game ]------------------*/
+    /*-------------------------------[ Timer ] --------------------------------*/
+    //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
+    function setTimer(timer) {
+        x = setInterval(function () {
+            if (timer <= 0) {
+                clearInterval(x);
+                $("#timer").text("0:00");
+                gameOver();
+            } else {
+                minutes = Math.floor((timer % (60 * 60)) / (60));
+                let seconds = Math.floor(timer % 60);
+                /* Display seconds as 00 when below 10 */
+                function pad(n) {
+                    return n < 10 ? '0' + n : n
+                }
+                seconds = pad(seconds);
+                $("#timer").text(minutes + ":" + seconds);
+            }
+            timer -= 1;
+        }, 1000);
+    }
+    /*---------------------------[ Start Game ]-----------------------------*/
     $('#start').on("click", function () {
         startGame()
     });
@@ -52,49 +70,32 @@ $(document).ready(function () {
         $('#start').addClass("hide");
         $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
-        //display keyboard
         $('.key').removeClass("disabled");
+
+        //Display keyboard if hidden
         if ($('.keyboard-container').hasClass("hide")) {
             $('.keyboard-container').removeClass("hide");
             $('#game-win').addClass("hide");
         }
-        //hide game over message
+        //Hide game over message if displayed
         if ($('.flex-container').hasClass("hide")) {
             $('.flex-container').removeClass("hide");
             $('#game-over').addClass("hide");
         }
-        //hide best score container
+        //Hide best score container
         if (!$('.best-score-container').hasClass('hide')) {
             $('.best-score-container').addClass('hide')
         }
-        // timer
-        //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
+        //Timer
         timer = 120;
-        x = setInterval(function () {
-            if (timer <= 0) {
-                clearInterval(x);
-                $("#timer").text("0:00");
-                gameOver();
-            } else {
-                minutes = Math.floor((timer % (60 * 60)) / (60));
-                let seconds = Math.floor(timer % 60);
+        setTimer(timer);
 
-                function pad(n) {
-                    return n < 10 ? '0' + n : n
-                }
-                seconds = pad(seconds);
-                //let sec = (seconds.toLocaleString(undefined, {minimumDigits: 2, maximumDigits: 2}));
-                console.log("test " + minutes + ":" + seconds);
-                $("#timer").text(minutes + ":" + seconds);
-            }
-            timer -= 1;
-
-        }, 1000);
-        /*hide hangman parts*/
+        //Hide hangman parts
         $.each($('path'), function (key, value) {
             $(this).addClass('hide');
 
         });
+
         let level = $('.btn-level.active').text();
         countCorrect = 0;
         countIncorrect = 0;
@@ -135,13 +136,12 @@ $(document).ready(function () {
 
     function localWord(level) {
         $.get("assets/words/words.txt", 'json').done(function (data) {
-                console.log("local file working")
+
                 var obj = JSON.parse(data);
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
                 generateLocalWord(obj, level);
             })
             .fail(function () {
-                console.log('local file not working --> inline array');
                 let obj = [{
                         word: "cat",
                         hint: "I am a pet.",
@@ -281,7 +281,7 @@ $(document).ready(function () {
     }
     /*-----------------[ Random Word API ]------------------*/
     function wordApi(level) {
-        //lettersMin=3&lettersMax=6&limit=5&page=1&frequencyMin=6
+
         /*from RapidAPI documentation documentation*/
         let parameters = apiParameters(level);
         const settings = {
@@ -315,7 +315,7 @@ $(document).ready(function () {
             });
     }
 
-    /*-----------------[ Display hint ]------------------*/
+    /*---------------------[ Display hint ]----------------------*/
     $('#hint').on('click', function () {
         $('#hint-content').text(hint);
         $('#hint-content').toggleClass('hide');
@@ -326,81 +326,111 @@ $(document).ready(function () {
         }
     });
 
-    /*------------------[ Display hangman part]------------*/
+    /*------------------[ DISPLAY HANGMAN PARTS ]-----------------*/
     function displayHangmanPart(nb) {
         $(`#part${nb}`).addClass('animate').removeClass('hide');
     }
 
+    /*------------------------[GAME OVER]-------------------------*/
+    function gameOver() {
+
+        //Sounds
+        if ($('.btn-volume.active').attr('data-sound') == "on") {
+            $('audio#game-over-sound')[0].play();
+        }
+        //Clear timer interval
+        clearInterval(x);
+        $("#timer").text("0:00");
+
+        //Update game over message with stats
+        $('#correct-answer').text(word);
+        $('.final-score').text(score);
+        $('.count-words').text(countWords);
+
+        //display game over 
+        $('.flex-container').addClass("hide");
+        $('#game-over').removeClass("hide");
+
+        //Update best score with scoring info 
+        if (parseInt($('#best-score').text()) < score) {
+            $('.best-score-container').removeClass('hide');
+            $('#best-score').text(score);
+            //
+        }
+
+        //Reset score to 0 when game over
+        countWords = 0;
+        score = 0;
+        $('#score').text(score);
+    };
+
     //-----------------[ PLAY GAME ] --------------------*/ 
     $(".key").on("click", function () {
-        console.log($(this).text());
-        console.log($(this).attr("id"));
-        //
+
+        //Evaluate guess
         let correctGuess = splitWord.includes($(this).text());
         let letter = $(this).text();
-        console.log(correctGuess);
-        //
-        
-        //
+
         if (correctGuess) { //match
-            console.log("correct guess");
+
             $.each(splitWord, function (index, value) {
                 if (value === letter) {
+
                     //Sound
-                    if ($('.btn-volume.active').attr('data-sound') == "on"){
-                    $('audio#success-sound')[0].play();
+                    if ($('.btn-volume.active').attr('data-sound') == "on") {
+                        $('audio#success-sound')[0].play();
                     }
-                    //
-                    console.log("letter is matched");
+
+                    //Update letter
                     $("#" + index).append(letter);
                     countCorrect = ++countCorrect;
-                    console.log(countCorrect);
+
                     //scoring
                     countStreak = ++countStreak;
-                    console.log("streak" + countStreak);
                     let addPoints = countStreak * point;
-                    console.log("Add points " + addPoints);
                     score = score + addPoints;
-                    console.log("Score " + score);
                     $('#score').text(score);
                 }
             });
             if (countCorrect == splitWord.length) {
-                console.log("You won!");
-                //
-                if ($('.btn-volume.active').attr('data-sound') == "on"){
-                $('audio#win-sound')[0].play();
+
+                //Sounds
+                if ($('.btn-volume.active').attr('data-sound') == "on") {
+                    $('audio#win-sound')[0].play();
                 }
-                //clear timer interval
+                //Clear timer interval
                 clearInterval(x);
-                //
-                //
                 $("#timer").text("0:00");
-                //display win message
+
+                //Display win message
                 $('.keyboard-container').addClass("hide");
                 $('#game-win').removeClass("hide");
+
                 //Hide hint if displayed
                 if (!$('#hint-content').hasClass('hide')) {
                     $('#hint-content').addClass('hide');
                 }
                 $('#hint').addClass("hide");
+
                 //Update statistics
                 countWords = ++countWords;
                 $('.final-score').text(score);
                 $('.count-words').text(countWords);
             }
         } else {
-            console.log("Incorrect guess");
-            //sound
-            if ($('.btn-volume.active').attr('data-sound') == "on"){
-            $('audio#fail-sound')[0].play();
+
+            //Sound
+            if ($('.btn-volume.active').attr('data-sound') == "on") {
+                $('audio#fail-sound')[0].play();
             }
-            //
+            //Display hangman
             countIncorrect = ++countIncorrect;
             displayHangmanPart(countIncorrect);
-            console.log(countIncorrect);
-            //reset streak to 0
+
+            //Reset streak to 0
             countStreak = 0;
+
+            //Call game over function
             if (countIncorrect == 10) {
                 setTimeout(function () {
                     gameOver();
@@ -411,39 +441,6 @@ $(document).ready(function () {
         $(this).addClass("disabled");
     });
 
-    /* test show game over message */
-    function gameOver() {
-        //
-        if ($('.btn-volume.active').attr('data-sound') == "on"){
-        $('audio#game-over-sound')[0].play();
-        }
-        //clear timer interval
-        clearInterval(x);
-        $("#timer").text("0:00");
-        //Update game over message with stats
-        $('#correct-answer').text(word);
-        console.log("the right answer was: " + word);
-        $('.final-score').text(score);
-        $('.count-words').text(countWords);
 
-        //display game over 
-        $('.flex-container').addClass("hide");
-        $('#game-over').removeClass("hide");
-
-        //Update best score with scoring info 
-        console.log("score is " + score)
-        //let currentBestScore = parseInt($('#best-score').text());
-        //console.log("only then remove hide")
-        if (parseInt($('#best-score').text()) < score) {
-            $('.best-score-container').removeClass('hide');
-            $('#best-score').text(score);
-            //
-        }
-        //Reset score to 0 when game over
-        countWords = 0;
-        score = 0;
-        $('#score').text(score);
-
-    };
 
 })
