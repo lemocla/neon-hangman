@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     /*-----------------[ Variables ]------------------*/
     let hintCollection;
     let firstLetter = "";
@@ -327,6 +327,55 @@ $(document).ready(function () {
             $(sound)[0].play();
         }
     }
+
+    /*-------------------------[ MATCH ]---------------------------*/
+
+    function match(letter) {
+        $.each(splitWord, function (index, value) {
+            if (value === letter) {
+
+                //Sound
+                let sound = "audio#success-sound";
+                playSound(sound);
+
+                //Update letter
+                $("#" + index).append(letter);
+                countCorrect = ++countCorrect;
+
+                //scoring
+                countStreak = ++countStreak;
+                let addPoints = countStreak * point;
+                score = score + addPoints;
+                $('#score').text(score);
+            }
+        });
+        if (countCorrect == splitWord.length) {
+            gameWin();
+        }
+    };
+
+    /*------------------------[ NO MATCH ]-------------------------*/
+
+    function noMatch() {
+        //Sound
+        let sound = "audio#fail-sound";
+        playSound(sound);
+
+        //Display hangman
+        countIncorrect = ++countIncorrect;
+        displayHangmanPart(countIncorrect);
+
+        //Reset streak to 0
+        countStreak = 0;
+
+        //Call game over function
+        if (countIncorrect == 10) {
+            setTimeout(function () {
+                gameOver();
+            }, 575);
+        }
+    };
+
     /*------------------------[ GAME WIN ]-------------------------*/
 
     function gameWin() {
@@ -385,61 +434,14 @@ $(document).ready(function () {
         $('#score').text(score);
     };
 
-
-
     //-----------------[ PLAY GAME ] --------------------*/ 
     $(".key").on("click", function () {
-
         //Evaluate guess
         let correctGuess = splitWord.includes($(this).text());
         let letter = $(this).text();
-
-        if (correctGuess) { //match
-
-            $.each(splitWord, function (index, value) {
-                if (value === letter) {
-
-                    //Sound
-                    let sound = "audio#success-sound";
-                    playSound(sound);
-
-                    //Update letter
-                    $("#" + index).append(letter);
-                    countCorrect = ++countCorrect;
-
-                    //scoring
-                    countStreak = ++countStreak;
-                    let addPoints = countStreak * point;
-                    score = score + addPoints;
-                    $('#score').text(score);
-                }
-            });
-            if (countCorrect == splitWord.length) {
-                gameWin();
-            }
-        } else {
-
-            //Sound
-            let sound = "audio#fail-sound";
-            playSound(sound);
-
-            //Display hangman
-            countIncorrect = ++countIncorrect;
-            displayHangmanPart(countIncorrect);
-
-            //Reset streak to 0
-            countStreak = 0;
-
-            //Call game over function
-            if (countIncorrect == 10) {
-                setTimeout(function () {
-                    gameOver();
-                }, 575);
-            }
-        }
+        //Match / noMatch
+        correctGuess ? match(letter) : noMatch();
+        //Disable keys
         $(this).addClass("disabled");
     });
-
-
-
 })
