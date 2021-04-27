@@ -347,8 +347,9 @@ $(document).ready(function () {
             $.each(splitWord, function (index, value) {
                 if (value === letter) {
                     //Sound
+                    if ($('.btn-volume.active').attr('data-sound') == "on"){
                     $('audio#success-sound')[0].play();
-                    
+                    }
                     //
                     console.log("letter is matched");
                     $("#" + index).append(letter);
@@ -367,7 +368,9 @@ $(document).ready(function () {
             if (countCorrect == splitWord.length) {
                 console.log("You won!");
                 //
+                if ($('.btn-volume.active').attr('data-sound') == "on"){
                 $('audio#win-sound')[0].play();
+                }
                 //clear timer interval
                 clearInterval(x);
                 //
@@ -389,7 +392,9 @@ $(document).ready(function () {
         } else {
             console.log("Incorrect guess");
             //sound
+            if ($('.btn-volume.active').attr('data-sound') == "on"){
             $('audio#fail-sound')[0].play();
+            }
             //
             countIncorrect = ++countIncorrect;
             displayHangmanPart(countIncorrect);
@@ -409,7 +414,9 @@ $(document).ready(function () {
     /* test show game over message */
     function gameOver() {
         //
+        if ($('.btn-volume.active').attr('data-sound') == "on"){
         $('audio#game-over-sound')[0].play();
+        }
         //clear timer interval
         clearInterval(x);
         $("#timer").text("0:00");
