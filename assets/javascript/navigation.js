@@ -50,6 +50,28 @@ $(document).ready(function () {
         //console.log(src);
     });
 
+    // Turn sound on and off from game info
+    $('img[data-attr=sound]').on("click", function()
+    {
+        let test = $(this).attr('src');
+        let src;
+        if ($(this).attr('src') == "assets/images/soundon.svg") {
+
+        src = "assets/images/soundoff.svg";
+        $('.btn-volume[data-sound=on]').removeClass('active');
+        $('.btn-volume[data-sound=off]').addClass('active');
+
+        } else if ($(this).attr('src') == "assets/images/soundoff.svg")
+        {
+        src= "assets/images/soundon.svg";
+        $('.btn-volume[data-sound=off]').removeClass('active');
+        $('.btn-volume[data-sound=on]').addClass('active');
+        }
+
+        $('img[data-attr=sound]').attr('src', src);
+
+    });
+
 
     // Open/close modal forms
 
