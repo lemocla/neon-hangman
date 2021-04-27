@@ -1,14 +1,5 @@
 $(document).ready(function () {
-    /*-----------------[bugs to fix / improvments]--------------------------*/
-    /*
-    - start & continue ---> have a common attribute ?
-    - add scoring / further info in menu about the game
-    - clean hide & show different elements on start
-    - see if there's a way to avoid the same word to be generated at random twice in a row
-    - make sure nothing happens when key is pressed before game is started
-    - Move hint up on mobile as not to hide the word too much
-    */
-
+    
     /*-----------------[ Variables ]------------------*/
     let hintCollection;
     let firstLetter = "";
@@ -331,13 +322,46 @@ $(document).ready(function () {
         $(`#part${nb}`).addClass('animate').removeClass('hide');
     }
 
-    /*------------------------[GAME OVER]-------------------------*/
-    function gameOver() {
-
-        //Sounds
+    /*------------------------[ SOUNDS ]---------------------------*/
+    //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
+    function playSound(sound) {
         if ($('.btn-volume.active').attr('data-sound') == "on") {
-            $('audio#game-over-sound')[0].play();
+            $(sound)[0].play();
         }
+    }
+    /*------------------------[ GAME WIN ]-------------------------*/
+
+    function gameWin() {
+        //Sounds
+        let sound = "audio#win-sound";
+        playSound(sound);
+
+        //Clear timer interval
+        clearInterval(x);
+        $("#timer").text("0:00");
+
+        //Display win message
+        $('.keyboard-container').addClass("hide");
+        $('#game-win').removeClass("hide");
+
+        //Hide hint if displayed
+        if (!$('#hint-content').hasClass('hide')) {
+            $('#hint-content').addClass('hide');
+        }
+        $('#hint').addClass("hide");
+
+        //Update statistics
+        countWords = ++countWords;
+        $('.final-score').text(score);
+        $('.count-words').text(countWords);
+
+    }
+
+    /*------------------------[ GAME OVER ]-------------------------*/
+    function gameOver() {
+        //Sounds
+        let sound = "audio#game-over-sound";
+        playSound(sound);
         //Clear timer interval
         clearInterval(x);
         $("#timer").text("0:00");
@@ -355,7 +379,6 @@ $(document).ready(function () {
         if (parseInt($('#best-score').text()) < score) {
             $('.best-score-container').removeClass('hide');
             $('#best-score').text(score);
-            //
         }
 
         //Reset score to 0 when game over
@@ -363,6 +386,8 @@ $(document).ready(function () {
         score = 0;
         $('#score').text(score);
     };
+
+
 
     //-----------------[ PLAY GAME ] --------------------*/ 
     $(".key").on("click", function () {
@@ -377,9 +402,8 @@ $(document).ready(function () {
                 if (value === letter) {
 
                     //Sound
-                    if ($('.btn-volume.active').attr('data-sound') == "on") {
-                        $('audio#success-sound')[0].play();
-                    }
+                    let sound = "audio#success-sound";
+                    playSound(sound);
 
                     //Update letter
                     $("#" + index).append(letter);
@@ -393,36 +417,14 @@ $(document).ready(function () {
                 }
             });
             if (countCorrect == splitWord.length) {
-
-                //Sounds
-                if ($('.btn-volume.active').attr('data-sound') == "on") {
-                    $('audio#win-sound')[0].play();
-                }
-                //Clear timer interval
-                clearInterval(x);
-                $("#timer").text("0:00");
-
-                //Display win message
-                $('.keyboard-container').addClass("hide");
-                $('#game-win').removeClass("hide");
-
-                //Hide hint if displayed
-                if (!$('#hint-content').hasClass('hide')) {
-                    $('#hint-content').addClass('hide');
-                }
-                $('#hint').addClass("hide");
-
-                //Update statistics
-                countWords = ++countWords;
-                $('.final-score').text(score);
-                $('.count-words').text(countWords);
+                gameWin();
             }
         } else {
 
             //Sound
-            if ($('.btn-volume.active').attr('data-sound') == "on") {
-                $('audio#fail-sound')[0].play();
-            }
+            let sound = "audio#fail-sound";
+            playSound(sound);
+
             //Display hangman
             countIncorrect = ++countIncorrect;
             displayHangmanPart(countIncorrect);
@@ -436,7 +438,6 @@ $(document).ready(function () {
                     gameOver();
                 }, 575);
             }
-
         }
         $(this).addClass("disabled");
     });
