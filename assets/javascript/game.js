@@ -340,12 +340,16 @@ $(document).ready(function () {
         let letter = $(this).text();
         console.log(correctGuess);
         //
-
+        
         //
         if (correctGuess) { //match
             console.log("correct guess");
             $.each(splitWord, function (index, value) {
                 if (value === letter) {
+                    //Sound
+                    $('audio#success-sound')[0].play();
+                    
+                    //
                     console.log("letter is matched");
                     $("#" + index).append(letter);
                     countCorrect = ++countCorrect;
@@ -362,13 +366,12 @@ $(document).ready(function () {
             });
             if (countCorrect == splitWord.length) {
                 console.log("You won!");
+                //
+                $('audio#win-sound')[0].play();
                 //clear timer interval
                 clearInterval(x);
-                //timer = 120;
-                //minutes = Math.floor((timer % (60 * 60)) / (60));
-                //seconds = Math.floor(timer % 60);
-                //console.log("test " + minutes + ":" + seconds);
-                //$("#timer").text(timer + " s");
+                //
+                //
                 $("#timer").text("0:00");
                 //display win message
                 $('.keyboard-container').addClass("hide");
@@ -385,6 +388,8 @@ $(document).ready(function () {
             }
         } else {
             console.log("Incorrect guess");
+            //sound
+            $('audio#fail-sound')[0].play();
             //
             countIncorrect = ++countIncorrect;
             displayHangmanPart(countIncorrect);
@@ -403,6 +408,8 @@ $(document).ready(function () {
 
     /* test show game over message */
     function gameOver() {
+        //
+        $('audio#game-over-sound')[0].play();
         //clear timer interval
         clearInterval(x);
         $("#timer").text("0:00");
