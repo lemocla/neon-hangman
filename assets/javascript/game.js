@@ -4,6 +4,8 @@
 $(document).ready(function () {
 
     /*-----------------[ Variables ]------------------*/
+    let level;
+    const apiTrue = ['easy', 'medium', 'hard'];
     let hintCollection;
     let firstLetter = "";
     let word;
@@ -25,10 +27,10 @@ $(document).ready(function () {
     let x;
     /*-------------------------------[ Timer ] --------------------------------*/
     /* Display seconds as 00 when below 10 */
-                function pad(n) {
-                    let sec = ((n < 10) ? '0' + n : n);
-                    return sec;
-                }
+    function pad(n) {
+        let sec = ((n < 10) ? '0' + n : n);
+        return sec;
+    }
 
     //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
     function setTimer(timer) {
@@ -40,14 +42,15 @@ $(document).ready(function () {
             } else {
                 let minutes = Math.floor((timer % (60 * 60)) / (60));
                 let seconds = Math.floor(timer % 60);
-                
+
                 seconds = pad(seconds);
                 $("#timer").text(minutes + ":" + seconds);
             }
             timer -= 1;
         }, 1000);
     }
-    function clearTimer(){
+
+    function clearTimer() {
         clearInterval(x);
         $("#timer").text("0:00");
     }
@@ -95,7 +98,7 @@ $(document).ready(function () {
 
         });
 
-        let level = $('.btn-level.active').text();
+        level = $('.btn-level.active').text();
         countCorrect = 0;
         countIncorrect = 0;
         countStreak = 0;
@@ -116,7 +119,6 @@ $(document).ready(function () {
     /* --------------[ Generate Random Word according to category selected ] ---------------*/
 
     function generateRandomWord(level) {
-        const apiTrue = ['easy', 'medium', 'hard'];
         getWordMethod = ((apiTrue.includes(level)) ? wordApi(level) : localWord(level));
     }
 
@@ -278,7 +280,7 @@ $(document).ready(function () {
         return `lettersMin=${min}&lettersMax=${max}&limit=5&page=1&frequencyMin=${freqMin}&frequencyMax=${freqMax}`;
     }
     /*-----------------[ Random Word API ]------------------*/
-    
+
     function wordApi(level) {
 
         /*from RapidAPI documentation documentation*/
@@ -295,7 +297,7 @@ $(document).ready(function () {
             //https://api.jquery.com/jquery.ajax/
             "dataType": "json"
         };
-        
+
         $.ajax(settings).done(function (dataType) {
                 displayWord(dataType.word);
                 word = dataType.word;
@@ -305,28 +307,33 @@ $(document).ready(function () {
                 hintCollection = $.map(definitions, function (value) {
                     return value.definition;
                 });
-                hint = ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`);
+                //hint = ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`);
                 console.log("word API = " + dataType.word);
-                console.log("hinT API = " + hint);
             })
             .fail(function () {
                 localWord();
             });
     }
-    
+
     /*---------------------[ Display hint ]----------------------*/
-    
-    
+
+    function getHintValue() {
+        hint = ((apiTrue.includes(level)) ?
+            ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`) :
+            hint);
+    }
+
     $('#hint').on('click', function () {
+        getHintValue();
         $('#hint-content').text(hint);
         $('#hint-content').toggleClass('hide');
         if (!$('#hint-content').hasClass('hide')) {
             setTimeout(function () {
                 $('#hint-content').addClass('hide');
-            }, 3000);
+            }, 3500);
         }
     });
-    
+
     /*------------------[ DISPLAY HANGMAN PARTS ]-----------------*/
     function displayHangmanPart(nb) {
         $(`#part${nb}`).addClass('animate').removeClass('hide');
@@ -416,7 +423,7 @@ $(document).ready(function () {
         playSound(sound);
         //Clear timer interval
         clearTimer();
-        
+
         //Update game over message with stats
         $('#correct-answer').text(word);
         $('.final-score').text(score);
@@ -435,7 +442,7 @@ $(document).ready(function () {
         $('#score').text(score);
     }
 
-    /*-----------------[ PLAY GAME ]--------------------*/ 
+    /*-----------------[ PLAY GAME ]--------------------*/
     $(".key").on("click", function () {
         //Evaluate guess
         let isCorrectGuess = splitWord.includes($(this).text());
