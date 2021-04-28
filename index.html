@@ -51,7 +51,24 @@
                         </div>
                     </div>
                     <button class="btn btn-menu" data-content="leaderboard">Leaderboard</button>
-                    <div id="leaderboard" class="menu-content hide" data-type="menu-content">Leaderboard content here
+                    <div id="leaderboard" class="menu-content hide" data-type="menu-content">
+                        <table id="lead-table">
+                            <tr class="table-header">
+                                <th>date</th>
+                                <th>name</th>
+                                <th>score</th>
+                            </tr>
+                            <tr>
+                                <td>20/01/21</td>
+                                <td>Harry</td>
+                                <td>350</td>
+                            </tr>
+                            <tr>
+                                <td>19/02/21</td>
+                                <td>Lily</td>
+                                <td>550</td>
+                            </tr>
+                        </table>
                     </div>
                 </div>
                 <!-- end menu content -->
@@ -232,7 +249,7 @@
     <!-- thank you modal -->
     <div id="modal-thankyou" class="modal-window hide">
         <div class="form-response-container">
-        <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-thankyou">
+            <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-thankyou">
             <p>Thank your for your message!</p>
             <button class="btn btn-form" data-close="modal-thankyou">Close</button>
         </div>
@@ -240,9 +257,9 @@
     <!-- error message modal -->
     <div id="modal-error" class="modal-window hide">
         <div class="form-response-container">
-        <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-error">
+            <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-error">
             <p>We are sorry, your email couldn't go through at this time.
-            But don't worry, you can contact us as follow:</p>
+                But don't worry, you can contact us as follow:</p>
             <p class="pd-top">claireci.lemonnier@gmail.com</p>
             <button class="btn btn-form" data-close="modal-thankyou">Close</button>
         </div>
