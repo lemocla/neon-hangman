@@ -25,86 +25,9 @@ $(document).ready(function () {
     //timer
     let timer;
     let x;
-    /*-------------------------------[ Timer ] --------------------------------*/
-    /* Display seconds as 00 when below 10 */
-    function pad(n) {
-        let sec = ((n < 10) ? '0' + n : n);
-        return sec;
-    }
+    let sound;
 
-    //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown//
-    function setTimer(timer) {
-        x = setInterval(function () {
-            if (timer <= 0) {
-                clearInterval(x);
-                $("#timer").text("0:00");
-                gameOver();
-            } else {
-                let minutes = Math.floor((timer % (60 * 60)) / (60));
-                let seconds = Math.floor(timer % 60);
 
-                seconds = pad(seconds);
-                $("#timer").text(minutes + ":" + seconds);
-            }
-            timer -= 1;
-        }, 1000);
-    }
-
-    function clearTimer() {
-        clearInterval(x);
-        $("#timer").text("0:00");
-    }
-    /*---------------------------[ Start Game ]-----------------------------*/
-    $('#start').on("click", function () {
-        startGame();
-    });
-
-    $('.continue').on("click", function () {
-        startGame();
-    });
-
-    $('#play-again').on("click", function () {
-        startGame();
-    });
-
-    function startGame() {
-        $('.word').empty();
-        $('#start').addClass("hide");
-        $('.word').empty().removeClass("hide");
-        $('#hint').removeClass("hide");
-        $('.key').removeClass("disabled");
-
-        //Display keyboard if hidden
-        if ($('.keyboard-container').hasClass("hide")) {
-            $('.keyboard-container').removeClass("hide");
-            $('#game-win').addClass("hide");
-        }
-        //Hide game over message if displayed
-        if ($('.flex-container').hasClass("hide")) {
-            $('.flex-container').removeClass("hide");
-            $('#game-over').addClass("hide");
-        }
-        //Hide best score container
-        if (!$('.best-score-container').hasClass('hide')) {
-            $('.best-score-container').addClass('hide');
-        }
-        //Timer
-        timer = 120;
-        setTimer(timer);
-
-        //Hide hangman parts
-        $.each($('path'), function () {
-            $(this).addClass('hide');
-
-        });
-
-        level = $('.btn-level.active').text();
-        countCorrect = 0;
-        countIncorrect = 0;
-        countStreak = 0;
-        generateRandomWord(level);
-
-    }
 
     /*---------------[ Split Word & display in HTML ]----------------*/
     function displayWord(word) {
@@ -115,11 +38,6 @@ $(document).ready(function () {
                 `<div class="letter-box" id="${index}"></div>`
             );
         });
-    }
-    /* --------------[ Generate Random Word according to category selected ] ---------------*/
-
-    function generateRandomWord(level) {
-        getWordMethod = ((apiTrue.includes(level)) ? wordApi(level) : localWord(level));
     }
 
     /*-------------------------------- [ Local words ] --------------------------------*/
@@ -315,6 +233,85 @@ $(document).ready(function () {
             });
     }
 
+    /* --------------[ Generate Random Word according to category selected ] ---------------*/
+
+    function generateRandomWord(level) {
+        getWordMethod = ((apiTrue.includes(level)) ? wordApi(level) : localWord(level));
+    }
+
+    /*-------------------------------[ Timer ] --------------------------------*/
+    
+    //https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+    function pad(n) {
+        let sec = ((n < 10) ? '0' + n : n);
+        return sec;
+    }
+
+    //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
+    function setTimer(timer) {
+        x = setInterval(function () {
+            if (timer <= 0) {
+                clearInterval(x);
+                $("#timer").text("0:00");
+                gameOver();
+            } else {
+                let minutes = Math.floor((timer % (60 * 60)) / (60));
+                let seconds = Math.floor(timer % 60);
+
+                seconds = pad(seconds);
+                $("#timer").text(minutes + ":" + seconds);
+            }
+            timer -= 1;
+        }, 1000);
+    }
+
+    function clearTimer() {
+        clearInterval(x);
+        $("#timer").text("0:00");
+    }
+
+    /*---------------------------[ Start Game ]-----------------------------*/
+
+    function startGame() {
+        $('.word').empty();
+        $('#start').addClass("hide");
+        $('.word').empty().removeClass("hide");
+        $('#hint').removeClass("hide");
+        $('.key').removeClass("disabled");
+
+        //Display keyboard if hidden
+        if ($('.keyboard-container').hasClass("hide")) {
+            $('.keyboard-container').removeClass("hide");
+            $('#game-win').addClass("hide");
+        }
+        //Hide game over message if displayed
+        if ($('.flex-container').hasClass("hide")) {
+            $('.flex-container').removeClass("hide");
+            $('#game-over').addClass("hide");
+        }
+        //Hide best score container
+        if (!$('.best-score-container').hasClass('hide')) {
+            $('.best-score-container').addClass('hide');
+        }
+        //Timer
+        timer = 120;
+        setTimer(timer);
+
+        //Hide hangman parts
+        $.each($('path'), function () {
+            $(this).addClass('hide');
+        });
+
+        level = $('.btn-level.active').text();
+        countCorrect = 0;
+        countIncorrect = 0;
+        countStreak = 0;
+        generateRandomWord(level);
+    }
+    $("button[data-function=start-game]").on("click", function () {
+        startGame();
+    });
+
     /*---------------------[ Display hint ]----------------------*/
 
     function getHintValue() {
@@ -340,6 +337,7 @@ $(document).ready(function () {
     }
 
     /*------------------------[ SOUNDS ]---------------------------*/
+
     //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
     function playSound(sound) {
         if ($('.btn-volume.active').attr('data-sound') == "on") {
@@ -357,10 +355,11 @@ $(document).ready(function () {
     /*-------------------------[ MATCH ]---------------------------*/
 
     function match(letter) {
+        sound = "audio#success-sound";
         $.each(splitWord, function (index, value) {
             if (value === letter) {
                 //Sound
-                let sound = "audio#success-sound";
+
                 playSound(sound);
                 //Update letter
                 $("#" + index).append(letter);
@@ -379,7 +378,7 @@ $(document).ready(function () {
 
     function noMatch() {
         //Sound
-        let sound = "audio#fail-sound";
+        sound = "audio#fail-sound";
         playSound(sound);
         //Display hangman
         countIncorrect = ++countIncorrect;
@@ -398,7 +397,7 @@ $(document).ready(function () {
 
     function gameWin() {
         //Sounds
-        let sound = "audio#win-sound";
+        sound = "audio#win-sound";
         playSound(sound);
         //Clear timer interval
         clearTimer();
@@ -419,7 +418,7 @@ $(document).ready(function () {
     /*------------------------[ GAME OVER ]-------------------------*/
     function gameOver() {
         //Sounds
-        let sound = "audio#game-over-sound";
+        sound = "audio#game-over-sound";
         playSound(sound);
         //Clear timer interval
         clearTimer();

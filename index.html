@@ -99,7 +99,7 @@
                     <input id="scorename" type="text" name="scorename">
                 </div>
                 <div class="content-group pd-top">
-                    <button id="play-again" class="btn">play again</button>
+                    <button id="play-again" class="btn" data-function="start-game">play again</button>
                     <button class="leave btn">leave</button>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                     <img id="hint" class="hide" src="assets/images/hint.svg" alt="open-hint">
                     <div id="hint-content" class="hide"></div>
                     <div class="word-intro">Can you guess the hidden word?</div>
-                    <button id="start" class="btn">play</button>
+                    <button id="start" class="btn" data-function="start-game">play</button>
                     <div class="word hide"></div>
                 </div>
                 <!-- message win -->
@@ -119,7 +119,7 @@
                         <div>Words: <span class="count-words">0</span></div>
                         <div>Score: <span class="final-score">0</span></div>
                     </div>
-                    <button class="continue btn">continue</button>
+                    <button class="continue btn" data-function="start-game">continue</button>
                     <button class="leave btn">leave</button>
                 </div>
                 <!-- keyboard -->
