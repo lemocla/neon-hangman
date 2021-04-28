@@ -1,11 +1,13 @@
+/*jshint esversion: 6 */
+/* globals $:false */
 $(document).ready(function () {
 
     /*-----------------------[ Toggle menu]-----------------------*/
 
     $('#toggle-nav').on("click", function () {
         $('.menu-container').toggle();
-        ($('.menu-container').css('display') == 'block' ? $(this).attr('src', 'assets/images/close.svg') : $(this).attr('src', 'assets/images/cog.svg'));
-    })
+        updateDispay = $('.menu-container').css('display') == 'block' ? $(this).attr('src', 'assets/images/close.svg') : $(this).attr('src', 'assets/images/cog.svg');
+    });
 
     /*----------------[ Display menu items content ]----------------*/
 
@@ -41,14 +43,13 @@ $(document).ready(function () {
             activeBtn.removeClass('active');
         }
         // Update game info section
-        let src = (($(this).attr('data-sound') == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg")
+        let src = (($(this).attr('data-sound') == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg");
         $('img[data-attr=sound]').attr('src', src);
     });
 
     /*---------[ Turn sound on and off from game info ]-----------*/
 
     function turnSound(current, val) {
-        //src = `assets/images/sound${val}.svg`;
         $(`.btn-volume[data-sound=${current}]`).removeClass('active');
         $(`.btn-volume[data-sound=${val}]`).addClass('active');
         //console.log(src);
@@ -71,7 +72,17 @@ $(document).ready(function () {
         $('#modal-form').toggleClass('hide');
     });
 
-    $('#close-modal').on('click', function () {
-        $('#modal-form').addClass('hide');
+    function closeModal(obj){
+        let modal = $(obj).attr('data-close');
+        $(`#${modal}`).addClass('hide');
+    }
+
+    $('.close-modal').on('click', function () {
+        closeModal(this);
     });
+
+    $('.btn-form').on('click', function () {
+        closeModal(this);
+    });
+
 });
