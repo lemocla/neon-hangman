@@ -1,8 +1,58 @@
 /*jshint esversion: 6 */
 /* globals $:false */
-$(document).ready(function () {
+/* globals localStorage:false */
 
-    /*-----------------------[ Toggle menu]-----------------------*/
+$(document).ready(function () {
+    /*-----------------------[ WebAPI ]---------------------------*/
+    /*
+    localStorage.removeItem('level', 'easy');
+    localStorage.removeItem('sound', 'on');
+    localStorage.removeItem('score', 0);
+    localStorage.removeItem('best-score', 0);
+    let arrayBestScores = [];
+    localStorage.removeItem('leaderboard', arrayBestScores);
+    */
+    if (typeof (Storage) !== "undefined") {
+        //Level
+        if (localStorage.level) {
+            let storedLevel = localStorage.getItem('level');
+            $(`.btn-level[data-level=${storedLevel}]`).addClass('active');
+            $(`.btn-level.active[data-level!=${storedLevel}]`).removeClass('active');
+            $('.level').text(storedLevel);
+            
+        } else {
+            localStorage.setItem('level', 'easy');
+        }
+        //Sounds
+        if (localStorage.sound) {
+            let storedSound = localStorage.getItem('sound');
+            $(`.btn-volume[data-sound=${storedSound}]`).addClass('active');
+            $(`.btn-volume.active[data-sound!=${storedSound}]`).removeClass('active');
+            let src = ((storedSound == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg");
+            $('img[data-attr=sound]').attr('src', src);
+        } else {
+            localStorage.setItem('sound', 'on');
+        }
+    } else {
+        localStorage.setItem('level', 'easy');
+        localStorage.setItem('sound', 'on');
+        localStorage.setItem('score', 0);
+        localStorage.setItem('best-score', 0);
+        /*
+        let arrayBestScores = [];
+        localStorage.setItem('leaderboard', arrayBestScores);
+        
+        console.log("level api = " + localStorage.getItem('level'));
+        console.log("sound api = " + localStorage.getItem('sound'));
+        console.log("score api = " + localStorage.getItem('score'));
+        console.log("best-score api = " + localStorage.getItem('best-score'));
+        console.log("leaderboard = " + localStorage.getItem('leaderboard'));
+        */
+    }
+
+   
+
+    /*----------------------[ Toggle menu ]-----------------------*/
 
     $('#toggle-nav').on("click", function () {
         $('.menu-container').toggle();
@@ -30,8 +80,10 @@ $(document).ready(function () {
         if (activeBtn.length > 0) {
             activeBtn.removeClass('active');
         }
-        // Update game info section
+        //Update game info section
         $('.level').text($(this).text());
+        //Local Storage
+        localStorage.setItem('level', $(this).text());
     });
 
     /*-------------------[ Select volume items ]-------------------*/
@@ -45,6 +97,8 @@ $(document).ready(function () {
         // Update game info section
         let src = (($(this).attr('data-sound') == 'on') ? "assets/images/soundon.svg" : "assets/images/soundoff.svg");
         $('img[data-attr=sound]').attr('src', src);
+        //Local Storage
+        localStorage.setItem('sound', $('.btn-volume.active').attr('data-sound'));
     });
 
     /*---------[ Turn sound on and off from game info ]-----------*/
@@ -52,8 +106,9 @@ $(document).ready(function () {
     function turnSound(current, val) {
         $(`.btn-volume[data-sound=${current}]`).removeClass('active');
         $(`.btn-volume[data-sound=${val}]`).addClass('active');
-        //console.log(src);
-        return `assets/images/sound${val}.svg`;
+        //Local Storage
+        localStorage.setItem('sound', val);
+        return `assets/images/sound${val}.svg`;  
     }
 
     $('img[data-attr=sound]').on("click", function () {
@@ -72,7 +127,7 @@ $(document).ready(function () {
         $('#modal-form').toggleClass('hide');
     });
 
-    function closeModal(obj){
+    function closeModal(obj) {
         let modal = $(obj).attr('data-close');
         $(`#${modal}`).addClass('hide');
     }
