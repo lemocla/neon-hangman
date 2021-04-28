@@ -3,9 +3,11 @@
 
 $(document).ready(function () {
 
-    /*-----------------[ Variables ]------------------*/
+    /*--------------------------[ VARIABLES ]-------------------------*/
+
     let level;
     const apiTrue = ['easy', 'medium', 'hard'];
+    //Words
     let hintCollection;
     let firstLetter = "";
     let word;
@@ -13,6 +15,7 @@ $(document).ready(function () {
     let splitWord;
     let countCorrect = 0;
     let countIncorrect = 0;
+    //Hangman
     let hangmanParts = [];
     $.each($('path'), function (value) {
         hangmanParts.push(value.id);
@@ -27,9 +30,10 @@ $(document).ready(function () {
     let x;
     let sound;
 
+    /*------------------------[ START GAME ]-----------------------*/
 
+    //Split and display word in html
 
-    /*---------------[ Split Word & display in HTML ]----------------*/
     function displayWord(word) {
         splitWord = word.split("");
         firstLetter = splitWord[0];
@@ -40,7 +44,8 @@ $(document).ready(function () {
         });
     }
 
-    /*-------------------------------- [ Local words ] --------------------------------*/
+    //Local words 
+
     function generateLocalWord(obj, level) {
         let localWords = obj.filter(function (el) {
             return el.category == level;
@@ -53,7 +58,7 @@ $(document).ready(function () {
         displayWord(word);
     }
 
-    function localWord(level) {
+    function getLocalWord(level) {
         $.get("assets/words/words.txt", 'json').done(function (data) {
                 let obj = JSON.parse(data);
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
@@ -172,8 +177,10 @@ $(document).ready(function () {
                 generateLocalWord(obj, level);
             });
     }
-    /*-----------------[  API query parameters ]------------------*/
-    function apiParameters(level) {
+
+    //set API parameters
+
+    function setApiParameters(level) {
         let min;
         let max;
         let freqMin;
@@ -197,12 +204,12 @@ $(document).ready(function () {
         }
         return `lettersMin=${min}&lettersMax=${max}&limit=5&page=1&frequencyMin=${freqMin}&frequencyMax=${freqMax}`;
     }
-    /*-----------------[ Random Word API ]------------------*/
 
-    function wordApi(level) {
+    //Get random Word via API
 
+    function getWordApi(level) {
         /*from RapidAPI documentation documentation*/
-        let parameters = apiParameters(level);
+        let parameters = setApiParameters(level);
         const settings = {
             "async": true,
             "crossDomain": true,
@@ -225,7 +232,6 @@ $(document).ready(function () {
                 hintCollection = $.map(definitions, function (value) {
                     return value.definition;
                 });
-                //hint = ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`);
                 console.log("word API = " + dataType.word);
             })
             .fail(function () {
@@ -233,14 +239,14 @@ $(document).ready(function () {
             });
     }
 
-    /* --------------[ Generate Random Word according to category selected ] ---------------*/
+    //Generate Random Word according to category selected
 
     function generateRandomWord(level) {
-        getWordMethod = ((apiTrue.includes(level)) ? wordApi(level) : localWord(level));
+        getWordMethod = ((apiTrue.includes(level)) ? getWordApi(level) : getLocalWord(level));
     }
 
-    /*-------------------------------[ Timer ] --------------------------------*/
-    
+    //Timer
+
     //https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
     function pad(n) {
         let sec = ((n < 10) ? '0' + n : n);
@@ -270,49 +276,60 @@ $(document).ready(function () {
         $("#timer").text("0:00");
     }
 
-    /*---------------------------[ Start Game ]-----------------------------*/
+    //display and hide html contents
 
-    function startGame() {
+    function setGameElements() {
         $('.word').empty();
         $('#start').addClass("hide");
         $('.word').empty().removeClass("hide");
         $('#hint').removeClass("hide");
         $('.key').removeClass("disabled");
-
-        //Display keyboard if hidden
-        if ($('.keyboard-container').hasClass("hide")) {
-            $('.keyboard-container').removeClass("hide");
-            $('#game-win').addClass("hide");
-        }
-        //Hide game over message if displayed
-        if ($('.flex-container').hasClass("hide")) {
-            $('.flex-container').removeClass("hide");
-            $('#game-over').addClass("hide");
-        }
-        //Hide best score container
-        if (!$('.best-score-container').hasClass('hide')) {
-            $('.best-score-container').addClass('hide');
-        }
-        //Timer
-        timer = 120;
-        setTimer(timer);
-
         //Hide hangman parts
         $.each($('path'), function () {
             $(this).addClass('hide');
         });
+    }
 
+    function resetDisplayAfterWin() {
+        $('.keyboard-container').removeClass("hide");
+        $('#game-win').addClass("hide");
+    }
+
+    function resetDisplayAfterGameOver() {
+        $('.flex-container').removeClass("hide");
+        $('#game-over').addClass("hide");
+        //Hide best score container
+        if (!$('.best-score-container').hasClass('hide')) {
+            $('.best-score-container').addClass('hide');
+        }
+    }
+
+    //Start Game
+
+    function startGame() {
+        setGameElements();
+        if ($('.keyboard-container').hasClass("hide")) {
+            resetDisplayAfterWin();
+        }
+        if ($('.flex-container').hasClass("hide")) {
+            resetDisplayAfterGameOver();
+        }
+        timer = 120;
+        setTimer(timer);
         level = $('.btn-level.active').text();
         countCorrect = 0;
         countIncorrect = 0;
         countStreak = 0;
         generateRandomWord(level);
     }
+
     $("button[data-function=start-game]").on("click", function () {
         startGame();
     });
 
-    /*---------------------[ Display hint ]----------------------*/
+    /*-------------------------[ PLAY GAME ]--------------------------*/
+
+    //Display hints    
 
     function getHintValue() {
         hint = ((apiTrue.includes(level)) ?
@@ -331,12 +348,13 @@ $(document).ready(function () {
         }
     });
 
-    /*------------------[ DISPLAY HANGMAN PARTS ]-----------------*/
+    //Display hangman parts
+
     function displayHangmanPart(nb) {
         $(`#part${nb}`).addClass('animate').removeClass('hide');
     }
 
-    /*------------------------[ SOUNDS ]---------------------------*/
+    //Sounds
 
     //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
     function playSound(sound) {
@@ -345,14 +363,16 @@ $(document).ready(function () {
         }
     }
 
-    /*-------------------------[ SCORING ]-------------------------*/
+    //Scoring
+
     function incrementScore(countStreak, score, point) {
         let addPoints = countStreak * point;
         score = score + addPoints;
         $('#score').text(score);
         return score;
     }
-    /*-------------------------[ MATCH ]---------------------------*/
+
+    //Match
 
     function match(letter) {
         sound = "audio#success-sound";
@@ -370,11 +390,13 @@ $(document).ready(function () {
             }
         });
         if (countCorrect == splitWord.length) {
-            gameWin();
+            setTimeout(function () {
+                gameWin();
+            }, 575);
         }
     }
 
-    /*------------------------[ NO MATCH ]-------------------------*/
+    //No match
 
     function noMatch() {
         //Sound
@@ -393,7 +415,7 @@ $(document).ready(function () {
         }
     }
 
-    /*------------------------[ GAME WIN ]-------------------------*/
+    //Game win
 
     function gameWin() {
         //Sounds
@@ -415,14 +437,14 @@ $(document).ready(function () {
         $('.count-words').text(countWords);
     }
 
-    /*------------------------[ GAME OVER ]-------------------------*/
+    //Game over
+
     function gameOver() {
         //Sounds
         sound = "audio#game-over-sound";
         playSound(sound);
         //Clear timer interval
         clearTimer();
-
         //Update game over message with stats
         $('#correct-answer').text(word);
         $('.final-score').text(score);
@@ -441,7 +463,8 @@ $(document).ready(function () {
         $('#score').text(score);
     }
 
-    /*-----------------[ PLAY GAME ]--------------------*/
+    //Play game
+
     $(".key").on("click", function () {
         //Evaluate guess
         let isCorrectGuess = splitWord.includes($(this).text());
