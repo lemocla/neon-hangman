@@ -456,6 +456,7 @@ $(document).ready(function () {
         if (parseInt($('#best-score').text()) < score) {
             $('.best-score-container').removeClass('hide');
             $('#best-score').text(score);
+            localStorage.setItem('bestScore', score);
         }
         //Reset score to 0 when game over
         countWords = 0;

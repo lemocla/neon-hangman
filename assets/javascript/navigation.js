@@ -7,7 +7,6 @@ $(document).ready(function () {
     /*
     localStorage.removeItem('level', 'easy');
     localStorage.removeItem('sound', 'on');
-    localStorage.removeItem('score', 0);
     localStorage.removeItem('best-score', 0);
     let arrayBestScores = [];
     localStorage.removeItem('leaderboard', arrayBestScores);
@@ -19,7 +18,7 @@ $(document).ready(function () {
             $(`.btn-level[data-level=${storedLevel}]`).addClass('active');
             $(`.btn-level.active[data-level!=${storedLevel}]`).removeClass('active');
             $('.level').text(storedLevel);
-            
+
         } else {
             localStorage.setItem('level', 'easy');
         }
@@ -33,10 +32,15 @@ $(document).ready(function () {
         } else {
             localStorage.setItem('sound', 'on');
         }
+        //Best score
+        if (localStorage.bestScore) {
+            $('#best-score').text(localStorage.getItem('bestScore'));
+        } else {
+            localStorage.setItem('bestScore', 0);
+        }
     } else {
         localStorage.setItem('level', 'easy');
         localStorage.setItem('sound', 'on');
-        localStorage.setItem('score', 0);
         localStorage.setItem('best-score', 0);
         /*
         let arrayBestScores = [];
@@ -44,13 +48,12 @@ $(document).ready(function () {
         
         console.log("level api = " + localStorage.getItem('level'));
         console.log("sound api = " + localStorage.getItem('sound'));
-        console.log("score api = " + localStorage.getItem('score'));
         console.log("best-score api = " + localStorage.getItem('best-score'));
         console.log("leaderboard = " + localStorage.getItem('leaderboard'));
         */
     }
 
-   
+
 
     /*----------------------[ Toggle menu ]-----------------------*/
 
@@ -108,7 +111,7 @@ $(document).ready(function () {
         $(`.btn-volume[data-sound=${val}]`).addClass('active');
         //Local Storage
         localStorage.setItem('sound', val);
-        return `assets/images/sound${val}.svg`;  
+        return `assets/images/sound${val}.svg`;
     }
 
     $('img[data-attr=sound]').on("click", function () {
@@ -141,3 +144,5 @@ $(document).ready(function () {
     });
 
 });
+
+
