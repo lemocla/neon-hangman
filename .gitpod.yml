@@ -11,5 +11,5 @@ vscode:
     - esbenp.prettier-vscode@5.7.1:4Zx39KyQMoIz7x94PSmDmQ==
     - kevinglasson.cornflakes-linter@0.5.1:KAaMshgHOKan8eojXQ53OQ==
 
-
     - hookyqr.beautify@1.4.11:9fd0c911415b603fd81da057c66fa963
+    - dbaeumer.jshint@0.10.21:bf467ed793bc380b503b5f099140e27b
