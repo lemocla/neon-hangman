@@ -22,10 +22,17 @@ $(document).ready(function () {
         hangmanParts.push(value.id);
     });
     //scoring
-    let score = 0;
     let countStreak = 0;
     let point = 10;
-    let countWords = 0;
+    let score = parseInt($('#score').text());
+    //Word Count
+        let countWords;
+        if (localStorage.countWords) {
+        countWords= parseInt(localStorage.getItem("countWords"));
+        } else {
+        localStorage.setItem("countWords", 0);
+        countWords = 0;
+        }
     //timer
     let timer;
     let x;
@@ -299,7 +306,7 @@ $(document).ready(function () {
             "name": `${playerName}`,
             "score": `${recScore}`
         };
-        console.log(leaderboard.length)
+        
         if (leaderboard.length >= 1) {
             leaderboard.push(addPlayerDetails);
             leaderboard.sort(GetSortOrder("score"));
@@ -480,10 +487,12 @@ $(document).ready(function () {
         countWords = ++countWords;
         $('.final-score').text(score);
         $('.count-words').text(countWords);
+        //local storage
+        localStorage.setItem("score", score);
+        localStorage.setItem("countWords", countWords);
     }
 
     //Game over
-
     function gameOver() {
         //Sounds
         sound = "audio#game-over-sound";
@@ -507,6 +516,9 @@ $(document).ready(function () {
         countWords = 0;
         score = 0;
         $('#score').text(score);
+        //local storage
+        localStorage.setItem("score", score);
+        localStorage.setItem("countWords", countWords);
     }
 
     //Play game

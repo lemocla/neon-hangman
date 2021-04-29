@@ -47,9 +47,11 @@ $(document).ready(function () {
     }
 
     /*-----------------------[ WebAPI ]---------------------------*/
-    /*
+    /* for testing
     localStorage.removeItem('bestScore');
     localStorage.removeItem('arrayBestScores');
+    localStorage.removeItem('score');
+    localStorage.removeItem('countWords');
     */
     if (typeof (Storage) !== "undefined") {
         //Level
@@ -72,6 +74,12 @@ $(document).ready(function () {
         } else {
             localStorage.setItem('sound', 'on');
         }
+        //Scores
+        if (localStorage.score) {
+            $('#score').text(localStorage.getItem('score'));
+        } else {
+        localStorage.setItem("score", 0);
+        }
         //Best score
         if (localStorage.bestScore) {
             $('#best-score').text(localStorage.getItem('bestScore'));
@@ -85,11 +93,14 @@ $(document).ready(function () {
         } else {
             let arrayBestScores = [];
             localStorage.setItem("arrayBestScores", JSON.stringify(arrayBestScores));
+            $('#leaderboard').append('<p>No information yet!</p>');
         }
     } else {
         localStorage.setItem('level', 'easy');
         localStorage.setItem('sound', 'on');
         localStorage.setItem('best-score', 0);
+        localStorage.setItem('score', 0);
+        localStorage.setItem('countWords', 0);
     }
 
     /*----------------------[ Toggle menu ]-----------------------*/
