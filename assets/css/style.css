@@ -226,7 +226,7 @@ footer {
     right: -10px;
     width: 400px;
     max-width: 92vw;
-    z-index: 1;
+    z-index: 4;
     padding: 20px 0px 15px;
     border: 2px solid #0b0c22;
     box-shadow: 5px 5px 25px 10px rgb(0 0 0 / 75%), 0px 0px 40px 45px rgb(0 0 0 / 40%) inset;
@@ -420,6 +420,7 @@ td {
     width: 235px;
     height: 35px;
     background-color: transparent;
+    color: inherit;
 }
 
 /*----------- hangman ---------------*/
@@ -582,6 +583,7 @@ input {
 }
 
 .btn-form {
+    -webkit-appearance: none;
     display: block;
     margin: auto;
     width: 95px;
@@ -637,6 +639,15 @@ input {
         margin-bottom: 15px;
     }
 
+    .pd-top {
+        padding-top: 25px;
+    }
+
+    #game-over h2,
+    .form-container h2 {
+        font-size: 1.4em;
+    }
+
     /*------------ containers -----------*/
     header,
     footer {
@@ -679,6 +690,7 @@ input {
         height: calc(39.5vh + 15px);
         order: 3;
         margin-right: 0;
+
     }
 
     /*------------ hangman -----------*/
@@ -714,7 +726,11 @@ input {
     }
 
     .pd-top {
-        padding-top: 25px;
+        padding-top: 15px;
+    }
+
+    .b-neon-blue {
+        border: 0.5px solid #b3fdff;
     }
 
     /*------------ headers -----------*/
@@ -727,6 +743,7 @@ input {
         padding-bottom: 25px;
     }
 
+
     /*------------ containers -----------*/
 
     header,
@@ -736,6 +753,11 @@ input {
 
     .game-info {
         height: 7.25vh;
+    }
+
+    #nav-menu {
+        width: 30px;
+        height: 30px;
     }
 
     .hangman-container {
@@ -758,7 +780,7 @@ input {
 
     .game-over-container {
         padding: 10px;
-        height: calc(38.25vh + 15px);
+        height: calc(38.5vh + 15px);
     }
 
     /*------------ scoring -----------*/
@@ -787,7 +809,7 @@ input {
 
     #hint {
         left: 25px;
-        top: -62px;
+        top: -57px;
         z-index: 1;
     }
 
@@ -814,16 +836,46 @@ input {
         margin: 0 3px;
     }
 
+    /*------------ Game over -----------*/
+
+    #best-new-score {
+        display: none;
+    }
+
+    /*---------Modals------------------*/
+
+    .modal-window {
+        height: -webkit-fill-available;
+        padding: 5px 0;
+    }
+
+    .close-modal {
+        top: -7px;
+        right: -7px;
+    }
+
+    .form-container,
+    .form-response-container {
+        width: 91.5%;
+    }
+
+    .form-content {
+        width: 85%;
+    }
 }
 
 /* EXTRA SMALL SCREEN*/
 @media screen and (max-width: 372px) {
     body {
-        font-size: 67.5%;
+        font-size: 70%;
     }
 
     .wrapper {
         width: 94%;
+    }
+
+    .pd-top {
+        padding-top: 5px;
     }
 
     header,
@@ -833,6 +885,14 @@ input {
 
     h1 {
         font-size: 210%;
+    }
+
+    .menu-content h4 {
+        font-size: 1.15em;
+    }
+
+    #game-over h2 {
+        padding-bottom: 15px;
     }
 
     #nav-menu {
@@ -845,8 +905,15 @@ input {
         margin-bottom: 7.5px;
     }
 
-    .scoring img {
-        height: 15px;
+    .scoring img,
+    #hint {
+        height: 17px;
+    }
+
+    #hint {
+        left: 25px;
+        top: -42px;
+        z-index: 1;
     }
 
     .hangman-container {
@@ -863,13 +930,31 @@ input {
     .keyboard-container,
     .win-container {
         padding: 8px 2px;
-        height: auto;
+        height: 32.5vh;
+        min-height: auto;
+    }
+
+    .continue,
+    .leave,
+    #play-again {
+        width: 130px;
+        margin: 0 5px;
     }
 
     .key,
     .letter-box {
+        padding-top: 8px;
         max-width: 30px;
         max-height: 30px;
+    }
+
+    .game-over-container {
+        padding: 5px;
+        height: 45vh;
+    }
+
+    .game-over-container input {
+        height: 25px;
     }
 
     footer {
@@ -883,5 +968,15 @@ input {
     a img {
         height: 25px;
         transition: 0.3s;
+    }
+
+    #message {
+        padding: 8px;
+        width: 100%;
+        height: 100px;
+    }
+
+    .close-modal {
+        height: 22px;
     }
 }
