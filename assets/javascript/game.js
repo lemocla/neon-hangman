@@ -48,7 +48,7 @@ $(document).ready(function () {
         firstLetter = splitWord[0];
         $.each(splitWord, function (index) {
             $(".word").append(
-                `<div class="letter-box" id="${index}"></div>`
+                `<div class="letter-box b-neon-blue" id="${index}"></div>`
             );
         });
     }

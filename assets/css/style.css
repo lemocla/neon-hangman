@@ -78,6 +78,27 @@ h3 {
     border: 1px solid white;
 }
 
+.b-neon-green{
+    border: 2px solid#abffc0;
+    border-radius: 6px;
+    background-blend-mode: overlay;
+    box-shadow: 0px 0px 8px 1.5px #4fe21ac4, 0px 0px 10px 1px #4fe21ac4 inset;
+}
+
+.b-neon-purple {
+    border-radius: 6px;
+    background-image: radial-gradient(circle, rgb(243 245 249 / 32%), rgb(43 38 142 / 35%) 0%, rgb(10 12 26 / 35%) 100%);
+    background-blend-mode: overlay;
+    border: 2px solid #d7b4fa;
+    box-shadow: 0px 0px 13px 1.5px rgba(140, 0, 255, 0.82),
+        0px 0px 25px 1px rgba(140, 0, 255, 0.82) inset;
+}
+
+.b-neon-blue{
+    border: 1px solid #b3fdff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px 1.5px rgb(0 224 255 / 30%), 0px 0px 8px 1px rgb(0 224 255 / 50%) inset;
+}
 /*--------- margins ----------*/
 
 .mg-bottom {
