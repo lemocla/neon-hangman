@@ -3,14 +3,38 @@
 /* globals localStorage:false */
 
 $(document).ready(function () {
+
+    function createLeaderboard(bestScores) {
+        let dataScores = JSON.parse(bestScores);
+        let dataHeaders = dataScores[0];
+        //table headers
+        let thArray = [];
+        $.each(dataHeaders, function (key) {
+            let thString = '<th>' + key + '</th>';
+            thArray.push(thString);
+        });
+        let thRow = thArray.join(" ");
+        let tableHeaders = '<tr>' + thRow + '</tr>';
+        //rows
+        let trArray = [];
+        $.each(dataScores, function (key, value) {
+           let tdArray = [];
+            Object.values(value).forEach(function (key, value) {  
+                tdArray.push("<td>" + key + "</td>");
+            });
+            let tdString = tdArray.join(" ");
+            trArray.push("<tr>" + tdString + "</tr>");
+        });
+        let tableRows = trArray.join(" ");
+        $('#leaderboard').append('<table id="lead-table">' + tableHeaders + tableRows + '</table>');
+    }
+
     /*-----------------------[ WebAPI ]---------------------------*/
     /*
-    localStorage.removeItem('level', 'easy');
-    localStorage.removeItem('sound', 'on');
-    localStorage.removeItem('best-score', 0);
-    let arrayBestScores = [];
-    localStorage.removeItem('leaderboard', arrayBestScores);
+    localStorage.removeItem('bestScore');
+    localStorage.removeItem('arrayBestScores');
     */
+    
     if (typeof (Storage) !== "undefined") {
         //Level
         if (localStorage.level) {
@@ -38,22 +62,21 @@ $(document).ready(function () {
         } else {
             localStorage.setItem('bestScore', 0);
         }
+        //Leaderboard 
+        if (localStorage.arrayBestScores) {
+            let bestScores = localStorage.getItem("arrayBestScores");
+            createLeaderboard(bestScores);
+
+        } else {
+            let arrayBestScores = [];
+            localStorage.setItem("arrayBestScores", JSON.stringify(arrayBestScores));
+        }
+
     } else {
         localStorage.setItem('level', 'easy');
         localStorage.setItem('sound', 'on');
         localStorage.setItem('best-score', 0);
-        /*
-        let arrayBestScores = [];
-        localStorage.setItem('leaderboard', arrayBestScores);
-        
-        console.log("level api = " + localStorage.getItem('level'));
-        console.log("sound api = " + localStorage.getItem('sound'));
-        console.log("best-score api = " + localStorage.getItem('best-score'));
-        console.log("leaderboard = " + localStorage.getItem('leaderboard'));
-        */
     }
-
-
 
     /*----------------------[ Toggle menu ]-----------------------*/
 
@@ -144,5 +167,3 @@ $(document).ready(function () {
     });
 
 });
-
-

@@ -1,5 +1,6 @@
 /*jshint esversion: 6 */
 /* globals $:false */
+/* globals localStorage:false */
 
 $(document).ready(function () {
 
@@ -275,6 +276,31 @@ $(document).ready(function () {
         clearInterval(x);
         $("#timer").text("0:00");
     }
+    //record best score to leaderboard
+        function addToLeaderboard() {
+            let playerName = $('#scorename').val();
+            let today = new Date();
+            today = today.toLocaleDateString();
+            let players = JSON.parse(localStorage.getItem("arrayBestScores"));
+            let recScore = localStorage.getItem("bestScore");
+            let addPlayerDetails = {
+            "date": `${today}`,
+            "name": `${playerName}`,
+            "score": `${recScore}`
+            };
+            if (players.length>=1)
+            {
+            $('#lead-table').append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
+            }
+            else{
+             $('#lead-table').append(`
+             <tr><th>date</th><th>name</th><th>score</th></tr>
+             <tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
+            }
+            players.push(addPlayerDetails);
+            localStorage.setItem("arrayBestScores", JSON.stringify(players));
+    }
+
 
     //display and hide html contents
 
@@ -312,6 +338,7 @@ $(document).ready(function () {
             resetDisplayAfterWin();
         }
         if ($('.flex-container').hasClass("hide")) {
+            addToLeaderboard();
             resetDisplayAfterGameOver();
         }
         timer = 120;
@@ -476,3 +503,5 @@ $(document).ready(function () {
         $(this).addClass("disabled");
     });
 });
+
+//https://stackoverflow.com/questions/3888902/detect-browser-or-tab-closing
