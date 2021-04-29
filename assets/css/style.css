@@ -17,6 +17,11 @@
 }
 
 body {
+    height: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-family: pixel;
     font-size: 16px;
     color: white;
@@ -267,6 +272,7 @@ footer {
     margin: 0 5px 12px;
     min-width: 25%;
     padding: 9px 12px;
+    transition: none;
 }
 
 .btn-volume img {
@@ -382,7 +388,8 @@ td {
 }
 
 /* -----------game-over -------------*/
-#game-over h2, .form-container h2 {
+#game-over h2,
+.form-container h2 {
     font-size: 1.8em;
 }
 
@@ -460,13 +467,12 @@ footer {
     margin-top: 15px;
 }
 
-#contact-us, .btn-form {
+#contact-us {
     padding: 12px 15px;
     font-size: 85%;
     background-color: #b114be;
     border-radius: 4px;
     border: none;
-    transition: 0.3s;
 }
 
 a {
@@ -495,9 +501,11 @@ a img:hover,
     opacity: 81%;
 }
 
-#contact-us:hover, .btn-form:hover {
+#contact-us:hover,
+.btn-form:hover {
     background-color: rgb(159 11 173 / 82%);
 }
+
 
 /*----------- modals ------------------*/
 
@@ -577,6 +585,11 @@ input {
     display: block;
     margin: auto;
     width: 95px;
+    padding: 12px 15px;
+    font-size: 85%;
+    background-color: #b114be;
+    border-radius: 4px;
+    border: none;
 }
 
 /* --------- additional classes ---------- */
@@ -585,12 +598,32 @@ input {
     display: none;
 }
 
+.btn-level:hover,
+.btn-volume:hover,
 .active {
     background: #b00ebe;
     color: white;
 }
 
+
+
 /*----------- media queries -----------*/
+
+/*media queries*/
+@media screen and (min-height: 835px) {
+    body {
+        height: 100vh;
+    }
+
+    .wrapper {
+        max-width: 1050px;
+        margin: 0 auto;
+    }
+
+    #keyboard-container {
+        padding: 0 35px;
+    }
+}
 
 /*TABLET*/
 
@@ -629,6 +662,7 @@ input {
 
     .word-container {
         width: 100%;
+        min-height: auto;
         height: 17vh;
     }
 
@@ -637,6 +671,7 @@ input {
         padding: 30px;
         height: 22.5vh;
         align-content: center;
+        min-height: 235px;
     }
 
     .game-over-container {
@@ -752,7 +787,7 @@ input {
 
     #hint {
         left: 25px;
-        top: -52px;
+        top: -62px;
         z-index: 1;
     }
 
@@ -779,6 +814,74 @@ input {
         margin: 0 3px;
     }
 
+}
 
-    /*Note - ajust further layout for win & game-over content later on*/
+/* EXTRA SMALL SCREEN*/
+@media screen and (max-width: 372px) {
+    body {
+        font-size: 67.5%;
+    }
+
+    .wrapper {
+        width: 94%;
+    }
+
+    header,
+    footer {
+        height: 9.6vh;
+    }
+
+    h1 {
+        font-size: 210%;
+    }
+
+    #nav-menu {
+        width: 27px;
+        height: 27px;
+    }
+
+    .game-info {
+        height: 6.35vh;
+        margin-bottom: 7.5px;
+    }
+
+    .scoring img {
+        height: 15px;
+    }
+
+    .hangman-container {
+        height: 19.75vh;
+        margin-bottom: 7.5px;
+    }
+
+    .word-container {
+        padding: 8px 2px;
+        height: 11.75vh;
+        margin-bottom: 7.5px;
+    }
+
+    .keyboard-container,
+    .win-container {
+        padding: 8px 2px;
+        height: auto;
+    }
+
+    .key,
+    .letter-box {
+        max-width: 30px;
+        max-height: 30px;
+    }
+
+    footer {
+        margin-top: 10px;
+    }
+
+    a {
+        padding-left: 3px;
+    }
+
+    a img {
+        height: 25px;
+        transition: 0.3s;
+    }
 }
