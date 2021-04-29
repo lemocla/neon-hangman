@@ -20,7 +20,22 @@ body {
     font-family: pixel;
     font-size: 14px;
     color: white;
-    background-color: #000000;
+}
+
+/*Tutorial https://www.youtube.com/watch?v=o_hNQQBYpeE adapted to my own need*/
+.bg-brick {
+    background-color: black;
+    background-image:
+        radial-gradient(closest-corner at 50% 6%, rgb(97 106 225 / 15%) 0%, rgb(35 42 134 / 35%) 59%, rgb(9 9 9 / 25%) 70%),
+        radial-gradient(closest-corner at 50% 6%, rgb(97 106 225 / 15%) 0%, rgb(35 42 134 / 35%) 59%, rgb(9 9 9 / 25%) 70%),
+        radial-gradient(closest-side at 48% 7%, rgb(9 9 9 / 32%) 0%, rgb(26 31 112 / 80%) 59%, rgb(110 29 41 / 5%) 0%),
+        radial-gradient(closest-corner at 50% 4%, rgb(9 9 9 / 32%) 0%, rgb(26 31 112 / 80%) 59%, rgb(110 29 41 / 5%) 0%),
+        linear-gradient(337deg, #2f39ac 16px, transparent 16px),
+        linear-gradient(157deg, #2f39ac 16px, transparent 15px),
+        linear-gradient(337deg, #2f39ac 16px, transparent 16px),
+        linear-gradient(157deg, #2f39ac 16px, transparent 15px);
+    background-size: 42px 41px;
+    background-position: 2px 22px, 22px 4px, -10px -2px, 20px 19px, 0px 1px, 3px 24px, 68px 21px, -13.5px 44.5px;
 }
 
 /*---------- headings --------*/
@@ -233,23 +248,24 @@ footer {
     max-height: 14px;
 }
 
-table{
-margin: 0 auto;
-margin-top: 15px;
-width: inherit;
-text-align: center;
-border-collapse: collapse;
+table {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: inherit;
+    text-align: center;
+    border-collapse: collapse;
 }
 
-th{
-text-transform: uppercase;
-padding: 12px 12px;
-font-weight: bold;
-border-top: 1px solid white;
-border-bottom: 1px solid white;
+th {
+    text-transform: uppercase;
+    padding: 12px 12px;
+    font-weight: bold;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
 }
-td{
-padding: 12px;
+
+td {
+    padding: 12px;
 }
 
 /*---------- scoring -----------*/
