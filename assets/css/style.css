@@ -45,6 +45,10 @@ h1 {
     font-family: Monoton;
     text-transform: capitalize;
     font-size: 40px;
+    background: -webkit-linear-gradient(180deg, rgb(253 255 0), #3bf4ee, rgb(249 22 236),rgb(253 255 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 30px rgb(255 255 255 / 45%);
 }
 
 h2 {
@@ -201,8 +205,8 @@ footer {
 /* ---------- navigation -------------*/
 
 #nav-menu {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     position: relative;
 }
 
