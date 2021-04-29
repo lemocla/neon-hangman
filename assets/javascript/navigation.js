@@ -28,7 +28,7 @@ $(document).ready(function () {
                 thArray.push(thString);
             });
             let thRow = thArray.join(" ");
-            let tableHeaders = '<tr>' + thRow + '</tr>';
+            let tableHeaders = '<tr id="head-row">' + thRow + '</tr>';
             //rows
             let trArray = [];
             $.each(dataScores, function (key, value) {

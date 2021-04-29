@@ -277,28 +277,46 @@ $(document).ready(function () {
         $("#timer").text("0:00");
     }
     //record best score to leaderboard
-        function addToLeaderboard() {
-            let playerName = $('#scorename').val();
-            let today = new Date();
-            today = today.toLocaleDateString();
-            let players = JSON.parse(localStorage.getItem("arrayBestScores"));
-            let recScore = localStorage.getItem("bestScore");
-            let addPlayerDetails = {
+    function GetSortOrder(prop) {
+        return function (a, b) {
+            if (a[prop] < b[prop]) {
+                return 1;
+            } else if (a[prop] > b[prop]) {
+                return -1;
+            }
+            return 0;
+        };
+    }
+
+    function addToLeaderboard() {
+        let playerName = $('#scorename').val();
+        let today = new Date();
+        today = today.toLocaleDateString();
+        let leaderboard = JSON.parse(localStorage.getItem("arrayBestScores"));
+        let recScore = localStorage.getItem("bestScore");
+        let addPlayerDetails = {
             "date": `${today}`,
             "name": `${playerName}`,
             "score": `${recScore}`
-            };
-            if (players.length>=1)
-            {
+        };
+        console.log(leaderboard.length)
+        if (leaderboard.length >= 1) {
+            leaderboard.push(addPlayerDetails);
+            leaderboard.sort(GetSortOrder("score"));
             $('#lead-table').append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
-            }
-            else{
-             $('#lead-table').append(`
-             <tr><th>date</th><th>name</th><th>score</th></tr>
-             <tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
-            }
-            players.push(addPlayerDetails);
-            localStorage.setItem("arrayBestScores", JSON.stringify(players));
+            //sort
+            $( `tr:contains(${recScore})`).insertAfter('#head-row');
+        } else {
+            leaderboard.push(addPlayerDetails);
+            $('#leaderboard').html(`
+             <table id="lead-table">
+             <tr id="head-row"><th>date</th><th>name</th><th>score</th></tr>
+             <tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>
+             </table>
+             `);
+        }
+        
+        localStorage.setItem("arrayBestScores", JSON.stringify(leaderboard));
     }
 
 
