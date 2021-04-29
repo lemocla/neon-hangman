@@ -89,14 +89,14 @@
             <div id="game-over" class="game-over-container b-neon-purple hide">
                 <h2>Game Over</h2>
                 <p class="pd-bottom">The hidden word was: <span id="correct-answer">quack</span></p>
-                <div class="content-group">
+                <div class="content-group pd-bottom">
                     <div>Words: <span class="count-words">0</span></div>
                     <div>Score: <span class="final-score">0</span></div>
                 </div>
                 <div class="best-score-container hide">
                     <h3 class="pd-bottom  pd-top" id="best-new-score">best new score</h3>
                     <p class="pd-bottom">Enter your name to save your score</p>
-                    <input id="scorename" type="text" name="scorename">
+                    <input id="scorename" class="b-neon-blue" type="text" name="scorename">
                 </div>
                 <div class="content-group pd-top">
                     <button id="play-again" class="btn b-neon-blue" data-function="start-game">play again</button>
@@ -107,7 +107,7 @@
             <div class="flex-container">
                 <div class="word-container b-neon-purple mg-bottom">
                     <img id="hint" class="hide" src="assets/images/hint.svg" alt="open-hint">
-                    <div id="hint-content" class="hide"></div>
+                    <div id="hint-content" class="bg-brick hide"></div>
                     <div class="word-intro">Can you guess the hidden word?</div>
                     <button id="start" class="btn b-neon-blue" data-function="start-game">play</button>
                     <div class="word hide"></div>
