@@ -8,6 +8,7 @@ $(document).ready(function () {
 
     let level;
     const apiTrue = ['easy', 'medium', 'hard'];
+    let isPlaying = false;
     //Words
     let hintCollection;
     let firstLetter = "";
@@ -26,13 +27,13 @@ $(document).ready(function () {
     let point = 10;
     let score = parseInt($('#score').text());
     //Word Count
-        let countWords;
-        if (localStorage.countWords) {
-        countWords= parseInt(localStorage.getItem("countWords"));
-        } else {
+    let countWords;
+    if (localStorage.countWords) {
+        countWords = parseInt(localStorage.getItem("countWords"));
+    } else {
         localStorage.setItem("countWords", 0);
         countWords = 0;
-        }
+    }
     //timer
     let timer;
     let x;
@@ -306,13 +307,13 @@ $(document).ready(function () {
             "name": `${playerName}`,
             "score": `${recScore}`
         };
-        
+
         if (leaderboard.length >= 1) {
             leaderboard.push(addPlayerDetails);
             leaderboard.sort(GetSortOrder("score"));
             $('#lead-table').append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
             //sort
-            $( `tr:contains(${recScore})`).insertAfter('#head-row');
+            $(`tr:contains(${recScore})`).insertAfter('#head-row');
         } else {
             leaderboard.push(addPlayerDetails);
             $('#leaderboard').html(`
@@ -322,7 +323,7 @@ $(document).ready(function () {
              </table>
              `);
         }
-        
+
         localStorage.setItem("arrayBestScores", JSON.stringify(leaderboard));
     }
 
@@ -358,6 +359,7 @@ $(document).ready(function () {
     //Start Game
 
     function startGame() {
+        isPlaying = true;
         setGameElements();
         if ($('.keyboard-container').hasClass("hide")) {
             resetDisplayAfterWin();
@@ -524,14 +526,47 @@ $(document).ready(function () {
     //Play game
 
     $(".key").on("click", function () {
-        //Evaluate guess
-        let isCorrectGuess = splitWord.includes($(this).text());
-        let letter = $(this).text();
-        //Match / noMatch
-        functionToRun = (isCorrectGuess) ? match(letter) : noMatch();
-        //Disable keys
-        $(this).addClass("disabled");
+        if (isPlaying) {
+            //Evaluate guess
+            let isCorrectGuess = splitWord.includes($(this).text());
+            let letter = $(this).text();
+            //Match / noMatch
+            functionToRun = (isCorrectGuess) ? match(letter) : noMatch();
+            //Disable keys
+            $(this).addClass("disabled");
+        } else {
+            return;
+        }
     });
-});
 
-//https://stackoverflow.com/questions/3888902/detect-browser-or-tab-closing
+    /*------------------------[ LEAVE GAME ]-----------------------*/
+
+    function displayHomePage() {
+        isPlaying = false;
+        $('.word').empty().addClass('hide');
+        $('#start').removeClass("hide");
+        $('#hint').addClass("hide");
+        $('.key').removeClass("disabled");
+        $.each($('path'), function () {
+            $(this).removeClass('hide');
+        });
+        if (parseInt($('#score').text()) == 0) {
+            $('#start').text('play');
+        } else {
+            $('#start').text('continue');
+        }
+        if ($('.keyboard-container').hasClass("hide")) {
+            resetDisplayAfterWin();
+        }
+        if ($('.flex-container').hasClass("hide")) {
+            addToLeaderboard();
+            resetDisplayAfterGameOver();
+        }
+    }
+
+    $('.leave').on('click', function () {
+        displayHomePage();
+    });
+
+
+});

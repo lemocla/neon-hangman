@@ -77,6 +77,13 @@ $(document).ready(function () {
         //Scores
         if (localStorage.score) {
             $('#score').text(localStorage.getItem('score'));
+            if(parseInt($('#score').text()) > 0)
+            {
+                $('#start').text('continue');
+            } 
+            else{
+            $('#start').text('play');
+            }
         } else {
         localStorage.setItem("score", 0);
         }
