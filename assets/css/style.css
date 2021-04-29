@@ -217,12 +217,14 @@ footer {
     margin: 0 auto;
     top: 45px;
     right: -10px;
-    width: 375px;
+    width: 400px;
     max-width: 92vw;
-    border: 1px solid white;
-    background-color: black;
+    /*border: 1px solid white;
+    background-color: black;*/
     z-index: 1;
     padding: 20px 0px 15px;
+    border: 2px solid black;
+    box-shadow: 2px 2px 15px 10px rgb(0 0 0 / 75%), 0px 0px 40px 45px rgb(0 0 0 / 40%) inset;
 }
 
 .btn-menu {
@@ -232,7 +234,7 @@ footer {
 }
 
 .menu-content {
-    width: 87.5%;
+    width: 92.5%;
     margin: 0 auto;
     margin-bottom: 12px;
     font-size: 90%;
@@ -250,18 +252,18 @@ footer {
 .menu-content h4 {
     font-size: initial;
     text-align: center;
-    padding-bottom: 8px;
+    padding-bottom: 15px;
 }
 
 .btn-settings-menu {
     text-align: center;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .btn-level,
 .btn-volume {
     display: inline-block;
-    margin: 0 5px;
+    margin: 0 5px 12px;
     min-width: 25%;
     padding: 9px 12px;
 }
@@ -573,7 +575,7 @@ input {
 }
 
 .active {
-    background: green;
+    background: #b00ebe;
     color: white;
 }
 
