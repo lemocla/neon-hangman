@@ -4,29 +4,46 @@
 
 $(document).ready(function () {
 
+    //https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/
+    function GetSortOrder(prop) {
+        return function (a, b) {
+            if (a[prop] < b[prop]) {
+                return 1;
+            } else if (a[prop] > b[prop]) {
+                return -1;
+            }
+            return 0;
+        };
+    }
+
     function createLeaderboard(bestScores) {
         let dataScores = JSON.parse(bestScores);
-        let dataHeaders = dataScores[0];
-        //table headers
-        let thArray = [];
-        $.each(dataHeaders, function (key) {
-            let thString = '<th>' + key + '</th>';
-            thArray.push(thString);
-        });
-        let thRow = thArray.join(" ");
-        let tableHeaders = '<tr>' + thRow + '</tr>';
-        //rows
-        let trArray = [];
-        $.each(dataScores, function (key, value) {
-           let tdArray = [];
-            Object.values(value).forEach(function (key, value) {  
-                tdArray.push("<td>" + key + "</td>");
+        dataScores.sort(GetSortOrder("score"));
+        if (dataScores.length >= 1) {
+            let dataHeaders = dataScores[0];
+            //table headers
+            let thArray = [];
+            $.each(dataHeaders, function (key) {
+                let thString = '<th>' + key + '</th>';
+                thArray.push(thString);
             });
-            let tdString = tdArray.join(" ");
-            trArray.push("<tr>" + tdString + "</tr>");
-        });
-        let tableRows = trArray.join(" ");
-        $('#leaderboard').append('<table id="lead-table">' + tableHeaders + tableRows + '</table>');
+            let thRow = thArray.join(" ");
+            let tableHeaders = '<tr>' + thRow + '</tr>';
+            //rows
+            let trArray = [];
+            $.each(dataScores, function (key, value) {
+                let tdArray = [];
+                Object.values(value).forEach(function (key, value) {
+                    tdArray.push("<td>" + key + "</td>");
+                });
+                let tdString = tdArray.join(" ");
+                trArray.push("<tr>" + tdString + "</tr>");
+            });
+            let tableRows = trArray.join(" ");
+            $('#leaderboard').append('<table id="lead-table">' + tableHeaders + tableRows + '</table>');
+        } else {
+            $('#leaderboard').append('<p>No information yet!</p>');
+        }
     }
 
     /*-----------------------[ WebAPI ]---------------------------*/
@@ -34,7 +51,6 @@ $(document).ready(function () {
     localStorage.removeItem('bestScore');
     localStorage.removeItem('arrayBestScores');
     */
-    
     if (typeof (Storage) !== "undefined") {
         //Level
         if (localStorage.level) {
@@ -66,12 +82,10 @@ $(document).ready(function () {
         if (localStorage.arrayBestScores) {
             let bestScores = localStorage.getItem("arrayBestScores");
             createLeaderboard(bestScores);
-
         } else {
             let arrayBestScores = [];
             localStorage.setItem("arrayBestScores", JSON.stringify(arrayBestScores));
         }
-
     } else {
         localStorage.setItem('level', 'easy');
         localStorage.setItem('sound', 'on');
