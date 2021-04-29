@@ -69,8 +69,8 @@ h3 {
     font-family: inherit;
     text-transform: uppercase;
     font-size: inherit;
-    border: 1px solid rgb(216, 216, 216);
-    background-color: rgb(216, 216, 216);
+    background-color: transparent;
+    color: inherit;
 }
 
 /*---------- borders ---------*/
