@@ -223,8 +223,8 @@ footer {
     max-width: 92vw;
     z-index: 1;
     padding: 20px 0px 15px;
-    border: 2px solid black;
-    box-shadow: 2px 2px 15px 10px rgb(0 0 0 / 75%), 0px 0px 40px 45px rgb(0 0 0 / 40%) inset;
+    border: 2px solid #0b0c22;
+    box-shadow: 5px 5px 25px 10px rgb(0 0 0 / 75%), 0px 0px 40px 45px rgb(0 0 0 / 40%) inset;
 }
 
 .btn-menu {
@@ -382,9 +382,8 @@ td {
 }
 
 /* -----------game-over -------------*/
-#game-over h2 {
+#game-over h2, .form-container h2 {
     font-size: 1.8em;
-    color: #edbb00;
 }
 
 .content-group {
@@ -461,7 +460,7 @@ footer {
     margin-top: 15px;
 }
 
-#contact-us {
+#contact-us, .btn-form {
     padding: 12px 15px;
     font-size: 85%;
     background-color: #b114be;
@@ -496,7 +495,7 @@ a img:hover,
     opacity: 81%;
 }
 
-#contact-us:hover {
+#contact-us:hover, .btn-form:hover {
     background-color: rgb(159 11 173 / 82%);
 }
 
@@ -525,10 +524,10 @@ a img:hover,
     max-width: 750px;
     width: 75%;
     height: fit-content;
-    background-color: black;
-    border: 1px solid white;
     position: relative;
-    /*text-align: center;*/
+    border: 2px solid #0b0c22;
+    border-radius: 6px;
+    box-shadow: 5px 5px 25px 10px rgb(0 0 0 / 75%), 0px 0px 40px 45px rgb(0 0 0 / 40%) inset;
 }
 
 .form-response-container {
@@ -560,6 +559,7 @@ input {
     margin-top: 7px;
     margin-bottom: 15px;
     font-family: inherit;
+    background-color: rgb(0 0 0 / 40%);
 }
 
 #message {
@@ -569,16 +569,14 @@ input {
     margin-top: 7px;
     margin-bottom: 15px;
     font-family: inherit;
+    background-color: rgb(0 0 0 / 40%);
+    color: inherit;
 }
 
 .btn-form {
-    width: 95px;
     display: block;
     margin: auto;
-    margin-top: 25px;
-    padding: 12px 15px;
-    font-family: inherit;
-    font-size: 85%;
+    width: 95px;
 }
 
 /* --------- additional classes ---------- */

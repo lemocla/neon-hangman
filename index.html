@@ -242,18 +242,18 @@
     </div>
     <!--Modal form-->
     <div id="modal-form" class="modal-window hide">
-        <div class="form-container">
+        <div class="form-container bg-brick">
             <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-form">
             <h2>Contact us</h2>
             <form id="form" class="form-content">
                 <label for="fname">First name</label><br>
-                <input type="text" id="fname" name="fname" required><br>
+                <input class="b-neon-blue" type="text" id="fname" name="fname" required><br>
                 <label for="lname">Last name</label><br>
-                <input type="text" id="lname" name="lname" required><br>
+                <input class="b-neon-blue" type="text" id="lname" name="lname" required><br>
                 <label for="email">Email</label><br>
-                <input type="email" id="email" name="email" required><br>
+                <input class="b-neon-blue" type="email" id="email" name="email" required><br>
                 <label for="message">Message:</label><br>
-                <textarea id="message" name="message" required>Text here</textarea><br>
+                <textarea class="b-neon-blue" id="message" name="message" required></textarea><br>
                 <input id="submit-email" class="btn btn-form" type="submit" value="Submit" data-close="modal-form">
             </form>
         </div>
@@ -261,19 +261,19 @@
     <!-- end modal form-->
     <!-- thank you modal -->
     <div id="modal-thankyou" class="modal-window hide">
-        <div class="form-response-container">
+        <div class="form-response-container bg-brick">
             <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-thankyou">
-            <p>Thank your for your message!</p>
+            <p class="mg-bottom">Thank your for your message!</p>
             <button class="btn btn-form" data-close="modal-thankyou">Close</button>
         </div>
     </div>
     <!-- error message modal -->
     <div id="modal-error" class="modal-window hide">
-        <div class="form-response-container">
+        <div class="form-response-container bg-brick">
             <img class="close-modal" src="assets/images/close-modals.svg" alt="close modal" data-close="modal-error">
             <p>We are sorry, your email couldn't go through at this time.
                 But don't worry, you can contact us as follow:</p>
-            <p class="pd-top">claireci.lemonnier@gmail.com</p>
+            <p class="pd-top mg-bottom">claireci.lemonnier@gmail.com</p>
             <button class="btn btn-form" data-close="modal-thankyou">Close</button>
         </div>
     </div>
