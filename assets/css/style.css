@@ -75,6 +75,7 @@ h3 {
     font-size: inherit;
     background-color: transparent;
     color: inherit;
+    transition: 0.3s;
 }
 
 /*---------- borders ---------*/
@@ -259,6 +260,7 @@ footer {
 .btn-settings-menu {
     text-align: center;
     padding-bottom: 10px;
+    
 }
 
 .btn-level,
@@ -317,6 +319,8 @@ td {
     position: absolute;
     top: 20px;
     left: 20px;
+    filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(10deg) brightness(104%) contrast(97%);
+    transition: 0.3s;
 }
 
 #hint-content {
@@ -375,7 +379,6 @@ td {
 .leave,
 #play-again {
     width: 145px;
-    ;
     margin: 0 10px;
 }
 
@@ -457,6 +460,10 @@ footer {
 #contact-us {
     padding: 12px 15px;
     font-size: 85%;
+    background-color: #b114be;
+    border-radius: 4px;
+    border: none;
+    transition: 0.3s;
 }
 
 a {
@@ -464,29 +471,28 @@ a {
 }
 
 a img {
-    height: 30px;
+    height: 35px;
     transition: 0.3s;
 }
 
 /*-------- hovering effect ----------*/
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
-#start:hover,
-.key:hover,
-#contact-us:hover,
-.continue:hover,
-.leave:hover,
-#play-again:hover {
-    background-color: rgb(202, 199, 199);
+
+.btn:hover, .key:hover{
+    background-color: rgb(10 12 26 / 45%);
 }
 
 /*https://css-tricks.com/change-color-of-svg-on-hover/*/
 a img:hover,
-#toggle-nav:hover {
+#toggle-nav:hover, #hint:hover {
     transform: scale(1.1);
-    filter: invert(50%) sepia(5%) saturate(2%) hue-rotate(15deg) brightness(125%) contrast(100%);
+    opacity: 81%;
 }
 
+#contact-us:hover{
+background-color: rgb(159 11 173 / 82%);
+}
 /*----------- modals ------------------*/
 
 /*https://www.w3schools.com/howto/howto_css_modals.asp*/
