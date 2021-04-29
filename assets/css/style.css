@@ -79,7 +79,7 @@ h3 {
     border: 1px solid white;
 }
 
-.b-neon-green{
+.b-neon-green {
     border: 2px solid#abffc0;
     border-radius: 6px;
     background-blend-mode: overlay;
@@ -95,11 +95,12 @@ h3 {
         0px 0px 25px 1px rgba(140, 0, 255, 0.82) inset;
 }
 
-.b-neon-blue{
+.b-neon-blue {
     border: 1px solid #b3fdff;
     border-radius: 3px;
     box-shadow: 0px 0px 3px 1.5px rgb(0 224 255 / 30%), 0px 0px 8px 1px rgb(0 224 255 / 50%) inset;
 }
+
 /*--------- margins ----------*/
 
 .mg-bottom {
@@ -189,9 +190,6 @@ footer {
 .game-over-container {
     width: 60%;
     height: max(369px, min(calc(51.5vh + 25px), 431px));
-    /*height: calc(51.5vh + 25px);
-    max-height: 431px;
-    min-height: 369px;*/
     margin-right: 20px;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -219,8 +217,6 @@ footer {
     right: -10px;
     width: 400px;
     max-width: 92vw;
-    /*border: 1px solid white;
-    background-color: black;*/
     z-index: 1;
     padding: 20px 0px 15px;
     border: 2px solid black;
@@ -243,6 +239,7 @@ footer {
 .menu-content ul {
     margin-inline-start: 15px;
     padding-inline-start: 15px;
+    padding: 15px;
 }
 
 .menu-content li {
@@ -415,8 +412,8 @@ td {
 }
 
 .path {
-    stroke: white;
-    -webkit-stroke: white;
+    stroke: url(#grad1);
+    -webkit-stroke: url(#grad1);
     fill: transparent;
     stroke-width: 6px;
     stroke-linecap: round;
@@ -425,8 +422,6 @@ td {
 
 /*https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation*/
 .animate {
-    /*stroke: white;
-    -webkit-stroke: white;*/
     stroke-dasharray: 870;
     stroke-dashoffset: 870;
     animation-duration: 4s;
@@ -438,7 +433,8 @@ td {
 @keyframes draw {
     to {
         stroke-dashoffset: 0;
-        stroke: white;
+        stroke: url(#grad1);
+        -webkit-stroke: url(#grad1);
     }
 }
 

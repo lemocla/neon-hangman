@@ -44,10 +44,10 @@
                         </div>
                         <h4>Sounds</h4>
                         <div class="btn-settings-menu">
-                            <button class="btn btn-volume b-neon-purple active" data-sound="on"><img src="assets/images/soundon.svg"
-                                    alt="sound-on"> on </button>
-                            <button class="btn btn-volume b-neon-purple" data-sound="off"><img src="assets/images/soundoff.svg"
-                                    alt="sound-off"> off</button>
+                            <button class="btn btn-volume b-neon-purple active" data-sound="on"><img
+                                    src="assets/images/soundon.svg" alt="sound-on"> on </button>
+                            <button class="btn btn-volume b-neon-purple" data-sound="off"><img
+                                    src="assets/images/soundoff.svg" alt="sound-off"> off</button>
                         </div>
                     </div>
                     <button class="btn btn-menu b-neon-blue" data-content="leaderboard">Leaderboard</button>
@@ -159,7 +159,37 @@
                 <div class="scoring volume-mobile"><img src="assets/images/soundon.svg" alt="turn sound on"
                         data-attr="sound"></div>
                 <svg id="hangman" width="100%" height="100%" viewbox="0 0 380 430" x="0" y="0">
-                    <g>
+                    <!--Filters-->
+                    <defs>
+                        <linearGradient id="grad1" x1="7%" y1="35%" x2="100%" y2="0%" gradientUnits="userSpaceOnUse">
+                            <stop offset="0" style="stop-color:#15f4ee;stop-opacity:1" />
+                            <stop offset="0.3" style="stop-color:magenta;stop-opacity:1" />
+                            <stop offset="0.5" style="stop-color:yellow;stop-opacity:1" />
+                            <stop offset="1" style="stop-color:#15f4ee;stop-opacity:1" />
+                        </linearGradient>
+                        <!--https://stackoverflow.com/questions/54112231/is-it-possible-to-create-a-glow-effect-in-svg-->
+                        <filter id="neon" filterUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
+                            <feComposite operator="in" in2="SourceGraphic" />
+                            <feGaussianBlur stdDeviation="19" result="glow1" />
+                            <feComponentTransfer result="glow1">
+                            <feFuncA type="linear" slope="0.5" intercept="0" />
+                            </feComponentTransfer>
+                            <!--in="blur-merged"-->
+                            <feColorMatrix result="red-blur" in="glow1" type="matrix" 
+                            values="1 0 0 0 0
+                                    0 1 0 0 0
+                                    0 0 1 0 0
+                                    0 0 0 1 0" />
+                            <feMerge>
+
+                                <feMergeNode in="red-blur" />
+                                <feMergeNode in="glow1" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <!--Hangman-->
+                    <g filter="url(#neon)">
                         <!--frame-->
                         <path class="path" id="part1" d="M40,400 H330" />
                         <path class="path" id="part2" d="M330,400 V40" />
