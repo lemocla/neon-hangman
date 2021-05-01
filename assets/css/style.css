@@ -25,6 +25,7 @@ body {
     font-family: pixel;
     font-size: 16px;
     color: white;
+    line-height: 1.5;
     box-shadow: 0px 20px 400px 72px rgb(0 0 0 / 67%), 0px 0px 400px 25px rgb(0 0 0 / 85%) inset;
 }
 
@@ -135,7 +136,9 @@ h3 {
 
 header,
 footer {
-    height: max(85px, min(15.5vh, 145px));
+    min-height: 85px;
+    height: 15.5vh;
+    max-height: 145px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -144,7 +147,9 @@ footer {
 }
 
 .game-info {
-    height: max(50px, min(9vh, 72px));
+    min-height: 50px;
+    height: 9vh;
+    max-height: 72px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -178,7 +183,10 @@ footer {
 }
 
 .word-container {
-    height: max(134px, min(21.5vh, 170px));
+    min-height: 134px;
+    min-height: 150px;
+    height: 21.5vh;
+    max-height: 170px;
     position: relative;
     flex-direction: column;
     align-items: center;
@@ -187,7 +195,9 @@ footer {
 .keyboard-container,
 .win-container {
     width: 100%;
-    height: max(210px, min(30vh, 236px));
+    min-height: 200px;
+    height: 30vh;
+    max-height: 236px;
 }
 
 .hangman-container {
@@ -198,7 +208,9 @@ footer {
 
 .game-over-container {
     width: 60%;
-    height: max(369px, min(calc(51.5vh + 25px), 431px));
+    min-height: 369px;
+    height: calc(51.5vh + 25px);
+    max-height: 431px;
     margin-right: 20px;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -320,13 +332,13 @@ td {
 /*---------- word --------------*/
 
 .word-intro {
-    padding-bottom: 35px;
+    padding-bottom: 25px;
 }
 
 #hint {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 15px;
+    left: 15px;
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(10deg) brightness(104%) contrast(97%);
     transition: 0.3s;
 }
@@ -354,6 +366,7 @@ td {
     height: 40px;
     margin: 0 4px;
     padding-top: 12px;
+    padding-top: 8px;
     text-align: center;
     font-weight: bold;
     border: 1px solid white;
@@ -370,7 +383,7 @@ td {
     width: 40px;
     height: 40px;
     margin: 4px 4px;
-    padding-top: 10px;
+    padding-top: 8px;
     text-align: center;
     font-weight: bold;
     text-transform: capitalize;
@@ -431,6 +444,7 @@ td {
 
 #hangman {
     max-width: 86.5%;
+    margin: 0 auto;
 }
 
 .path {
@@ -511,7 +525,6 @@ a img:hover,
 .btn-form:hover {
     background-color: rgb(159 11 173 / 82%);
 }
-
 
 /*----------- modals ------------------*/
 
@@ -634,6 +647,52 @@ input[type="text"] {
     }
 }
 
+/* SMALL LANDSCAPE */
+
+@media screen and (max-width: 850px) and (min-width: 769.5px) {
+
+    #hint {
+        left: 110%;
+        z-index: 1;
+    }
+
+    #hint-content {
+        right: 0px;
+    }
+
+    .key,
+    .letter-box {
+        width: 38px;
+        height: 38px;
+        padding-top: 6px;
+    }
+}
+
+@media screen and (max-height: 550px) and (min-width: 769.5px) {
+
+    .word-container {
+        height: 19.5vh;
+        min-height: 100px;
+    }
+
+    .game-over-container {
+        min-height: 325px;
+    }
+
+    .word-intro {
+        display: none;
+    }
+
+    #hint {
+        left: 110%;
+        z-index: 1;
+    }
+
+    #hint-content {
+        right: 0px;
+    }
+}
+
 /*TABLET*/
 
 @media screen and (max-width: 769px) {
@@ -659,6 +718,7 @@ input[type="text"] {
     header,
     footer {
         height: 11vh;
+        min-height: 70px;
     }
 
     .game-info {
@@ -668,6 +728,7 @@ input[type="text"] {
     .hangman-container {
         width: 100%;
         height: 25vh;
+        min-height: 200px;
         order: 2;
         margin-bottom: 15px;
     }
@@ -682,11 +743,12 @@ input[type="text"] {
         width: 100%;
         min-height: auto;
         height: 17vh;
+        min-height: 150px;
     }
 
     .keyboard-container,
     .win-container {
-        padding: 30px;
+        padding: 30px 25px;
         height: 22.5vh;
         align-content: center;
         min-height: 235px;
@@ -712,13 +774,16 @@ input[type="text"] {
 
     /*------------ keyboard -----------*/
 
-    .key {
-        width: 45px;
-        height: 45px;
-        padding-top: 14px;
+    .key,
+    .letter-box {
+        width: 42px;
+        height: 42px;
+        padding-top: 10px;
     }
 
 }
+
+/* SMALL SCREENS */
 
 @media screen and (max-width: 576px) {
 
@@ -769,6 +834,7 @@ input[type="text"] {
 
     .hangman-container {
         height: auto;
+        min-height: auto;
     }
 
     .flex-container {
@@ -777,6 +843,7 @@ input[type="text"] {
 
     .word-container {
         height: 10.75vh;
+        min-height: 95px;
     }
 
     .keyboard-container,
@@ -787,7 +854,7 @@ input[type="text"] {
 
     .game-over-container {
         padding: 10px;
-        height: calc(43vh + 15px);
+        height: calc(39.5vh + 15px);
     }
 
     /*------------ scoring -----------*/
@@ -834,7 +901,7 @@ input[type="text"] {
 
     .key,
     .letter-box {
-        padding-top: 10px;
+        padding-top: 6px;
         max-width: 39px;
         max-height: 39px;
     }
@@ -940,6 +1007,7 @@ input[type="text"] {
     .word-container {
         padding: 8px 2px;
         height: 11.75vh;
+        min-height: 70px;
         margin-bottom: 7.5px;
     }
 
@@ -947,7 +1015,7 @@ input[type="text"] {
     .win-container {
         padding: 8px 2px;
         height: 32.5vh;
-        min-height: auto;
+        min-height: 180px;
     }
 
     .continue,

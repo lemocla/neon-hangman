@@ -405,7 +405,7 @@ $(document).ready(function () {
     //Display hangman parts
 
     function displayHangmanPart(nb) {
-        $(`#part${nb}`).addClass('animate').removeClass('hide');
+        $('#part' +  nb).addClass('animate').removeClass('hide');
     }
 
     //Sounds
