@@ -88,14 +88,14 @@
             <!-- game over -->
             <div id="game-over" class="game-over-container b-neon-purple hide">
                 <h2>Game Over</h2>
-                <p class="pd-bottom">The hidden word was: <span id="correct-answer">quack</span></p>
+                <p class="pd-bottom">Hidden word: <span id="correct-answer">quack</span></p>
                 <div class="content-group pd-bottom">
                     <div>Words: <span class="count-words">0</span></div>
                     <div>Score: <span class="final-score">0</span></div>
                 </div>
-                <div class="best-score-container hide">
-                    <h3 class="pd-bottom  pd-top" id="best-new-score">best new score</h3>
-                    <p class="pd-bottom">Enter your name to save your score</p>
+                <div class="best-score-container">
+                    <h3 class="pd-bottom" id="best-new-score">best new score</h3>
+                    <p>Enter your name to save your score</p>
                     <input id="scorename" class="b-neon-blue" type="text" name="scorename">
                 </div>
                 <div class="content-group pd-top">
@@ -172,11 +172,10 @@
                             <feComposite operator="in" in2="SourceGraphic" />
                             <feGaussianBlur stdDeviation="19" result="glow1" />
                             <feComponentTransfer result="glow1">
-                            <feFuncA type="linear" slope="0.5" intercept="0" />
+                                <feFuncA type="linear" slope="0.5" intercept="0" />
                             </feComponentTransfer>
                             <!--in="blur-merged"-->
-                            <feColorMatrix result="red-blur" in="glow1" type="matrix" 
-                            values="1 0 0 0 0
+                            <feColorMatrix result="red-blur" in="glow1" type="matrix" values="1 0 0 0 0
                                     0 1 0 0 0
                                     0 0 1 0 0
                                     0 0 0 1 0" />

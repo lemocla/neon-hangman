@@ -60,7 +60,7 @@ h1 {
 h2 {
     width: 100%;
     font-size: 1.2em;
-    padding-bottom: 35px;
+    padding-bottom: 25px;
     text-transform: uppercase;
     text-align: center;
     color: #edbb00;
@@ -119,7 +119,7 @@ h3 {
 }
 
 .pd-bottom {
-    padding-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 .pd-top {
@@ -208,7 +208,7 @@ footer {
 
 .game-over-container {
     width: 60%;
-    min-height: 369px;
+    min-height: 375px;
     height: calc(51.5vh + 25px);
     max-height: 431px;
     margin-right: 20px;
@@ -216,7 +216,7 @@ footer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 25px;
+    padding: 0 15px;
 }
 
 /* ---------- navigation -------------*/
@@ -414,6 +414,7 @@ td {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
+
 }
 
 .best-score-container {
@@ -421,6 +422,7 @@ td {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 15px;
 }
 
 #correct-answer,
@@ -438,6 +440,7 @@ td {
     height: 35px;
     background-color: transparent;
     color: inherit;
+    margin-bottom: 0px;
 }
 
 /*----------- hangman ---------------*/
@@ -445,6 +448,7 @@ td {
 #hangman {
     max-width: 86.5%;
     margin: 0 auto;
+    height: 100%;
 }
 
 .path {
@@ -676,7 +680,16 @@ input[type="text"] {
     }
 
     .game-over-container {
-        min-height: 325px;
+        height: calc(49.5vh + 25px);
+        min-height: 332px;
+    }
+
+    .best-score-container {
+        padding-top: 10px;
+    }
+
+    #best-new-score {
+        display: none;
     }
 
     .word-intro {
@@ -690,6 +703,12 @@ input[type="text"] {
 
     #hint-content {
         right: 0px;
+    }
+
+    #hangman {
+        max-width: 80%;
+        height: auto;
+        justify-items: center;
     }
 }
 
@@ -797,9 +816,10 @@ input[type="text"] {
         padding-bottom: 10px
     }
 
+    /*
     .pd-top {
         padding-top: 15px;
-    }
+    }*/
 
     .b-neon-blue {
         border: 0.5px solid #b3fdff;
@@ -843,19 +863,22 @@ input[type="text"] {
 
     .word-container {
         height: 10.75vh;
-        min-height: 95px;
+        min-height: 87px;
     }
 
     .keyboard-container,
     .win-container {
         padding: 0px 5px;
         height: 27.5vh;
+        min-height: 215px;
     }
 
     .game-over-container {
         padding: 10px;
-        height: calc(39.5vh + 15px);
+        height: calc(38.5vh + 15px);
+        min-height: 325px;
     }
+
 
     /*------------ scoring -----------*/
 
@@ -911,6 +934,9 @@ input[type="text"] {
     }
 
     /*------------ Game over -----------*/
+    .best-score-container {
+        padding-top: 0px;
+    }
 
     #best-new-score {
         display: none;
@@ -956,14 +982,11 @@ input[type="text"] {
     .wrapper {
         width: 94%;
     }
-
-    .pd-top {
-        padding-top: 5px;
-    }
-
+    
     header,
     footer {
         height: 9.6vh;
+        min-height: 50px;
     }
 
     h1 {
@@ -986,6 +1009,7 @@ input[type="text"] {
     .game-info {
         height: 6.35vh;
         margin-bottom: 7.5px;
+        min-height: 30px;
     }
 
     .scoring img,
@@ -1007,15 +1031,15 @@ input[type="text"] {
     .word-container {
         padding: 8px 2px;
         height: 11.75vh;
-        min-height: 70px;
+        min-height: 50px;
         margin-bottom: 7.5px;
     }
 
     .keyboard-container,
     .win-container {
         padding: 8px 2px;
-        height: 32.5vh;
-        min-height: 180px;
+        height: 32vh;
+        min-height: 160px;
     }
 
     .continue,
@@ -1035,6 +1059,7 @@ input[type="text"] {
     .game-over-container {
         padding: 5px;
         height: 45vh;
+        min-height: fit-content;
     }
 
     .game-over-container input {
