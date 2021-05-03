@@ -413,10 +413,11 @@ $(document).ready(function () {
     //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
     function playSound(sound) {
         if ($('.btn-volume.active').attr('data-sound') == "on") {
+            $(sound)[0].currentTime=0;
             $(sound)[0].play();
         }
     }
-
+    
     //Scoring
 
     function incrementScore(countStreak, score, point) {
@@ -433,7 +434,6 @@ $(document).ready(function () {
         $.each(splitWord, function (index, value) {
             if (value === letter) {
                 //Sound
-
                 playSound(sound);
                 //Update letter
                 $("#" + index).append(letter);
