@@ -60,7 +60,7 @@ h1 {
 h2 {
     width: 100%;
     font-size: 1.2em;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     text-transform: uppercase;
     text-align: center;
     color: #edbb00;
@@ -123,7 +123,7 @@ h3 {
 }
 
 .pd-top {
-    padding-top: 35px;
+    padding-top: 30px;
 }
 
 /*--------- containers -------*/
@@ -422,7 +422,7 @@ td {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 15px;
+    padding-top: 10px;
 }
 
 #correct-answer,
@@ -449,6 +449,7 @@ td {
     max-width: 86.5%;
     margin: 0 auto;
     height: 100%;
+    max-height: 100%;
 }
 
 .path {
@@ -598,7 +599,7 @@ input {
     width: 100%;
     height: 165px;
     margin-top: 7px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     font-family: inherit;
     background-color: rgb(0 0 0 / 40%);
     color: inherit;
@@ -653,7 +654,7 @@ input[type="text"] {
 
 /* SMALL LANDSCAPE */
 
-@media screen and (max-width: 850px) and (min-width: 769.5px) {
+@media screen and (max-width: 850px) and (orientation: landscape) {
 
     #hint {
         left: 110%;
@@ -672,7 +673,13 @@ input[type="text"] {
     }
 }
 
-@media screen and (max-height: 550px) and (min-width: 769.5px) {
+@media screen and (max-height: 690px) {
+    .modal-window {
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-height: 550px) and (orientation: landscape) {
 
     .word-container {
         height: 19.5vh;
@@ -682,6 +689,7 @@ input[type="text"] {
     .game-over-container {
         height: calc(49.5vh + 25px);
         min-height: 332px;
+        padding: 0;
     }
 
     .best-score-container {
@@ -707,14 +715,69 @@ input[type="text"] {
 
     #hangman {
         max-width: 80%;
-        height: auto;
-        justify-items: center;
+    }
+}
+
+/*525*/
+@media screen and (max-width: 755px) and (max-height: 584px) and (orientation: landscape) {
+    body {
+        font-size: 83%;
+    }
+
+    #game-over h2 {
+        font-size: 1.4em;
+        padding-bottom: 15px;
+    }
+
+    .mg-bottom {
+        margin-bottom: 15px;
+    }
+
+    .pd-top {
+        padding-top: 15px;
+    }
+
+    .flex-container,
+    .game-over-container {
+        width: 60%;
+        margin-right: 15px;
+    }
+
+    .hangman-container {
+        width: calc(40% - 15px);
+    }
+
+    .game-over-container {
+
+        min-height: 278px;
+    }
+
+    .word-container {
+        height: 17.5vh;
+        min-height: 65px;
+    }
+
+    .word-intro {
+        display: none;
+    }
+
+    .keyboard-container,
+    .win-container {
+        min-height: 185px;
+    }
+
+    .key,
+    .letter-box {
+        max-width: 30px;
+        max-height: 30px;
+        padding-top: 5px;
     }
 }
 
 /*TABLET*/
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 769px) and (orientation: portrait),
+screen and (max-width: 495px) and (orientation: landscape) {
 
     .wrapper {
         width: 85%;
@@ -725,12 +788,13 @@ input[type="text"] {
     }
 
     .pd-top {
-        padding-top: 25px;
+        padding-top: 35px;
     }
 
     #game-over h2,
     .form-container h2 {
         font-size: 1.4em;
+        padding-bottom: 25px;
     }
 
     /*------------ containers -----------*/
@@ -804,7 +868,8 @@ input[type="text"] {
 
 /* SMALL SCREENS */
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 576px) and (orientation: portrait),
+screen and (max-width: 495px) and (orientation: landscape) {
 
     .wrapper {
         width: 92%;
@@ -816,10 +881,9 @@ input[type="text"] {
         padding-bottom: 10px
     }
 
-    /*
     .pd-top {
-        padding-top: 15px;
-    }*/
+        padding-top: 25px;
+    }
 
     .b-neon-blue {
         border: 0.5px solid #b3fdff;
@@ -974,7 +1038,8 @@ input[type="text"] {
 }
 
 /* EXTRA SMALL SCREEN*/
-@media screen and (max-width: 372px) {
+@media screen and (max-width: 372px) and (orientation: portrait),
+screen and (max-width: 390px) and (orientation: landscape) {
     body {
         font-size: 70%;
     }
@@ -982,7 +1047,7 @@ input[type="text"] {
     .wrapper {
         width: 94%;
     }
-    
+
     header,
     footer {
         height: 9.6vh;
@@ -1026,6 +1091,7 @@ input[type="text"] {
     .hangman-container {
         height: 19.75vh;
         margin-bottom: 7.5px;
+        min-height: 100px;
     }
 
     .word-container {
