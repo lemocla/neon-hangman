@@ -47,6 +47,9 @@ $(document).ready(function () {
     }
 
     /*-----------------------[ WebAPI ]---------------------------*/
+
+    /*localStorage.removeItem('category');
+    localStorage.removeItem('level');*/
     /*for testing 
     localStorage.removeItem('bestScore');
     localStorage.removeItem('arrayBestScores');
@@ -72,6 +75,17 @@ $(document).ready(function () {
 
         } else {
             localStorage.setItem('level', 'easy');
+        }
+        //Categories
+        if (localStorage.category) {
+            let storedCategory= localStorage.getItem("category");
+            console.log("stored cat = " + storedCategory);
+            $(`.btn-category[data-category=${storedCategory}]`).addClass("active");
+            $(`.btn-category.active[data-category!=${storedCategory}]`).removeClass("active");
+            $('.category').text(storedCategory);
+
+        } else {
+            localStorage.setItem('category', 'dictionary');
         }
         //Sounds
         if (localStorage.sound) {
@@ -113,6 +127,7 @@ $(document).ready(function () {
         }
     } else {
         localStorage.setItem("level", "easy");
+        localStorage.setItem("level", "dictionary");
         localStorage.setItem("sound", "on");
         localStorage.setItem("best-score", 0);
         localStorage.setItem("score", 0);
@@ -161,6 +176,21 @@ $(document).ready(function () {
         //Local Storage
         localStorage.setItem('level', $(this).text());
     });
+
+    /*-------------------[ Select categories ]-------------------*/
+
+    $(".btn-category").on("click", function () {
+        $(this).addClass("active");
+        let activeBtn = $(".btn-category.active").not(this);
+        if (activeBtn.length > 0) {
+            activeBtn.removeClass("active");
+        }
+        //Update game info section
+        $(".category").text($(this).text());
+        //Local Storage
+        localStorage.setItem("category", $(this).text());
+    });
+
 
     /*-------------------[ Select volume items ]-------------------*/
 

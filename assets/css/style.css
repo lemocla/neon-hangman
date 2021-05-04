@@ -279,6 +279,7 @@ footer {
 }
 
 .btn-level,
+.btn-category,
 .btn-volume {
     display: inline-block;
     margin: 0 5px 12px;
@@ -629,6 +630,7 @@ input {
 }
 
 .btn-level:hover,
+.btn-category:hover,
 .btn-volume:hover,
 .active {
     background: #b00ebe;
