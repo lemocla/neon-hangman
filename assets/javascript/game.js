@@ -38,8 +38,81 @@ $(document).ready(function () {
     //timer
     let timer;
     let x;
+    //sound
     let sound;
+    //Web storage
+    let matchStorage = [];
+    let hangmanStorage = [];
+    let keyPressed = [];
 
+    /*-----------------------[ LOCAL STORAGE ]---------------------*/
+
+    if (localStorage.isPlaying) {
+        isPlaying = (localStorage.getItem("isPlaying"));
+        console.log(isPlaying);
+        if (isPlaying === "true") {
+
+            $('#start').addClass("hide");
+            $('.word').empty().removeClass("hide");
+            $('#hint').removeClass("hide");
+            $('.key').removeClass("disabled");
+            //
+            // fetch and update score
+            score = parseInt(localStorage.getItem("score"));
+            $('#score').text(parseInt(localStorage.getItem("score")));
+            console.log("score=" + score);
+            //set timer 
+            setTimer(parseInt(localStorage.getItem("timer")));
+            //fetch words and display in html
+            word = localStorage.getItem("word");
+            splitWord = word.split("");
+            hint = localStorage.getItem("hint");
+            displayWord(word);
+            countStreak = parseInt(localStorage.getItem("countStreak"));
+            if (localStorage.matchStorage) {
+                matchStorage = JSON.parse(localStorage.getItem("matchStorage"));
+            } else {
+                matchStorage = [];
+            }
+            countCorrect = matchStorage.length;
+            console.log("countCorrect");
+            console.log("match" + matchStorage);
+            if (matchStorage.length > 0) {
+                $.each(splitWord, function (index, value) {
+
+                    if (jQuery.inArray(value, matchStorage) != -1) {
+                        console.log(value);
+                        $("#" + index).append(value);
+                    }
+                });
+            }
+            //key pressed
+            if (localStorage.keyStorage) {
+                console.log("key pressed exists");
+                keyPressed = JSON.parse(localStorage.getItem("keyStorage"));
+                console.log("key pressed " + keyPressed);
+                if (keyPressed.length > 0) {
+                    $.each(keyPressed, function(index, value) {
+                    console.log("value keypressed array =" + value);
+                        $(`.key[id="${value}"]`).addClass("disabled");
+                    });
+                }
+            } else {
+                console.log("Storage doesn't exist");
+                keyPressed = [];
+            }
+            //Hangman storage
+            countIncorrect = parseInt(localStorage.getItem("countIncorrect"));
+            $.each($('path'), function (index) {
+                if(index > (countIncorrect - 1))
+                $(this).addClass('hide');
+            });
+            
+        }
+    } else {
+        localStorage.setItem("isPlaying", false);
+    }
+    
     /*------------------------[ START GAME ]-----------------------*/
 
     //Split and display word in html
@@ -65,6 +138,7 @@ $(document).ready(function () {
         hint = wordArray.hint;
         console.log("local word = " + word);
         console.log("local hint = " + hint);
+        localStorage.setItem("word", word);
         displayWord(word);
     }
 
@@ -236,6 +310,7 @@ $(document).ready(function () {
         $.ajax(settings).done(function (dataType) {
                 displayWord(dataType.word);
                 word = dataType.word;
+                localStorage.setItem("word", dataType.word);
                 //Hint --> definition selected at random from the list of definitions for this word
                 let definitions = dataType.results;
                 //https://api.jquery.com/jquery.map/
@@ -278,6 +353,7 @@ $(document).ready(function () {
                 $("#timer").text(minutes + ":" + seconds);
             }
             timer -= 1;
+            localStorage.setItem("timer", timer);
         }, 1000);
     }
 
@@ -285,7 +361,6 @@ $(document).ready(function () {
         clearInterval(x);
         $("#timer").text("0:00");
     }
-
 
 
     //display and hide html contents
@@ -324,14 +399,12 @@ $(document).ready(function () {
 
     function startGame() {
         isPlaying = true;
+        localStorage.setItem("isPlaying", isPlaying);
         setGameElements();
         if ($('.keyboard-container').hasClass("hide")) {
             resetDisplayAfterWin();
         }
         if ($('.flex-container').hasClass("hide")) {
-            /*if (isBestScore) {
-                addToLeaderboard();
-            }*/
             resetDisplayAfterGameOver();
         }
         timer = 120;
@@ -341,8 +414,12 @@ $(document).ready(function () {
         countIncorrect = 0;
         countStreak = 0;
         isBestScore = false;
-        console.log("we are starting again isBestScore=" + isBestScore);
         generateRandomWord(level);
+        //
+        localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
+        localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
+        localStorage.setItem("countIncorrect", countIncorrect);
+        localStorage.setItem("countCorrect", countCorrect);
     }
 
     $("button[data-function=start-game]").on("click", function () {
@@ -357,6 +434,7 @@ $(document).ready(function () {
         hint = ((apiTrue.includes(level)) ?
             ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`) :
             hint);
+        localStorage.setItem("hint", hint);
     }
 
     $('#hint').on('click', function () {
@@ -399,6 +477,9 @@ $(document).ready(function () {
 
     function match(letter) {
         sound = "audio#success-sound";
+        //local storage
+
+        //let matchStorage =  JSON.parse(localStorage.getItem("matchStorage"));
         $.each(splitWord, function (index, value) {
             if (value === letter) {
                 //Sound
@@ -409,8 +490,14 @@ $(document).ready(function () {
                 //scoring
                 countStreak = ++countStreak;
                 score = incrementScore(countStreak, score, point);
+                //Local storage
+                matchStorage.push(value);
+                localStorage.setItem("countStreak", countStreak);
+                localStorage.setItem("score", score);
             }
         });
+
+        localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
         if (countCorrect == splitWord.length) {
             setTimeout(function () {
                 gameWin();
@@ -424,11 +511,17 @@ $(document).ready(function () {
         //Sound
         sound = "audio#fail-sound";
         playSound(sound);
+        let hangmanStorage = [];
         //Display hangman
         countIncorrect = ++countIncorrect;
         displayHangmanPart(countIncorrect);
         //Reset streak to 0
         countStreak = 0;
+        //Local storage
+        hangmanStorage.push(countIncorrect);
+        localStorage.setItem("countStreak", countStreak);
+        localStorage.setItem("countIncorrect", countIncorrect);
+        localStorage.setItem("hangmanStorage", hangmanStorage);
         //Call game over function
         if (countIncorrect == 10) {
             setTimeout(function () {
@@ -454,12 +547,19 @@ $(document).ready(function () {
         }
         $('#hint').addClass("hide");
         //Update statistics
+        isPlaying = false;
         countWords = ++countWords;
         $('.final-score').text(score);
         $('.count-words').text(countWords);
         //local storage
         localStorage.setItem("score", score);
         localStorage.setItem("countWords", countWords);
+        localStorage.getItem("countIncorrect", 0);
+        localStorage.setItem("isPlaying", isPlaying);
+        matchStorage.length = 0;
+        keyPressed.length = 0;
+        localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
+        localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
     }
 
 
@@ -484,14 +584,20 @@ $(document).ready(function () {
             $('#best-score').text(score);
             localStorage.setItem('bestScore', score);
         }
-        console.log("isBestScore =" + isBestScore);
         //Reset score to 0 when game over
         countWords = 0;
         score = 0;
+        isPlaying = false;
         $('#score').text(score);
         //local storage
         localStorage.setItem("score", score);
         localStorage.setItem("countWords", countWords);
+        localStorage.setItem("countIncorrect", 0);
+        localStorage.setItem("isPlaying", isPlaying);
+        matchStorage.length = 0;
+        keyPressed.length = 0;
+        localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
+        localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
     }
 
     //Play game
@@ -505,6 +611,10 @@ $(document).ready(function () {
             functionToRun = (isCorrectGuess) ? match(letter) : noMatch();
             //Disable keys
             $(this).addClass("disabled");
+            //Local storage
+            keyPressed.push(letter);
+            console.log("when press key " + keyPressed);
+            localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
         } else {
             return;
         }
@@ -513,7 +623,7 @@ $(document).ready(function () {
     /*------------------------[ LEAVE GAME ]-----------------------*/
 
     function displayHomePage() {
-        isPlaying = false;
+
         $('.word').empty().addClass('hide');
         $('#start').removeClass("hide");
         $('#hint').addClass("hide");
@@ -600,5 +710,5 @@ $(document).ready(function () {
             $("#save-notification").removeClass("hide");
         }, 1250);
     });
-    
+
 });

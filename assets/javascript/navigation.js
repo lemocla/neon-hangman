@@ -47,12 +47,21 @@ $(document).ready(function () {
     }
 
     /*-----------------------[ WebAPI ]---------------------------*/
-    /* for testing
+    /*for testing 
     localStorage.removeItem('bestScore');
     localStorage.removeItem('arrayBestScores');
     localStorage.removeItem('score');
     localStorage.removeItem('countWords');
-    */
+    localStorage.removeItem('word');
+    localStorage.removeItem('matchStorage');
+    localStorage.removeItem('countStreak');
+    localStorage.removeItem('timer');
+    localStorage.removeItem('hint');
+    localStorage.setItem('isPlaying', false);
+    localStorage.removeItem('countIncorrect');
+    localStorage.removeItem('keyPressed');
+   */
+    
     if (typeof (Storage) !== "undefined") {
         //Level
         if (localStorage.level) {
@@ -77,21 +86,21 @@ $(document).ready(function () {
         //Scores
         if (localStorage.score) {
             $('#score').text(localStorage.getItem('score'));
-            if(parseInt($('#score').text()) > 0)
+            if(parseInt($("#score").text()) > 0 && localStorage.getItem("isPlaying") == "false")
             {
-                $('#start').text('continue');
+                $('#start').text("continue");
             } 
             else{
-            $('#start').text('play');
+            $("#start").text("play");
             }
         } else {
         localStorage.setItem("score", 0);
         }
         //Best score
         if (localStorage.bestScore) {
-            $('#best-score').text(localStorage.getItem('bestScore'));
+            $("#best-score").text(localStorage.getItem("bestScore"));
         } else {
-            localStorage.setItem('bestScore', 0);
+            localStorage.setItem("bestScore", 0);
         }
         //Leaderboard 
         if (localStorage.arrayBestScores) {
@@ -100,14 +109,23 @@ $(document).ready(function () {
         } else {
             let arrayBestScores = [];
             localStorage.setItem("arrayBestScores", JSON.stringify(arrayBestScores));
-            $('#leaderboard').append('<p>No information yet!</p>');
+            $("#leaderboard").append("<p>No information yet!</p>");
         }
     } else {
-        localStorage.setItem('level', 'easy');
-        localStorage.setItem('sound', 'on');
-        localStorage.setItem('best-score', 0);
-        localStorage.setItem('score', 0);
-        localStorage.setItem('countWords', 0);
+        localStorage.setItem("level", "easy");
+        localStorage.setItem("sound", "on");
+        localStorage.setItem("best-score", 0);
+        localStorage.setItem("score", 0);
+        localStorage.setItem("countWords", 0);
+        localStorage.setItem("isPlaying", false);
+        localStorage.setItem("word", "");
+        localStorage.setItem("hint", "");
+        localStorage.setItem("timer", "0:00");
+        localStorage.setItem("countStreak", 0);
+        localStorage.setItem("hangmanStorage", []);
+        localStorage.setItem("matchStorage", []);
+        localStorage.setItem("countIncorrect", 0);
+        localStorage.setItem("keyStorage", []);
     }
 
     /*----------------------[ Toggle menu ]-----------------------*/
