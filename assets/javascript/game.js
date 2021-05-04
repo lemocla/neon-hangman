@@ -26,6 +26,7 @@ $(document).ready(function () {
     let countStreak = 0;
     let point = 10;
     let score = parseInt($('#score').text());
+    let isBestScore = false;
     //Word Count
     let countWords;
     if (localStorage.countWords) {
@@ -284,48 +285,7 @@ $(document).ready(function () {
         clearInterval(x);
         $("#timer").text("0:00");
     }
-    //record best score to leaderboard
-    function GetSortOrder(prop) {
-        return function (a, b) {
-            if (a[prop] < b[prop]) {
-                return 1;
-            } else if (a[prop] > b[prop]) {
-                return -1;
-            }
-            return 0;
-        };
-    }
 
-    function addToLeaderboard() {
-        let playerName = $('#scorename').val();
-        let today = new Date();
-        today = today.toLocaleDateString();
-        let leaderboard = JSON.parse(localStorage.getItem("arrayBestScores"));
-        let recScore = localStorage.getItem("bestScore");
-        let addPlayerDetails = {
-            "date": `${today}`,
-            "name": `${playerName}`,
-            "score": `${recScore}`
-        };
-
-        if (leaderboard.length >= 1) {
-            leaderboard.push(addPlayerDetails);
-            leaderboard.sort(GetSortOrder("score"));
-            $('#lead-table').append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
-            //sort
-            $(`tr:contains(${recScore})`).insertAfter('#head-row');
-        } else {
-            leaderboard.push(addPlayerDetails);
-            $('#leaderboard').html(`
-             <table id="lead-table">
-             <tr id="head-row"><th>date</th><th>name</th><th>score</th></tr>
-             <tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>
-             </table>
-             `);
-        }
-
-        localStorage.setItem("arrayBestScores", JSON.stringify(leaderboard));
-    }
 
 
     //display and hide html contents
@@ -353,6 +313,10 @@ $(document).ready(function () {
         //Hide best score container
         if (!$('.best-score-container').hasClass('hide')) {
             $('.best-score-container').addClass('hide');
+            if ($("#scorename-container").hasClass("hide")) {
+                $("#scorename-container").removeClass("hide");
+                $("#save-notification").addClass("hide");
+            }
         }
     }
 
@@ -365,7 +329,9 @@ $(document).ready(function () {
             resetDisplayAfterWin();
         }
         if ($('.flex-container').hasClass("hide")) {
-            addToLeaderboard();
+            /*if (isBestScore) {
+                addToLeaderboard();
+            }*/
             resetDisplayAfterGameOver();
         }
         timer = 120;
@@ -374,6 +340,8 @@ $(document).ready(function () {
         countCorrect = 0;
         countIncorrect = 0;
         countStreak = 0;
+        isBestScore = false;
+        console.log("we are starting again isBestScore=" + isBestScore);
         generateRandomWord(level);
     }
 
@@ -405,7 +373,7 @@ $(document).ready(function () {
     //Display hangman parts
 
     function displayHangmanPart(nb) {
-        $('#part' +  nb).addClass('animate').removeClass('hide');
+        $('#part' + nb).addClass('animate').removeClass('hide');
     }
 
     //Sounds
@@ -413,11 +381,11 @@ $(document).ready(function () {
     //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
     function playSound(sound) {
         if ($('.btn-volume.active').attr('data-sound') == "on") {
-            $(sound)[0].currentTime=0;
+            $(sound)[0].currentTime = 0;
             $(sound)[0].play();
         }
     }
-    
+
     //Scoring
 
     function incrementScore(countStreak, score, point) {
@@ -494,6 +462,7 @@ $(document).ready(function () {
         localStorage.setItem("countWords", countWords);
     }
 
+
     //Game over
     function gameOver() {
         //Sounds
@@ -510,10 +479,12 @@ $(document).ready(function () {
         $('#game-over').removeClass("hide");
         //Update best score with scoring info
         if (parseInt($('#best-score').text()) < score) {
+            isBestScore = true;
             $('.best-score-container').removeClass('hide');
             $('#best-score').text(score);
             localStorage.setItem('bestScore', score);
         }
+        console.log("isBestScore =" + isBestScore);
         //Reset score to 0 when game over
         countWords = 0;
         score = 0;
@@ -559,7 +530,6 @@ $(document).ready(function () {
             resetDisplayAfterWin();
         }
         if ($('.flex-container').hasClass("hide")) {
-            addToLeaderboard();
             resetDisplayAfterGameOver();
         }
     }
@@ -568,5 +538,67 @@ $(document).ready(function () {
         displayHomePage();
     });
 
+    /*-------------------[ RECORD BEST SCORE TO LEADERBOARD ]-------------------*/
 
+    function sortOrder(prop) {
+        return function (a, b) {
+            if (a[prop] < b[prop]) {
+                return 1;
+            } else if (a[prop] > b[prop]) {
+                return -1;
+            }
+            return 0;
+        };
+    }
+
+    function addToLeaderboard() {
+        let playerName = $('#scorename').val();
+        let today = new Date();
+        today = today.toLocaleDateString();
+        let leaderboard = JSON.parse(localStorage.getItem("arrayBestScores"));
+        let recScore = localStorage.getItem("bestScore");
+        let addPlayerDetails = {
+            "date": `${today}`,
+            "name": `${playerName}`,
+            "score": `${recScore}`
+        };
+
+        if (leaderboard.length >= 1) {
+            leaderboard.push(addPlayerDetails);
+            leaderboard.sort(sortOrder("score"));
+            $('#lead-table').append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
+            //sort
+            $(`tr:contains(${recScore})`).insertAfter('#head-row');
+        } else {
+            leaderboard.push(addPlayerDetails);
+            $('#leaderboard').html(`
+             <table id="lead-table">
+             <tr id="head-row"><th>date</th><th>name</th><th>score</th></tr>
+             <tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>
+             </table>
+             `);
+        }
+
+        localStorage.setItem("arrayBestScores", JSON.stringify(leaderboard));
+        $("#scorename").val("");
+    }
+
+    var delay = (function () {
+        var timerDelay = 0;
+        return function (callback, ms) {
+            clearTimeout(timerDelay);
+            timerDelay = setTimeout(callback, ms);
+        };
+    })();
+
+    $('#scorename').keyup(function () {
+        console.log("The function are ready to run on input");
+        delay(function () {
+            console.log("delay function is working");
+            addToLeaderboard();
+            $("#scorename-container").addClass("hide");
+            $("#save-notification").removeClass("hide");
+        }, 1250);
+    });
+    
 });

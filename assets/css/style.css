@@ -434,6 +434,11 @@ td {
     font-size: 110%;
 }
 
+#save-notification {
+    color: #edbb00;
+    padding-top: 8px;
+}
+
 .game-over-container input {
     display: block;
     width: 235px;
