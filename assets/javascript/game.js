@@ -7,7 +7,8 @@ $(document).ready(function () {
     /*--------------------------[ VARIABLES ]-------------------------*/
 
     let level;
-    const apiTrue = ['easy', 'medium', 'hard'];
+    let category;
+    const apiTrue = "dictionary";
     let isPlaying = false;
     //Words
     let hintCollection;
@@ -92,8 +93,8 @@ $(document).ready(function () {
                 keyPressed = JSON.parse(localStorage.getItem("keyStorage"));
                 console.log("key pressed " + keyPressed);
                 if (keyPressed.length > 0) {
-                    $.each(keyPressed, function(index, value) {
-                    console.log("value keypressed array =" + value);
+                    $.each(keyPressed, function (index, value) {
+                        console.log("value keypressed array =" + value);
                         $(`.key[id="${value}"]`).addClass("disabled");
                     });
                 }
@@ -104,15 +105,15 @@ $(document).ready(function () {
             //Hangman storage
             countIncorrect = parseInt(localStorage.getItem("countIncorrect"));
             $.each($('path'), function (index) {
-                if(index > (countIncorrect - 1))
-                $(this).addClass('hide');
+                if (index > (countIncorrect - 1))
+                    $(this).addClass('hide');
             });
-            
+
         }
     } else {
         localStorage.setItem("isPlaying", false);
     }
-    
+
     /*------------------------[ START GAME ]-----------------------*/
 
     //Split and display word in html
@@ -129,9 +130,9 @@ $(document).ready(function () {
 
     //Local words 
 
-    function generateLocalWord(obj, level) {
+    function generateLocalWord(obj, level, category) {
         let localWords = obj.filter(function (el) {
-            return el.category == level;
+            return el.category == category && el.level == level;
         });
         let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
         word = wordArray.word;
@@ -142,11 +143,11 @@ $(document).ready(function () {
         displayWord(word);
     }
 
-    function getLocalWord(level) {
+    function getLocalWord(level, category) {
         $.get("assets/words/words.txt", 'json').done(function (data) {
                 let obj = JSON.parse(data);
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
-                generateLocalWord(obj, level);
+                generateLocalWord(obj, level, category);
             })
             .fail(function () {
                 let obj = [{
@@ -258,7 +259,7 @@ $(document).ready(function () {
                         category: "transport"
                     }
                 ];
-                generateLocalWord(obj, level);
+                generateLocalWord(obj, level, category);
             });
     }
 
@@ -318,6 +319,7 @@ $(document).ready(function () {
                     return value.definition;
                 });
                 console.log("word API = " + dataType.word);
+                console.log("hint collection = " + hintCollection );
             })
             .fail(function () {
                 localWord();
@@ -326,8 +328,12 @@ $(document).ready(function () {
 
     //Generate Random Word according to category selected
 
-    function generateRandomWord(level) {
-        getWordMethod = ((apiTrue.includes(level)) ? getWordApi(level) : getLocalWord(level));
+    function generateRandomWord(category, level) {
+        if (category === "dictionary") {
+            getWordApi(level);
+        } else {
+            getLocalWord(level, category);
+        }
     }
 
     //Timer
@@ -410,11 +416,12 @@ $(document).ready(function () {
         timer = 120;
         setTimer(timer);
         level = $('.btn-level.active').text();
+        category = $('.btn-category.active').text();
         countCorrect = 0;
         countIncorrect = 0;
         countStreak = 0;
         isBestScore = false;
-        generateRandomWord(level);
+        generateRandomWord(category, level);
         //
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
         localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
