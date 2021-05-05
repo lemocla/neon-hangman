@@ -18,6 +18,22 @@ $(document).ready(function () {
     let splitWord;
     let countCorrect = 0;
     let countIncorrect = 0;
+    let maxCharacterCount;
+    if ($(".word").width() <= 335) {
+        maxCharacterCount = 8;
+    } else if ($(".word").width() <= 425) {
+        maxCharacterCount = 9;
+        console.log("max = " + maxCharacterCount);
+    } else if ($(".word").width() <= 490) {
+        maxCharacterCount = 10;
+        console.log("max = " + maxCharacterCount);
+    } else if ($(".word").width() <= 510) {
+        maxCharacterCount = 11;
+        console.log("max = " + maxCharacterCount);
+    } else {
+        maxCharacterCount = 12;
+        console.log("max = " + maxCharacterCount);
+    }
     //Hangman
     let hangmanParts = [];
     $.each($('path'), function (value) {
@@ -132,7 +148,7 @@ $(document).ready(function () {
 
     function generateLocalWord(obj, level, category) {
         let localWords = obj.filter(function (el) {
-            return el.category == category && el.level == level;
+            return el.category == category && el.level == level && el.count <= maxCharacterCount;
         });
         let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
         word = wordArray.word;
@@ -144,119 +160,136 @@ $(document).ready(function () {
     }
 
     function getLocalWord(level, category) {
-        $.get("assets/words/words.txt", 'json').done(function (data) {
-                let obj = JSON.parse(data);
+        $.get("assets/words/wordslist.json", 'json').done(function (data) {
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
-                generateLocalWord(obj, level, category);
+                generateLocalWord(data, level, category);
             })
             .fail(function () {
                 let obj = [{
-                        word: "cat",
+                        word: "dog",
                         hint: "I am a pet.",
                         level: "easy",
-                        category: "animals"
+                        category: "animals",
+                        count: "3"
                     },
                     {
-                        word: "cow",
-                        hint: "You can see me in fields, often in a cattle.",
+                        word: "duck",
+                        hint: "I can be seen in a fam or on a pond.",
                         level: "easy",
-                        category: "animals"
+                        category: "animals",
+                        count: "4"
                     },
                     {
-                        word: "butterfly",
-                        hint: "I flutter.",
+                        word: "meerkats",
+                        hint: "I am mainly found in Southern Africa and on TV.",
                         level: "hard",
-                        category: "animals"
+                        category: "animals",
+                        count: "8"
                     },
                     {
-                        word: "carterpillar",
-                        hint: "My only job is to eat and I may produce silk.",
+                        word: "penguin",
+                        hint: "I am a cute black and white animal.",
                         level: "hard",
-                        category: "animals"
+                        category: "animals",
+                        count: "7"
                     },
                     {
-                        word: "donkey",
-                        hint: "I am hard working.",
+                        word: "giraffe",
+                        hint: "I live in Africa but I am often seen in a zoo.",
                         level: "medium",
-                        category: "animals"
+                        category: "animals",
+                        count: "7"
                     },
                     {
-                        word: "eagle",
-                        hint: "I am a bird of prey.",
+                        word: "hamster",
+                        hint: "I am a small pet.",
                         level: "medium",
-                        category: "animals"
+                        category: "animals",
+                        count: "7"
                     },
                     {
                         word: "ham",
                         hint: "I am a type of meat.",
                         level: "easy",
-                        category: "food"
+                        category: "food",
+                        count: "3"
                     },
                     {
                         word: "milk",
                         hint: "You can add me to hot drinks.",
                         level: "easy",
-                        category: "food"
+                        category: "food",
+                        count: "4"
                     },
                     {
-                        word: "avocado",
-                        hint: "You find me in guacamole.",
+                        word: "porridge",
+                        hint: "Goldilocks favourite breakfast.",
                         level: "hard",
-                        category: "food"
+                        category: "food",
+                        count: "8"
                     },
                     {
-                        word: "chocolate",
-                        hint: "I am  a favourite sweet treat.",
+                        word: "quiche",
+                        hint: "I am kind of tart for lunch.",
                         level: "hard",
-                        category: "food"
+                        category: "food",
+                        count: "6"
                     },
                     {
                         word: "apple",
                         hint: "I am a juicy fruit.",
                         level: "medium",
-                        category: "food"
+                        category: "food",
+                        count: "5"
                     },
                     {
                         word: "banana",
                         hint: "I am a very common fruit.",
                         level: "medium",
-                        category: "food"
+                        category: "food",
+                        count: "6"
                     },
                     {
-                        word: "bus",
-                        hint: "I carry people around the city.",
+                        word: "boat",
+                        hint: "I float on water.",
                         level: "easy",
-                        category: "transport"
+                        category: "transport",
+                        count: "4"
                     },
                     {
                         word: "car",
                         hint: "Most popular form of transport.",
                         level: "easy",
-                        category: "transport"
+                        category: "transport",
+                        count: "3"
                     },
                     {
-                        word: "bulldozer",
-                        hint: "You can find me on building sites.",
+                        word: "forklift",
+                        hint: "I am a loading vehicle.",
                         level: "hard",
-                        category: "transport"
+                        category: "transport",
+                        count: "8"
                     },
                     {
-                        word: "helicopter",
-                        hint: "I fly across cities.",
+                        word: "frigate",
+                        hint: "I am a type of warship. ",
                         level: "hard",
-                        category: "transport"
+                        category: "transport",
+                        count: "7"
                     },
                     {
-                        word: "bicycle",
-                        hint: "I have got two wheels.",
+                        word: "tanker",
+                        hint: "I transport liquids.",
                         level: "medium",
-                        category: "transport"
+                        category: "transport",
+                        count: "6"
                     },
                     {
                         word: "tractor",
                         hint: "I work on the farm.",
                         level: "medium",
-                        category: "transport"
+                        category: "transport",
+                        count: "7"
                     }
                 ];
                 generateLocalWord(obj, level, category);
@@ -319,7 +352,7 @@ $(document).ready(function () {
                     return value.definition;
                 });
                 console.log("word API = " + dataType.word);
-                console.log("hint collection = " + hintCollection );
+                console.log("hint collection = " + hintCollection);
             })
             .fail(function () {
                 localWord();

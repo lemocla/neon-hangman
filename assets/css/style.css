@@ -971,7 +971,8 @@ screen and (max-width: 495px) and (orientation: landscape) {
     }
 
     .word {
-        width: 96%;
+        /*width: 96%;*/
+        width: 97.5%;
         padding-top: 0;
     }
 
