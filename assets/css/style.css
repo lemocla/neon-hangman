@@ -541,17 +541,19 @@ a img:hover,
 
 /*https://www.w3schools.com/howto/howto_css_modals.asp*/
 .modal-window {
-    position: fixed;
+    position: absolute;
     display: flex;
     align-items: center;
     z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
-    height: 90vh;
+    height: 100%;
     min-height: fit-content;
     padding: 25px 0;
     overflow: auto;
+    /*overflow-y: scroll;
+    -webkit-overflow-scrolling: auto;*/
     background-color: #00000098;
 }
 
@@ -597,6 +599,8 @@ input {
     margin-top: 7px;
     margin-bottom: 15px;
     font-family: inherit;
+    color: inherit;
+    font-size: inherit;
     background-color: rgb(0 0 0 / 40%);
 }
 
@@ -607,6 +611,8 @@ input {
     margin-top: 7px;
     margin-bottom: 25px;
     font-family: inherit;
+    font-size: inherit;
+    line-height: 1.5;
     background-color: rgb(0 0 0 / 40%);
     color: inherit;
 }
