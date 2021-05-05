@@ -64,7 +64,7 @@ $(document).ready(function () {
     localStorage.removeItem('countIncorrect');
     localStorage.removeItem('keyPressed');
    */
-    
+
     if (typeof (Storage) !== "undefined") {
         //Level
         if (localStorage.level) {
@@ -78,7 +78,11 @@ $(document).ready(function () {
         }
         //Categories
         if (localStorage.category) {
-            let storedCategory= localStorage.getItem("category");
+            let storedCategory = localStorage.getItem("category");
+            //
+            if (localStorage.isPlaying && localStorage.getItem("isPlaying") == "true") {
+                storedCategory = localStorage.getItem("isPlayingCategory");
+            }
             console.log("stored cat = " + storedCategory);
             $(`.btn-category[data-category=${storedCategory}]`).addClass("active");
             $(`.btn-category.active[data-category!=${storedCategory}]`).removeClass("active");
@@ -100,15 +104,13 @@ $(document).ready(function () {
         //Scores
         if (localStorage.score) {
             $('#score').text(localStorage.getItem('score'));
-            if(parseInt($("#score").text()) > 0 && localStorage.getItem("isPlaying") == "false")
-            {
+            if (parseInt($("#score").text()) > 0 && localStorage.getItem("isPlaying") == "false") {
                 $('#start').text("continue");
-            } 
-            else{
-            $("#start").text("play");
+            } else {
+                $("#start").text("play");
             }
         } else {
-        localStorage.setItem("score", 0);
+            localStorage.setItem("score", 0);
         }
         //Best score
         if (localStorage.bestScore) {
@@ -127,14 +129,16 @@ $(document).ready(function () {
         }
     } else {
         localStorage.setItem("level", "easy");
-        localStorage.setItem("level", "dictionary");
+        localStorage.setItem("category", "dictionary");
         localStorage.setItem("sound", "on");
         localStorage.setItem("best-score", 0);
         localStorage.setItem("score", 0);
         localStorage.setItem("countWords", 0);
         localStorage.setItem("isPlaying", false);
+        localStorage.setItem("isPlayingCategory", "");
         localStorage.setItem("word", "");
         localStorage.setItem("hint", "");
+        localStorage.setItem("hintCollection", []);
         localStorage.setItem("timer", "0:00");
         localStorage.setItem("countStreak", 0);
         localStorage.setItem("hangmanStorage", []);

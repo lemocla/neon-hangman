@@ -74,6 +74,7 @@ $(document).ready(function () {
             $('#hint').removeClass("hide");
             $('.key').removeClass("disabled");
             //
+            category = localStorage.getItem("isPlayingCategory");
             // fetch and update score
             score = parseInt(localStorage.getItem("score"));
             $('#score').text(parseInt(localStorage.getItem("score")));
@@ -84,6 +85,16 @@ $(document).ready(function () {
             word = localStorage.getItem("word");
             splitWord = word.split("");
             hint = localStorage.getItem("hint");
+            
+            //
+            if (localStorage.hintCollection){
+                hintCollection = JSON.parse(localStorage.getItem("hintCollection"));
+            }
+            else{
+                hintCollection = [];
+            }
+            //
+            console.log("stored hint col = " + hintCollection);
             displayWord(word);
             countStreak = parseInt(localStorage.getItem("countStreak"));
             if (localStorage.matchStorage) {
@@ -156,6 +167,7 @@ $(document).ready(function () {
         console.log("local word = " + word);
         console.log("local hint = " + hint);
         localStorage.setItem("word", word);
+        localStorage.setItem("hint", hint);
         displayWord(word);
     }
 
@@ -351,6 +363,7 @@ $(document).ready(function () {
                 hintCollection = $.map(definitions, function (value) {
                     return value.definition;
                 });
+                localStorage.setItem("hintCollection",  JSON.stringify(hintCollection));
                 console.log("word API = " + dataType.word);
                 console.log("hint collection = " + hintCollection);
             })
@@ -439,6 +452,7 @@ $(document).ready(function () {
     function startGame() {
         isPlaying = true;
         localStorage.setItem("isPlaying", isPlaying);
+        
         setGameElements();
         if ($('.keyboard-container').hasClass("hide")) {
             resetDisplayAfterWin();
@@ -450,6 +464,7 @@ $(document).ready(function () {
         setTimer(timer);
         level = $('.btn-level.active').text();
         category = $('.btn-category.active').text();
+        localStorage.setItem("isPlayingCategory", category);
         countCorrect = 0;
         countIncorrect = 0;
         countStreak = 0;
@@ -471,10 +486,11 @@ $(document).ready(function () {
     //Display hints    
 
     function getHintValue() {
-        hint = ((apiTrue.includes(level)) ?
+    console.log("hint collection in fction get Hint val = " + hintCollection);
+    console.log("category = " + category);
+        hint = ((category == "dictionary") ?
             ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`) :
             hint);
-        localStorage.setItem("hint", hint);
     }
 
     $('#hint').on('click', function () {
@@ -593,13 +609,20 @@ $(document).ready(function () {
         $('.count-words').text(countWords);
         //local storage
         localStorage.setItem("score", score);
+        localStorage.setItem("timer", 0);
         localStorage.setItem("countWords", countWords);
         localStorage.getItem("countIncorrect", 0);
         localStorage.setItem("isPlaying", isPlaying);
+        localStorage.setItem("isPlayingCategory", "");
+        localStorage.setItem("word", "");
+        localStorage.setItem("hint", "");
+        localStorage.setItem("countStreak", 0);
         matchStorage.length = 0;
         keyPressed.length = 0;
+        hintCollection.length = 0;
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
         localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
+        localStorage.setItem("hintCollection",  JSON.stringify(hintCollection));
     }
 
 
@@ -631,13 +654,20 @@ $(document).ready(function () {
         $('#score').text(score);
         //local storage
         localStorage.setItem("score", score);
+        localStorage.setItem("timer", 0);
+        localStorage.setItem("isPlaying", isPlaying);
+        localStorage.setItem("isPlayingCategory", "");
         localStorage.setItem("countWords", countWords);
         localStorage.setItem("countIncorrect", 0);
-        localStorage.setItem("isPlaying", isPlaying);
+        localStorage.setItem("countStreak", 0);
+        localStorage.setItem("word", "");
+        localStorage.setItem("hint", "");
         matchStorage.length = 0;
         keyPressed.length = 0;
+        hintCollection.length = 0;
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
         localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
+        localStorage.setItem("hintCollection",  JSON.stringify(hintCollection));
     }
 
     //Play game
