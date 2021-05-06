@@ -88,7 +88,6 @@
             <audio id="game-over-sound">
                 <source src="assets/sounds/mixkit-musical-game-over-959.wav" type="audio/mpeg">
             </audio>
-
             <!-- game over -->
             <div id="game-over" class="game-over-container b-neon-purple hide">
                 <h2>Game Over</h2>
@@ -141,7 +140,6 @@
                     <div class="key b-neon-blue" id="h">h</div>
                     <div class="key b-neon-blue" id="i">i</div>
                     <div class="key b-neon-blue" id="j">j</div>
-
                     <div class="key b-neon-blue" id="k">k</div>
                     <div class="key b-neon-blue" id="l">l</div>
                     <div class="key b-neon-blue" id="m">m</div>
@@ -151,7 +149,6 @@
                     <div class="key b-neon-blue" id="q">q</div>
                     <div class="key b-neon-blue" id="r">r</div>
                     <div class="key b-neon-blue" id="s">s</div>
-
                     <div class="key b-neon-blue" id="t">t</div>
                     <div class="key b-neon-blue" id="u">u</div>
                     <div class="key b-neon-blue" id="v">v</div>
@@ -187,7 +184,6 @@
                                     0 0 1 0 0
                                     0 0 0 1 0" />
                             <feMerge>
-
                                 <feMergeNode in="red-blur" />
                                 <feMergeNode in="glow1" />
                                 <feMergeNode in="SourceGraphic" />
@@ -260,7 +256,7 @@
                 <input class="b-neon-blue" type="email" id="email" name="email" required><br>
                 <label for="message">Message:</label><br>
                 <textarea class="b-neon-blue" id="message" name="message" required></textarea><br>
-                <input id="submit-email" class="btn btn-form" type="submit" value="Submit" data-close="modal-form">
+                <input id="submit-email" class="btn btn-form" type="submit" value="Submit">
             </form>
         </div>
     </div>
@@ -287,10 +283,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/javascript/navigation.js"></script>
     <script src="assets/javascript/game.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script type="text/javascript">
-        emailjs.init('user_QcxrbFoaC4sGqGsZ2MFsM')
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script>emailjs.init('user_QcxrbFoaC4sGqGsZ2MFsM')</script>
     <script src="assets/javascript/emailjs.js"></script>
 </body>
 
