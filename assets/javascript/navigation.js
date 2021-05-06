@@ -53,7 +53,6 @@ $(document).ready(function () {
     if (typeof (Storage) !== "undefined") {
         //Level
         if (localStorage.level) {
-
             let storedLevel = localStorage.getItem("level");
             $(`.btn-level[data-level=${storedLevel}]`).addClass("active");
             $(`.btn-level.active[data-level!=${storedLevel}]`).removeClass("active");
@@ -117,16 +116,6 @@ $(document).ready(function () {
         localStorage.setItem("score", 0);
         localStorage.setItem("countWords", 0);
         localStorage.setItem("isPlaying", false);
-        localStorage.setItem("isPlayingCategory", "");
-        localStorage.setItem("word", "");
-        localStorage.setItem("hint", "");
-        localStorage.setItem("hintCollection", []);
-        localStorage.setItem("timer", "0:00");
-        localStorage.setItem("countStreak", 0);
-        localStorage.setItem("hangmanStorage", []);
-        localStorage.setItem("matchStorage", []);
-        localStorage.setItem("countIncorrect", 0);
-        localStorage.setItem("keyStorage", []);
     }
 
     /*----------------------[ Toggle menu ]-----------------------*/

@@ -8,42 +8,25 @@ $(document).ready(function () {
 
     let level;
     let category;
-    const apiTrue = "dictionary";
     let isPlaying = false;
     //Words
-    let hintCollection;
+    let hintCollection = [];
     let firstLetter = "";
     let word;
     let hint;
     let splitWord;
     let countCorrect = 0;
     let countIncorrect = 0;
-    let maxCharacterCount;
-    if ($(".word").width() <= 335) {
-        maxCharacterCount = 8;
-    } else if ($(".word").width() <= 425) {
-        maxCharacterCount = 9;
-        console.log("max = " + maxCharacterCount);
-    } else if ($(".word").width() <= 490) {
-        maxCharacterCount = 10;
-        console.log("max = " + maxCharacterCount);
-    } else if ($(".word").width() <= 510) {
-        maxCharacterCount = 11;
-        console.log("max = " + maxCharacterCount);
-    } else {
-        maxCharacterCount = 12;
-        console.log("max = " + maxCharacterCount);
-    }
+    let max;
     //Hangman
     let hangmanParts = [];
-    $.each($('path'), function (value) {
+    $.each($("path"), function (value) {
         hangmanParts.push(value.id);
     });
     //scoring
     let countStreak = 0;
     let point = 10;
-    let score = parseInt($('#score').text());
-    let isBestScore = false;
+    let score = parseInt($("#score").text());
     //Word Count
     let countWords;
     if (localStorage.countWords) {
@@ -59,83 +42,49 @@ $(document).ready(function () {
     let sound;
     //Web storage
     let matchStorage = [];
-    let hangmanStorage = [];
     let keyPressed = [];
 
     /*-----------------------[ LOCAL STORAGE ]---------------------*/
 
     if (localStorage.isPlaying) {
         isPlaying = (localStorage.getItem("isPlaying"));
-        console.log(isPlaying);
         if (isPlaying === "true") {
-
-            $('#start').addClass("hide");
-            $('.word').empty().removeClass("hide");
-            $('#hint').removeClass("hide");
-            $('.key').removeClass("disabled");
-            //
+            setGameElements();
+            //Fetch and update category
             category = localStorage.getItem("isPlayingCategory");
-            // fetch and update score
-            score = parseInt(localStorage.getItem("score"));
-            $('#score').text(parseInt(localStorage.getItem("score")));
-            console.log("score=" + score);
-            //set timer 
+            //Fetch and update timer
             setTimer(parseInt(localStorage.getItem("timer")));
-            //fetch words and display in html
+            //Fetch words and display in html
             word = localStorage.getItem("word");
             splitWord = word.split("");
-            hint = localStorage.getItem("hint");
-            
-            //
-            if (localStorage.hintCollection){
-                hintCollection = JSON.parse(localStorage.getItem("hintCollection"));
-            }
-            else{
-                hintCollection = [];
-            }
-            //
-            console.log("stored hint col = " + hintCollection);
             displayWord(word);
+            //Fetch and update hint
+            hint = localStorage.getItem("hint");
+            hintCollection = JSON.parse(localStorage.getItem("hintCollection"));
+            //Fetch & update correctly guessed letters
             countStreak = parseInt(localStorage.getItem("countStreak"));
-            if (localStorage.matchStorage) {
-                matchStorage = JSON.parse(localStorage.getItem("matchStorage"));
-            } else {
-                matchStorage = [];
-            }
+            matchStorage = JSON.parse(localStorage.getItem("matchStorage"));
             countCorrect = matchStorage.length;
-            console.log("countCorrect");
-            console.log("match" + matchStorage);
             if (matchStorage.length > 0) {
                 $.each(splitWord, function (index, value) {
-
                     if (jQuery.inArray(value, matchStorage) != -1) {
-                        console.log(value);
                         $("#" + index).append(value);
                     }
                 });
             }
             //key pressed
-            if (localStorage.keyStorage) {
-                console.log("key pressed exists");
-                keyPressed = JSON.parse(localStorage.getItem("keyStorage"));
-                console.log("key pressed " + keyPressed);
-                if (keyPressed.length > 0) {
-                    $.each(keyPressed, function (index, value) {
-                        console.log("value keypressed array =" + value);
-                        $(`.key[id="${value}"]`).addClass("disabled");
-                    });
-                }
-            } else {
-                console.log("Storage doesn't exist");
-                keyPressed = [];
+            keyPressed = JSON.parse(localStorage.getItem("keyStorage"));
+            if (keyPressed.length > 0) {
+                $.each(keyPressed, function (index, value) {
+                    $(`.key[id="${value}"]`).addClass("disabled");
+                });
             }
-            //Hangman storage
+            //Update hangman & count incorrect
             countIncorrect = parseInt(localStorage.getItem("countIncorrect"));
-            $.each($('path'), function (index) {
+            $.each($("path"), function (index) {
                 if (index > (countIncorrect - 1))
-                    $(this).addClass('hide');
+                    $(this).addClass("hide");
             });
-
         }
     } else {
         localStorage.setItem("isPlaying", false);
@@ -143,8 +92,22 @@ $(document).ready(function () {
 
     /*------------------------[ START GAME ]-----------------------*/
 
-    //Split and display word in html
+    //Set maximum character count 
+    function setMaxCharacterCount() {
+        if ($(".word").width() <= 335) {
+            return 8;
+        } else if ($(".word").width() <= 425) {
+            return 9;
+        } else if ($(".word").width() <= 490) {
+            return 10;
+        } else if ($(".word").width() <= 510) {
+            return 11;
+        } else {
+            return 12;
+        }
+    }
 
+    //Split and display word in html
     function displayWord(word) {
         splitWord = word.split("");
         firstLetter = splitWord[0];
@@ -156,23 +119,22 @@ $(document).ready(function () {
     }
 
     //Local words 
-
     function generateLocalWord(obj, level, category) {
         let localWords = obj.filter(function (el) {
-            return el.category == category && el.level == level && el.count <= maxCharacterCount;
+            max = setMaxCharacterCount();
+            return el.category == category && el.level == level && el.count <= max;
         });
         let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
         word = wordArray.word;
         hint = wordArray.hint;
-        console.log("local word = " + word);
-        console.log("local hint = " + hint);
+        //Local storage
         localStorage.setItem("word", word);
         localStorage.setItem("hint", hint);
         displayWord(word);
     }
 
     function getLocalWord(level, category) {
-        $.get("assets/words/wordslist.json", 'json').done(function (data) {
+        $.get("assets/words/wordslist.json", "json").done(function (data) {
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
                 generateLocalWord(data, level, category);
             })
@@ -309,10 +271,8 @@ $(document).ready(function () {
     }
 
     //set API parameters
-
     function setApiParameters(level) {
         let min;
-        let max;
         let freqMin;
         let freqMax;
         if (level == 'easy') {
@@ -327,8 +287,7 @@ $(document).ready(function () {
             freqMax = 7.5;
         } else {
             min = 4;
-            // max letters set to 9 on mobile viewport
-            max = (($(window).width() >= 576) ? 12 : 9);
+            max = setMaxCharacterCount();
             freqMin = 2;
             freqMax = 5;
         }
@@ -336,7 +295,6 @@ $(document).ready(function () {
     }
 
     //Get random Word via API
-
     function getWordApi(level) {
         /*from RapidAPI documentation documentation*/
         let parameters = setApiParameters(level);
@@ -349,23 +307,21 @@ $(document).ready(function () {
                 "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
                 "x-rapidapi-host": "wordsapiv1.p.rapidapi.com"
             },
-            //https://api.jquery.com/jquery.ajax/
             "dataType": "json"
         };
 
         $.ajax(settings).done(function (dataType) {
                 displayWord(dataType.word);
                 word = dataType.word;
-                localStorage.setItem("word", dataType.word);
                 //Hint --> definition selected at random from the list of definitions for this word
                 let definitions = dataType.results;
                 //https://api.jquery.com/jquery.map/
                 hintCollection = $.map(definitions, function (value) {
                     return value.definition;
                 });
-                localStorage.setItem("hintCollection",  JSON.stringify(hintCollection));
-                console.log("word API = " + dataType.word);
-                console.log("hint collection = " + hintCollection);
+                //Local storage
+                localStorage.setItem("word", dataType.word);
+                localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
             })
             .fail(function () {
                 localWord();
@@ -373,7 +329,6 @@ $(document).ready(function () {
     }
 
     //Generate Random Word according to category selected
-
     function generateRandomWord(category, level) {
         if (category === "dictionary") {
             getWordApi(level);
@@ -383,7 +338,6 @@ $(document).ready(function () {
     }
 
     //Timer
-
     //https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
     function pad(n) {
         let sec = ((n < 10) ? '0' + n : n);
@@ -400,11 +354,11 @@ $(document).ready(function () {
             } else {
                 let minutes = Math.floor((timer % (60 * 60)) / (60));
                 let seconds = Math.floor(timer % 60);
-
                 seconds = pad(seconds);
                 $("#timer").text(minutes + ":" + seconds);
             }
             timer -= 1;
+            //Local storage
             localStorage.setItem("timer", timer);
         }, 1000);
     }
@@ -414,32 +368,31 @@ $(document).ready(function () {
         $("#timer").text("0:00");
     }
 
-
     //display and hide html contents
-
     function setGameElements() {
-        $('.word').empty();
-        $('#start').addClass("hide");
-        $('.word').empty().removeClass("hide");
-        $('#hint').removeClass("hide");
-        $('.key').removeClass("disabled");
-        //Hide hangman parts
-        $.each($('path'), function () {
-            $(this).addClass('hide');
+        $("#start").addClass("hide");
+        $(".word").empty().removeClass("hide");
+        $("#hint").removeClass("hide");
+        $(".key").removeClass("disabled");
+    }
+
+    function hideHangmanParts() {
+        $.each($("path"), function () {
+            $(this).addClass("hide");
         });
     }
 
     function resetDisplayAfterWin() {
-        $('.keyboard-container').removeClass("hide");
-        $('#game-win').addClass("hide");
+        $(".keyboard-container").removeClass("hide");
+        $("#game-win").addClass("hide");
     }
 
     function resetDisplayAfterGameOver() {
-        $('.flex-container').removeClass("hide");
-        $('#game-over').addClass("hide");
+        $(".flex-container").removeClass("hide");
+        $("#game-over").addClass("hide");
         //Hide best score container
-        if (!$('.best-score-container').hasClass('hide')) {
-            $('.best-score-container').addClass('hide');
+        if (!$(".best-score-container").hasClass("hide")) {
+            $(".best-score-container").addClass("hide");
             if ($("#scorename-container").hasClass("hide")) {
                 $("#scorename-container").removeClass("hide");
                 $("#save-notification").addClass("hide");
@@ -447,34 +400,39 @@ $(document).ready(function () {
         }
     }
 
-    //Start Game
-
-    function startGame() {
+    //Set local storage
+    function setLocalStorage() {
         isPlaying = true;
         localStorage.setItem("isPlaying", isPlaying);
-        
-        setGameElements();
-        if ($('.keyboard-container').hasClass("hide")) {
-            resetDisplayAfterWin();
-        }
-        if ($('.flex-container').hasClass("hide")) {
-            resetDisplayAfterGameOver();
-        }
-        timer = 120;
-        setTimer(timer);
-        level = $('.btn-level.active').text();
-        category = $('.btn-category.active').text();
         localStorage.setItem("isPlayingCategory", category);
-        countCorrect = 0;
-        countIncorrect = 0;
-        countStreak = 0;
-        isBestScore = false;
-        generateRandomWord(category, level);
-        //
+        localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
         localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
         localStorage.setItem("countIncorrect", countIncorrect);
         localStorage.setItem("countCorrect", countCorrect);
+        localStorage.setItem("countStreak", countStreak);
+    }
+
+    //Start Game
+    function startGame() {
+        setGameElements();
+        hideHangmanParts();
+        if ($(".keyboard-container").hasClass("hide")) {
+            resetDisplayAfterWin();
+        }
+        if ($(".flex-container").hasClass("hide")) {
+            resetDisplayAfterGameOver();
+        }
+        timer = 120;
+        setTimer(timer);
+        level = $(".btn-level.active").text();
+        category = $(".btn-category.active").text();
+        countCorrect = 0;
+        countIncorrect = 0;
+        countStreak = 0;
+        generateRandomWord(category, level);
+        //Local storage
+        setLocalStorage();
     }
 
     $("button[data-function=start-game]").on("click", function () {
@@ -484,10 +442,7 @@ $(document).ready(function () {
     /*-------------------------[ PLAY GAME ]--------------------------*/
 
     //Display hints    
-
     function getHintValue() {
-    console.log("hint collection in fction get Hint val = " + hintCollection);
-    console.log("category = " + category);
         hint = ((category == "dictionary") ?
             ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`) :
             hint);
@@ -495,47 +450,40 @@ $(document).ready(function () {
 
     $('#hint').on('click', function () {
         getHintValue();
-        $('#hint-content').text(hint);
-        $('#hint-content').toggleClass('hide');
-        if (!$('#hint-content').hasClass('hide')) {
+        $("#hint-content").text(hint);
+        $("#hint-content").toggleClass("hide");
+        if (!$("#hint-content").hasClass("hide")) {
             setTimeout(function () {
-                $('#hint-content').addClass('hide');
+                $("#hint-content").addClass("hide");
             }, 3500);
         }
     });
 
     //Display hangman parts
-
     function displayHangmanPart(nb) {
-        $('#part' + nb).addClass('animate').removeClass('hide');
+        $("#part" + nb).addClass("animate").removeClass("hide");
     }
 
     //Sounds
-
     //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
     function playSound(sound) {
-        if ($('.btn-volume.active').attr('data-sound') == "on") {
+        if ($(".btn-volume.active").attr("data-sound") == "on") {
             $(sound)[0].currentTime = 0;
             $(sound)[0].play();
         }
     }
 
     //Scoring
-
     function incrementScore(countStreak, score, point) {
         let addPoints = countStreak * point;
         score = score + addPoints;
-        $('#score').text(score);
+        $("#score").text(score);
         return score;
     }
 
     //Match
-
     function match(letter) {
         sound = "audio#success-sound";
-        //local storage
-
-        //let matchStorage =  JSON.parse(localStorage.getItem("matchStorage"));
         $.each(splitWord, function (index, value) {
             if (value === letter) {
                 //Sound
@@ -552,8 +500,9 @@ $(document).ready(function () {
                 localStorage.setItem("score", score);
             }
         });
-
+        //Local storage
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
+        //Check if game win
         if (countCorrect == splitWord.length) {
             setTimeout(function () {
                 gameWin();
@@ -562,7 +511,6 @@ $(document).ready(function () {
     }
 
     //No match
-
     function noMatch() {
         //Sound
         sound = "audio#fail-sound";
@@ -577,7 +525,6 @@ $(document).ready(function () {
         hangmanStorage.push(countIncorrect);
         localStorage.setItem("countStreak", countStreak);
         localStorage.setItem("countIncorrect", countIncorrect);
-        localStorage.setItem("hangmanStorage", hangmanStorage);
         //Call game over function
         if (countIncorrect == 10) {
             setTimeout(function () {
@@ -586,73 +533,8 @@ $(document).ready(function () {
         }
     }
 
-    //Game win
-
-    function gameWin() {
-        //Sounds
-        sound = "audio#win-sound";
-        playSound(sound);
-        //Clear timer interval
-        clearTimer();
-        //Display win message
-        $('.keyboard-container').addClass("hide");
-        $('#game-win').removeClass("hide");
-        //Hide hint if displayed
-        if (!$('#hint-content').hasClass('hide')) {
-            $('#hint-content').addClass('hide');
-        }
-        $('#hint').addClass("hide");
-        //Update statistics
-        isPlaying = false;
-        countWords = ++countWords;
-        $('.final-score').text(score);
-        $('.count-words').text(countWords);
-        //local storage
-        localStorage.setItem("score", score);
-        localStorage.setItem("timer", 0);
-        localStorage.setItem("countWords", countWords);
-        localStorage.getItem("countIncorrect", 0);
-        localStorage.setItem("isPlaying", isPlaying);
-        localStorage.setItem("isPlayingCategory", "");
-        localStorage.setItem("word", "");
-        localStorage.setItem("hint", "");
-        localStorage.setItem("countStreak", 0);
-        matchStorage.length = 0;
-        keyPressed.length = 0;
-        hintCollection.length = 0;
-        localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
-        localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
-        localStorage.setItem("hintCollection",  JSON.stringify(hintCollection));
-    }
-
-
-    //Game over
-    function gameOver() {
-        //Sounds
-        sound = "audio#game-over-sound";
-        playSound(sound);
-        //Clear timer interval
-        clearTimer();
-        //Update game over message with stats
-        $('#correct-answer').text(word);
-        $('.final-score').text(score);
-        $('.count-words').text(countWords);
-        //display game over
-        $('.flex-container').addClass("hide");
-        $('#game-over').removeClass("hide");
-        //Update best score with scoring info
-        if (parseInt($('#best-score').text()) < score) {
-            isBestScore = true;
-            $('.best-score-container').removeClass('hide');
-            $('#best-score').text(score);
-            localStorage.setItem('bestScore', score);
-        }
-        //Reset score to 0 when game over
-        countWords = 0;
-        score = 0;
-        isPlaying = false;
-        $('#score').text(score);
-        //local storage
+    //Reset local storage
+    function resetLocalStorage() {
         localStorage.setItem("score", score);
         localStorage.setItem("timer", 0);
         localStorage.setItem("isPlaying", isPlaying);
@@ -667,11 +549,64 @@ $(document).ready(function () {
         hintCollection.length = 0;
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
         localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
-        localStorage.setItem("hintCollection",  JSON.stringify(hintCollection));
+        localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
+    }
+
+    //Game win
+    function gameWin() {
+        //Sounds
+        sound = "audio#win-sound";
+        playSound(sound);
+        //Clear timer interval
+        clearTimer();
+        //Display win message
+        $(".keyboard-container").addClass("hide");
+        $("#game-win").removeClass("hide");
+        //Hide hint if displayed
+        if (!$("#hint-content").hasClass("hide")) {
+            $("#hint-content").addClass("hide");
+        }
+        $("#hint").addClass("hide");
+        //Update statistics
+        isPlaying = false;
+        countWords = ++countWords;
+        $(".final-score").text(score);
+        $(".count-words").text(countWords);
+        //local storage
+        resetLocalStorage();
+    }
+
+    //Game over
+    function gameOver() {
+        //Sounds
+        sound = "audio#game-over-sound";
+        playSound(sound);
+        //Clear timer interval
+        clearTimer();
+        //Update game over message with stats
+        $("#correct-answer").text(word);
+        $(".final-score").text(score);
+        $(".count-words").text(countWords);
+        //display game over
+        $(".flex-container").addClass("hide");
+        $("#game-over").removeClass("hide");
+        //Update best score with scoring info
+        if (parseInt($("#best-score").text()) < score) {
+            isBestScore = true;
+            $(".best-score-container").removeClass("hide");
+            $("#best-score").text(score);
+            localStorage.setItem("bestScore", score);
+        }
+        //Reset score to 0 when game over
+        countWords = 0;
+        score = 0;
+        isPlaying = false;
+        $("#score").text(score);
+        //local storage
+        resetLocalStorage();
     }
 
     //Play game
-
     $(".key").on("click", function () {
         if (isPlaying) {
             //Evaluate guess
@@ -683,7 +618,6 @@ $(document).ready(function () {
             $(this).addClass("disabled");
             //Local storage
             keyPressed.push(letter);
-            console.log("when press key " + keyPressed);
             localStorage.setItem("keyStorage", JSON.stringify(keyPressed));
         } else {
             return;
@@ -693,28 +627,27 @@ $(document).ready(function () {
     /*------------------------[ LEAVE GAME ]-----------------------*/
 
     function displayHomePage() {
-
-        $('.word').empty().addClass('hide');
-        $('#start').removeClass("hide");
-        $('#hint').addClass("hide");
-        $('.key').removeClass("disabled");
-        $.each($('path'), function () {
-            $(this).removeClass('hide');
+        $(".word").empty().addClass("hide");
+        $("#start").removeClass("hide");
+        $("#hint").addClass("hide");
+        $(".key").removeClass("disabled");
+        $.each($("path"), function () {
+            $(this).removeClass("hide");
         });
-        if (parseInt($('#score').text()) == 0) {
-            $('#start').text('play');
+        if (parseInt($("#score").text()) == 0) {
+            $("#start").text("play");
         } else {
-            $('#start').text('continue');
+            $("#start").text("continue");
         }
-        if ($('.keyboard-container').hasClass("hide")) {
+        if ($(".keyboard-container").hasClass("hide")) {
             resetDisplayAfterWin();
         }
-        if ($('.flex-container').hasClass("hide")) {
+        if ($(".flex-container").hasClass("hide")) {
             resetDisplayAfterGameOver();
         }
     }
 
-    $('.leave').on('click', function () {
+    $(".leave").on("click", function () {
         displayHomePage();
     });
 
@@ -732,7 +665,7 @@ $(document).ready(function () {
     }
 
     function addToLeaderboard() {
-        let playerName = $('#scorename').val();
+        let playerName = $("#scorename").val();
         let today = new Date();
         today = today.toLocaleDateString();
         let leaderboard = JSON.parse(localStorage.getItem("arrayBestScores"));
@@ -742,24 +675,25 @@ $(document).ready(function () {
             "name": `${playerName}`,
             "score": `${recScore}`
         };
-
+        //Update leaderboard html
         if (leaderboard.length >= 1) {
             leaderboard.push(addPlayerDetails);
             leaderboard.sort(sortOrder("score"));
-            $('#lead-table').append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
+            $("#lead-table").append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
             //sort
             $(`tr:contains(${recScore})`).insertAfter('#head-row');
         } else {
             leaderboard.push(addPlayerDetails);
-            $('#leaderboard').html(`
+            $("#leaderboard").html(`
              <table id="lead-table">
              <tr id="head-row"><th>date</th><th>name</th><th>score</th></tr>
              <tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>
              </table>
              `);
         }
-
+        //Update local storage
         localStorage.setItem("arrayBestScores", JSON.stringify(leaderboard));
+        //Reset input field
         $("#scorename").val("");
     }
 
@@ -771,14 +705,12 @@ $(document).ready(function () {
         };
     })();
 
-    $('#scorename').keyup(function () {
-        console.log("The function are ready to run on input");
+    $("#scorename").keyup(function () {
         delay(function () {
-            console.log("delay function is working");
             addToLeaderboard();
             $("#scorename-container").addClass("hide");
             $("#save-notification").removeClass("hide");
-        }, 1250);
+        }, 1350);
     });
 
 });
