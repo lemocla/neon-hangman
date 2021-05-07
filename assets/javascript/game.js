@@ -14,6 +14,7 @@ $(document).ready(function () {
     let firstLetter = "";
     let word;
     let hint;
+    let tHint;
     let splitWord;
     let countCorrect = 0;
     let countIncorrect = 0;
@@ -301,7 +302,7 @@ $(document).ready(function () {
         const settings = {
             "async": true,
             "crossDomain": true,
-            "url": `https://wordsapiv1.p.rapidapi.com/words/?random=true&${parameters}`,
+            "url": `https://wordsapiv1.p.rapidapi.com/words/?random=true&hasDetails=definitions&${parameters}`,
             "method": "GET",
             "headers": {
                 "x-rapidapi-key": "b1b8b66d72mshfbfc05708a9c0e5p10ad1bjsn0f9cbb550588",
@@ -448,14 +449,23 @@ $(document).ready(function () {
             hint);
     }
 
+    function displayHint() {
+        tHint = setTimeout(function () {
+            $("#hint-content").addClass("hide");
+        }, 3750);
+    }
+
+    function clearTimeOutHint() {
+        clearTimeout(tHint);
+    }
+
     $('#hint').on('click', function () {
+        clearTimeOutHint();
         getHintValue();
         $("#hint-content").text(hint);
         $("#hint-content").toggleClass("hide");
         if (!$("#hint-content").hasClass("hide")) {
-            setTimeout(function () {
-                $("#hint-content").addClass("hide");
-            }, 3500);
+            displayHint();
         }
     });
 
@@ -699,7 +709,7 @@ $(document).ready(function () {
         //Reset input field
         $("#scorename").val("");
     }
-    
+
     let delay = (function () {
         let timerDelay = 0;
         return function (callback, ms) {
@@ -715,5 +725,5 @@ $(document).ready(function () {
             $("#save-notification").removeClass("hide");
         }, 1350);
     });
-    
+
 });
