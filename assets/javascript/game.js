@@ -67,7 +67,7 @@ $(document).ready(function () {
             countCorrect = matchStorage.length;
             if (matchStorage.length > 0) {
                 $.each(splitWord, function (index, value) {
-                    if (jQuery.inArray(value, matchStorage) != -1) {
+                    if ($.inArray(value, matchStorage) != -1) {
                         $("#" + index).append(value);
                     }
                 });
@@ -324,7 +324,7 @@ $(document).ready(function () {
                 localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
             })
             .fail(function () {
-                localWord();
+                getLocalWord(level, category);
             });
     }
 
@@ -592,7 +592,6 @@ $(document).ready(function () {
         $("#game-over").removeClass("hide");
         //Update best score with scoring info
         if (parseInt($("#best-score").text()) < score) {
-            isBestScore = true;
             $(".best-score-container").removeClass("hide");
             $("#best-score").text(score);
             localStorage.setItem("bestScore", score);
@@ -613,7 +612,11 @@ $(document).ready(function () {
             let isCorrectGuess = splitWord.includes($(this).text());
             let letter = $(this).text();
             //Match / noMatch
-            functionToRun = (isCorrectGuess) ? match(letter) : noMatch();
+            if (isCorrectGuess) {
+                match(letter);
+            } else {
+                noMatch();
+            }
             //Disable keys
             $(this).addClass("disabled");
             //Local storage
@@ -696,9 +699,9 @@ $(document).ready(function () {
         //Reset input field
         $("#scorename").val("");
     }
-
-    var delay = (function () {
-        var timerDelay = 0;
+    
+    let delay = (function () {
+        let timerDelay = 0;
         return function (callback, ms) {
             clearTimeout(timerDelay);
             timerDelay = setTimeout(callback, ms);
@@ -712,5 +715,5 @@ $(document).ready(function () {
             $("#save-notification").removeClass("hide");
         }, 1350);
     });
-
+    
 });

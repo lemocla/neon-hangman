@@ -32,21 +32,21 @@
                     </div>
                     <button class="btn btn-menu b-neon-blue" data-content="settings">Settings</button>
                     <div id="settings" class="menu-content hide" data-type="menu-content">
-                        <h4>Levels</h4>
+                        <p>Levels</p>
                         <div class="btn-settings-menu">
                             <button class="btn btn-level b-neon-purple active" data-level="easy">easy</button>
                             <button class="btn btn-level b-neon-purple" data-level="medium">medium</button>
                             <button class="btn btn-level b-neon-purple" data-level="hard">hard</button>
                         </div>
                             <!--test-->
-                        <h4>Categories</h4>
+                        <p>Categories</p>
                         <div class="btn-settings-menu">
                         <button class="btn btn-category b-neon-purple active" data-category="dictionary">dictionary</button>
                         <button class="btn btn-category b-neon-purple" data-category="animals">animals</button>
                             <button class="btn btn-category b-neon-purple" data-category="food">food</button>
                             <button class="btn btn-category b-neon-purple" data-category="transport">transport</button>
                         </div>
-                        <h4>Sounds</h4>
+                        <p>Sounds</p>
                         <div class="btn-settings-menu">
                             <button class="btn btn-volume b-neon-purple active" data-sound="on"><img
                                     src="assets/images/soundon.svg" alt="sound-on"> on </button>
@@ -78,15 +78,19 @@
             <!-- audios -->
             <audio id="success-sound">
                 <source src="assets/sounds/mixkit-instant-win-2021.wav" type="audio/mpeg">
+                <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
             <audio id="fail-sound">
                 <source src="assets/sounds/mixkit-wrong-electricity-buzz-955.wav" type="audio/mpeg">
+                 <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
             <audio id="win-sound">
                 <source src="assets/sounds/mixkit-video-game-win-2016.wav" type="audio/mpeg">
+                 <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
             <audio id="game-over-sound">
                 <source src="assets/sounds/mixkit-musical-game-over-959.wav" type="audio/mpeg">
+                 <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
             <!-- game over -->
             <div id="game-over" class="game-over-container b-neon-purple hide">
@@ -100,7 +104,7 @@
                     <h3 class="pd-bottom" id="best-new-score">best new score</h3>
                     <p>Enter your name to save your score</p>
                     <div id="scorename-container">
-                    <input id="scorename" class="b-neon-blue" type="text" name="scorename">
+                    <input id="scorename" class="b-neon-blue" type="text" name="scorename" aria-labelledby="scorename">
                     </div>
                     <p id="save-notification" class="hide">Your score has been saved!</p>
                 </div>

@@ -1,4 +1,4 @@
-/*-------- fonts ---------------*/
+/*----------------[ fonts ]---------------*/
 
 @import url('https://fonts.googleapis.com/css2?family=Monoton&display=swap');
 
@@ -8,12 +8,13 @@
     src: url("../fonts/PixelOperator8.ttf");
 }
 
-/*-------- general --------------*/
+/*--------------[ general ]---------------*/
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
 }
 
 body {
@@ -45,7 +46,7 @@ body {
     background-position: 2px 22px, 22px 4px, -10px -2px, 20px 19px, 0px 1px, 3px 24px, 68px 21px, -13.5px 44.5px;
 }
 
-/*---------- headings --------*/
+/*--------------[ headings ]--------------*/
 
 h1 {
     font-family: Monoton;
@@ -71,7 +72,7 @@ h3 {
     width: 100%;
 }
 
-/*---------- buttons ---------*/
+/*--------------[ buttons ]--------------*/
 
 .btn {
     display: block;
@@ -84,7 +85,7 @@ h3 {
     transition: 0.3s;
 }
 
-/*---------- borders ---------*/
+/*--------------[ borders ]--------------*/
 
 .bord-white {
     border: 1px solid white;
@@ -112,7 +113,7 @@ h3 {
     box-shadow: 0px 0px 3px 1.5px rgb(0 224 255 / 30%), 0px 0px 8px 1px rgb(0 224 255 / 50%) inset;
 }
 
-/*--------- margins ----------*/
+/*--------------[ margins ]--------------*/
 
 .mg-bottom {
     margin-bottom: 25px;
@@ -126,7 +127,7 @@ h3 {
     padding-top: 30px;
 }
 
-/*--------- containers -------*/
+/*-------------[ containers ]-------------*/
 
 .wrapper {
     width: 95vw;
@@ -137,7 +138,7 @@ h3 {
 header,
 footer {
     min-height: 85px;
-    height: 15.5vh;
+    height: 15vh;
     max-height: 145px;
     display: flex;
     flex-wrap: wrap;
@@ -219,7 +220,7 @@ footer {
     padding: 0 15px;
 }
 
-/* ---------- navigation -------------*/
+/*-------------[ navigation ]-------------*/
 
 #nav-menu {
     width: 35px;
@@ -258,19 +259,19 @@ footer {
 }
 
 .menu-content ul {
-    margin-inline-start: 15px;
-    padding-inline-start: 15px;
-    padding: 15px;
+    padding-left: 15px;
+    margin: 15px 0 15px 15px;
 }
 
 .menu-content li {
     line-height: 1.5;
 }
 
-.menu-content h4 {
+.menu-content p {
     font-size: initial;
     text-align: center;
     padding-bottom: 15px;
+    font-weight: bold;
 }
 
 .btn-settings-menu {
@@ -316,7 +317,7 @@ td {
     padding: 12px;
 }
 
-/*---------- scoring -----------*/
+/*--------------[ scoring ]-------------*/
 
 .scoring {
     margin: auto;
@@ -330,7 +331,7 @@ td {
     filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(10deg) brightness(104%) contrast(97%);
 }
 
-/*---------- word --------------*/
+/*----------------[ word ]---------------*/
 
 .word-intro {
     padding-bottom: 25px;
@@ -378,7 +379,7 @@ td {
     width: 40%;
 }
 
-/*---------- keyboard--------------*/
+/*--------------[ keyboard ]--------------*/
 
 .key {
     width: 40px;
@@ -396,7 +397,7 @@ td {
     opacity: 0.4;
 }
 
-/*---------- win message ----------*/
+/*------------[ win message ]------------*/
 
 .continue,
 .leave,
@@ -405,7 +406,8 @@ td {
     margin: 0 10px;
 }
 
-/* -----------game-over -------------*/
+/*------------[ game-over ]--------------*/
+
 #game-over h2,
 .form-container h2 {
     font-size: 1.8em;
@@ -415,7 +417,6 @@ td {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-
 }
 
 .best-score-container {
@@ -449,7 +450,7 @@ td {
     margin-bottom: 0px;
 }
 
-/*----------- hangman ---------------*/
+/*-------------[ hangman ]--------------*/
 
 #hangman {
     max-width: 86.5%;
@@ -460,7 +461,6 @@ td {
 
 .path {
     stroke: url(#grad1);
-    -webkit-stroke: url(#grad1);
     fill: transparent;
     stroke-width: 6px;
     stroke-linecap: round;
@@ -480,8 +480,6 @@ td {
 @keyframes draw {
     to {
         stroke-dashoffset: 0;
-        stroke: url(#grad1);
-        -webkit-stroke: url(#grad1);
     }
 }
 
@@ -492,7 +490,8 @@ td {
     display: none;
 }
 
-/* ---------- footer ----------*/
+/*---------------[ Footer ]--------------*/
+
 footer {
     margin-top: 15px;
 }
@@ -515,10 +514,9 @@ a img {
     transition: 0.3s;
 }
 
-/*-------- hovering effect ----------*/
+/*----------[ Hovering effect ]----------*/
 
 /*https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3*/
-
 .btn:hover,
 .key:hover {
     background-color: rgb(10 12 26 / 45%);
@@ -537,17 +535,18 @@ a img:hover,
     background-color: rgb(159 11 173 / 82%);
 }
 
-/*----------- modals ------------------*/
+/*--------------[ Modals ]---------------*/
 
 /*https://www.w3schools.com/howto/howto_css_modals.asp*/
-#modal-form{
-position: absolute;
-height: inherit;
+#modal-form {
+    position: absolute;
+    height: inherit;
 }
 
-#modal-thankyou, #modal-error{
-position: fixed;
-height: 100vh;
+#modal-thankyou,
+#modal-error {
+    position: fixed;
+    height: 100vh;
 }
 
 .modal-window {
@@ -591,7 +590,7 @@ height: 100vh;
     background-color: black;
 }
 
-/* --------- contact form -----------------*/
+/*----------[ Contact form ]------------*/
 
 .form-content {
     margin: 0 auto;
@@ -625,6 +624,7 @@ input {
 
 .btn-form {
     -webkit-appearance: none;
+    appearance: none;
     display: block;
     margin: auto;
     width: 95px;
@@ -635,7 +635,7 @@ input {
     border: none;
 }
 
-/* --------- additional classes ---------- */
+/*---------[ Additional classes ]---------*/
 
 .hide {
     display: none;
@@ -653,9 +653,9 @@ input[type="text"] {
     font-size: 16px;
 }
 
-/*----------- media queries -----------*/
+/*-----------[ Media Queries ]-----------*/
 
-/*media queries*/
+/*XL screens*/
 @media screen and (min-height: 835px) {
     body {
         height: 100vh;
@@ -671,8 +671,7 @@ input[type="text"] {
     }
 }
 
-/* SMALL LANDSCAPE */
-
+/*Medium landscape*/
 @media screen and (max-width: 850px) and (orientation: landscape) {
 
     #hint {
@@ -693,13 +692,14 @@ input[type="text"] {
 }
 
 @media screen and (max-height: 690px) {
-    #modal-form{
+    #modal-form {
         align-items: flex-start;
     }
 }
 
+/*Small landscape*/
 @media screen and (max-height: 550px) and (orientation: landscape) {
-
+    /*------------ containers -----------*/
     .word-container {
         height: 19.5vh;
         min-height: 100px;
@@ -715,10 +715,7 @@ input[type="text"] {
         padding-top: 10px;
     }
 
-    #best-new-score {
-        display: none;
-    }
-
+    /*------------ word -----------*/
     .word-intro {
         display: none;
     }
@@ -731,13 +728,17 @@ input[type="text"] {
     #hint-content {
         right: 0px;
     }
-
+    /*------------ hangman -----------*/
     #hangman {
         max-width: 80%;
     }
+    /*---------- game over ----------*/
+    #best-new-score {
+        display: none;
+    }
 }
 
-/*525*/
+
 @media screen and (max-width: 755px) and (max-height: 584px) and (orientation: landscape) {
     body {
         font-size: 83%;
@@ -747,7 +748,7 @@ input[type="text"] {
         font-size: 1.4em;
         padding-bottom: 15px;
     }
-
+    /*---------- margin & spacing ------*/
     .mg-bottom {
         margin-bottom: 15px;
     }
@@ -755,7 +756,7 @@ input[type="text"] {
     .pd-top {
         padding-top: 15px;
     }
-
+    /*------------ containers -----------*/
     .flex-container,
     .game-over-container {
         width: 60%;
@@ -767,7 +768,6 @@ input[type="text"] {
     }
 
     .game-over-container {
-
         min-height: 278px;
     }
 
@@ -776,24 +776,30 @@ input[type="text"] {
         min-height: 65px;
     }
 
-    .word-intro {
-        display: none;
-    }
-
     .keyboard-container,
     .win-container {
         min-height: 185px;
     }
-
+    /*------------ word -----------*/
+    .word-intro {
+        display: none;
+    }
+    /*----- keyboard / letter box -----*/
     .key,
     .letter-box {
         max-width: 30px;
         max-height: 30px;
         padding-top: 5px;
     }
+    /*------------ buttons -----------*/
+    .continue,
+    .leave,
+    #play-again {
+        margin: 0 5px;
+    }
 }
 
-/*TABLET*/
+/*Tablets & xs screens*/
 
 @media screen and (max-width: 769px) and (orientation: portrait),
 screen and (max-width: 495px) and (orientation: landscape) {
@@ -801,7 +807,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .wrapper {
         width: 85%;
     }
-
+    /*---------- margin & spacing ------*/
     .mg-bottom {
         margin-bottom: 15px;
     }
@@ -809,13 +815,12 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .pd-top {
         padding-top: 35px;
     }
-
+    /*------------ headings -----------*/
     #game-over h2,
     .form-container h2 {
         font-size: 1.4em;
         padding-bottom: 25px;
     }
-
     /*------------ containers -----------*/
     header,
     footer {
@@ -863,9 +868,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
         margin-right: 0;
 
     }
-
     /*------------ hangman -----------*/
-
     #hangman {
         width: 30%;
     }
@@ -873,19 +876,16 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .path {
         stroke-width: 9px;
     }
-
-    /*------------ keyboard -----------*/
-
+    /*----- keyboard / letter box -----*/
     .key,
     .letter-box {
         width: 42px;
         height: 42px;
         padding-top: 10px;
     }
-
 }
 
-/* SMALL SCREENS */
+/* Mobile & xxs screens */
 
 @media screen and (max-width: 576px) and (orientation: portrait),
 screen and (max-width: 495px) and (orientation: landscape) {
@@ -893,9 +893,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .wrapper {
         width: 92%;
     }
-
-    /*-------------Margin & spacing ----*/
-
+    /*---------- margin & spacing -------*/
     .pd-bottom {
         padding-bottom: 10px
     }
@@ -907,9 +905,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .b-neon-blue {
         border: 0.5px solid #b3fdff;
     }
-
     /*------------ headers -----------*/
-
     h1 {
         font-size: 30px;
     }
@@ -917,10 +913,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     h2 {
         padding-bottom: 25px;
     }
-
-
     /*------------ containers -----------*/
-
     header,
     footer {
         height: 9.75vh;
@@ -961,10 +954,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
         height: calc(38.5vh + 15px);
         min-height: 325px;
     }
-
-
     /*------------ scoring -----------*/
-
     .scoring img {
         padding-right: 10px;
     }
@@ -976,14 +966,12 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .volume-mobile {
         display: block;
     }
-
     /*------------ word -----------*/
     .word-intro {
         display: none;
     }
 
     .word {
-        /*width: 96%;*/
         width: 97.5%;
         padding-top: 0;
     }
@@ -993,19 +981,11 @@ screen and (max-width: 495px) and (orientation: landscape) {
         top: -57px;
         z-index: 1;
     }
-
     /*------------ hangman -----------*/
-
     #hangman {
         width: 45%;
     }
-
-    .path {
-        stroke-width: 9px;
-    }
-
-    /*------------ key/letter box -----------*/
-
+    /*-------- key/letter box ---------*/
     .key,
     .letter-box {
         padding-top: 6px;
@@ -1016,8 +996,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .letter-box {
         margin: 0 3px;
     }
-
-    /*------------ Game over -----------*/
+    /*---------- Game over -----------*/
     .best-score-container {
         padding-top: 0px;
     }
@@ -1034,9 +1013,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
         text-transform: uppercase;
         font-size: inherit;
     }
-
-    /*---------Modals------------------*/
-
+    /*------------ modals ------------*/
     .modal-window {
         height: -webkit-fill-available;
         padding: 5px 0;
@@ -1057,7 +1034,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     }
 }
 
-/* EXTRA SMALL SCREEN*/
+/* xs mobile */
 @media screen and (max-width: 372px) and (orientation: portrait),
 screen and (max-width: 390px) and (orientation: landscape) {
     body {
@@ -1067,28 +1044,23 @@ screen and (max-width: 390px) and (orientation: landscape) {
     .wrapper {
         width: 94%;
     }
-
-    header,
-    footer {
-        height: 9.6vh;
-        min-height: 50px;
-    }
-
+    /*------------ headings -----------*/
     h1 {
         font-size: 210%;
     }
 
-    .menu-content h4 {
+    .menu-content p {
         font-size: 1.15em;
     }
 
     #game-over h2 {
         padding-bottom: 15px;
     }
-
-    #nav-menu {
-        width: 27px;
-        height: 27px;
+    /*------------ containers -----------*/
+        header,
+    footer {
+        height: 9.6vh;
+        min-height: 50px;
     }
 
     .game-info {
@@ -1097,18 +1069,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
         min-height: 30px;
     }
 
-    .scoring img,
-    #hint {
-        height: 17px;
-    }
-
-    #hint {
-        left: 25px;
-        top: -42px;
-        z-index: 1;
-    }
-
-    .hangman-container {
+        .hangman-container {
         height: 19.75vh;
         margin-bottom: 7.5px;
         min-height: 100px;
@@ -1127,21 +1088,37 @@ screen and (max-width: 390px) and (orientation: landscape) {
         height: 32vh;
         min-height: 160px;
     }
-
+    /*---------- menu ------------*/
+        #nav-menu {
+        width: 27px;
+        height: 27px;
+    }
+    /*---------- scoring ----------*/
+    .scoring img,
+    #hint {
+        height: 17px;
+    }
+    /*------------ word -----------*/
+    #hint {
+        left: 25px;
+        top: -42px;
+        z-index: 1;
+    }
+    /*------------ buttons -----------*/
     .continue,
     .leave,
     #play-again {
         width: 130px;
         margin: 0 5px;
     }
-
+    /*-------- key/letter box ---------*/
     .key,
     .letter-box {
         padding-top: 8px;
         max-width: 30px;
         max-height: 30px;
     }
-
+    /*------------ Game over -----------*/
     .game-over-container {
         padding: 5px;
         height: 45vh;
@@ -1151,7 +1128,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
     .game-over-container input {
         height: 25px;
     }
-
+    /*------------ Footer -----------*/
     footer {
         margin-top: 10px;
     }
@@ -1164,7 +1141,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
         height: 25px;
         transition: 0.3s;
     }
-
+    /*----------- Modals -------------*/
     .modal-window {
         padding-top: 3px;
     }
@@ -1178,7 +1155,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
     .btn-form {
         padding: 10px 15px 8px;
     }
-
+    
     .close-modal {
         height: 23px;
         top: -3px;
