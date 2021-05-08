@@ -174,6 +174,15 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
         Wireframes for this project are also available in pdf format and can be found [here](documentation/wireframes/hangman_wireframes.pdf). 
 
+    - ### **Difference:**
+
+      - **Game info:** category is displayed instead of levels
+      - **Menu:** close button removed as not necessary
+      - **Settings:** categories have been added in addition to levels
+      - **Popup points:** not implemented
+      - **Win message:** A leave button has been added as well as a line about in-game statistics
+      - **Game over message:** A leave button has been added and content is laid out differently. 
+
 - ### **Design**
 
   Inspired by nostalgia, the design of the game aims to recreate the spirit of 80s retro arcade era with a modern twist. 
@@ -213,7 +222,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 # **FEATURES** 
 
-- ## **Existing features** 
+- ## **Features implemented** 
 
    - ### **Responsive layout**
       The website will resize according to the device used for better user experience. 
@@ -357,7 +366,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
         Game over best score | Game over best score saved
         -------------------- | -------------------
-        ![game over best score](documentation/screenshots/gameover_bestscore.png) | ![game over best score saved](documentation/screenshots/gameover_bestscore_saved.png)
+        ![game over best score](documentation/screenshots/gameover_bestscore.png) | ![game over best score saved](documentation/screenshots/gameover_bestscoresaved.png)
 
         > - I want the option to exit the game so that I can leave without losing.
         > - I want the option to play again once I finish a game so that I can keep having fun and challenge myself.
@@ -517,6 +526,40 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **Code**
 
+    - [Brick Background Pattern Using Pure CSS](https://www.youtube.com/watch?v=o_hNQQBYpeE) youtube tutorial was used and adapted to build the background.
+
+    - **SVG Hangman**
+      - SVG circle path was adapted from the code in this [smashing magazine](https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/) article.
+      - SVG drawing style animation followed the principles in this [codepen post](https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation).
+      - The glow filter for the hangman is from this [stackoverflow post](https://stackoverflow.com/questions/54112231/is-it-possible-to-create-a-glow-effect-in-svg)
+    
+    - **Changing SVG icons colors**
+      - Applying a filter to svg icons were inspired by this [css-Tricks](https://css-tricks.com/change-color-of-svg-on-hover) post.
+    
+    - **Buttons hovering effect**
+      - Hovering effect on button were created using this [w3schools tutotrial](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3)
+
+    - **Form and modals** 
+      - Modals were created using this [w3schools tutotrial](https://www.w3schools.com/howto/howto_css_modals.asp)
+      - Adapting jsmail api documentation to jquery for prevent submit from [w3schools](https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_event_submit_preven) 
+    
+    - **JSON array** 
+      - Sort json array from [c-sharpcorner](https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/) post
+       ![sorting array](documentation/credit/sorting_array.png)
+      - Filter json array adapted from this [stack overflow](https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes) post
+      
+    - **Timer**
+      - Code to for the countdown timer is adapted from this [stackoverflow post](https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown)
+      - Code to turn seconds into 2 digit number when less than 10 is from this [stackoverflow post](https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date)
+      ![seconds in 2 digits](documentation/credit/two_digitseconds.png)
+    
+    - **Sounds**
+      - Playing sound with jquery was taken from this [medium blogpost](https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97)
+
+    - **Additional**
+      - How to to create an array of definitions from api results used [jquery documentation](https://api.jquery.com/jquery.map/) 
+      - Solution to target toggled elements was found in [stack overflow post](https://stackoverflow.com/questions/1616006/jquery-select-all-br-with-displaynone/15373670)
+   
 - ## **Content**
 
     The content was created by the developer. Some of the words in the transport category were taken from [Enchanted Learning](https://www.enchantedlearning.com/wordlist/transportation.shtml) vehicles and transportation word list. 
@@ -530,13 +573,21 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       - [icomoon](https://icomoon.io/app/#/select) for the trophy svg.  
 
   -  ### **Sounds**
+     
      All sounds are from [mixkit](https://mixkit.co/free-sound-effects/) free online sound library.
 
   -  ### **Fonts**
+     
      The Pixel-operator font used for the text is from [dafont](https://www.dafont.com/pixel-operator.font).
 
 - ## **Acknowledgment** 
 
+  - My mentor Can Sucullu for his advice and guidance during this project
+  - My peers from the November What's App Group for their support and guidance
+  - Code Institute tutor support for their brillant advice 
+  - The Code Institute slack community for general advices and solution to problems that others encountered
+
+   **And a special thank you to my family who helped me design some very creative hints for the local words and test the game.** 
   
 
 
