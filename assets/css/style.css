@@ -6,6 +6,7 @@
 @font-face {
     font-family: pixel;
     src: url("../fonts/PixelOperator8.ttf");
+    font-display: swap;
 }
 
 /*--------------[ general ]---------------*/
@@ -23,7 +24,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: pixel;
+    font-family: pixel, Courier, monospace;
     font-size: 16px;
     color: white;
     line-height: 1.5;
@@ -49,7 +50,7 @@ body {
 /*--------------[ headings ]--------------*/
 
 h1 {
-    font-family: Monoton;
+    font-family: Monoton, Courier, monospace;
     text-transform: capitalize;
     font-size: 40px;
     background: -webkit-linear-gradient(180deg, rgb(253 255 0), #3bf4ee, rgb(249 22 236), rgb(253 255 0));
@@ -203,8 +204,10 @@ footer {
 
 .hangman-container {
     width: calc(40% - 20px);
-    text-align: center;
+    /*text-align: center;*/
     position: relative;
+    display: flex;
+    align-content: center;
 }
 
 .game-over-container {
@@ -522,7 +525,6 @@ a img {
     background-color: rgb(10 12 26 / 45%);
 }
 
-/*https://css-tricks.com/change-color-of-svg-on-hover/*/
 a img:hover,
 #toggle-nav:hover,
 #hint:hover {

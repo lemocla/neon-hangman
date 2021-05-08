@@ -10,6 +10,8 @@
     <meta name="keywords" content="hangman, online hangman, neon hangman, retro arcade hangman">
     <meta name="author" content="Claire Lemonnier">
     <title>Neon Hangman</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link rel="preload" href="assets/fonts/PixelOperator8.ttf" as="font">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -19,7 +21,7 @@
         <header>
             <h1>hangman</h1>
             <div id="nav-menu">
-                <img id="toggle-nav" src="assets/images/cog.svg" alt="cog-menu-open">
+                <img id="toggle-nav" src="assets/images/cog.svg" width="35" height="35" alt="cog-menu-open">
                 <!-- menu content-->
                 <div class="menu-container bg-brick hide">
                     <button class="btn btn-menu b-neon-blue" data-content="instructions">How to play</button>
@@ -64,15 +66,15 @@
         </header>
         <!-- game info -->
         <div class="game-info b-neon-green mg-bottom">
-            <div class="scoring sm-hide"><img src="assets/images/soundon.svg" alt="turn sound on" data-attr="sound">
+            <div class="scoring sm-hide"><img src="assets/images/soundon.svg" width="42" height="22" alt="turn sound on" data-attr="sound">
             </div>
-            <div class="scoring sm-hide"><img src="assets/images/levels.svg" alt="category"><span
+            <div class="scoring sm-hide"><img src="assets/images/levels.svg" width="42" height="22" alt="category"><span
                     class="category">dictionary</span>
             </div>
-            <div class="scoring"><img src="assets/images/trophy.svg" alt="best score"><span id="best-score">0</span>
+            <div class="scoring"><img src="assets/images/trophy.svg" width="42" height="22" alt="best score"><span id="best-score">0</span>
             </div>
-            <div class="scoring"><img src="assets/images/star.svg" alt="score"><span id="score">0</span> </div>
-            <div class="scoring"><img src="assets/images/timer.svg" alt="timer"><span id="timer">0:00</span></div>
+            <div class="scoring"><img src="assets/images/star.svg" width="42" height="22" alt="score"><span id="score">0</span> </div>
+            <div class="scoring"><img src="assets/images/timer.svg" width="42" height="22" alt="timer"><span id="timer">0:00</span></div>
         </div>
         <!-- game container -->
         <div class="game-container mg-bottom">
@@ -117,7 +119,7 @@
             <!-- end game over -->
             <div class="flex-container">
                 <div class="word-container b-neon-purple mg-bottom">
-                    <img id="hint" class="hide" src="assets/images/hint.svg" alt="open-hint">
+                    <img id="hint" class="hide" src="assets/images/hint.svg" width="24" height="24" alt="open-hint">
                     <div id="hint-content" class="bg-brick hide"></div>
                     <div class="word-intro">Can you guess the hidden word?</div>
                     <button id="start" class="btn b-neon-blue" data-function="start-game">play</button>
@@ -165,7 +167,7 @@
             </div>
             <!-- hangman -->
             <div class="hangman-container b-neon-purple">
-                <div class="scoring volume-mobile"><img src="assets/images/soundon.svg" alt="turn sound on"
+                <div class="scoring volume-mobile"><img src="assets/images/soundon.svg" width="32" height="22" alt="turn sound on"
                         data-attr="sound"></div>
                 <svg id="hangman" width="100%" height="100%" viewbox="0 0 380 430" x="0" y="0">
                     <!--Filters-->
