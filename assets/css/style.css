@@ -204,7 +204,6 @@ footer {
 
 .hangman-container {
     width: calc(40% - 20px);
-    /*text-align: center;*/
     position: relative;
     display: flex;
     align-content: center;
