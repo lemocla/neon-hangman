@@ -136,6 +136,17 @@ h3 {
     margin: 0 auto;
 }
 
+.container-404 {
+    width: 500px;
+    max-width: 95vw;
+    height: 95vh;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
 header,
 footer {
     min-height: 85px;
@@ -509,6 +520,7 @@ footer {
 a {
     padding-left: 5px;
     text-decoration: none;
+    color: #ffffff;
 }
 
 a img {
@@ -654,6 +666,17 @@ input[type="text"] {
     font-size: 16px;
 }
 
+/*------------[ page 404 ]--------------*/
+
+.content-404 {
+    padding: 25px;
+}
+
+.content-404 a {
+    text-decoration: none;
+    color: white;
+}
+
 /*-----------[ Media Queries ]-----------*/
 
 /*XL screens*/
@@ -700,6 +723,7 @@ input[type="text"] {
 
 /*Small landscape*/
 @media screen and (max-height: 550px) and (orientation: landscape) {
+
     /*------------ containers -----------*/
     .word-container {
         height: 19.5vh;
@@ -729,10 +753,12 @@ input[type="text"] {
     #hint-content {
         right: 0px;
     }
+
     /*------------ hangman -----------*/
     #hangman {
         max-width: 80%;
     }
+
     /*---------- game over ----------*/
     #best-new-score {
         display: none;
@@ -749,6 +775,7 @@ input[type="text"] {
         font-size: 1.4em;
         padding-bottom: 15px;
     }
+
     /*---------- margin & spacing ------*/
     .mg-bottom {
         margin-bottom: 15px;
@@ -757,6 +784,7 @@ input[type="text"] {
     .pd-top {
         padding-top: 15px;
     }
+
     /*------------ containers -----------*/
     .flex-container,
     .game-over-container {
@@ -781,10 +809,12 @@ input[type="text"] {
     .win-container {
         min-height: 185px;
     }
+
     /*------------ word -----------*/
     .word-intro {
         display: none;
     }
+
     /*----- keyboard / letter box -----*/
     .key,
     .letter-box {
@@ -792,6 +822,7 @@ input[type="text"] {
         max-height: 30px;
         padding-top: 5px;
     }
+
     /*------------ buttons -----------*/
     .continue,
     .leave,
@@ -808,6 +839,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .wrapper {
         width: 85%;
     }
+
     /*---------- margin & spacing ------*/
     .mg-bottom {
         margin-bottom: 15px;
@@ -816,12 +848,14 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .pd-top {
         padding-top: 35px;
     }
+
     /*------------ headings -----------*/
     #game-over h2,
     .form-container h2 {
         font-size: 1.4em;
         padding-bottom: 25px;
     }
+
     /*------------ containers -----------*/
     header,
     footer {
@@ -869,6 +903,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
         margin-right: 0;
 
     }
+
     /*------------ hangman -----------*/
     #hangman {
         width: 30%;
@@ -877,6 +912,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .path {
         stroke-width: 9px;
     }
+
     /*----- keyboard / letter box -----*/
     .key,
     .letter-box {
@@ -894,6 +930,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .wrapper {
         width: 92%;
     }
+
     /*---------- margin & spacing -------*/
     .pd-bottom {
         padding-bottom: 10px
@@ -906,6 +943,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .b-neon-blue {
         border: 0.5px solid #b3fdff;
     }
+
     /*------------ headers -----------*/
     h1 {
         font-size: 30px;
@@ -914,6 +952,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     h2 {
         padding-bottom: 25px;
     }
+
     /*------------ containers -----------*/
     header,
     footer {
@@ -955,6 +994,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
         height: calc(38.5vh + 15px);
         min-height: 325px;
     }
+
     /*------------ scoring -----------*/
     .scoring img {
         padding-right: 10px;
@@ -967,6 +1007,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .volume-mobile {
         display: block;
     }
+
     /*------------ word -----------*/
     .word-intro {
         display: none;
@@ -982,10 +1023,12 @@ screen and (max-width: 495px) and (orientation: landscape) {
         top: -57px;
         z-index: 1;
     }
+
     /*------------ hangman -----------*/
     #hangman {
         width: 45%;
     }
+
     /*-------- key/letter box ---------*/
     .key,
     .letter-box {
@@ -997,6 +1040,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
     .letter-box {
         margin: 0 3px;
     }
+
     /*---------- Game over -----------*/
     .best-score-container {
         padding-top: 0px;
@@ -1014,6 +1058,7 @@ screen and (max-width: 495px) and (orientation: landscape) {
         text-transform: uppercase;
         font-size: inherit;
     }
+
     /*------------ modals ------------*/
     .modal-window {
         height: -webkit-fill-available;
@@ -1045,6 +1090,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
     .wrapper {
         width: 94%;
     }
+
     /*------------ headings -----------*/
     h1 {
         font-size: 210%;
@@ -1057,8 +1103,9 @@ screen and (max-width: 390px) and (orientation: landscape) {
     #game-over h2 {
         padding-bottom: 15px;
     }
+
     /*------------ containers -----------*/
-        header,
+    header,
     footer {
         height: 9.6vh;
         min-height: 50px;
@@ -1070,7 +1117,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
         min-height: 30px;
     }
 
-        .hangman-container {
+    .hangman-container {
         height: 19.75vh;
         margin-bottom: 7.5px;
         min-height: 100px;
@@ -1089,22 +1136,26 @@ screen and (max-width: 390px) and (orientation: landscape) {
         height: 32vh;
         min-height: 160px;
     }
+
     /*---------- menu ------------*/
-        #nav-menu {
+    #nav-menu {
         width: 27px;
         height: 27px;
     }
+
     /*---------- scoring ----------*/
     .scoring img,
     #hint {
         height: 17px;
     }
+
     /*------------ word -----------*/
     #hint {
         left: 25px;
         top: -42px;
         z-index: 1;
     }
+
     /*------------ buttons -----------*/
     .continue,
     .leave,
@@ -1112,6 +1163,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
         width: 130px;
         margin: 0 5px;
     }
+
     /*-------- key/letter box ---------*/
     .key,
     .letter-box {
@@ -1119,6 +1171,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
         max-width: 30px;
         max-height: 30px;
     }
+
     /*------------ Game over -----------*/
     .game-over-container {
         padding: 5px;
@@ -1129,6 +1182,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
     .game-over-container input {
         height: 25px;
     }
+
     /*------------ Footer -----------*/
     footer {
         margin-top: 10px;
@@ -1142,6 +1196,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
         height: 25px;
         transition: 0.3s;
     }
+
     /*----------- Modals -------------*/
     .modal-window {
         padding-top: 3px;
@@ -1156,7 +1211,7 @@ screen and (max-width: 390px) and (orientation: landscape) {
     .btn-form {
         padding: 10px 15px 8px;
     }
-    
+
     .close-modal {
         height: 23px;
         top: -3px;
