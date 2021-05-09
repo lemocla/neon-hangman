@@ -228,7 +228,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       The website will resize according to the device used for better user experience. 
       The game area should also be fully visible on most screen sizes. As the website design is seeking to emulate a mobile app, the header, game information and game area sections should be fully visible on all mobile devices. 
 
-      > I want a responsive website so that I can access the game on different devices.
+      > As new player, I want a responsive website so that I can access the game on different devices.
  
     - ### **Collapsible navigation and interactive design**
 
@@ -236,7 +236,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       
       All interactive elements, including icons and buttons, feature hovering effects and all modals include closing icons / toggle effects. 
       
-      > I want to easily navigate across the site so that I can find the information I need.
+      > As new player, I want to easily navigate across the site so that I can find the information I need.
  
       ![menu collapsed](documentation/screenshots/menu-collapsed.png)
 
@@ -246,7 +246,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       This section offers concise instructions on how to play the game. 
 
-       > - I want to read the instructions so that I can understand how to play.
+       > - As new player, I want to read the instructions so that I can understand how to play.
 
        ![how to play](documentation/screenshots/menu_instruction.png)
       
@@ -257,8 +257,9 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       
       The default settings on the first visit are easy for level, dictionary for category and on for sounds. 
        
-       > - I want to select a difficulty level so that I can play the game according to my abilities.
-       > - I want to be able to turn the sound on and off so that I can enjoy the game according to my preferences.
+       > - As new player, I want to select a difficulty level so that I can play the game according to my abilities.
+       > - As new player, I want to be able to turn the sound on and off so that I can enjoy the game according to my preferences.
+       > - As a frequent / returning player, I want to select a different level so that I can challenge myself/ play according to my ability.
        
        ![settings](documentation/screenshots/menu_settings.png)
 
@@ -273,9 +274,9 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       Each element in this section is recorded in the local storage for when the user next visit & play the game.                                                                                       
 
-      > - I want to see the timer so that I know how much time I’ve got left to win the game.
-      > - I want to see my score so that I feel rewarded when I am playing.
-      > - I want to see my leaderboard/statistics so that I can check my progress and achievements.
+      > - As a player playing the game, I want to see the timer so that I know how much time I’ve got left to win the game.
+      > - As a player playing the game, I want to see my score so that I feel rewarded when I am playing.
+      > - As a returning player, I want to see my leaderboard/statistics so that I can check my progress and achievements.
 
       ![game info](documentation/screenshots/game-info.png)
 
@@ -283,7 +284,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       
       To quickly upload the game, the user can click play (or continue if a returning user with a game in progress) to display the hidden word, set the countdown timer and hide all of the hangman parts.
 
-      > I want the game to upload quickly so that I can start playing as soon as possible.
+      > As new player, I want the game to upload quickly so that I can start playing as soon as possible.
  
       ![play button](documentation/screenshots/play_button.png)
 
@@ -294,8 +295,8 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       When a player starts a game, the hidden word will be dynamically populated according to the level and the category selected. 
       The hidden word will feature as many letter boxes as there are letters in the word. 
 
-       > - I want to see how many letters there are in the hidden word so that I can plan my guesses.
-       > - I want to see the letters guessed correctly displayed on the screen so that I can find the hidden word.  
+       > - As a player playing the game, I want to see how many letters there are in the hidden word so that I can plan my guesses.
+       > - As a player playing the game, I want to see the letters guessed correctly displayed on the screen so that I can find the hidden word.  
      
       ![hidden word](documentation/screenshots/hidden_word.png)
 
@@ -324,8 +325,8 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       Once clicked, the letter will be disabled until the game is finished. 
       
-       > - I want to easily click on a letter so that I can find out if it is in the hidden word.
-       > - I want to see the letters I’ve already clicked so that I don’t make incorrect guesses again.
+       > - As a player playing the game, I want to easily click on a letter so that I can find out if it is in the hidden word.
+       > - As a player playing the game, I want to see the letters I’ve already clicked so that I don’t make incorrect guesses again.
 
        ![Interactive keyboard](documentation/screenshots/interactive_keyboard.png)
     
@@ -342,7 +343,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       The game features an svg animated hangman, split in 10 different parts, each being displayed when an incorrect letter is clicked. 
 
-       > - I want to see the hangman parts so that I know how many attempts I’ve got left.
+       > - As a player playing the game, I want to see the hangman parts so that I know how many attempts I’ve got left.
 
       ![hangman](documentation/screenshots/hangman.png)
 
@@ -353,8 +354,8 @@ Using the principles of UX design and concepts learnt during the Interactive fro
         
         ![game win](documentation/screenshots/game_win.png)
 
-        > - I want the option to exit the game so that I can leave without losing.
-        > - I want the option to play again once I finish a game so that I can keep having fun and challenge myself.
+        > - As a player playing the game, I want the option to exit the game so that I can leave without losing.
+        > - As a player playing the game, I want the option to play again once I finish a game so that I can keep having fun and challenge myself.
       
     - ### **Game over**
 
@@ -368,14 +369,14 @@ Using the principles of UX design and concepts learnt during the Interactive fro
         -------------------- | -------------------
         ![game over best score](documentation/screenshots/gameover_bestscore.png) | ![game over best score saved](documentation/screenshots/gameover_bestscoresaved.png)
 
-        > - I want the option to exit the game so that I can leave without losing.
-        > - I want the option to play again once I finish a game so that I can keep having fun and challenge myself.
+        > - As a player playing the game, I want the option to exit the game so that I can leave without losing.
+        > - As a player playing the game, I want the option to play again once I finish a game so that I can keep having fun and challenge myself.
 
     - ### **Leaderboard**
 
       Once a player has entered their name to save their best score, the leaderboard will be updated with their details and the date the best score was recorded.
 
-       > - I want to see my leaderboard/statistics so that I can check my progress and achievements.
+       > - As a returning player, I want to see my leaderboard/statistics so that I can check my progress and achievements.
 
        ![leaderboard](documentation/screenshots/menu_leaderboard.png) 
 
@@ -445,19 +446,97 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 # **TESTING** 
 
 - ## **Intro** 
+  
+  The website was extensively tested as it was developed with the implementation of new features, using:
+  - console.log() and google developer tools
+  - testing scenarios 
 
-  - Bugs and solution 
-  - User stories 
-  - Responsiveness and compatibility 
-  - Testing performance - eg google lighthouse report
-  - Testing accessibility - wave report
-  - W3C HTML Code Validator
-  - W3C CSS Jigsaw Validator
-  - JSHint javascript 
+- ## **Bugs and solution** 
+
+    - ### **The A - for asynchronimous - in the Ajax methods**
+      At first and due to be relatively new to API and jquery, the developer did not realise that the requests were asynchronimous, meaning that the rest of the code doesn't wait for the response to run.  
+      Therefore all functions related to the hidden word were handled from the callback function within the response, which also added a bit of complexity to the code, as there are two methods to get random words - one of which is fall back in case of the API call fails.
+
+    - ### **SVG hangman and safari**
+      The animation on safari mobile were a bit jerky and the svg hangman ended up being completely out of place on safari desktop. 
+      In the end the solution - found somewhat accidently whilst trying to align the svg vertically in safari - was very simple and it was a matter of setting the container display as a flex and aligning the content centrally.
+
+    - ### **Local storage and JSON array**
+      Building and itirating the JSON array for key pressed, letter matchted and best scores which includes the date, name and score proved quite complex and challenging.
+      The developer used console.log() for every single steps to build, set and retrieve the data. The Code Institute API walkthrough exercise - [working with external resources](https://github.com/Code-Institute-Solutions/WorkingWithExternalResources) to help build the table.   
+
+- ## **User stories** 
+
+    The testing of user stories were done manually and can be found in this [section](documentation/testing/user_stories_testing.md).
+
+- ## **Testing fall back API** 
+
+    - ### **WordsAPI**
+
+        - **Scenario 1 tested - category: dictionary** 
+            - API call fails - tested by adding an additional character in the key
+            - Result: the word is fetched at random from the local file - as expected
+        
+        - **Scenario 2 tested  - category: dictionary**
+            - API call fails - tested as above
+            - Local file call fails - tested by adding an extra character to the link
+            - Result: the word is fetched from the inline array of words
+        
+        - **Scenario 3 tested - category: animals, food, transport**
+            - Local file call fails - tested by adding an extra character to the link
+            - Result: the word is fetched from the inline word array.
+
+    - ### **EmailJS** 
+
+        - **Scenario tested**
+            - Emailjs call fails - tested by adding an extra character to the service id.
+            - Result: the error advising alternative contact is displayed in a a modal.
+
+- ## **Responsiveness and compatibility** 
+
+- ## **W3C HTML Code Validator**
+
+    W3C Markup Validation Service by direct input for index.html and page 404 returned no errors 
+
+    **Report for index.html**
+    ![w3c html validator for html](documentation/testing/html_w3c_validator.png)
+
+    **Report for page 404**
+    ![w3c css validator for page 404](documentation/testing/html_w3c_validator_page404.png)
+
+- ## **W3C CSS Jigsaw Validator**
+
+    W3C CSS Validator by direct input returned no error.
+
+    ![w3c css validator](documentation/testing/css_w3c_validator.png)
+
+- ## **JSHint javascript** 
+
+    JSHint was also installed in gitpod workspace. 
+
+    **Report for game.js** 
+    ![jsHint report game js](documentation/testing/jshin_gamejs.png)
+
+    **Report for navigation.js**
+    ![jsHint navigation js](documentation/testing/jshint_navigationjs.png)
+
+    **Report for emailjs.js** 
+    ![jsHint email js](documentation/testing/jshint_emailjs.png)
+
+    The report shows an indefined variable emailjs, but this is part of the official email js documentation. 
+
+- ## **Testing accessibility - Wave report**
+ 
+  There 4 warnings are related to the audio tages but having looked at the documentation, the developer is not quite sure how to meet the criteria sucessfully. 
+
+  ![wave accessibility report](documentation/testing/wave_report.png)
+
+- ## **Testing performance**
+  
+  ![google lighthouse report](documentation/testing/google_lighthouse_report.png)
 
 - ## **Known bugs**
 
-  - Animation displaying hangman parts on iphone, using Safari in portrait mode, appears a little jerky.
   - Random function may provide the same consecutive output for random words.
   - As the best score is added to the leaderboard when a player enters their name in the input field, the score may be recorded before the player finished typing their name (this would happen if a player was idling as they type their name)
 
@@ -555,6 +634,10 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     
     - **Sounds**
       - Playing sound with jquery was taken from this [medium blogpost](https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97)
+    
+    - **Trigger event on input**
+      - The function to trigger adding best score to leadboard is from [this stack overflow post](https://stackoverflow.com/questions/14042193/how-to-trigger-an-event-in-input-text-after-i-stop-typing-writing)
+        ![trigger event on input](documentation/credit/trigger_event_input.png)
 
     - **Additional**
       - How to to create an array of definitions from api results used [jquery documentation](https://api.jquery.com/jquery.map/) 
