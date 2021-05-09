@@ -4,31 +4,33 @@
 
 $(document).ready(function () {
 
-    /*--------------------------[ VARIABLES ]-------------------------*/
+    // Variables
 
     let level;
     let category;
     let isPlaying = false;
     //Words
+    let word;
+    let max;
+    let splitWord;
+    // Hints
     let hintCollection = [];
     let firstLetter = "";
-    let word;
     let hint;
-    let tHint;
-    let splitWord;
+    let tHint; //time out hint
+    // Game scenario 
     let countCorrect = 0;
     let countIncorrect = 0;
-    let max;
-    //Hangman
+    // Hangman
     let hangmanParts = [];
     $.each($("path"), function (value) {
         hangmanParts.push(value.id);
     });
-    //scoring
+    // Scoring
     let countStreak = 0;
     let point = 10;
     let score = parseInt($("#score").text());
-    //Word Count
+    // Word Count
     let countWords;
     if (localStorage.countWords) {
         countWords = parseInt(localStorage.getItem("countWords"));
@@ -36,34 +38,38 @@ $(document).ready(function () {
         localStorage.setItem("countWords", 0);
         countWords = 0;
     }
-    //timer
+    // Timer
     let timer;
     let x;
-    //sound
+    // Sound
     let sound;
-    //Web storage
+    // Local storage
     let matchStorage = [];
     let keyPressed = [];
 
-    /*-----------------------[ LOCAL STORAGE ]---------------------*/
+    /*  Local storage game in progress 
+        * Identify if a game is in progress 
+        * Update all game elements if a game is in progress so that player can carry on where he left off
+    */
 
     if (localStorage.isPlaying) {
         isPlaying = (localStorage.getItem("isPlaying"));
         if (isPlaying === "true") {
             setGameElements();
-            //Fetch and update category
+            // Fetch and update category
             category = localStorage.getItem("isPlayingCategory");
-            //Fetch and update timer
+            // Fetch and update timer
             setTimer(parseInt(localStorage.getItem("timer")));
-            //Fetch words and display in html
+            // Fetch words and display in html
             word = localStorage.getItem("word");
             splitWord = word.split("");
             displayWord(word);
-            //Fetch and update hint
+            // Fetch and update hint
             hint = localStorage.getItem("hint");
             hintCollection = JSON.parse(localStorage.getItem("hintCollection"));
-            //Fetch & update correctly guessed letters
+            // Fetch count streak
             countStreak = parseInt(localStorage.getItem("countStreak"));
+            // Fetch & update correctly guessed letters
             matchStorage = JSON.parse(localStorage.getItem("matchStorage"));
             countCorrect = matchStorage.length;
             if (matchStorage.length > 0) {
@@ -73,14 +79,14 @@ $(document).ready(function () {
                     }
                 });
             }
-            //key pressed
+            // Update key pressed
             keyPressed = JSON.parse(localStorage.getItem("keyStorage"));
             if (keyPressed.length > 0) {
                 $.each(keyPressed, function (index, value) {
                     $(`.key[id="${value}"]`).addClass("disabled");
                 });
             }
-            //Update hangman & count incorrect
+            // Update hangman & count incorrect
             countIncorrect = parseInt(localStorage.getItem("countIncorrect"));
             $.each($("path"), function (index) {
                 if (index > (countIncorrect - 1))
@@ -91,9 +97,9 @@ $(document).ready(function () {
         localStorage.setItem("isPlaying", false);
     }
 
-    /*------------------------[ START GAME ]-----------------------*/
+    // Start game
 
-    //Set maximum character count 
+    // Function setting the maximum character count according to word container width 
     function setMaxCharacterCount() {
         if ($(".word").width() <= 335) {
             return 8;
@@ -108,7 +114,7 @@ $(document).ready(function () {
         }
     }
 
-    //Split and display word in html
+    // Function splitting and displaying word in html
     function displayWord(word) {
         splitWord = word.split("");
         firstLetter = splitWord[0];
@@ -119,21 +125,33 @@ $(document).ready(function () {
         });
     }
 
-    //Local words 
+    // Function to generate a random word from local array  
     function generateLocalWord(obj, level, category) {
+        // Build an array of words according to category, level and max characters
         let localWords = obj.filter(function (el) {
             max = setMaxCharacterCount();
-            return el.category == category && el.level == level && el.count <= max;
+            if (category === "dictionary") { // if API call fails
+                return el.level == level && el.count <= max;
+            } else {
+                return el.category == category && el.level == level && el.count <= max;
+            }
         });
+        // Select a random word from localWords array
         let wordArray = localWords[Math.floor(Math.random() * localWords.length)];
         word = wordArray.word;
         hint = wordArray.hint;
-        //Local storage
+        // Add hint to hint collection in case API fails
+        if (category === "dictionary") {
+            hintCollection.push(hint);
+            localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
+        }
+        // Set local storage
         localStorage.setItem("word", word);
         localStorage.setItem("hint", hint);
         displayWord(word);
     }
 
+    // Function calling the local array 
     function getLocalWord(level, category) {
         $.get("assets/words/wordslist.json", "json").done(function (data) {
                 //https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes
@@ -271,7 +289,7 @@ $(document).ready(function () {
             });
     }
 
-    //set API parameters
+    //set API parameters according to selected level
     function setApiParameters(level) {
         let min;
         let freqMin;
@@ -295,7 +313,7 @@ $(document).ready(function () {
         return `lettersMin=${min}&lettersMax=${max}&limit=5&page=1&frequencyMin=${freqMin}&frequencyMax=${freqMax}`;
     }
 
-    //Get random Word via API
+    // Function calling wordsAPI 
     function getWordApi(level) {
         /*from RapidAPI documentation documentation*/
         let parameters = setApiParameters(level);
@@ -314,13 +332,13 @@ $(document).ready(function () {
         $.ajax(settings).done(function (dataType) {
                 displayWord(dataType.word);
                 word = dataType.word;
-                //Hint --> definition selected at random from the list of definitions for this word
+                // Hint --> definition selected at random from the list of definitions for this word
                 let definitions = dataType.results;
-                //https://api.jquery.com/jquery.map/
+                // https://api.jquery.com/jquery.map/
                 hintCollection = $.map(definitions, function (value) {
                     return value.definition;
                 });
-                //Local storage
+                // Local storage
                 localStorage.setItem("word", dataType.word);
                 localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
             })
@@ -329,7 +347,7 @@ $(document).ready(function () {
             });
     }
 
-    //Generate Random Word according to category selected
+    // Function defining method to create random Word according to selected level & category 
     function generateRandomWord(category, level) {
         if (category === "dictionary") {
             getWordApi(level);
@@ -338,14 +356,16 @@ $(document).ready(function () {
         }
     }
 
-    //Timer
-    //https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
+    // Timer
+
+    // Function to turn seconds in double digit when less than 10
+    // https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date
     function pad(n) {
         let sec = ((n < 10) ? '0' + n : n);
         return sec;
     }
 
-    //https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
+    // https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown
     function setTimer(timer) {
         x = setInterval(function () {
             if (timer <= 0) {
@@ -359,7 +379,7 @@ $(document).ready(function () {
                 $("#timer").text(minutes + ":" + seconds);
             }
             timer -= 1;
-            //Local storage
+            // Local storage
             localStorage.setItem("timer", timer);
         }, 1000);
     }
@@ -369,7 +389,7 @@ $(document).ready(function () {
         $("#timer").text("0:00");
     }
 
-    //display and hide html contents
+    // Function to display and hide html contents
     function setGameElements() {
         $("#start").addClass("hide");
         $(".word").empty().removeClass("hide");
@@ -377,17 +397,20 @@ $(document).ready(function () {
         $(".key").removeClass("disabled");
     }
 
+    // Function to hide all hangman parts
     function hideHangmanParts() {
         $.each($("path"), function () {
             $(this).addClass("hide");
         });
     }
 
+    // Function reset display after game is won
     function resetDisplayAfterWin() {
         $(".keyboard-container").removeClass("hide");
         $("#game-win").addClass("hide");
     }
 
+    // Function reset display after game is over
     function resetDisplayAfterGameOver() {
         $(".flex-container").removeClass("hide");
         $("#game-over").addClass("hide");
@@ -401,7 +424,7 @@ $(document).ready(function () {
         }
     }
 
-    //Set local storage
+    // Function to set local storage with in-game information
     function setLocalStorage() {
         isPlaying = true;
         localStorage.setItem("isPlaying", isPlaying);
@@ -414,23 +437,29 @@ $(document).ready(function () {
         localStorage.setItem("countStreak", countStreak);
     }
 
-    //Start Game
+    // Function to be executed when start is clicked
     function startGame() {
+        // Update display elements
         setGameElements();
         hideHangmanParts();
+        // Reset after game is won
         if ($(".keyboard-container").hasClass("hide")) {
             resetDisplayAfterWin();
         }
+        // Reset after game is over
         if ($(".flex-container").hasClass("hide")) {
             resetDisplayAfterGameOver();
         }
+        // Set timer
         timer = 120;
         setTimer(timer);
+        // Update variables
         level = $(".btn-level.active").text();
         category = $(".btn-category.active").text();
         countCorrect = 0;
         countIncorrect = 0;
         countStreak = 0;
+        // Create random word
         generateRandomWord(category, level);
         //Local storage
         setLocalStorage();
@@ -440,21 +469,29 @@ $(document).ready(function () {
         startGame();
     });
 
-    /*-------------------------[ PLAY GAME ]--------------------------*/
+    // Play game
 
-    //Display hints    
+    // Hints
+
+    /* Function to get hint value according to selected category  
+     * hint from word generated via local API to be selected at random from a collection of definition for that word.
+     * if no definition are available, the hint will be the first letter in the word. 
+     */
+
     function getHintValue() {
         hint = ((category == "dictionary") ?
             ((hintCollection.length >= 1) ? hintCollection[Math.floor(Math.random() * hintCollection.length)] : `First letter in this word is: ${firstLetter}`) :
             hint);
     }
 
+    // Function to display hint for 3.75 seconds
     function displayHint() {
         tHint = setTimeout(function () {
             $("#hint-content").addClass("hide");
         }, 3750);
     }
 
+    // Function to clear timeout in displayHint
     function clearTimeOutHint() {
         clearTimeout(tHint);
     }
@@ -496,23 +533,23 @@ $(document).ready(function () {
         sound = "audio#success-sound";
         $.each(splitWord, function (index, value) {
             if (value === letter) {
-                //Sound
+                // Sound
                 playSound(sound);
-                //Update letter
+                // Update letter
                 $("#" + index).append(letter);
                 countCorrect = ++countCorrect;
-                //scoring
+                // scoring
                 countStreak = ++countStreak;
                 score = incrementScore(countStreak, score, point);
-                //Local storage
+                // Local storage
                 matchStorage.push(value);
                 localStorage.setItem("countStreak", countStreak);
                 localStorage.setItem("score", score);
             }
         });
-        //Local storage
+        // Local storage
         localStorage.setItem("matchStorage", JSON.stringify(matchStorage));
-        //Check if game win
+        // Check if game win and call gameWin function if count correct = total word length
         if (countCorrect == splitWord.length) {
             setTimeout(function () {
                 gameWin();
@@ -520,22 +557,22 @@ $(document).ready(function () {
         }
     }
 
-    //No match
+    // No match
     function noMatch() {
-        //Sound
+        // Sound
         sound = "audio#fail-sound";
         playSound(sound);
         let hangmanStorage = [];
-        //Display hangman
+        // Display hangman
         countIncorrect = ++countIncorrect;
         displayHangmanPart(countIncorrect);
-        //Reset streak to 0
+        // Reset streak to 0
         countStreak = 0;
-        //Local storage
+        // Local storage
         hangmanStorage.push(countIncorrect);
         localStorage.setItem("countStreak", countStreak);
         localStorage.setItem("countIncorrect", countIncorrect);
-        //Call game over function
+        // Check if game over and call function if count incorrect = 10
         if (countIncorrect == 10) {
             setTimeout(function () {
                 gameOver();
@@ -564,58 +601,58 @@ $(document).ready(function () {
 
     //Game win
     function gameWin() {
-        //Sounds
+        // Sounds
         sound = "audio#win-sound";
         playSound(sound);
-        //Clear timer interval
+        // Clear timer interval
         clearTimer();
-        //Display win message
+        // Display win message
         $(".keyboard-container").addClass("hide");
         $("#game-win").removeClass("hide");
-        //Hide hint if displayed
+        // Hide hint if displayed
         if (!$("#hint-content").hasClass("hide")) {
             $("#hint-content").addClass("hide");
         }
         $("#hint").addClass("hide");
-        //Update statistics
+        // Update statistics
         isPlaying = false;
         countWords = ++countWords;
         $(".final-score").text(score);
         $(".count-words").text(countWords);
-        //local storage
+        // Local storage
         resetLocalStorage();
     }
 
-    //Game over
+    // Game over
     function gameOver() {
-        //Sounds
+        // Sounds
         sound = "audio#game-over-sound";
         playSound(sound);
-        //Clear timer interval
+        // Clear timer interval
         clearTimer();
-        //Update game over message with stats
+        // Update game over message with stats
         $("#correct-answer").text(word);
         $(".final-score").text(score);
         $(".count-words").text(countWords);
-        //display game over
+        // Display game over
         $(".flex-container").addClass("hide");
         $("#game-over").removeClass("hide");
-        //Update best score with scoring info
+        // Update best score with scoring info
         if (parseInt($("#best-score").text()) < score) {
             $(".best-score-container").removeClass("hide");
             $("#best-score").text(score);
             localStorage.setItem("bestScore", score);
         }
-        //Reset score to 0 when game over
+        // Reset score to 0 when game over
         countWords = 0;
         score = 0;
         isPlaying = false;
         $("#score").text(score);
-        //local storage
+        // Local storage
         resetLocalStorage();
     }
 
-    //Play game
+    // Play game - when key is pressed
     $(".key").on("click", function () {
         if (isPlaying) {
             //Evaluate guess
@@ -637,7 +674,7 @@ $(document).ready(function () {
         }
     });
 
-    /*------------------------[ LEAVE GAME ]-----------------------*/
+    // Leave game
 
     function displayHomePage() {
         $(".word").empty().addClass("hide");
@@ -664,8 +701,9 @@ $(document).ready(function () {
         displayHomePage();
     });
 
-    /*-------------------[ RECORD BEST SCORE TO LEADERBOARD ]-------------------*/
+    // Record best score to leaderboard
 
+    //Sort JSON array --> leaderboard
     function sortOrder(prop) {
         return function (a, b) {
             if (a[prop] < b[prop]) {
@@ -677,6 +715,7 @@ $(document).ready(function () {
         };
     }
 
+    // Function adding best score to leaderboard
     function addToLeaderboard() {
         let playerName = $("#scorename").val();
         let today = new Date();
@@ -689,14 +728,15 @@ $(document).ready(function () {
             "score": `${recScore}`
         };
         //Update leaderboard html
-        if (leaderboard.length >= 1) {
+        if (leaderboard.length >= 1) { // Update existing leaderboard table
             leaderboard.push(addPlayerDetails);
-            leaderboard.sort(sortOrder("score"));
+            leaderboard.sort(sortOrder("score")); //sort array
+            // Append thml
             $("#lead-table").append(`<tr><td>${today}</td><td>${playerName}</td><td>${recScore}</td></tr>`);
-            //sort
+            // Insert new best score after head row
             $(`tr:contains(${recScore})`).insertAfter('#head-row');
         } else {
-            leaderboard.push(addPlayerDetails);
+            leaderboard.push(addPlayerDetails); // Update leaderboard html with new table
             $("#leaderboard").html(`
              <table id="lead-table">
              <tr id="head-row"><th>date</th><th>name</th><th>score</th></tr>
@@ -710,6 +750,14 @@ $(document).ready(function () {
         $("#scorename").val("");
     }
 
+    /* delay function when name is entered in input field so that
+        - if key pressed within 1350 seconds, actions set in call back function are delayed 
+        - If no key pressed within 1350 seconds, actions set in callback function are running
+          and timeout is cleared. 
+        
+    */
+
+    //https://stackoverflow.com/questions/14042193/how-to-trigger-an-event-in-input-text-after-i-stop-typing-writing
     let delay = (function () {
         let timerDelay = 0;
         return function (callback, ms) {
@@ -718,6 +766,7 @@ $(document).ready(function () {
         };
     })();
 
+    // Update leaderboard and display success notification once player has typed his name 
     $("#scorename").keyup(function () {
         delay(function () {
             addToLeaderboard();
