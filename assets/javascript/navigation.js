@@ -4,9 +4,10 @@
 
 $(document).ready(function () {
 
-    /*--------------[ Prepare leaderboard table ]---------------*/
+    // Functions to prepare leaderboard table
 
-    //https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/
+    // Function to sort JSON array in descending order 
+    // https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/
     function GetSortOrder(prop) {
         return function (a, b) {
             if (a[prop] < b[prop]) {
@@ -18,12 +19,14 @@ $(document).ready(function () {
         };
     }
 
+    // Function to create leaderboard table / default content 
     function createLeaderboard(bestScores) {
         let dataScores = JSON.parse(bestScores);
+        // Sorts JSON array in descending order
         dataScores.sort(GetSortOrder("score"));
         if (dataScores.length >= 1) {
             let dataHeaders = dataScores[0];
-            //table headers
+            // Table headers
             let thArray = [];
             $.each(dataHeaders, function (key) {
                 let thString = "<th>" + key + "</th>";
@@ -31,7 +34,7 @@ $(document).ready(function () {
             });
             let thRow = thArray.join(" ");
             let tableHeaders = "<tr id='head-row'>" + thRow + "</tr>";
-            //rows
+            // Table rows
             let trArray = [];
             $.each(dataScores, function (key, value) {
                 let tdArray = [];
@@ -42,13 +45,18 @@ $(document).ready(function () {
                 trArray.push("<tr>" + tdString + "</tr>");
             });
             let tableRows = trArray.join(" ");
+            // Table content
             $("#leaderboard").append("<table id='lead-table'>" + tableHeaders + tableRows + "</table>");
         } else {
-            $("#leaderboard").append("<p>No information yet!</p>");
+            $("#leaderboard").append("<p>No information yet!</p>"); //default content if no data
         }
     }
 
-    /*-----------------------[ WebAPI ]---------------------------*/
+    /*Local storage
+        Get items from local storage
+        Update website content with local storage
+        Set default local storage if data is not set
+    */
 
     if (typeof (Storage) !== "undefined") {
         //Level
@@ -85,6 +93,7 @@ $(document).ready(function () {
         //Scores
         if (localStorage.score) {
             $("#score").text(localStorage.getItem("score"));
+            //Apply content to start button if player is continuing a game
             if (parseInt($("#score").text()) > 0 && localStorage.getItem("isPlaying") == "false") {
                 $('#start').text("continue");
             } else {
@@ -102,7 +111,8 @@ $(document).ready(function () {
         //Leaderboard 
         if (localStorage.arrayBestScores) {
             let bestScores = localStorage.getItem("arrayBestScores");
-            createLeaderboard(bestScores);
+            //creates leaderboard table/default content
+            createLeaderboard(bestScores); 
         } else {
             let arrayBestScores = [];
             localStorage.setItem("arrayBestScores", JSON.stringify(arrayBestScores));
@@ -118,20 +128,24 @@ $(document).ready(function () {
         localStorage.setItem("isPlaying", false);
     }
 
-    /*----------------------[ Toggle menu ]-----------------------*/
+    // Navigation and menu items
 
+    // Toggle menu container
     $('#toggle-nav').on("click", function () {
         $(".menu-container").toggle();
+        //Update toggle-nav image
         if ($(".menu-container").css("display") == "block") {
             $(this).attr("src", "assets/images/close.svg");
+            //Collaspe all menu content if displayed
+            $(".menu-content[style='display: block;']").toggle();
         } else {
             $(this).attr("src", "assets/images/cog.svg");
         }
     });
 
-    /*----------------[ Display menu items content ]----------------*/
-
+    // Display menu items content
     $(".btn-menu").on("click", function () {
+
         let contentId = $(this).attr("data-content");
         $("#" + contentId).toggle();
         //Hide content from other menu items 
@@ -142,39 +156,42 @@ $(document).ready(function () {
         }
     });
 
-    /*-------------------[ Select level items ]-------------------*/
-
+    // Select level items
     $(".btn-level").on("click", function () {
+        //Add active class to selected element
         $(this).addClass("active");
+        //Remove active class to all other elements
         let activeBtn = $(".btn-level.active").not(this);
         if (activeBtn.length > 0) {
             activeBtn.removeClass("active");
         }
         //Update game info section
         $('.level').text($(this).text());
-        //Local Storage
+        //Update local Storage
         localStorage.setItem("level", $(this).text());
     });
 
-    /*-------------------[ Select categories ]-------------------*/
-
+    // Select categories
     $(".btn-category").on("click", function () {
+        //Add active class to selected element
         $(this).addClass("active");
+        //Remove active class to all other elements
         let activeBtn = $(".btn-category.active").not(this);
         if (activeBtn.length > 0) {
             activeBtn.removeClass("active");
         }
         //Update game info section
         $(".category").text($(this).text());
-        //Local Storage
+        //Update local Storage
         localStorage.setItem("category", $(this).text());
+
     });
 
-
-    /*-------------------[ Select volume items ]-------------------*/
-
+    // Select sound options in settings
     $(".btn-volume").on("click", function () {
+        // Add active class to selected element
         $(this).addClass("active");
+        // Remove active class to all other elements
         let activeBtn = $(".btn-volume.active").not(this);
         if (activeBtn.length > 0) {
             activeBtn.removeClass("active");
@@ -182,22 +199,25 @@ $(document).ready(function () {
         // Update game info section
         let src = (($(this).attr("data-sound") == "on") ? "assets/images/soundon.svg" : "assets/images/soundoff.svg");
         $("img[data-attr=sound]").attr("src", src);
-        //Local Storage
+        // Update local Storage
         localStorage.setItem("sound", $(".btn-volume.active").attr("data-sound"));
     });
 
-    /*---------[ Turn sound on and off from game info ]-----------*/
-
+    // Turn sound on and off from game info
+       
+    // Function to return return sound image src & update settings
     function turnSound(current, val) {
+        // Update sound in settings
         $(`.btn-volume[data-sound=${current}]`).removeClass("active");
         $(`.btn-volume[data-sound=${val}]`).addClass("active");
-        //Local Storage
+        // Update local Storage
         localStorage.setItem("sound", val);
         return `assets/images/sound${val}.svg`;
     }
 
+    // Turn sound on / off when image is clicked
     $("img[data-attr=sound]").on("click", function () {
-        let src;
+        let src; //update image sound on / off
         if ($(this).attr("src") == "assets/images/soundon.svg") {
             src = turnSound("on", "off");
         } else if ($(this).attr("src") == "assets/images/soundoff.svg") {
@@ -206,21 +226,25 @@ $(document).ready(function () {
         $("img[data-attr=sound]").attr("src", src);
     });
 
-    /*----------------[ Open/close modal forms ]------------------*/
+    // Open/close modal forms
 
+    // Displays / hides modal form from contact us button
     $("#contact-us").on("click", function () {
         $("#modal-form").toggleClass("hide");
     });
 
+    // Function to hide modals on click events
     function closeModal(obj) {
         let modal = $(obj).attr("data-close");
         $(`#${modal}`).addClass("hide");
     }
 
+    // Closes modal using close icons
     $(".close-modal").on("click", function () {
         closeModal(this);
     });
 
+    // Closes modal using buttons
     $(".btn-form").on("click", function () {
         closeModal(this);
     });
