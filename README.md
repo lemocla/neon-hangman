@@ -11,28 +11,28 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 ## **TABLE OF CONTENT** 
 
-  - [UX Design](#UX_DESIGN)
-    - [Strategy](#Strategy)
-    - [User stories](#User_stories)
-    - [Scope](#Scope)
-    - [Structure](#Structure)
-    - [Skeleton](#Skeleton)
-    - [Design](#Design)
-  - [Features](#FEATURES)
-    - [Existing features](#Existing_features)
-    - [Features left to implement](#Features_left_to_implement)
-  - [Technologies Used](#TECHNOLOGY_USED)
-    - [Languages](#Languages)
-    - [Libraries and frameworks](#Libraries_and_frameworks)
-  - [Testing](#TESTING)
-  - [Deployment](#DEPLOYMENT)
-    - [Deployment of the page](#Deployment_of_the_page)
-    - [How to run the code locally](#How_to_run_the_code_locally)
-   - [Credits](#CREDITS)
-     - [Code](#Code)
-     - [Content](#Content)
-     - [Media](#Media)
-     - [Acknowledgment](#Acknowlegment)
+  - [UX Design](#ux-design)
+    - [Strategy](#strategy)
+    - [User stories](#user-stories)
+    - [Scope](#scope)
+    - [Structure](#structure)
+    - [Skeleton](#skeleton)
+    - [Design](#design)
+  - [Features](#features)
+    - [Existing features](#features-implemented)
+    - [Features left to implement](#Features-left-to_implement)
+  - [Technologies Used](#technology-used)
+    - [Languages](#languages)
+    - [Libraries, framework and other technologies](#libraries-framework-and-other-technologies)
+  - [Testing](#testing)
+  - [Deployment](#deployment)
+    - [Deployment of the page](#deployment-of-the-page)
+    - [How to run the code locally](#how-to-run-the-code-locally)
+   - [Credits](#credits)
+     - [Code](#code)
+     - [Content](#content)
+     - [Media](#media)
+     - [Acknowledgments](#acknowledgments)
     
 # **UX DESIGN**
 
@@ -44,7 +44,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
         - To explore the different features of a game 
         - To create a simple, yet well designed and intuitive website 
         - To put into practice and expand on javascript, jquery libraries and API 
-        - To provide an enjoyable and stimulating experience for the user of the website 
+        - To provide an enjoyable and stimulating experience for users of the website 
         - To encourage players to play again and new users to visit the website
 
     - ### **For the players:** 
@@ -53,10 +53,10 @@ Using the principles of UX design and concepts learnt during the Interactive fro
         - To have a fun and engaging game experience
         - To feel rewarded for and whilst playing the game 
         - To have a visually pleasing and intuitive interface 
-        - To be able to play the games multiple times 
+        - To be able to play the game multiple times 
         - To contact the website owner
 
-- ## **User stories** 
+- ## **User stories**
 
     - ### **As new player:** 
         - I want a responsive website so that I can access the game on different devices. 
@@ -148,6 +148,10 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 	- Game area container: 
 		- Play button, congratulation & game over message
         - Hidden word, interactive keyboard and Hangman
+    
+     **Difference to organisation of functionality and content**   
+
+     Settings also include categories. Since the functional requirements included a backup list of the words, this feature made sense to be implemented at this stage.  
 
   - ### **Interaction design** 
 
@@ -176,26 +180,26 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Difference:**
 
-      - **Game info:** category is displayed instead of levels
-      - **Menu:** close button removed as not necessary
-      - **Settings:** categories have been added in addition to levels
-      - **Popup points:** not implemented
-      - **Win message:** A leave button has been added as well as a line about in-game statistics
+      - **Game info:** category is displayed instead of levels.
+      - **Menu:** close button has been removed as not necessary.
+      - **Settings:** categories have been added to settings in addition to levels.
+      - **Popup points:** not implemented.
+      - **Win message:** A leave button has been added as well as a line about in-game statistics.
       - **Game over message:** A leave button has been added and content is laid out differently. 
 
 - ### **Design**
 
-  Inspired by nostalgia, the design of the game aims to recreate the spirit of 80s retro arcade era with a modern twist. 
+  Inspired by nostalgia, the design of the game aims to recreate the spirit of the 80s retro arcade era with a modern twist. 
 
   - #### **Imagery**
 
     - Bricked navy background is designed using css only 
-    - Neon hangman was designed as a svg (scalable vector graphic) with filter for colour and animated using css & javascript.
+    - Neon hangman was designed as a svg (scalable vector graphic), styled with filters and animated using css & javascript.
 
   - #### **Colour scheme**
 
-    The website uses bright colours and neon effect throughout, as well as gradients to add contrast and make elements blend more together.
-    All text on the website is white, except for the logo.
+    The website uses bright colours and neon effects throughout, as well as gradients to add contrast and make elements blend more together.
+    All texts on the website are white, except for the logo.
 
     Background colour | Color palette
     ------------------ | -----------------
@@ -204,25 +208,26 @@ Using the principles of UX design and concepts learnt during the Interactive fro
   - #### **Typography**
 
     As part of the arcade theme, the website uses:
-    -  [Pixel-operator](https://www.dafont.com/pixel-operator.font) font from Dafont for text due to its pixel finish.
+    -  [Pixel-operator](https://www.dafont.com/pixel-operator.font) font from Dafont for general text due to its pixel finish.
     -  [Monoton](https://fonts.google.com/specimen/Monoton) from Google Font for the logo as it suits neon effect perfectly.
 
   - #### **Icons**
 
     SVG icons from [iconmonstr](https://iconmonstr.com/) and [IcMoon](https://icomoon.io) are used to:
     -  Illustrate interactive elements and game information such as scoring and the timer. 
-    -  Bring attention to social media accounts
-    The icons by their smooth finished also add contrast and complement nicely the pixel font. 
+    -  Bring attention to social media accounts.   
+
+    The icons with their smooth finish also add contrast and complement the pixel font nicely. 
 
   - #### **Styling**
 
-    - Borders and buttons have a slightly rounded corner to add a softer and modern feeling to the website.
+    - Borders and buttons have slight rounded corners to add a softer and modern feeling to the website.
     - Borders, buttons and hangman are styled with a neon effect as part of the overall theme of the website.
 
 
-# **FEATURES** 
+# **FEATURES**
 
-- ## **Features implemented** 
+- ## **Features implemented**
 
    - ### **Responsive layout**
       The website will resize according to the device used for better user experience. 
@@ -232,7 +237,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
  
     - ### **Collapsible navigation and interactive design**
 
-      The game features a collapsible menu at the top of the page with a dynamic icon, to allow users to select their preferences, view the instructions and the leaderboard. 
+      The game features a collapsible menu at the top of the page with a dynamic icon that changes when the menu is toggled, to allow users to select their preferences, view the instructions and the leaderboard. 
       
       All interactive elements, including icons and buttons, feature hovering effects and all modals include closing icons / toggle effects. 
       
@@ -268,7 +273,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       The game information section features:
        - **Sounds preference:** The sound can also be turned on/off from this section and will be updated in settings.
        - **Categories:** updated dynamically when a new category is selected in settings.
-       - **Best score:** displays best score achieved, regardless of being recorded or not.
+       - **Best score:** displays the best score achieved, regardless of being recorded or not.
        - **Score:** Incremented dynamically when a game is played and reset to 0 when a game is over.
        - **Timer:** Initially set at zero, the countdown timer will be set at 2 min when the player clicks play/continue.       
 
@@ -282,7 +287,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Play & continue buttons**
       
-      To quickly upload the game, the user can click play (or continue if a returning user with a game in progress) to display the hidden word, set the countdown timer and hide all of the hangman parts.
+      To quickly upload the game, the user can click play (or continue if a returning user) to display the hidden word, set the countdown timer and hide all of the hangman parts.
 
       > As new player, I want the game to upload quickly so that I can start playing as soon as possible.
  
@@ -302,16 +307,16 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
        The hidden word is randomly generated as follows:
        - **Selected category -> dictionary:**  
-         The "dictionary" category will fetch a random word from wordsApi according to the level selected. The level are set according the words' zipf frequency.
+         The "dictionary" category will fetch a random word from wordsApi according to the level selected. The level are set according the words' [zipf](https://simple.wikipedia.org/wiki/Zipf%27s_law) frequency.
        - **Selected category -> animals, food and transport:**  
          These categories will fetch a random word from the local words list according to the level selected.
          The levels have been defined within the list. 
        
-       In addition a limit on the number of characters in a word has been set according to the width of the word container, so that the words are displayed in a user friendly way at all times. 
+       In addition, a limit on the number of characters in a word has been set according to the width of the word container, so that the words are displayed in a user friendly way at all times. 
       
        **Hint**
 
-       This is an additional feature that gives users clues about the hidden word. The clue will toggle when the lightbulb is clicked and will be displayed by default for a few seconds before closing again, saving the users the additional task of closing the modal whilst concentrating on finding the hidden word. 
+       This is an additional feature that gives users clues about the hidden word. The clue will toggle when the lightbulb is clicked and, by default, will be displayed for a few seconds before closing again, saving the users the additional task of closing the modal whilst concentrating on finding the hidden word. 
        
        For words generated via the API, hints will be generated at random from a collection of definitions for that word (as some definitions may appear quite odd). 
 
@@ -321,7 +326,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
  
       The game features an interactive keyboard that allows users to click on letters to guess the hidden word, prompting the letter to be revealed if correct or the relevant hangman part to be displayed if incorrect. 
       
-      If the sounds preference are on, a happy sound will play if the letter is correct and a negative one if it is incorrect.
+      If the sounds preference are on, a happy sound will play if the letter is correct and a negative one if incorrect.
 
       Once clicked, the letter will be disabled until the game is finished. 
       
@@ -334,8 +339,8 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       The in-game scoring is incremented every time a correct letter is clicked as follows:
 
-      - Default point is 10 points per letter
-      - If a player guess more than one letter consecutively, it's a streak and the default point for that letter is mulitplied by the streak before being added to the score.
+      - Default scoring is 10 points per letter.
+      - If a player guesses more than one letter consecutively, it's a streak. The default point for that letter is then mulitplied by the streak before being added to the score.
 
       The streak is reset to 0 when an incorrect guess is made. 
       
@@ -349,7 +354,8 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Game win**
       
-        When a player has revealed all the letters in the hidden word, a win message will display together with happy music (if sound preferences are on).
+        When a player has revealed all the letters in the hidden word, a win message will display together with a happy music (if sound preferences are on).
+
         The player will be offered the option to continue or leave the game. Information will be recorded in the local storage, so that the player can leave the game without losing his score. 
         
         ![game win](documentation/screenshots/game_win.png)
@@ -361,7 +367,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
         When all the hangman parts are revealed, the game over message will display (together with a sad music if sounds preferences are on) offering the player the option to play again or leave the game. 
         
-        Score will be reset to 0 and if player achieves a new best score, he will be prompted to save his score by entering his name. 
+        Score will be reset to 0 and, if player achieves a new best score, he will be prompted to save his score by entering his name in the designated field. 
 
         ![game over](documentation/screenshots/gameover.png)
 
@@ -374,7 +380,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Leaderboard**
 
-      Once a player has entered their name to save their best score, the leaderboard will be updated with their details and the date the best score was recorded.
+      When players have entered their name to save their best score, the leaderboard will be updated with their details and the date the best score was achieved.
 
        > - As a returning player, I want to see my leaderboard/statistics so that I can check my progress and achievements.
 
@@ -382,7 +388,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Local storage**
      
-      Local storage will store and retrieve the following data for user next visit or when the page is refreshed.
+      Local storage will store and retrieve the following data for the player's next visit or for when the page is refreshed.
        - Selected level
        - Selected categories 
        - Sound preferences 
@@ -391,7 +397,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
        - Score   
        - Word count
 
-      In addition, it will store and update data for game in progress:
+      In addition, local storage will save and update data for round in progress:
        - Word 
        - Hint
        - Key pressed 
@@ -403,7 +409,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Footer**
  
-      The footer displays a “contact us” opening a contact form in a modal window as well as social media icons with links opening onto a new tab, so that users can browse these without losing access to the website.  
+      The footer displays a “contact us” button, opening a modal contacta form, as well as social media icons with links opening onto a new tab, so that users can browse these without losing access to the website.  
 
       > As a frequent / returning player, I want to contact the company so that I can offer suggestions on how to improve the website.
 
@@ -413,17 +419,19 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       ![modal_form](documentation/screenshots/modal_form.png)
 
-      Upon submitting the form, an email should be sent to the site owner via emailjs and the modal window should close. A modal message confirming that the message has been sent successfully should display and should the emailjs call fail, a modal message should inform the user of alternative ways to contact the site owner.  
+      Upon submitting the form, an email should be sent to the site owner via emailjs and the modal window should close. 
+      
+      A modal message confirming that the message has been sent successfully should display and, should the emailjs fails, a modal message should inform the user of alternative ways to contact the site owner.  
 
       ![success_message](documentation/screenshots/success_message.png)
 
-- ## **Features left to implement** 
+- ## **Features left to implement**
 
   - Add a feature to allow users to leave a review 
-  - Add a database to add and manage for words and categories.  
+  - Add a database to add and manage for words and categories  
   - Add a feature to allow users to challenge a friend with a word by email or social medias.
   - Add a multiplayer mode
-  - Convert the website as a Progressive Web Application (PWA) and re-develop the game as an app for ios and android.
+  - Convert the website as a Progressive Web Application (PWA) and re-develop the game as an app for ios and android
 
 
 # **TECHNOLOGY USED**
@@ -433,56 +441,66 @@ Using the principles of UX design and concepts learnt during the Interactive fro
   - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
   - [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-- ## **Libraries, framework and other technologies** 
-  - [Jquery](https://api.jquery.com/): to simplify Ajax, DOM manipulation and event handling. 
-  - [Scalable Vector Graphics](https://www.w3.org/TR/SVG11/intro.html) (SVG): for the animated hangman.  
-  - [JavaScript Object Notation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) (JSON): for the local word lists & array in local storage.
+- ## **Libraries framework and other technologies**
+  - [Jquery](https://api.jquery.com/): to simplify Ajax, DOM manipulation and event handling 
+  - [Scalable Vector Graphics](https://www.w3.org/TR/SVG11/intro.html) (SVG): for the animated hangman
+  - [JavaScript Object Notation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) (JSON): for the local words list & array in local storage
   - [wordsAPI](https://www.wordsapi.com/): To generate random word from dictionary category
   - [Email JS](https://www.emailjs.com/): To send email via the website
   - [Google fonts](https://fonts.google.com/): For the Hangman logo
   - [BeautifyTools](https://beautifytools.com/excel-to-json-converter.php): To convert excel word list into a json file
 
 
-# **TESTING** 
+# **TESTING**
 
-- ## **Intro** 
+- ## **Intro**
   
-  The website was extensively tested as it was developed with the implementation of new features, using:
+  The website was tested extensively as it was developed with the implementation of new features, using:
   - console.log() and google developer tools
-  - testing scenarios 
+  - testing scenarios manually
 
-- ## **Bugs and solution** 
+- ## **Bugs and solution**
 
     - ### **The A - for asynchronimous - in the Ajax methods**
-      At first and due to be relatively new to API and jquery, the developer did not realise that the requests were asynchronimous, meaning that the rest of the code doesn't wait for the response to run.  
-      Therefore all functions related to the hidden word were handled from the callback function within the response, which also added a bit of complexity to the code, as there are two methods to get random words - one of which is fall back in case of the API call fails.
+      
+      At first and due to be relatively new to API and jquery, the developer did not realise that the requests were asynchronimous, meaning that the rest of the code didn't wait for the response to run.  
+      
+      Therefore all functions related to the hidden word were handled from the callback function within the response, which also added a bit of complexity to the code, as there are two methods to get random words - one of which is a fallback in case the API call fails.
 
     - ### **SVG hangman and safari**
+      
       The animation on safari mobile were a bit jerky and the svg hangman ended up being completely out of place on safari desktop. 
-      In the end the solution - found somewhat accidently whilst trying to align the svg vertically in safari - was very simple and it was a matter of setting the container display as a flex and aligning the content centrally.
+      
+      The solution was to set the hangman container display as a flex and to align the content centrally.
 
     - ### **Local storage and JSON array**
-      Building and itirating the JSON array for key pressed, letter matchted and best scores which includes the date, name and score proved quite complex and challenging.
-      The developer used console.log() for every single steps to build, set and retrieve the data. The Code Institute API walkthrough exercise - [working with external resources](https://github.com/Code-Institute-Solutions/WorkingWithExternalResources) to help build the table.   
+      
+      Building and iterating the JSON array for key pressed, letter matchted and best scores -  which includes the date, name and score - proved quite complex and challenging.
+      
+      The developer used console.log() for every single steps to build, set and retrieve the data. The Code Institute API walkthrough exercise - [working with external resources](https://github.com/Code-Institute-Solutions/WorkingWithExternalResources) - was also used to help build the table. 
 
-- ## **User stories** 
+    - ### **WordAPI and words with apostrophe**
+      
+      The interactive keyboard doesn't include symbols, therefore words returned by API should not contain any symbols, such as apostrophes. WordsAPI doesn't have a parameter to exclude these characters, so - to solve this issue - the URL string was amended with "hasDetails=definitions", as words with symbols don't have definitions attached to them.
+
+- ## **User stories**
 
     The testing of user stories were done manually and can be found in this [section](documentation/testing/user_stories_testing.md).
 
-- ## **Testing fall back API** 
+- ## **Testing fall back for API calls**
 
     - ### **WordsAPI**
 
-        - **Scenario 1 tested - category: dictionary** 
+        - **Scenario tested - category: dictionary** 
             - API call fails - tested by adding an additional character in the key
             - Result: the word is fetched at random from the local file - as expected
         
-        - **Scenario 2 tested  - category: dictionary**
+        - **Scenario tested  - category: dictionary**
             - API call fails - tested as above
             - Local file call fails - tested by adding an extra character to the link
             - Result: the word is fetched from the inline array of words
         
-        - **Scenario 3 tested - category: animals, food, transport**
+        - **Scenario tested - category: animals, food, transport**
             - Local file call fails - tested by adding an extra character to the link
             - Result: the word is fetched from the inline word array.
 
@@ -492,11 +510,19 @@ Using the principles of UX design and concepts learnt during the Interactive fro
             - Emailjs call fails - tested by adding an extra character to the service id.
             - Result: the error advising alternative contact is displayed in a a modal.
 
-- ## **Responsiveness and compatibility** 
+- ## **Responsiveness and compatibility**
+
+    The website was tested on the following devices and browsers. All tests were successful, expect for the sounds being slightly delayed on Firefox and Edge for iPhone X. 
+
+    ![compatibility test](documentation/testing/browser_testing.png) 
+
+    The website was also tested on the following devices: iMac, iPhone 6s and Samsung S10.
+
+    The website wast not tested and is not expected to be compatible with Internet Explorer. 
 
 - ## **W3C HTML Code Validator**
 
-    W3C Markup Validation Service by direct input for index.html and page 404 returned no errors 
+    [W3C Markup Validation Service](https://validator.w3.org/) by direct input for index.html and page 404 returned no errors 
 
     **Report for index.html**
     ![w3c html validator for html](documentation/testing/html_w3c_validator.png)
@@ -506,13 +532,13 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **W3C CSS Jigsaw Validator**
 
-    W3C CSS Validator by direct input returned no error.
+   [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) by direct input returned no error.
 
     ![w3c css validator](documentation/testing/css_w3c_validator.png)
 
-- ## **JSHint javascript** 
+- ## **JSHint javascript**
 
-    JSHint was also installed in gitpod workspace. 
+    [JSHint](https://jshint.com) was also installed in gitpod workspace. 
 
     **Report for game.js** 
     ![jsHint report game js](documentation/testing/jshin_gamejs.png)
@@ -525,24 +551,25 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     The report shows an indefined variable emailjs, but this is part of the official email js documentation. 
 
-- ## **Testing accessibility - Wave report**
+- ## **Testing accessibility - [Wave](https://wave.webaim.org/) report**
  
   There 4 warnings are related to the audio tages but having looked at the documentation, the developer is not quite sure how to meet the criteria sucessfully. 
 
   ![wave accessibility report](documentation/testing/wave_report.png)
 
-- ## **Testing performance**
+- ## **Testing performance with [Google Lighthouse](https://developers.google.com/web/tools/lighthouse)**
   
   ![google lighthouse report](documentation/testing/google_lighthouse_report.png)
 
 - ## **Known bugs**
 
-  - Random function may provide the same consecutive output for random words.
+  - Random function may provide the same consecutive output for words.
+
   - As the best score is added to the leaderboard when a player enters their name in the input field, the score may be recorded before the player finished typing their name (this would happen if a player was idling as they type their name)
 
-# **DEPLOYMENT** 
+# **DEPLOYMENT**
 
-- ## **Intro interface used to develop the website**
+- ## **Interface used to develop the website**
 
     This website was developed on Gitpod using the Code Institute student template with changes frequently committed to git then pushed onto GitHub from the Gitpod terminal.
     
@@ -555,7 +582,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     The website was deployed on GitHub using the following steps: 
     - Log onto GitHub 
     - Go to the “repositories” section 
-    - Click on the repository:  lemocla/neon-hangman
+    - Click on the repository:  [lemocla/neon-hangman](https://github.com/lemocla/neon-hangman)
     - Once in the repository, click on ‘settings’ located in the right handside of the menu on top of the repository. 
     - Scroll down to the section “GitHub Pages”
     - Under “Source”, select “Master” in the first tab
@@ -566,7 +593,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
      ![deployment](documentation/screenshots/deployment.png)
 
-- ## **How to run the code locally** 
+- ## **How to run the code locally**
 
     To use this project, you can either fork or clone the local repository on gitHug as follows:
 
@@ -601,7 +628,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     You can find all the steps to follow according to your chosen method in this [GitHub documentation](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository) on how to clone a repository.
 
-# **CREDITS** 
+# **CREDITS**
 
 - ## **Code**
 
@@ -609,39 +636,39 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - **SVG Hangman**
       - SVG circle path was adapted from the code in this [smashing magazine](https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/) article.
-      - SVG drawing style animation followed the principles in this [codepen post](https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation).
+      - SVG drawing style animation was adapted by following the principles in this [codepen post](https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation).
       - The glow filter for the hangman is from this [stackoverflow post](https://stackoverflow.com/questions/54112231/is-it-possible-to-create-a-glow-effect-in-svg)
     
     - **Changing SVG icons colors**
       - Applying a filter to svg icons were inspired by this [css-Tricks](https://css-tricks.com/change-color-of-svg-on-hover) post.
     
     - **Buttons hovering effect**
-      - Hovering effect on button were created using this [w3schools tutotrial](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3)
+      - Hovering effect on button were adapted using this [w3schools tutorial](https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_buttons_fade3).
 
     - **Form and modals** 
-      - Modals were created using this [w3schools tutotrial](https://www.w3schools.com/howto/howto_css_modals.asp)
-      - Adapting jsmail api documentation to jquery for prevent submit from [w3schools](https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_event_submit_preven) 
+      - Modals were created and adapted using this [w3schools tutorial](https://www.w3schools.com/howto/howto_css_modals.asp).
+      - Adapting jsmail api documentation to jquery for prevent submit is from this [w3schools](https://www.w3schools.com/jquery/tryit.asp?filename=tryjquery_event_submit_prevent) article.
     
     - **JSON array** 
-      - Sort json array from [c-sharpcorner](https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/) post
+      - Sort json array from [c-sharpcorner](https://www.c-sharpcorner.com/UploadFile/fc34aa/sort-json-object-array-based-on-a-key-attribute-in-javascrip/) post.
        ![sorting array](documentation/credit/sorting_array.png)
-      - Filter json array adapted from this [stack overflow](https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes) post
+      - Filtering json array is adapted from this [stack overflow](https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes) post.
       
     - **Timer**
-      - Code to for the countdown timer is adapted from this [stackoverflow post](https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown)
-      - Code to turn seconds into 2 digit number when less than 10 is from this [stackoverflow post](https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date)
+      - Code to for the countdown timer is adapted from this [stackoverflow post](https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown).
+      - Code to turn seconds into 2 digit number when less than 10 is from this [stackoverflow post](https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date).
       ![seconds in 2 digits](documentation/credit/two_digitseconds.png)
     
     - **Sounds**
-      - Playing sound with jquery was taken from this [medium blogpost](https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97)
+      - Playing sound with jquery was taken from this [medium blogpost](https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97).
     
     - **Trigger event on input**
-      - The function to trigger adding best score to leadboard is from [this stack overflow post](https://stackoverflow.com/questions/14042193/how-to-trigger-an-event-in-input-text-after-i-stop-typing-writing)
+      - The function to trigger adding best score to leadboard is from [this stack overflow post](https://stackoverflow.com/questions/14042193/how-to-trigger-an-event-in-input-text-after-i-stop-typing-writing).
         ![trigger event on input](documentation/credit/trigger_event_input.png)
 
     - **Additional**
-      - How to to create an array of definitions from api results used [jquery documentation](https://api.jquery.com/jquery.map/) 
-      - Solution to target toggled elements was found in [stack overflow post](https://stackoverflow.com/questions/1616006/jquery-select-all-br-with-displaynone/15373670)
+      - How to to create an array of definitions from api results used [jquery documentation](https://api.jquery.com/jquery.map/). 
+      - Solution to target toggled elements was found in [stack overflow post](https://stackoverflow.com/questions/1616006/jquery-select-all-br-with-displaynone/15373670).
    
 - ## **Content**
 
@@ -649,7 +676,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **Media**
 
-  -  ### **Images**  
+  -  ### **Images**
 
      The hangman svg was coded by myself, other icons used on this website were from:  
       - [iconmonstr](https://iconmonstr.com/) for all icons in image folder, except the trophy.  
@@ -663,12 +690,12 @@ Using the principles of UX design and concepts learnt during the Interactive fro
      
      The Pixel-operator font used for the text is from [dafont](https://www.dafont.com/pixel-operator.font).
 
-- ## **Acknowledgment** 
+- ## **Acknowledgments**
 
-  - My mentor Can Sucullu for his advice and guidance during this project
-  - My peers from the November What's App Group for their support and guidance
-  - Code Institute tutor support for their brillant advice 
-  - The Code Institute slack community for general advices and solution to problems that others encountered
+  - My mentor Can Sucullu for his advice and guidance during this project,
+  - My peers from the November What's App Group for their support and guidance,
+  - Code Institute tutor support for their brillant advice, 
+  - The Code Institute slack community for general advices and solution to problems that others encountered,
 
    **And a special thank you to my family who helped me design some very creative hints for the local words and test the game.** 
   
