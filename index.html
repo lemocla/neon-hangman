@@ -39,11 +39,12 @@
                             <button class="btn btn-level b-neon-purple" data-level="medium">medium</button>
                             <button class="btn btn-level b-neon-purple" data-level="hard">hard</button>
                         </div>
-                            <!--test-->
+                        <!--test-->
                         <p>Categories</p>
                         <div class="btn-settings-menu">
-                        <button class="btn btn-category b-neon-purple active" data-category="dictionary">dictionary</button>
-                        <button class="btn btn-category b-neon-purple" data-category="animals">animals</button>
+                            <button class="btn btn-category b-neon-purple active"
+                                data-category="dictionary">dictionary</button>
+                            <button class="btn btn-category b-neon-purple" data-category="animals">animals</button>
                             <button class="btn btn-category b-neon-purple" data-category="food">food</button>
                             <button class="btn btn-category b-neon-purple" data-category="transport">transport</button>
                         </div>
@@ -64,15 +65,19 @@
         </header>
         <!-- game info -->
         <div class="game-info b-neon-green mg-bottom">
-            <div class="scoring sm-hide"><img src="assets/images/soundon.svg" width="42" height="22" alt="turn sound on" data-attr="sound">
+            <div class="scoring sm-hide"><img src="assets/images/soundon.svg" width="42" height="22" alt="turn sound on"
+                    data-attr="sound">
             </div>
             <div class="scoring sm-hide"><img src="assets/images/levels.svg" width="42" height="22" alt="category"><span
                     class="category">dictionary</span>
             </div>
-            <div class="scoring"><img src="assets/images/trophy.svg" width="42" height="22" alt="best score"><span id="best-score">0</span>
+            <div class="scoring"><img src="assets/images/trophy.svg" width="42" height="22" alt="best score"><span
+                    id="best-score">0</span>
             </div>
-            <div class="scoring"><img src="assets/images/star.svg" width="42" height="22" alt="score"><span id="score">0</span> </div>
-            <div class="scoring"><img src="assets/images/timer.svg" width="42" height="22" alt="timer"><span id="timer">0:00</span></div>
+            <div class="scoring"><img src="assets/images/star.svg" width="42" height="22" alt="score"><span
+                    id="score">0</span> </div>
+            <div class="scoring"><img src="assets/images/timer.svg" width="42" height="22" alt="timer"><span
+                    id="timer">0:00</span></div>
         </div>
         <!-- game container -->
         <div class="game-container mg-bottom">
@@ -83,15 +88,15 @@
             </audio>
             <audio id="fail-sound">
                 <source src="assets/sounds/mixkit-wrong-electricity-buzz-955.wav" type="audio/mpeg">
-                 <p>Your browser doesn't support HTML5 audio.</p>
+                <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
             <audio id="win-sound">
                 <source src="assets/sounds/mixkit-video-game-win-2016.wav" type="audio/mpeg">
-                 <p>Your browser doesn't support HTML5 audio.</p>
+                <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
-            <audio id="game-over-sound" muted autoplay>
+            <audio id="game-over-sound" autoplay muted>
                 <source src="assets/sounds/mixkit-musical-game-over-959.wav" type="audio/mpeg">
-                 <p>Your browser doesn't support HTML5 audio.</p>
+                <p>Your browser doesn't support HTML5 audio.</p>
             </audio>
             <!-- game over -->
             <div id="game-over" class="game-over-container b-neon-purple hide">
@@ -105,7 +110,8 @@
                     <h3 class="pd-bottom" id="best-new-score">best new score</h3>
                     <p>Enter your name to save your score</p>
                     <div id="scorename-container">
-                    <input id="scorename" class="b-neon-blue" type="text" name="scorename" aria-labelledby="scorename">
+                        <input id="scorename" class="b-neon-blue" type="text" name="scorename"
+                            aria-labelledby="scorename">
                     </div>
                     <p id="save-notification" class="hide">Your score has been saved!</p>
                 </div>
@@ -165,8 +171,8 @@
             </div>
             <!-- hangman -->
             <div class="hangman-container b-neon-purple">
-                <div class="scoring volume-mobile"><img src="assets/images/soundon.svg" width="32" height="22" alt="turn sound on"
-                        data-attr="sound"></div>
+                <div class="scoring volume-mobile"><img src="assets/images/soundon.svg" width="32" height="22"
+                        alt="turn sound on" data-attr="sound"></div>
                 <svg id="hangman" width="100%" height="100%" viewbox="0 0 380 430" x="0" y="0">
                     <!--Filters-->
                     <defs>
@@ -289,7 +295,9 @@
     <script src="assets/javascript/navigation.js"></script>
     <script src="assets/javascript/game.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-    <script>emailjs.init('user_QcxrbFoaC4sGqGsZ2MFsM')</script>
+    <script>
+        emailjs.init('user_QcxrbFoaC4sGqGsZ2MFsM')
+    </script>
     <script src="assets/javascript/emailjs.js"></script>
 </body>
 

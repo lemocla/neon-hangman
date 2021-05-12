@@ -515,10 +515,11 @@ $(document).ready(function () {
     //https://medium.com/@ericschwartz7/adding-audio-to-your-app-with-jquery-fa96b99dfa97
     function playSound(sound) {
         if ($(".btn-volume.active").attr("data-sound") == "on") {
-            $(sound).attr("muted", false);
             $(sound)[0].currentTime = 0;
+            $(sound)[0].muted = false;
+            $(sound)[0].autoplay = false;
             let promise = $(sound)[0].play();
-            //Handle Chrome uncaught in promise DOMException: play() - error
+            //Handle error - uncaught in promise DOMException: play()
             //https://stackoverflow.com/questions/54719283/google-chrome-uncaught-in-promise-domexception-while-playing-audio
             if (promise !== undefined) {
                 promise.then(_ => {

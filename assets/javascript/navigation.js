@@ -71,7 +71,7 @@ $(document).ready(function () {
         if (localStorage.category) {
             let storedCategory = localStorage.getItem("category");
             //Apply category being played for game in progress
-            if (localStorage.isPlaying && localStorage.getItem("isPlaying") == "true") {
+            if (localStorage.isPlaying && localStorage.getItem("isPlaying") === "true") {
                 storedCategory = localStorage.getItem("isPlayingCategory");
             }
             $(`.btn-category[data-category=${storedCategory}]`).addClass("active");
@@ -94,7 +94,7 @@ $(document).ready(function () {
         if (localStorage.score) {
             $("#score").text(localStorage.getItem("score"));
             //Apply content to start button if player is continuing a game
-            if (parseInt($("#score").text()) > 0 && localStorage.getItem("isPlaying") == "false") {
+            if (parseInt($("#score").text()) > 0 && localStorage.getItem("isPlaying") === "false") {
                 $('#start').text("continue");
             } else {
                 $("#start").text("play");
