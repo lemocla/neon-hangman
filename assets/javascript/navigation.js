@@ -125,7 +125,7 @@ $(document).ready(function () {
         localStorage.setItem("best-score", 0);
         localStorage.setItem("score", 0);
         localStorage.setItem("countWords", 0);
-        localStorage.setItem("isPlaying", false);
+        localStorage.setItem("isPlaying", "false");
     }
 
     // Navigation and menu items

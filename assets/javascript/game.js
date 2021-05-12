@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     let level;
     let category;
-    let isPlaying = false;
+    let isPlaying = "false";
     //Words
     let word;
     let max;
@@ -94,7 +94,7 @@ $(document).ready(function () {
             });
         }
     } else {
-        localStorage.setItem("isPlaying", false);
+        localStorage.setItem("isPlaying", "false");
     }
 
     // Start game
@@ -426,7 +426,7 @@ $(document).ready(function () {
 
     // Function to set local storage with in-game information
     function setLocalStorage() {
-        isPlaying = true;
+        isPlaying = "true";
         localStorage.setItem("isPlaying", isPlaying);
         localStorage.setItem("isPlayingCategory", category);
         localStorage.setItem("hintCollection", JSON.stringify(hintCollection));
@@ -451,7 +451,7 @@ $(document).ready(function () {
             resetDisplayAfterGameOver();
         }
         // Set timer
-        timer = 10;
+        timer = 120;
         setTimer(timer);
         // Update variables
         level = $(".btn-level.active").text();
@@ -624,8 +624,9 @@ $(document).ready(function () {
             $("#hint-content").addClass("hide");
         }
         $("#hint").addClass("hide");
-        // Update statistics
-        isPlaying = false;
+        // Reset isPlaying to false
+        isPlaying = "false";
+        // Game scoring
         countWords = ++countWords;
         $(".final-score").text(score);
         $(".count-words").text(countWords);
@@ -656,7 +657,7 @@ $(document).ready(function () {
         // Reset score to 0 when game over
         countWords = 0;
         score = 0;
-        isPlaying = false;
+        isPlaying = "false";
         $("#score").text(score);
         // Local storage
         resetLocalStorage();
@@ -664,7 +665,7 @@ $(document).ready(function () {
 
     // Play game - when key is pressed
     $(".key").on("click", function () {
-        if (isPlaying) {
+        if (isPlaying === "true") {
             //Evaluate guess
             let isCorrectGuess = splitWord.includes($(this).text());
             let letter = $(this).text();
