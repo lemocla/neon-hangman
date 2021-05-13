@@ -609,12 +609,12 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     - Log onto GitHub 
     - Go to the “repositories” section 
     - Click on the repository:  [lemocla/neon-hangman](https://github.com/lemocla/neon-hangman)
-    - Once in the repository, click on ‘settings’ located in the right handside of the menu on top of the repository. 
-    - Click on “Pages” on the left handside menu
+    - Once in the repository, click on "settings" located in the right handside of the menu on top of the repository
+    - Click on “Pages” located in the left handside menu
     - Under “Source”, select “Master” in the first tab
     - In the next tab, select “/root” if not already selected by default
-    - Click “Save” and the url should be displayed above the "source" section. 
-    - Now that the link is displayed, the website is deployed and can be accessed in the browser by clicking on the url.
+    - Click “Save” and the url should be displayed above the "source" section
+    - Now that the link is displayed, the website is deployed and can be accessed in the browser by clicking on the url
 
      ![deployment](documentation/screenshots/deployment.png)
 
