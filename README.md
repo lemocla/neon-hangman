@@ -95,19 +95,20 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     - Responsive interface 
     - Collapsible menu 
     - To display instructions and settings
-    - To give users ability to select from different levels of difficulty for the game 
+    - To give users ability to choose from different categories and levels of difficulty for the game 
     - To be able to turn sounds on and off 
-    - To get random words according the selected level via WordsAPI
+    - To get random words according the selected level via [WordsAPI](https://www.wordsapi.com/)
+    - To get random words from local file according to the selected level and category
     - To get a backup word array stored locally should the API call fails 
     - To display a functional interactive keyboard 
     - To generate and display letter placeholders for the hidden word 
-    - The reveal letter from hidden word when correct key is clicked 
-    - To show relevant hangman part when incorrect letter is clicked 
-    - To update scores according to scoring policy 
+    - The reveal letter from hidden word when the correct key is clicked 
+    - To show relevant hangman part when the incorrect letter is clicked 
+    - To update scores according to the scoring policy 
     - To inform user when new high score is reached 
     - To run a countdown timer that reset when a new game starts 
     - To identify when a game is finished & inform player of the outcome - win or lose 
-    - Give the player the ability to continue playing if the game was won or play again if the game was lost
+    - Give the player the ability to continue playing if a game was won or play again if a game was lost
     - Contact form with mailjs API
     - Error messages if Email API fails 
     - Error messages is all backups fail for generating random word
@@ -128,7 +129,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
   - ### **Constraints**
 
-    - Technical skills: The site owner is new to Javascript, Jquery and to API calls. 
+    - Technical skills: The site owner is new to Javascript, Jquery and API calls. 
     - Game design skills: The is owner has never designed an online game before.
     - Time: Implementing features using new technical skills will most certainly require a lot of time.
 
@@ -142,7 +143,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - Header: Logo and collapsible menu
     - Collapsible menu: instructions, settings and leaderboard 
-    - Settings: sounds on/off and difficulty levels 
+    - Settings: sounds on/off, categories and difficulty levels 
 	- Footer: Contact form and links to social media 
 	- Game information container: Scores, sounds and timer
 	- Game area container: 
@@ -181,7 +182,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     - ### **Difference:**
 
       - **Game info:** category is displayed instead of levels.
-      - **Menu:** close button has been removed as not necessary.
+      - **Menu:** The "close" button has been removed as not necessary.
       - **Settings:** categories have been added to settings in addition to levels.
       - **Popup points:** not implemented.
       - **Win message:** A leave button has been added as well as a line about in-game statistics.
@@ -239,7 +240,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
       The game features a collapsible menu at the top of the page with a dynamic icon that changes when the menu is toggled, to allow users to select their preferences, view the instructions and the leaderboard. 
       
-      All interactive elements, including icons and buttons, feature hovering effects and all modals include closing icons / toggle effects. 
+      All interactive elements - including icons and buttons - feature hovering effects and all modals include closing icons. 
       
       > As new player, I want to easily navigate across the site so that I can find the information I need.
  
@@ -273,11 +274,11 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       The game information section features:
        - **Sounds preference:** The sound can also be turned on/off from this section and will be updated in settings.
        - **Categories:** updated dynamically when a new category is selected in settings.
-       - **Best score:** displays the best score achieved, regardless of being recorded or not.
+       - **Best score:** displays the best score achieved, regardless of it being recorded or not.
        - **Score:** Incremented dynamically when a game is played and reset to 0 when a game is over.
        - **Timer:** Initially set at zero, the countdown timer will be set at 2 min when the player clicks play/continue.       
 
-      Each element in this section is recorded in the local storage for when the user next visit & play the game.                                                                                       
+      Each element in this section is recorded in the local storage for when the user next visits & plays the game.                                                                                       
 
       > - As a player playing the game, I want to see the timer so that I know how much time I’ve got left to win the game.
       > - As a player playing the game, I want to see my score so that I feel rewarded when I am playing.
@@ -307,7 +308,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
        The hidden word is randomly generated as follows:
        - **Selected category -> dictionary:**  
-         The "dictionary" category will fetch a random word from wordsApi according to the level selected. The level are set according the words' [zipf](https://simple.wikipedia.org/wiki/Zipf%27s_law) frequency.
+         The "dictionary" category will fetch a random word from [wordsApi](https://www.wordsapi.com/) according to the level selected. The level are set according the words' [zipf](https://simple.wikipedia.org/wiki/Zipf%27s_law) frequency.
        - **Selected category -> animals, food and transport:**  
          These categories will fetch a random word from the local words list according to the level selected.
          The levels have been defined within the list. 
@@ -340,7 +341,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       The in-game scoring is incremented every time a correct letter is clicked as follows:
 
       - Default scoring is 10 points per letter.
-      - If a player guesses more than one letter consecutively, it's a streak. The default point for that letter is then mulitplied by the streak before being added to the score.
+      - If a player guesses more than one letter consecutively, it's a streak. The default point for that letter is then multiplied by the streak before being added to the score.
 
       The streak is reset to 0 when an incorrect guess is made. 
       
@@ -367,7 +368,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
         When all the hangman parts are revealed, the game over message will display (together with a sad music if sounds preferences are on) offering the player the option to play again or leave the game. 
         
-        Score will be reset to 0 and, if player achieves a new best score, he will be prompted to save his score by entering his name in the designated field. 
+        Score will be reset to 0 and, and if a player achieves a new best score, he will be prompted to save his score by entering his name in the designated field. 
 
         ![game over](documentation/screenshots/gameover.png)
 
@@ -409,7 +410,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - ### **Footer**
  
-      The footer displays a “contact us” button, opening a modal contacta form, as well as social media icons with links opening onto a new tab, so that users can browse these without losing access to the website.  
+      The footer displays a “contact us” button, opening a modal contact form, as well as social media icons with links opening onto a new tab, so that users can browse these without losing access to the website.  
 
       > As a frequent / returning player, I want to contact the company so that I can offer suggestions on how to improve the website.
 
@@ -428,7 +429,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 - ## **Features left to implement**
 
   - Add a feature to allow users to leave a review 
-  - Add a database to add and manage for words and categories  
+  - Add a database to add and manage words and categories  
   - Add a feature to allow users to challenge a friend with a word by email or social medias.
   - Add a multiplayer mode
   - Convert the website as a Progressive Web Application (PWA) and re-develop the game as an app for ios and android
@@ -445,7 +446,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
   - [Jquery](https://api.jquery.com/): to simplify Ajax, DOM manipulation and event handling 
   - [Scalable Vector Graphics](https://www.w3.org/TR/SVG11/intro.html) (SVG): for the animated hangman
   - [JavaScript Object Notation](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/JSON) (JSON): for the local words list & array in local storage
-  - [wordsAPI](https://www.wordsapi.com/): To generate random word from dictionary category
+  - [wordsAPI](https://www.wordsapi.com/): To generate random words from the dictionary category
   - [Email JS](https://www.emailjs.com/): To send email via the website
   - [Google fonts](https://fonts.google.com/): For the Hangman logo
   - [BeautifyTools](https://beautifytools.com/excel-to-json-converter.php): To convert excel word list into a json file
@@ -531,13 +532,13 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **Responsiveness and compatibility**
 
-    The website was tested on the following devices and browsers. All tests were successful, expect for the sounds being slightly delayed on Firefox and Edge for iPhone X. 
+    The website was tested on the following devices and browsers. All tests were successful, except for the sounds being slightly delayed on Firefox and Edge for iPhone X. 
 
     ![compatibility test](documentation/testing/browser_testing.png) 
 
     The website was also tested on the following devices: iMac, iPhone 6s and Samsung S10.
 
-    The website wast not tested and is not expected to be compatible with Internet Explorer. 
+    The website was not tested and is not expected to be compatible with Internet Explorer. 
 
 - ## **W3C HTML Code Validator**
 
@@ -572,7 +573,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **Testing accessibility - [Wave](https://wave.webaim.org/) report**
  
-  There 4 warnings are related to the audio tages but having looked at the documentation, the developer is not quite sure how to meet the criteria sucessfully. 
+  The 4 warnings are related to the audio tages but having looked at the documentation, the developer is not quite sure how to meet the criteria successfully. 
 
   ![wave accessibility report](documentation/testing/wave_report.png)
 
@@ -609,11 +610,10 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     - Go to the “repositories” section 
     - Click on the repository:  [lemocla/neon-hangman](https://github.com/lemocla/neon-hangman)
     - Once in the repository, click on ‘settings’ located in the right handside of the menu on top of the repository. 
-    - Scroll down to the section “GitHub Pages”
+    - Click on “Pages” on the left handside menu
     - Under “Source”, select “Master” in the first tab
     - In the next tab, select “/root” if not already selected by default
-    - Click “Save”  and the Page will automatically refresh 
-    - Scroll down again to the section “GitHub Pages” to view the url displayed in a blue banner at the top of the section. 
+    - Click “Save” and the url should be displayed above the "source" section. 
     - Now that the link is displayed, the website is deployed and can be accessed in the browser by clicking on the url.
 
      ![deployment](documentation/screenshots/deployment.png)
@@ -661,7 +661,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
     - **SVG Hangman**
       - SVG circle path was adapted from the code in this [smashing magazine](https://www.smashingmagazine.com/2019/03/svg-circle-decomposition-paths/) article.
-      - SVG drawing style animation was adapted by following the principles in this [codepen post](https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation).
+      - SVG drawing animation was styled following the principles in this [codepen post](https://codepen.io/MyXoToD/post/howto-self-drawing-svg-animation).
       - The glow filter for the hangman is from this [stackoverflow post](https://stackoverflow.com/questions/54112231/is-it-possible-to-create-a-glow-effect-in-svg)
     
     - **Changing SVG icons colors**
@@ -680,8 +680,8 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       - Filtering json array is adapted from this [stack overflow](https://stackoverflow.com/questions/2722159/how-to-filter-object-array-based-on-attributes) post.
       
     - **Timer**
-      - Code to for the countdown timer is adapted from this [stackoverflow post](https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown).
-      - Code to turn seconds into 2 digit number when less than 10 is from this [stackoverflow post](https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date).
+      - Code for the countdown timer is adapted from this [stackoverflow post](https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown).
+      - Code to turn seconds into a 2 digit number when less than 10 is from this [stackoverflow post](https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date).
       ![seconds in 2 digits](documentation/credit/two_digitseconds.png)
     
     - **Sounds**

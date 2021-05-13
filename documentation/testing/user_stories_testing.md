@@ -2,17 +2,17 @@
 
   - ### **Introduction**: 
 
-    Testings of user stories are  set on the user’s journey across the website and cover interactive elements, as well as the responsiveness of the website across different devices and browsers.
+    Testings of user stories are  set on the user’s journey across the website and cover all interactive elements, as well as the responsiveness of the website across different devices and browsers.
     User stories were tested manually.
 
-     [click here](../../README.md#TESTING) to go back to the main section of the ReadMe. 
+     [Click here](../../README.md#TESTING) to go back to the main section of the ReadMe. 
      
   - ### **As new player, I want a responsive website so that I can access the game on different devices.**
 
     - #### **T01 Acceptance criteria**
-        - When I visit the website using my device, all content is visible and,
-        - On a mobile or table, the game area is visible at all time and,
-        - On a mobiles or tablets in portrait mode, game elements are rearranged vertically and the game area is visible without scrolling.
+        - When I visit the website using my device, all contents are visible and,
+        - On mobiles or tablets, the game area is visible at all time and,
+        - On mobiles or tablets in portrait mode, game elements are rearranged vertically and the game area is visible without scrolling.
 
     - #### **T01 Result:** PASS
 
@@ -60,9 +60,9 @@
 
     - #### **T05 Acceptance criteria**
         - See T02 Acceptance criteria and, 
-        - When I hover over the "Settings" button, it appearance darkens slightly and, 
+        - When I hover over the "Settings" button, its appearance darkens slightly and, 
         - When I click over the "Settings" button, level, category and sounds section are displayed clearly and,
-        - If I am first time visitor, the default settings for levels, categories and sounds are set respectively to easy, dictionary and on - and,
+        - If I am a first time visitor, the default settings for levels, categories and sounds are set respectively to easy, dictionary and on - and,
         - When I hover on one the buttons in settings, their appearance changes to pink and,
         - When I click on any item in each section, 
             - the selected option will be highlighted in bright pink and,
