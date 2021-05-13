@@ -12,7 +12,7 @@
     - #### **T01 Acceptance criteria**
         - When I visit the website using my device, all content is visible and,
         - On a mobile or table, the game area is visible at all time and,
-        - On a mobile or tablet in portrait mode, game elements are rearranged vertically and the game area is visible without scrolling.
+        - On a mobiles or tablets in portrait mode, game elements are rearranged vertically and the game area is visible without scrolling.
 
     - #### **T01 Result:** PASS
 
@@ -24,7 +24,7 @@
         - When I hover on the toggle button, its appearance changes slightly and, 
         - When I click on the toggle button, the toggle image changes to a cross and the vertical menu is displayed and,
         - When I click on one of the menu items, its content is displayed whilst other menu items' contents collapse back and,
-        - When I click on the toggle button again, the menu collapse back as well as all its inner content. 
+        - When I click on the toggle button again, the menu collapses back as well as all its inner content. 
 
     - #### **T02 Result:** PASS  
    
@@ -33,7 +33,7 @@
  - ### **As new player, I want the game to upload quickly so that I can start playing as soon as possible.**
 
     - #### **T03 Acceptance criteria**
-        - When I hover the "play" button, its appreance darkens and, 
+        - When I hover over the "play" button, its appreance darkens and, 
         - When I click on the "play" button, the hidden word is displayed and the hangman parts are hidden. 
 
     - #### **T03 Result:** PASS  
@@ -46,7 +46,7 @@
 
     - #### **T04 Acceptance criteria**
         - See T02 Acceptance criteria and, 
-        - When I hover on the "how to play" button, its appearance darkens slightly and,
+        - When I hover over the "how to play" button, its appearance darkens slightly and,
         - When I click on the "how to play" button, the instructions on how to play the game are displayed clearly and,
         - When I click on the "how to play" button" again, the instructions content collapses back.
 
@@ -60,13 +60,13 @@
 
     - #### **T05 Acceptance criteria**
         - See T02 Acceptance criteria and, 
-        - When I hover on the "Settings" button, it appearance darkents slightly and, 
-        - When I click on the "Settings" button, level, category and sounds section are displayed clearly and,
-        - If I am first time visitor, the default settings for levels, categories and sounds are set respectively to easy, dictionary and on and,
+        - When I hover over the "Settings" button, it appearance darkens slightly and, 
+        - When I click over the "Settings" button, level, category and sounds section are displayed clearly and,
+        - If I am first time visitor, the default settings for levels, categories and sounds are set respectively to easy, dictionary and on - and,
         - When I hover on one the buttons in settings, their appearance changes to pink and,
         - When I click on any item in each section, 
             - the selected option will be highlighted in bright pink and,
-            -  others will be reset to their default format and,
+            - others will be reset to their default styles and,
             - the game information section of the game will be updated with my preferences and,
         - When I click on "settings" again, the instructions content collapses back.
        
@@ -82,7 +82,7 @@
   - ### **As a player playing the game, I want to see how many letters there are in the hidden word so that I can plan my guesses.**
 
     - #### **T07 Acceptance criteria**
-        - When the hidden word is displayed, I can clearly see the letter boxes that indicates how many letters there are in the hidden word. 
+        - When the hidden word is displayed, I can clearly see the letter boxes that indicate how many letters there are in the hidden word. 
 
     - #### **T07 Result:** PASS 
    
@@ -116,8 +116,8 @@
  - ### **As a player playing the game, I want to see the timer so that I know how much time I’ve got left to win the game.** 
 
     - #### **T09 Acceptance criteria**
-        - When I start a game, I can see the timer set at 2:00 in the game information section and, 
-        - With each second passing, I can the timer value going down and, 
+        - When I start a game, I can see the timer set for 2 minutes in the game information section and, 
+        - With each second passing, I can see the timer value going down and, 
         - When the timer reaches 0, the game is over. 
 
     - #### **T09 Result:** PASS 
@@ -136,7 +136,7 @@
     - #### **T11 Acceptance criteria**
         - When I win a game, I can see a button to leave the game and, 
         - When I hover over the "leave" button, its appearance darkens slightly and, 
-        - When I click on the the "leave" button and,
+        - When I click on the the "leave" button,
             -  I am brought back to the home display and,
             -  I can see a button "continue" and,
             -  My scores are still in the game information. 
@@ -186,9 +186,9 @@
 
     - #### **T16 Acceptance criteria**
         - See TC02 section and,
-        - When I hover on the "leaderboard" button, its appearance darkens slightly and,
-        - When I click on the "leaderboard" button, the leaderboard is displayed clearly, showing the highest scores first and,
-        - When I click on the "leaderboard" button again, the leaderboard content collapses back.
+        - When I hover over the "leaderboard" button, its appearance darkens slightly and,
+        - When I click over the "leaderboard" button, the leaderboard is displayed clearly, showing the highest scores first and,
+        - When I click over the "leaderboard" button again, the leaderboard content collapses back.
      
     - #### **T16 Result:** PASS
   

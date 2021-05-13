@@ -483,6 +483,25 @@ Using the principles of UX design and concepts learnt during the Interactive fro
       
       The interactive keyboard doesn't include symbols, therefore words returned by API should not contain any symbols, such as apostrophes. WordsAPI doesn't have a parameter to exclude these characters, so - to solve this issue - the URL string was amended with "hasDetails=definitions", as words with symbols don't have definitions attached to them.
 
+    - ### **Sounds**
+      
+      Initially when the same sound was due to be played twice consecutively, the second one would not play. The issue was resolved by setting the sound current time at 0. 
+
+      Upon further testing, the console displayed an error message as follows: "uncaught-in-promise-domexception-while-playing-audio". This error only happened when a page was refreshed and when the timer ran out whilst a game was in progress but the player did not interact with the game.
+
+      To fix this issue, the solution was to:
+      - add the attribute muted to the html audio elements and,
+      - return a promise playing the sound if successful and handling the error if the promise failed, as suggested by this [Stack overflow post](https://stackoverflow.com/questions/54719283/google-chrome-uncaught-in-promise-domexception-while-playing-audio) and backed by [Google documentation](https://developers.google.com/web/updates/2017/09/autoplay-policy-changes) on autoplay.
+
+      The consequence of the implementation of this solution is that the game over sound will not play if the page has been refreshed whilst a game is in progress but left unattended until the timer runs out.
+
+    - ### **Javascript variable and multiple datatypes**
+
+      The "isPlaying" variable was initially set as a boolean, but when retrieved from the Local Storage it was returned as a string. This created an error in the console when a key was pressed but the game was not yet started, as isPlaying was not taken into consideration. 
+      
+      The easiest way to fix this was to set all the "isPlaying" as a string with the values "true" or "false" for consistency across the board. 
+
+
 - ## **User stories**
 
     The testing of user stories were done manually and can be found in this [section](documentation/testing/user_stories_testing.md).
@@ -525,7 +544,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     [W3C Markup Validation Service](https://validator.w3.org/) by direct input for index.html and page 404 returned no errors 
 
     **Report for index.html**
-    ![w3c html validator for html](documentation/testing/html_w3c_validator.png)
+    ![w3c html validator for html](documentation/testing/html_w3c_validator_index.png)
 
     **Report for page 404**
     ![w3c css validator for page 404](documentation/testing/html_w3c_validator_page404.png)
@@ -538,10 +557,10 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 - ## **JSHint javascript**
 
-    [JSHint](https://jshint.com) was also installed in gitpod workspace. 
+    [JSHint](https://jshint.com) was also installed in gitpod workspace (hence the code comments on top of each page). 
 
     **Report for game.js** 
-    ![jsHint report game js](documentation/testing/jshin_gamejs.png)
+    ![jsHint report game js](documentation/testing/jshint_gamejs.png)
 
     **Report for navigation.js**
     ![jsHint navigation js](documentation/testing/jshint_navigationjs.png)
@@ -561,11 +580,17 @@ Using the principles of UX design and concepts learnt during the Interactive fro
   
   ![google lighthouse report](documentation/testing/google_lighthouse_report.png)
 
+- ## **Peer code review**
+
+    The website was also submitted for peer code review, which proved extremely useful, as it helped identify that wordsAPI could return words containing special characters (see bugs and solutioon section above).
+
 - ## **Known bugs**
 
-  - Random function may provide the same consecutive output for words.
+  - Random function may provide the same word consecutively.
 
-  - As the best score is added to the leaderboard when a player enters their name in the input field, the score may be recorded before the player finished typing their name (this would happen if a player was idling as they type their name)
+  - As the best score is added to the leaderboard when a player enters their name in the input field, the score may be recorded before the player has finished typing their name (this would happen if a player was idling as they type their name).
+
+  - An issue remains on Safari Desktops (MacBook Air) with the hangman svg image. When a player decides to leave the game after he won, the svg image doesn't display properly (but just momentarily).
 
 # **DEPLOYMENT**
 
@@ -665,6 +690,10 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     - **Trigger event on input**
       - The function to trigger adding best score to leadboard is from [this stack overflow post](https://stackoverflow.com/questions/14042193/how-to-trigger-an-event-in-input-text-after-i-stop-typing-writing).
         ![trigger event on input](documentation/credit/trigger_event_input.png)
+    
+    - **The sound play() promise**
+      - The function to handle the promise on sound play() was taken from this [stackoverflow post](https://stackoverflow.com/questions/54719283/google-chrome-uncaught-in-promise-domexception-while-playing-audio).
+        ![promise sound play](documentation/credit/promise_soundplay.png) 
 
     - **Additional**
       - How to to create an array of definitions from api results used [jquery documentation](https://api.jquery.com/jquery.map/). 
