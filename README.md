@@ -19,7 +19,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
     - [Skeleton](#skeleton)
     - [Design](#design)
   - [Features](#features)
-    - [Existing features](#features-implemented)
+    - [Features implemented](#features-implemented)
     - [Features left to implement](#Features-left-to_implement)
   - [Technologies Used](#technology-used)
     - [Languages](#languages)
@@ -454,7 +454,7 @@ Using the principles of UX design and concepts learnt during the Interactive fro
 
 # **TESTING**
 
-- ## **Intro**
+- ## **Introduction**
   
   The website was tested extensively as it was developed with the implementation of new features, using:
   - console.log() and google developer tools
